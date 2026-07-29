@@ -1,0 +1,1362 @@
+{
+  "type": "FeatureCollection",
+  "name": "ubicaciones_sucursales",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.11619,
+          -34.978834
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-001",
+        "nombre": "Sucursal Montevideo 1",
+        "ciudad": "Montevideo",
+        "pais": "Uruguay",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2020-12-01",
+        "empleados": 22,
+        "area_m2": 471,
+        "ventas_anuales_usd": 1214947,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+50-2571945",
+        "rating_promedio": 3.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.337351,
+          20.680104
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-002",
+        "nombre": "Sucursal Guadalajara 2",
+        "ciudad": "Guadalajara",
+        "pais": "México",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2014-01-01",
+        "empleados": 6,
+        "area_m2": 137,
+        "ventas_anuales_usd": 508944,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+52-4612365",
+        "rating_promedio": 4.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.096115,
+          4.631442
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-003",
+        "nombre": "Sucursal Bogotá 3",
+        "ciudad": "Bogotá",
+        "pais": "Colombia",
+        "tipo": "Local",
+        "formato": "Mall",
+        "fecha_apertura": "2021-08-01",
+        "empleados": 13,
+        "area_m2": 335,
+        "ventas_anuales_usd": 545561,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+58-5918715",
+        "rating_promedio": 4.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.070473,
+          -11.96931
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-004",
+        "nombre": "Sucursal Lima 4",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2013-05-01",
+        "empleados": 17,
+        "area_m2": 423,
+        "ventas_anuales_usd": 2386769,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+56-5663623",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.101046,
+          4.643531
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-005",
+        "nombre": "Sucursal Bogotá 5",
+        "ciudad": "Bogotá",
+        "pais": "Colombia",
+        "tipo": "Local",
+        "formato": "Street",
+        "fecha_apertura": "2020-03-01",
+        "empleados": 19,
+        "area_m2": 236,
+        "ventas_anuales_usd": 1138720,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+56-5528972",
+        "rating_promedio": 5.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.220577,
+          -34.863468
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-006",
+        "nombre": "Sucursal Montevideo 1",
+        "ciudad": "Montevideo",
+        "pais": "Uruguay",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2023-01-01",
+        "empleados": 20,
+        "area_m2": 228,
+        "ventas_anuales_usd": 740174,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+51-4539704",
+        "rating_promedio": 4.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.079864,
+          -11.971126
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-007",
+        "nombre": "Sucursal Lima 2",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Express",
+        "formato": "Business District",
+        "fecha_apertura": "2017-03-01",
+        "empleados": 9,
+        "area_m2": 193,
+        "ventas_anuales_usd": 537039,
+        "parking_disponible": true,
+        "horario_24h": true,
+        "gerente": "Diego Fernández",
+        "telefono": "+58-5408072",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.68942,
+          -33.369335
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-008",
+        "nombre": "Sucursal Santiago 3",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2011-01-01",
+        "empleados": 19,
+        "area_m2": 660,
+        "ventas_anuales_usd": 2034977,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Diego Fernández",
+        "telefono": "+52-8082668",
+        "rating_promedio": 4.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.570076,
+          -33.472576
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-009",
+        "nombre": "Sucursal Santiago 4",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2020-09-01",
+        "empleados": 16,
+        "area_m2": 205,
+        "ventas_anuales_usd": 620116,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+54-8294150",
+        "rating_promedio": 3.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.306429,
+          -34.512937
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-010",
+        "nombre": "Sucursal Buenos Aires 5",
+        "ciudad": "Buenos Aires",
+        "pais": "Argentina",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2024-02-01",
+        "empleados": 16,
+        "area_m2": 291,
+        "ventas_anuales_usd": 1032342,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+55-3710343",
+        "rating_promedio": 4.3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.329811,
+          20.743399
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-011",
+        "nombre": "Sucursal Guadalajara 1",
+        "ciudad": "Guadalajara",
+        "pais": "México",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2024-05-01",
+        "empleados": 3,
+        "area_m2": 94,
+        "ventas_anuales_usd": 390306,
+        "parking_disponible": true,
+        "horario_24h": true,
+        "gerente": "Laura Torres",
+        "telefono": "+51-2437026",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.182259,
+          -31.324503
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-012",
+        "nombre": "Sucursal Córdoba 2",
+        "ciudad": "Córdoba",
+        "pais": "Argentina",
+        "tipo": "Regional",
+        "formato": "Business District",
+        "fecha_apertura": "2018-03-01",
+        "empleados": 19,
+        "area_m2": 737,
+        "ventas_anuales_usd": 1996739,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+58-4374754",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.639324,
+          -33.34987
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-013",
+        "nombre": "Sucursal Santiago 3",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Express",
+        "formato": "Business District",
+        "fecha_apertura": "2013-02-01",
+        "empleados": 10,
+        "area_m2": 95,
+        "ventas_anuales_usd": 329973,
+        "parking_disponible": true,
+        "horario_24h": true,
+        "gerente": "Laura Torres",
+        "telefono": "+53-1120642",
+        "rating_promedio": 3.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.25102,
+          -34.989325
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-014",
+        "nombre": "Sucursal Montevideo 4",
+        "ciudad": "Montevideo",
+        "pais": "Uruguay",
+        "tipo": "Flagship",
+        "formato": "Business District",
+        "fecha_apertura": "2018-04-01",
+        "empleados": 57,
+        "area_m2": 1138,
+        "ventas_anuales_usd": 2297197,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+58-3219824",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.094201,
+          -12.031158
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-015",
+        "nombre": "Sucursal Lima 5",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Express",
+        "formato": "Airport",
+        "fecha_apertura": "2011-11-01",
+        "empleados": 9,
+        "area_m2": 104,
+        "ventas_anuales_usd": 249453,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+57-1908841",
+        "rating_promedio": 4.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.183976,
+          -34.981416
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-016",
+        "nombre": "Sucursal Montevideo 1",
+        "ciudad": "Montevideo",
+        "pais": "Uruguay",
+        "tipo": "Local",
+        "formato": "Airport",
+        "fecha_apertura": "2013-04-01",
+        "empleados": 20,
+        "area_m2": 255,
+        "ventas_anuales_usd": 760735,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+52-5673212",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.11653,
+          -31.431474
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-017",
+        "nombre": "Sucursal Córdoba 2",
+        "ciudad": "Córdoba",
+        "pais": "Argentina",
+        "tipo": "Flagship",
+        "formato": "Mall",
+        "fecha_apertura": "2023-01-01",
+        "empleados": 31,
+        "area_m2": 1467,
+        "ventas_anuales_usd": 4267390,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+56-9147706",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.736373,
+          -33.368411
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-018",
+        "nombre": "Sucursal Santiago 3",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Flagship",
+        "formato": "Airport",
+        "fecha_apertura": "2014-07-01",
+        "empleados": 42,
+        "area_m2": 1071,
+        "ventas_anuales_usd": 3908443,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+54-4652414",
+        "rating_promedio": 5.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.130608,
+          -11.999253
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-019",
+        "nombre": "Sucursal Lima 4",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Local",
+        "formato": "Street",
+        "fecha_apertura": "2017-09-01",
+        "empleados": 8,
+        "area_m2": 225,
+        "ventas_anuales_usd": 1112554,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+51-4117625",
+        "rating_promedio": 3.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.241759,
+          -31.385057
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-020",
+        "nombre": "Sucursal Córdoba 5",
+        "ciudad": "Córdoba",
+        "pais": "Argentina",
+        "tipo": "Flagship",
+        "formato": "Mall",
+        "fecha_apertura": "2019-10-01",
+        "empleados": 60,
+        "area_m2": 1383,
+        "ventas_anuales_usd": 3032702,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+60-9770838",
+        "rating_promedio": 4.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.129662,
+          -22.965948
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-021",
+        "nombre": "Sucursal Rio de Janeiro 1",
+        "ciudad": "Rio de Janeiro",
+        "pais": "Brasil",
+        "tipo": "Regional",
+        "formato": "Business District",
+        "fecha_apertura": "2020-11-01",
+        "empleados": 23,
+        "area_m2": 602,
+        "ventas_anuales_usd": 1274471,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+51-1156287",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.128148,
+          -11.947181
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-022",
+        "nombre": "Sucursal Lima 2",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2024-06-01",
+        "empleados": 31,
+        "area_m2": 535,
+        "ventas_anuales_usd": 1277781,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+54-3646552",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.327264,
+          20.700408
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-023",
+        "nombre": "Sucursal Guadalajara 3",
+        "ciudad": "Guadalajara",
+        "pais": "México",
+        "tipo": "Flagship",
+        "formato": "Mall",
+        "fecha_apertura": "2024-11-01",
+        "empleados": 51,
+        "area_m2": 1367,
+        "ventas_anuales_usd": 3255685,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+51-2795765",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.618334,
+          -32.99233
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-024",
+        "nombre": "Sucursal Rosario 4",
+        "ciudad": "Rosario",
+        "pais": "Argentina",
+        "tipo": "Local",
+        "formato": "Mall",
+        "fecha_apertura": "2017-05-01",
+        "empleados": 11,
+        "area_m2": 335,
+        "ventas_anuales_usd": 1029959,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Diego Fernández",
+        "telefono": "+56-5641923",
+        "rating_promedio": 3.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.044677,
+          4.765224
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-025",
+        "nombre": "Sucursal Bogotá 5",
+        "ciudad": "Bogotá",
+        "pais": "Colombia",
+        "tipo": "Local",
+        "formato": "Mall",
+        "fecha_apertura": "2021-07-01",
+        "empleados": 10,
+        "area_m2": 426,
+        "ventas_anuales_usd": 1078478,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+52-1604451",
+        "rating_promedio": 4.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.056843,
+          -12.035895
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-026",
+        "nombre": "Sucursal Lima 1",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Flagship",
+        "formato": "Street",
+        "fecha_apertura": "2024-06-01",
+        "empleados": 39,
+        "area_m2": 1173,
+        "ventas_anuales_usd": 2167331,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Diego Fernández",
+        "telefono": "+51-6933742",
+        "rating_promedio": 4.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.619404,
+          -33.354133
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-027",
+        "nombre": "Sucursal Santiago 2",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Regional",
+        "formato": "Business District",
+        "fecha_apertura": "2010-03-01",
+        "empleados": 20,
+        "area_m2": 490,
+        "ventas_anuales_usd": 1864644,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Diego Fernández",
+        "telefono": "+53-5476257",
+        "rating_promedio": 3.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.829167,
+          10.402219
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-028",
+        "nombre": "Sucursal Caracas 3",
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2015-05-01",
+        "empleados": 6,
+        "area_m2": 105,
+        "ventas_anuales_usd": 441331,
+        "parking_disponible": true,
+        "horario_24h": true,
+        "gerente": "Diego Fernández",
+        "telefono": "+53-7685149",
+        "rating_promedio": 4.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.232975,
+          -31.326722
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-029",
+        "nombre": "Sucursal Córdoba 4",
+        "ciudad": "Córdoba",
+        "pais": "Argentina",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2011-05-01",
+        "empleados": 8,
+        "area_m2": 200,
+        "ventas_anuales_usd": 214470,
+        "parking_disponible": false,
+        "horario_24h": true,
+        "gerente": "María González",
+        "telefono": "+59-8290770",
+        "rating_promedio": 4.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.975253,
+          4.698279
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-030",
+        "nombre": "Sucursal Bogotá 5",
+        "ciudad": "Bogotá",
+        "pais": "Colombia",
+        "tipo": "Flagship",
+        "formato": "Airport",
+        "fecha_apertura": "2014-01-01",
+        "empleados": 42,
+        "area_m2": 1390,
+        "ventas_anuales_usd": 2797248,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+58-4305700",
+        "rating_promedio": 4.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.104646,
+          -31.330325
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-031",
+        "nombre": "Sucursal Córdoba 1",
+        "ciudad": "Córdoba",
+        "pais": "Argentina",
+        "tipo": "Local",
+        "formato": "Airport",
+        "fecha_apertura": "2018-05-01",
+        "empleados": 18,
+        "area_m2": 263,
+        "ventas_anuales_usd": 814910,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+54-3135534",
+        "rating_promedio": 3.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.129036,
+          -34.813027
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-032",
+        "nombre": "Sucursal Montevideo 2",
+        "ciudad": "Montevideo",
+        "pais": "Uruguay",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2016-09-01",
+        "empleados": 34,
+        "area_m2": 691,
+        "ventas_anuales_usd": 1631137,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+53-8212326",
+        "rating_promedio": 4.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.049802,
+          -12.015459
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-033",
+        "nombre": "Sucursal Lima 3",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2022-12-01",
+        "empleados": 6,
+        "area_m2": 145,
+        "ventas_anuales_usd": 448085,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+60-6623525",
+        "rating_promedio": 3.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.688372,
+          -23.515941
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-034",
+        "nombre": "Sucursal São Paulo 4",
+        "ciudad": "São Paulo",
+        "pais": "Brasil",
+        "tipo": "Regional",
+        "formato": "Mall",
+        "fecha_apertura": "2013-08-01",
+        "empleados": 19,
+        "area_m2": 412,
+        "ventas_anuales_usd": 1096917,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Juan Martínez",
+        "telefono": "+60-4262081",
+        "rating_promedio": 4.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.720503,
+          -33.450025
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-035",
+        "nombre": "Sucursal Santiago 5",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Flagship",
+        "formato": "Airport",
+        "fecha_apertura": "2013-03-01",
+        "empleados": 58,
+        "area_m2": 909,
+        "ventas_anuales_usd": 3783192,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+53-3036059",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.035622,
+          19.466116
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-036",
+        "nombre": "Sucursal Ciudad de México 1",
+        "ciudad": "Ciudad de México",
+        "pais": "México",
+        "tipo": "Local",
+        "formato": "Airport",
+        "fecha_apertura": "2023-12-01",
+        "empleados": 20,
+        "area_m2": 426,
+        "ventas_anuales_usd": 1142412,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+57-8550917",
+        "rating_promedio": 3.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.677838,
+          -23.482527
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-037",
+        "nombre": "Sucursal São Paulo 2",
+        "ciudad": "São Paulo",
+        "pais": "Brasil",
+        "tipo": "Express",
+        "formato": "Business District",
+        "fecha_apertura": "2011-12-01",
+        "empleados": 6,
+        "area_m2": 115,
+        "ventas_anuales_usd": 430619,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+55-2351868",
+        "rating_promedio": 3.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.702739,
+          -23.573893
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-038",
+        "nombre": "Sucursal São Paulo 3",
+        "ciudad": "São Paulo",
+        "pais": "Brasil",
+        "tipo": "Regional",
+        "formato": "Airport",
+        "fecha_apertura": "2015-09-01",
+        "empleados": 17,
+        "area_m2": 612,
+        "ventas_anuales_usd": 1854797,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+53-8048838",
+        "rating_promedio": 4.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.138894,
+          -11.957188
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-039",
+        "nombre": "Sucursal Lima 4",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Express",
+        "formato": "Airport",
+        "fecha_apertura": "2014-07-01",
+        "empleados": 10,
+        "area_m2": 80,
+        "ventas_anuales_usd": 384422,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+54-8312114",
+        "rating_promedio": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.633472,
+          -33.481674
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-040",
+        "nombre": "Sucursal Santiago 5",
+        "ciudad": "Santiago",
+        "pais": "Chile",
+        "tipo": "Express",
+        "formato": "Mall",
+        "fecha_apertura": "2024-03-01",
+        "empleados": 5,
+        "area_m2": 187,
+        "ventas_anuales_usd": 445047,
+        "parking_disponible": false,
+        "horario_24h": true,
+        "gerente": "María González",
+        "telefono": "+60-8190929",
+        "rating_promedio": 3.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.181169,
+          19.368946
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-041",
+        "nombre": "Sucursal Ciudad de México 1",
+        "ciudad": "Ciudad de México",
+        "pais": "México",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2015-07-01",
+        "empleados": 11,
+        "area_m2": 432,
+        "ventas_anuales_usd": 842722,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+51-8890439",
+        "rating_promedio": 3.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.259216,
+          20.570117
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-042",
+        "nombre": "Sucursal Guadalajara 2",
+        "ciudad": "Guadalajara",
+        "pais": "México",
+        "tipo": "Regional",
+        "formato": "Street",
+        "fecha_apertura": "2010-01-01",
+        "empleados": 35,
+        "area_m2": 435,
+        "ventas_anuales_usd": 2366828,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+59-3556551",
+        "rating_promedio": 3.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.120406,
+          19.466492
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-043",
+        "nombre": "Sucursal Ciudad de México 3",
+        "ciudad": "Ciudad de México",
+        "pais": "México",
+        "tipo": "Regional",
+        "formato": "Street",
+        "fecha_apertura": "2022-06-01",
+        "empleados": 29,
+        "area_m2": 758,
+        "ventas_anuales_usd": 1537381,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+54-2813596",
+        "rating_promedio": 4.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.091295,
+          -22.891641
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-044",
+        "nombre": "Sucursal Rio de Janeiro 4",
+        "ciudad": "Rio de Janeiro",
+        "pais": "Brasil",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2013-02-01",
+        "empleados": 9,
+        "area_m2": 200,
+        "ventas_anuales_usd": 574873,
+        "parking_disponible": true,
+        "horario_24h": false,
+        "gerente": "Diego Fernández",
+        "telefono": "+59-3030966",
+        "rating_promedio": 4.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.073359,
+          -11.989873
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-045",
+        "nombre": "Sucursal Lima 5",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Express",
+        "formato": "Mall",
+        "fecha_apertura": "2020-06-01",
+        "empleados": 8,
+        "area_m2": 88,
+        "ventas_anuales_usd": 465269,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "María González",
+        "telefono": "+56-7076506",
+        "rating_promedio": 4.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.146103,
+          19.474062
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-046",
+        "nombre": "Sucursal Ciudad de México 1",
+        "ciudad": "Ciudad de México",
+        "pais": "México",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2017-07-01",
+        "empleados": 17,
+        "area_m2": 475,
+        "ventas_anuales_usd": 1006983,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Carlos Silva",
+        "telefono": "+51-5679639",
+        "rating_promedio": 4.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.61933,
+          -23.500405
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-047",
+        "nombre": "Sucursal São Paulo 2",
+        "ciudad": "São Paulo",
+        "pais": "Brasil",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2023-06-01",
+        "empleados": 8,
+        "area_m2": 83,
+        "ventas_anuales_usd": 459158,
+        "parking_disponible": false,
+        "horario_24h": true,
+        "gerente": "Ana Rodríguez",
+        "telefono": "+54-6709938",
+        "rating_promedio": 3.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.087546,
+          -12.006163
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-048",
+        "nombre": "Sucursal Lima 3",
+        "ciudad": "Lima",
+        "pais": "Perú",
+        "tipo": "Flagship",
+        "formato": "Airport",
+        "fecha_apertura": "2013-12-01",
+        "empleados": 46,
+        "area_m2": 995,
+        "ventas_anuales_usd": 2359086,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+53-8987516",
+        "rating_promedio": 4.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.229751,
+          19.422235
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-049",
+        "nombre": "Sucursal Ciudad de México 4",
+        "ciudad": "Ciudad de México",
+        "pais": "México",
+        "tipo": "Local",
+        "formato": "Business District",
+        "fecha_apertura": "2014-11-01",
+        "empleados": 11,
+        "area_m2": 407,
+        "ventas_anuales_usd": 755123,
+        "parking_disponible": false,
+        "horario_24h": false,
+        "gerente": "Laura Torres",
+        "telefono": "+58-6767292",
+        "rating_promedio": 4.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.933238,
+          10.490678
+        ]
+      },
+      "properties": {
+        "sucursal_id": "SUC-050",
+        "nombre": "Sucursal Caracas 5",
+        "ciudad": "Caracas",
+        "pais": "Venezuela",
+        "tipo": "Express",
+        "formato": "Street",
+        "fecha_apertura": "2013-02-01",
+        "empleados": 7,
+        "area_m2": 119,
+        "ventas_anuales_usd": 331807,
+        "parking_disponible": false,
+        "horario_24h": true,
+        "gerente": "Diego Fernández",
+        "telefono": "+58-4106298",
+        "rating_promedio": 3.8
+      }
+    }
+  ]
+}

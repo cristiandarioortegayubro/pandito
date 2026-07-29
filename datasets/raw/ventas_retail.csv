@@ -1,0 +1,1001 @@
+id_transaccion,fecha,fecha_hora,producto,categoria,cantidad,precio_unitario,subtotal,descuento_pct,descuento_monto,total,region,vendedor,canal,cliente_id
+TXN-00001,2023-09-08,2023-09-08 20:06:43,Adaptador WiFi,Componentes,1,23.05,23.05,10,2.31,20.74,Centro,Carlos Ruiz,Teléfono,CLI-0017
+TXN-00002,2024-06-01,2024-06-01 17:12:45,Laptop HP,Computadoras,5,826.86,4134.3,5,206.72,3927.58,Centro,Laura Sánchez,Online,CLI-0230
+TXN-00003,2023-06-13,2023-06-13 14:17:09,Cable HDMI,Cables,3,12.41,37.230000000000004,0,0.0,37.23,Sur,Diego Torres,Tienda,CLI-0048
+TXN-00004,2024-09-10,2024-09-10 09:46:29,SSD 1TB,Almacenamiento,2,110.31,220.62,10,22.06,198.56,Centro,Carlos Ruiz,Teléfono,CLI-0041
+TXN-00005,2024-01-06,2024-01-06 20:04:02,Hub USB-C,Accesorios,1,47.92,47.92,30,14.38,33.54,Sur,Sofía Martínez,Tienda,CLI-0120
+TXN-00006,2024-04-09,2024-04-09 14:10:23,Soporte Laptop,Accesorios,1,36.8,36.8,10,3.68,33.12,Este,Juan Pérez,App Móvil,CLI-0037
+TXN-00007,2023-09-08,2023-09-08 15:17:59,Cable HDMI,Cables,1,13.34,13.34,25,3.34,10.0,Centro,Juan Pérez,App Móvil,CLI-0029
+TXN-00008,2024-02-15,2024-02-15 12:58:36,"Monitor Samsung 27""",Monitores,4,319.3,1277.2,10,127.72,1149.48,Este,Juan Pérez,Teléfono,CLI-0203
+TXN-00009,2023-05-27,2023-05-27 12:47:35,Mousepad Gaming,Accesorios,2,21.65,43.3,20,8.66,34.64,Centro,Sofía Martínez,Teléfono,CLI-0299
+TXN-00010,2024-06-05,2024-06-05 21:03:55,SSD 1TB,Almacenamiento,3,116.68,350.04,0,0.0,350.04,Norte,María López,Online,CLI-0217
+TXN-00011,2024-09-02,2024-09-02 16:16:35,Cable HDMI,Cables,1,11.86,11.86,15,1.78,10.08,Norte,Carlos Ruiz,App Móvil,CLI-0175
+TXN-00012,2024-04-09,2024-04-09 20:56:46,Mouse Logitech,Accesorios,5,28.75,143.75,0,0.0,143.75,Este,María López,Tienda,CLI-0153
+TXN-00013,2023-07-23,2023-07-23 21:10:34,Soporte Laptop,Accesorios,3,41.1,123.30000000000001,30,36.99,86.31,Centro,Ana García,App Móvil,CLI-0251
+TXN-00014,2023-11-11,2023-11-11 12:56:36,Laptop HP,Computadoras,1,830.13,830.13,10,83.01,747.12,Norte,Carlos Ruiz,Teléfono,CLI-0036
+TXN-00015,2023-05-12,2023-05-12 17:10:16,Micrófono USB,Audio,1,70.45,70.45,0,0.0,70.45,Centro,Laura Sánchez,Online,CLI-0277
+TXN-00016,2024-12-31,2024-12-31 19:41:23,Micrófono USB,Audio,1,73.21,73.21,5,3.66,69.55,Oeste,Roberto Díaz,Tienda,CLI-0127
+TXN-00017,2024-08-25,2024-08-25 18:14:00,"Monitor Samsung 27""",Monitores,1,273.83,273.83,0,0.0,273.83,Norte,Ana García,Online,CLI-0035
+TXN-00018,2023-03-14,2023-03-14 13:42:31,Mousepad Gaming,Accesorios,2,18.12,36.24,10,3.62,32.62,Sur,María López,Teléfono,CLI-0125
+TXN-00019,2023-07-14,2023-07-14 19:27:22,Micrófono USB,Audio,2,69.61,139.22,15,20.88,118.34,Oeste,Laura Sánchez,Teléfono,CLI-0028
+TXN-00020,2023-03-04,2023-03-04 14:51:55,Adaptador WiFi,Componentes,1,25.76,25.76,0,0.0,25.76,Norte,Juan Pérez,Online,CLI-0098
+TXN-00021,2023-07-07,2023-07-07 12:55:59,Hub USB-C,Accesorios,2,49.48,98.96,15,14.84,84.12,Norte,Roberto Díaz,Tienda,CLI-0026
+TXN-00022,2023-04-06,2023-04-06 07:10:26,Adaptador WiFi,Componentes,1,27.49,27.49,0,0.0,27.49,Oeste,Roberto Díaz,Online,CLI-0206
+TXN-00023,2023-01-03,2023-01-03 08:59:50,Mousepad Gaming,Accesorios,1,18.23,18.23,15,2.73,15.5,Oeste,Sofía Martínez,Teléfono,CLI-0285
+TXN-00024,2023-07-14,2023-07-14 09:37:47,Adaptador WiFi,Componentes,1,26.08,26.08,0,0.0,26.08,Centro,Ana García,App Móvil,CLI-0030
+TXN-00025,2024-06-27,2024-06-27 17:05:54,Laptop HP,Computadoras,2,915.14,1830.28,25,457.57,1372.71,Sur,Carlos Ruiz,Tienda,CLI-0121
+TXN-00026,2023-09-10,2023-09-10 09:39:05,SSD 1TB,Almacenamiento,3,110.87,332.61,30,99.78,232.83,Oeste,Diego Torres,App Móvil,CLI-0105
+TXN-00027,2023-09-29,2023-09-29 19:41:19,Adaptador WiFi,Componentes,1,26.07,26.07,5,1.3,24.77,Oeste,Diego Torres,Tienda,CLI-0005
+TXN-00028,2023-04-13,2023-04-13 12:32:16,RAM 16GB,Componentes,2,81.93,163.86,30,49.16,114.7,Sur,Diego Torres,Tienda,CLI-0126
+TXN-00029,2024-07-10,2024-07-10 18:51:41,Auriculares Bluetooth,Audio,2,57.41,114.82,20,22.96,91.86,Centro,Ana García,App Móvil,CLI-0054
+TXN-00030,2023-04-20,2023-04-20 11:17:18,Mousepad Gaming,Accesorios,1,18.53,18.53,0,0.0,18.53,Centro,Juan Pérez,App Móvil,CLI-0105
+TXN-00031,2024-06-01,2024-06-01 09:05:40,Adaptador WiFi,Componentes,2,25.66,51.32,10,5.13,46.19,Oeste,Sofía Martínez,Tienda,CLI-0002
+TXN-00032,2023-06-15,2023-06-15 17:45:27,Auriculares Bluetooth,Audio,1,63.24,63.24,10,6.32,56.92,Centro,Ana García,Tienda,CLI-0039
+TXN-00033,2024-07-12,2024-07-12 14:37:35,Mousepad Gaming,Accesorios,1,20.75,20.75,0,0.0,20.75,Sur,Laura Sánchez,Online,CLI-0022
+TXN-00034,2024-01-02,2024-01-02 12:42:06,Webcam HD,Periféricos,5,77.82,389.09999999999997,0,0.0,389.1,Este,Laura Sánchez,Online,CLI-0122
+TXN-00035,2024-02-27,2024-02-27 20:59:21,Soporte Laptop,Accesorios,5,37.29,186.45,0,0.0,186.45,Oeste,Juan Pérez,App Móvil,CLI-0082
+TXN-00036,2023-02-09,2023-02-09 07:12:52,Micrófono USB,Audio,3,72.81,218.43,15,32.76,185.67,Oeste,Diego Torres,App Móvil,CLI-0117
+TXN-00037,2024-02-13,2024-02-13 10:49:17,"Monitor Samsung 27""",Monitores,1,271.41,271.41,5,13.57,257.84,Este,Laura Sánchez,App Móvil,CLI-0015
+TXN-00038,2023-07-02,2023-07-02 13:02:06,Mouse Logitech,Accesorios,1,32.25,32.25,10,3.22,29.03,Centro,Laura Sánchez,App Móvil,CLI-0161
+TXN-00039,2023-04-29,2023-04-29 18:12:16,SSD 1TB,Almacenamiento,2,122.54,245.08,25,61.27,183.81,Norte,Laura Sánchez,Tienda,CLI-0267
+TXN-00040,2024-01-08,2024-01-08 19:58:21,Mousepad Gaming,Accesorios,2,21.22,42.44,5,2.12,40.32,Centro,Diego Torres,Tienda,CLI-0154
+TXN-00041,2023-12-01,2023-12-01 13:35:08,Hub USB-C,Accesorios,1,48.08,48.08,15,7.21,40.87,Sur,Laura Sánchez,Teléfono,CLI-0090
+TXN-00042,2024-07-15,2024-07-15 09:18:13,Cable HDMI,Cables,2,13.17,26.34,15,3.95,22.39,Oeste,Diego Torres,Teléfono,CLI-0227
+TXN-00043,2024-04-29,2024-04-29 21:47:10,RAM 16GB,Componentes,1,82.8,82.8,25,20.7,62.1,Norte,Sofía Martínez,App Móvil,CLI-0048
+TXN-00044,2024-11-19,2024-11-19 21:12:09,Soporte Laptop,Accesorios,4,43.61,174.44,5,8.72,165.72,Norte,Ana García,Online,CLI-0244
+TXN-00045,2024-04-11,2024-04-11 19:36:12,Cable HDMI,Cables,1,13.9,13.9,0,0.0,13.9,Oeste,Roberto Díaz,Teléfono,CLI-0125
+TXN-00046,2023-04-20,2023-04-20 12:11:51,Teclado Mecánico,Accesorios,2,92.8,185.6,0,0.0,185.6,Centro,Roberto Díaz,Tienda,CLI-0286
+TXN-00047,2024-04-12,2024-04-12 16:42:33,"Monitor Samsung 27""",Monitores,1,325.04,325.04,0,0.0,325.04,Centro,Diego Torres,Teléfono,CLI-0259
+TXN-00048,2024-04-01,2024-04-01 23:55:30,SSD 1TB,Almacenamiento,2,127.92,255.84,25,63.96,191.88,Oeste,Sofía Martínez,Online,CLI-0142
+TXN-00049,2024-10-03,2024-10-03 16:04:45,Micrófono USB,Audio,2,73.88,147.76,20,29.55,118.21,Este,Juan Pérez,App Móvil,CLI-0172
+TXN-00050,2023-05-22,2023-05-22 15:44:09,Auriculares Bluetooth,Audio,1,64.71,64.71,0,0.0,64.71,Sur,Carlos Ruiz,Teléfono,CLI-0209
+TXN-00051,2023-03-05,2023-03-05 15:24:57,Auriculares Bluetooth,Audio,5,60.5,302.5,15,45.38,257.12,Centro,Ana García,Teléfono,CLI-0245
+TXN-00052,2024-02-04,2024-02-04 13:34:47,Laptop HP,Computadoras,3,979.68,2939.04,10,293.9,2645.14,Centro,Juan Pérez,Teléfono,CLI-0113
+TXN-00053,2024-02-03,2024-02-03 19:51:25,Webcam HD,Periféricos,5,78.96,394.79999999999995,0,0.0,394.8,Sur,Roberto Díaz,Online,CLI-0274
+TXN-00054,2024-07-31,2024-07-31 10:41:27,Laptop HP,Computadoras,4,973.24,3892.96,30,1167.89,2725.07,Sur,Roberto Díaz,Online,CLI-0026
+TXN-00055,2024-04-10,2024-04-10 21:56:24,Webcam HD,Periféricos,2,78.06,156.12,5,7.81,148.31,Este,Laura Sánchez,App Móvil,CLI-0042
+TXN-00056,2023-02-23,2023-02-23 11:14:41,RAM 16GB,Componentes,4,72.3,289.2,25,72.3,216.9,Norte,Ana García,Tienda,CLI-0127
+TXN-00057,2023-06-06,2023-06-06 16:42:07,"Monitor Samsung 27""",Monitores,1,320.34,320.34,30,96.1,224.24,Centro,Juan Pérez,Teléfono,CLI-0132
+TXN-00058,2024-09-13,2024-09-13 22:07:49,Micrófono USB,Audio,1,68.15,68.15,30,20.44,47.71,Sur,Sofía Martínez,Tienda,CLI-0297
+TXN-00059,2024-11-24,2024-11-24 12:25:45,Laptop HP,Computadoras,1,977.19,977.19,30,293.16,684.03,Sur,Carlos Ruiz,Online,CLI-0053
+TXN-00060,2023-05-04,2023-05-04 18:50:02,Disco Externo 2TB,Almacenamiento,1,94.89,94.89,30,28.47,66.42,Este,Laura Sánchez,App Móvil,CLI-0036
+TXN-00061,2024-03-06,2024-03-06 03:27:23,Hub USB-C,Accesorios,1,51.47,51.47,0,0.0,51.47,Oeste,María López,Teléfono,CLI-0091
+TXN-00062,2024-09-22,2024-09-22 17:49:30,Disco Externo 2TB,Almacenamiento,1,90.38,90.38,10,9.04,81.34,Oeste,Laura Sánchez,App Móvil,CLI-0166
+TXN-00063,2023-10-13,2023-10-13 07:48:29,Soporte Laptop,Accesorios,3,37.95,113.85000000000001,0,0.0,113.85,Centro,Laura Sánchez,App Móvil,CLI-0015
+TXN-00064,2024-05-14,2024-05-14 21:16:21,RAM 16GB,Componentes,1,85.6,85.6,0,0.0,85.6,Este,Sofía Martínez,Tienda,CLI-0265
+TXN-00065,2024-05-15,2024-05-15 12:44:30,"Monitor Samsung 27""",Monitores,1,275.13,275.13,15,41.27,233.86,Oeste,Roberto Díaz,Tienda,CLI-0048
+TXN-00066,2023-11-10,2023-11-10 14:30:35,Webcam HD,Periféricos,2,75.54,151.08,5,7.55,143.53,Centro,Diego Torres,Teléfono,CLI-0282
+TXN-00067,2023-10-05,2023-10-05 12:07:46,Auriculares Bluetooth,Audio,1,58.21,58.21,20,11.64,46.57,Sur,Diego Torres,Tienda,CLI-0275
+TXN-00068,2023-08-10,2023-08-10 13:46:37,Micrófono USB,Audio,3,72.65,217.95000000000002,5,10.9,207.05,Centro,Sofía Martínez,Tienda,CLI-0100
+TXN-00069,2023-11-06,2023-11-06 17:08:17,Webcam HD,Periféricos,1,75.63,75.63,0,0.0,75.63,Norte,Ana García,App Móvil,CLI-0065
+TXN-00070,2023-04-16,2023-04-16 18:18:30,Adaptador WiFi,Componentes,6,26.83,160.98,20,32.2,128.78,Oeste,Roberto Díaz,App Móvil,CLI-0095
+TXN-00071,2023-04-27,2023-04-27 12:31:04,Laptop HP,Computadoras,3,855.44,2566.32,20,513.26,2053.06,Centro,Ana García,Online,CLI-0077
+TXN-00072,2023-03-29,2023-03-29 03:35:48,Micrófono USB,Audio,1,70.87,70.87,10,7.09,63.78,Oeste,Juan Pérez,Teléfono,CLI-0231
+TXN-00073,2024-03-15,2024-03-15 18:03:39,Mousepad Gaming,Accesorios,1,19.76,19.76,30,5.93,13.83,Norte,Juan Pérez,Online,CLI-0136
+TXN-00074,2023-06-27,2023-06-27 11:00:26,Adaptador WiFi,Componentes,3,22.9,68.69999999999999,5,3.43,65.27,Oeste,Roberto Díaz,App Móvil,CLI-0017
+TXN-00075,2024-12-20,2024-12-20 02:43:14,"Monitor Samsung 27""",Monitores,3,287.28,861.8399999999999,10,86.18,775.66,Este,Juan Pérez,Teléfono,CLI-0059
+TXN-00076,2023-09-30,2023-09-30 02:03:10,Hub USB-C,Accesorios,3,47.24,141.72,0,0.0,141.72,Este,Sofía Martínez,Teléfono,CLI-0064
+TXN-00077,2023-10-06,2023-10-06 16:28:05,RAM 16GB,Componentes,3,83.01,249.03000000000003,15,37.35,211.68,Centro,Ana García,Teléfono,CLI-0166
+TXN-00078,2023-08-23,2023-08-23 18:37:01,Cable HDMI,Cables,1,12.34,12.34,0,0.0,12.34,Este,Ana García,Online,CLI-0241
+TXN-00079,2023-07-05,2023-07-05 13:40:52,Hub USB-C,Accesorios,1,51.5,51.5,10,5.15,46.35,Oeste,Carlos Ruiz,Teléfono,CLI-0179
+TXN-00080,2023-06-14,2023-06-14 20:31:18,SSD 1TB,Almacenamiento,1,115.99,115.99,0,0.0,115.99,Oeste,Ana García,Teléfono,CLI-0046
+TXN-00081,2024-02-18,2024-02-18 00:42:55,Auriculares Bluetooth,Audio,4,57.02,228.08,0,0.0,228.08,Centro,Roberto Díaz,Teléfono,CLI-0028
+TXN-00082,2024-05-25,2024-05-25 21:03:13,"Monitor Samsung 27""",Monitores,2,301.1,602.2,30,180.66,421.54,Este,María López,App Móvil,CLI-0225
+TXN-00083,2023-01-30,2023-01-30 19:51:15,Mousepad Gaming,Accesorios,1,20.78,20.78,0,0.0,20.78,Sur,Sofía Martínez,Tienda,CLI-0283
+TXN-00084,2024-04-17,2024-04-17 20:53:09,SSD 1TB,Almacenamiento,1,110.23,110.23,0,0.0,110.23,Oeste,Sofía Martínez,App Móvil,CLI-0213
+TXN-00085,2023-09-07,2023-09-07 11:24:12,Soporte Laptop,Accesorios,1,39.85,39.85,20,7.97,31.88,Centro,María López,Tienda,CLI-0142
+TXN-00086,2023-12-15,2023-12-15 16:17:52,Micrófono USB,Audio,1,74.05,74.05,15,11.11,62.94,Norte,Sofía Martínez,App Móvil,CLI-0297
+TXN-00087,2024-04-02,2024-04-02 14:21:35,Adaptador WiFi,Componentes,3,24.94,74.82000000000001,0,0.0,74.82,Centro,Laura Sánchez,Teléfono,CLI-0165
+TXN-00088,2024-08-08,2024-08-08 21:26:02,Soporte Laptop,Accesorios,2,37.5,75.0,5,3.75,71.25,Este,Roberto Díaz,Teléfono,CLI-0198
+TXN-00089,2024-05-22,2024-05-22 04:32:37,Adaptador WiFi,Componentes,4,26.45,105.8,0,0.0,105.8,Este,Carlos Ruiz,Teléfono,CLI-0052
+TXN-00090,2023-05-28,2023-05-28 19:09:04,Hub USB-C,Accesorios,2,54.09,108.18,0,0.0,108.18,Oeste,Sofía Martínez,App Móvil,CLI-0204
+TXN-00091,2024-11-21,2024-11-21 12:20:40,Adaptador WiFi,Componentes,1,22.89,22.89,10,2.29,20.6,Oeste,Ana García,Tienda,CLI-0121
+TXN-00092,2023-08-21,2023-08-21 15:06:48,Adaptador WiFi,Componentes,3,25.91,77.73,10,7.77,69.96,Norte,Roberto Díaz,Online,CLI-0154
+TXN-00093,2023-02-27,2023-02-27 14:27:09,Mousepad Gaming,Accesorios,3,18.11,54.33,10,5.43,48.9,Sur,Laura Sánchez,Online,CLI-0088
+TXN-00094,2024-09-26,2024-09-26 16:58:37,Teclado Mecánico,Accesorios,2,82.41,164.82,15,24.72,140.1,Sur,Juan Pérez,Teléfono,CLI-0131
+TXN-00095,2024-04-21,2024-04-21 21:34:10,RAM 16GB,Componentes,3,76.08,228.24,0,0.0,228.24,Norte,Roberto Díaz,App Móvil,CLI-0154
+TXN-00096,2024-04-12,2024-04-12 06:24:54,Adaptador WiFi,Componentes,2,27.3,54.6,10,5.46,49.14,Oeste,Carlos Ruiz,Online,CLI-0196
+TXN-00097,2024-12-17,2024-12-17 19:25:17,Cable HDMI,Cables,2,12.62,25.24,10,2.52,22.72,Norte,Ana García,Teléfono,CLI-0147
+TXN-00098,2023-12-27,2023-12-27 12:39:16,Micrófono USB,Audio,2,74.17,148.34,30,44.5,103.84,Sur,Carlos Ruiz,Tienda,CLI-0159
+TXN-00099,2024-01-09,2024-01-09 10:58:18,Micrófono USB,Audio,1,69.16,69.16,30,20.75,48.41,Este,Laura Sánchez,Online,CLI-0103
+TXN-00100,2024-06-27,2024-06-27 13:53:10,Teclado Mecánico,Accesorios,1,95.15,95.15,10,9.52,85.63,Este,Roberto Díaz,App Móvil,CLI-0174
+TXN-00101,2023-05-25,2023-05-25 12:55:43,Micrófono USB,Audio,1,64.6,64.6,0,0.0,64.6,Oeste,Diego Torres,Tienda,CLI-0203
+TXN-00102,2024-04-10,2024-04-10 20:43:16,Laptop HP,Computadoras,2,857.59,1715.18,0,0.0,1715.18,Centro,Laura Sánchez,App Móvil,CLI-0056
+TXN-00103,2024-09-26,2024-09-26 17:20:58,Adaptador WiFi,Componentes,1,23.66,23.66,0,0.0,23.66,Centro,Juan Pérez,Tienda,CLI-0238
+TXN-00104,2023-04-30,2023-04-30 09:19:31,Mousepad Gaming,Accesorios,2,20.79,41.58,15,6.24,35.34,Norte,Carlos Ruiz,Online,CLI-0276
+TXN-00105,2024-11-17,2024-11-17 22:34:26,Teclado Mecánico,Accesorios,4,87.99,351.96,10,35.2,316.76,Centro,María López,Teléfono,CLI-0051
+TXN-00106,2023-10-14,2023-10-14 14:13:28,Soporte Laptop,Accesorios,1,39.9,39.9,15,5.98,33.92,Oeste,Juan Pérez,App Móvil,CLI-0051
+TXN-00107,2023-03-04,2023-03-04 12:07:54,Adaptador WiFi,Componentes,2,24.33,48.66,10,4.87,43.79,Oeste,Carlos Ruiz,Online,CLI-0011
+TXN-00108,2023-05-09,2023-05-09 12:04:53,Laptop HP,Computadoras,3,951.61,2854.83,5,142.74,2712.09,Centro,Juan Pérez,Online,CLI-0120
+TXN-00109,2023-01-03,2023-01-03 11:08:34,Auriculares Bluetooth,Audio,1,63.28,63.28,30,18.98,44.3,Este,María López,Tienda,CLI-0014
+TXN-00110,2024-08-25,2024-08-25 11:16:03,Teclado Mecánico,Accesorios,1,81.26,81.26,5,4.06,77.2,Sur,Laura Sánchez,Tienda,CLI-0033
+TXN-00111,2024-06-09,2024-06-09 16:32:14,RAM 16GB,Componentes,1,79.16,79.16,10,7.92,71.24,Centro,Ana García,App Móvil,CLI-0235
+TXN-00112,2024-05-05,2024-05-05 13:43:06,Adaptador WiFi,Componentes,1,27.31,27.31,0,0.0,27.31,Oeste,Roberto Díaz,Tienda,CLI-0042
+TXN-00113,2023-05-10,2023-05-10 19:37:35,Auriculares Bluetooth,Audio,4,61.29,245.16,0,0.0,245.16,Este,Laura Sánchez,App Móvil,CLI-0233
+TXN-00114,2024-12-19,2024-12-19 19:41:56,Hub USB-C,Accesorios,3,51.04,153.12,0,0.0,153.12,Centro,Juan Pérez,Teléfono,CLI-0232
+TXN-00115,2024-04-09,2024-04-09 20:06:20,Mousepad Gaming,Accesorios,2,18.9,37.8,10,3.78,34.02,Oeste,Diego Torres,App Móvil,CLI-0192
+TXN-00116,2023-03-10,2023-03-10 10:05:27,Teclado Mecánico,Accesorios,4,93.35,373.4,20,74.68,298.72,Norte,Diego Torres,Online,CLI-0285
+TXN-00117,2024-07-29,2024-07-29 10:26:22,Laptop HP,Computadoras,3,915.55,2746.6499999999996,25,686.66,2059.99,Oeste,Ana García,App Móvil,CLI-0160
+TXN-00118,2023-08-06,2023-08-06 16:14:54,Auriculares Bluetooth,Audio,1,55.23,55.23,25,13.81,41.42,Norte,Diego Torres,App Móvil,CLI-0059
+TXN-00119,2024-03-15,2024-03-15 19:39:43,Micrófono USB,Audio,4,66.89,267.56,5,13.38,254.18,Centro,Ana García,App Móvil,CLI-0015
+TXN-00120,2023-12-14,2023-12-14 11:55:09,Teclado Mecánico,Accesorios,2,85.91,171.82,10,17.18,154.64,Centro,Laura Sánchez,Tienda,CLI-0073
+TXN-00121,2023-04-04,2023-04-04 12:24:26,Disco Externo 2TB,Almacenamiento,3,92.39,277.17,0,0.0,277.17,Oeste,Diego Torres,Online,CLI-0190
+TXN-00122,2024-09-02,2024-09-02 09:09:10,Webcam HD,Periféricos,4,83.54,334.16,30,100.25,233.91,Centro,Ana García,Tienda,CLI-0140
+TXN-00123,2024-09-13,2024-09-13 13:13:48,RAM 16GB,Componentes,1,82.58,82.58,20,16.52,66.06,Centro,Carlos Ruiz,App Móvil,CLI-0221
+TXN-00124,2024-05-13,2024-05-13 13:02:14,Mouse Logitech,Accesorios,1,28.69,28.69,30,8.61,20.08,Oeste,Ana García,Tienda,CLI-0105
+TXN-00125,2023-09-19,2023-09-19 10:00:31,Webcam HD,Periféricos,1,87.11,87.11,0,0.0,87.11,Oeste,María López,Online,CLI-0195
+TXN-00126,2024-07-26,2024-07-26 11:04:25,Hub USB-C,Accesorios,2,52.03,104.06,25,26.02,78.04,Norte,Laura Sánchez,Tienda,CLI-0236
+TXN-00127,2024-08-12,2024-08-12 15:45:40,Mousepad Gaming,Accesorios,3,18.3,54.900000000000006,10,5.49,49.41,Oeste,Sofía Martínez,Tienda,CLI-0208
+TXN-00128,2024-09-24,2024-09-24 20:58:23,Laptop HP,Computadoras,4,983.91,3935.64,0,0.0,3935.64,Norte,Laura Sánchez,Tienda,CLI-0125
+TXN-00129,2023-03-22,2023-03-22 13:47:21,SSD 1TB,Almacenamiento,1,122.12,122.12,25,30.53,91.59,Sur,Diego Torres,Online,CLI-0040
+TXN-00130,2024-06-06,2024-06-06 21:22:22,Hub USB-C,Accesorios,2,51.32,102.64,25,25.66,76.98,Sur,Juan Pérez,Tienda,CLI-0075
+TXN-00131,2023-06-06,2023-06-06 19:04:11,Webcam HD,Periféricos,2,75.15,150.3,30,45.09,105.21,Oeste,Roberto Díaz,Teléfono,CLI-0290
+TXN-00132,2023-11-27,2023-11-27 20:20:09,Adaptador WiFi,Componentes,1,25.67,25.67,30,7.7,17.97,Oeste,Carlos Ruiz,Teléfono,CLI-0227
+TXN-00133,2024-08-28,2024-08-28 17:04:19,Adaptador WiFi,Componentes,1,24.0,24.0,10,2.4,21.6,Oeste,Roberto Díaz,Tienda,CLI-0030
+TXN-00134,2024-10-22,2024-10-22 02:39:38,Auriculares Bluetooth,Audio,1,63.97,63.97,0,0.0,63.97,Centro,Laura Sánchez,Teléfono,CLI-0298
+TXN-00135,2024-04-05,2024-04-05 18:41:12,Hub USB-C,Accesorios,5,54.53,272.65,0,0.0,272.65,Este,Roberto Díaz,Online,CLI-0032
+TXN-00136,2023-03-28,2023-03-28 11:02:15,RAM 16GB,Componentes,1,73.65,73.65,10,7.37,66.28,Oeste,Roberto Díaz,Online,CLI-0187
+TXN-00137,2024-02-23,2024-02-23 19:38:03,Auriculares Bluetooth,Audio,2,65.0,130.0,15,19.5,110.5,Este,Carlos Ruiz,App Móvil,CLI-0049
+TXN-00138,2023-09-16,2023-09-16 19:58:38,Hub USB-C,Accesorios,3,51.77,155.31,10,15.53,139.78,Sur,Diego Torres,Tienda,CLI-0299
+TXN-00139,2023-11-14,2023-11-14 22:42:25,Adaptador WiFi,Componentes,1,23.2,23.2,10,2.32,20.88,Sur,Carlos Ruiz,App Móvil,CLI-0287
+TXN-00140,2023-05-11,2023-05-11 20:43:58,SSD 1TB,Almacenamiento,6,123.43,740.58,10,74.06,666.52,Centro,Carlos Ruiz,Teléfono,CLI-0261
+TXN-00141,2023-07-04,2023-07-04 10:49:31,Auriculares Bluetooth,Audio,5,54.21,271.05,10,27.11,243.94,Sur,Juan Pérez,Online,CLI-0080
+TXN-00142,2024-06-03,2024-06-03 20:56:33,Mouse Logitech,Accesorios,1,28.77,28.77,0,0.0,28.77,Norte,Diego Torres,Online,CLI-0193
+TXN-00143,2023-06-19,2023-06-19 09:26:23,Teclado Mecánico,Accesorios,2,83.91,167.82,30,50.35,117.47,Sur,Roberto Díaz,App Móvil,CLI-0230
+TXN-00144,2024-04-25,2024-04-25 06:23:43,"Monitor Samsung 27""",Monitores,1,302.03,302.03,10,30.2,271.83,Centro,Roberto Díaz,Teléfono,CLI-0145
+TXN-00145,2024-03-04,2024-03-04 06:51:38,Micrófono USB,Audio,1,68.34,68.34,25,17.08,51.26,Sur,Sofía Martínez,Tienda,CLI-0247
+TXN-00146,2024-12-29,2024-12-29 03:18:05,Soporte Laptop,Accesorios,1,38.96,38.96,0,0.0,38.96,Sur,Sofía Martínez,Teléfono,CLI-0263
+TXN-00147,2023-08-16,2023-08-16 11:59:01,Teclado Mecánico,Accesorios,2,95.95,191.9,0,0.0,191.9,Oeste,Ana García,Teléfono,CLI-0258
+TXN-00148,2024-01-19,2024-01-19 14:59:06,Auriculares Bluetooth,Audio,2,56.82,113.64,0,0.0,113.64,Este,María López,Online,CLI-0020
+TXN-00149,2024-12-13,2024-12-13 22:30:28,Webcam HD,Periféricos,1,86.67,86.67,20,17.33,69.34,Centro,Ana García,Tienda,CLI-0010
+TXN-00150,2024-07-15,2024-07-15 19:33:27,Webcam HD,Periféricos,1,75.44,75.44,0,0.0,75.44,Norte,Sofía Martínez,Online,CLI-0155
+TXN-00151,2024-10-16,2024-10-16 16:04:07,Mouse Logitech,Accesorios,4,27.28,109.12,15,16.37,92.75,Oeste,Ana García,Online,CLI-0074
+TXN-00152,2023-12-28,2023-12-28 15:11:42,Webcam HD,Periféricos,1,78.86,78.86,30,23.66,55.2,Norte,Diego Torres,Tienda,CLI-0270
+TXN-00153,2024-07-21,2024-07-21 16:02:40,Hub USB-C,Accesorios,1,50.06,50.06,25,12.52,37.54,Oeste,Diego Torres,App Móvil,CLI-0009
+TXN-00154,2023-09-04,2023-09-04 19:06:49,Auriculares Bluetooth,Audio,2,63.45,126.9,10,12.69,114.21,Centro,Diego Torres,Online,CLI-0023
+TXN-00155,2024-12-02,2024-12-02 20:30:40,Auriculares Bluetooth,Audio,6,60.54,363.24,0,0.0,363.24,Sur,María López,Tienda,CLI-0235
+TXN-00156,2023-07-24,2023-07-24 10:59:19,Laptop HP,Computadoras,1,862.81,862.81,0,0.0,862.81,Centro,Laura Sánchez,Teléfono,CLI-0130
+TXN-00157,2023-10-20,2023-10-20 21:03:55,Laptop HP,Computadoras,2,945.58,1891.16,5,94.56,1796.6,Este,Sofía Martínez,Tienda,CLI-0189
+TXN-00158,2024-01-31,2024-01-31 11:31:44,SSD 1TB,Almacenamiento,3,129.34,388.02,20,77.6,310.42,Oeste,Diego Torres,App Móvil,CLI-0043
+TXN-00159,2024-09-08,2024-09-08 05:34:18,Disco Externo 2TB,Almacenamiento,1,88.63,88.63,15,13.29,75.34,Este,Carlos Ruiz,Tienda,CLI-0168
+TXN-00160,2024-09-09,2024-09-09 11:44:28,Adaptador WiFi,Componentes,3,23.97,71.91,20,14.38,57.53,Este,Roberto Díaz,Tienda,CLI-0181
+TXN-00161,2024-10-16,2024-10-16 01:04:42,Cable HDMI,Cables,1,14.28,14.28,10,1.43,12.85,Oeste,Diego Torres,Online,CLI-0016
+TXN-00162,2023-02-05,2023-02-05 12:49:41,Teclado Mecánico,Accesorios,2,96.27,192.54,20,38.51,154.03,Este,Diego Torres,Teléfono,CLI-0291
+TXN-00163,2024-01-15,2024-01-15 21:04:36,Laptop HP,Computadoras,2,918.91,1837.82,20,367.56,1470.26,Sur,Diego Torres,Teléfono,CLI-0161
+TXN-00164,2023-01-27,2023-01-27 16:33:24,Adaptador WiFi,Componentes,2,23.88,47.76,0,0.0,47.76,Centro,Carlos Ruiz,App Móvil,CLI-0134
+TXN-00165,2023-10-20,2023-10-20 16:12:07,Disco Externo 2TB,Almacenamiento,1,89.02,89.02,30,26.71,62.31,Sur,Carlos Ruiz,Teléfono,CLI-0089
+TXN-00166,2024-11-29,2024-11-29 10:42:22,Mousepad Gaming,Accesorios,3,20.84,62.519999999999996,0,0.0,62.52,Norte,Sofía Martínez,App Móvil,CLI-0081
+TXN-00167,2024-01-06,2024-01-06 10:12:50,Disco Externo 2TB,Almacenamiento,1,93.76,93.76,0,0.0,93.76,Sur,Juan Pérez,Teléfono,CLI-0014
+TXN-00168,2024-04-23,2024-04-23 17:08:39,Auriculares Bluetooth,Audio,1,60.64,60.64,10,6.06,54.58,Norte,Carlos Ruiz,App Móvil,CLI-0204
+TXN-00169,2024-02-25,2024-02-25 18:04:08,Disco Externo 2TB,Almacenamiento,1,93.93,93.93,25,23.48,70.45,Este,Carlos Ruiz,Teléfono,CLI-0239
+TXN-00170,2024-07-18,2024-07-18 11:49:08,Adaptador WiFi,Componentes,2,25.08,50.16,0,0.0,50.16,Oeste,Ana García,Tienda,CLI-0266
+TXN-00171,2023-11-27,2023-11-27 07:22:33,Teclado Mecánico,Accesorios,2,86.46,172.92,0,0.0,172.92,Este,Carlos Ruiz,App Móvil,CLI-0101
+TXN-00172,2023-05-09,2023-05-09 18:34:05,Adaptador WiFi,Componentes,1,27.27,27.27,10,2.73,24.54,Centro,María López,Online,CLI-0088
+TXN-00173,2023-12-12,2023-12-12 18:02:52,Adaptador WiFi,Componentes,2,25.61,51.22,30,15.37,35.85,Norte,Carlos Ruiz,Tienda,CLI-0296
+TXN-00174,2024-03-02,2024-03-02 09:31:56,Webcam HD,Periféricos,1,82.41,82.41,30,24.72,57.69,Centro,Sofía Martínez,App Móvil,CLI-0248
+TXN-00175,2023-11-01,2023-11-01 20:03:10,"Monitor Samsung 27""",Monitores,2,318.27,636.54,15,95.48,541.06,Oeste,Laura Sánchez,Teléfono,CLI-0238
+TXN-00176,2023-11-17,2023-11-17 10:46:55,"Monitor Samsung 27""",Monitores,1,290.4,290.4,0,0.0,290.4,Este,Laura Sánchez,Online,CLI-0190
+TXN-00177,2023-09-05,2023-09-05 13:28:15,Hub USB-C,Accesorios,2,50.61,101.22,10,10.12,91.1,Sur,Carlos Ruiz,Tienda,CLI-0149
+TXN-00178,2023-09-12,2023-09-12 05:52:20,SSD 1TB,Almacenamiento,1,128.73,128.73,15,19.31,109.42,Centro,Diego Torres,Online,CLI-0082
+TXN-00179,2024-05-25,2024-05-25 15:01:05,RAM 16GB,Componentes,5,87.92,439.6,20,87.92,351.68,Oeste,Roberto Díaz,Online,CLI-0111
+TXN-00180,2023-10-16,2023-10-16 19:43:30,Cable HDMI,Cables,1,12.61,12.61,0,0.0,12.61,Este,Ana García,Tienda,CLI-0221
+TXN-00181,2024-02-17,2024-02-17 15:03:36,Teclado Mecánico,Accesorios,1,96.87,96.87,10,9.69,87.18,Centro,Juan Pérez,App Móvil,CLI-0284
+TXN-00182,2024-04-06,2024-04-06 13:52:39,Webcam HD,Periféricos,1,73.17,73.17,25,18.29,54.88,Centro,Carlos Ruiz,Online,CLI-0050
+TXN-00183,2024-07-25,2024-07-25 04:12:38,SSD 1TB,Almacenamiento,4,116.95,467.8,10,46.78,421.02,Centro,Laura Sánchez,Tienda,CLI-0024
+TXN-00184,2024-04-30,2024-04-30 11:38:57,Laptop HP,Computadoras,4,834.66,3338.64,10,333.86,3004.78,Centro,María López,App Móvil,CLI-0164
+TXN-00185,2023-11-03,2023-11-03 17:53:32,Teclado Mecánico,Accesorios,1,88.06,88.06,30,26.42,61.64,Centro,Roberto Díaz,App Móvil,CLI-0244
+TXN-00186,2024-11-20,2024-11-20 15:37:19,Soporte Laptop,Accesorios,2,36.12,72.24,10,7.22,65.02,Norte,Roberto Díaz,App Móvil,CLI-0297
+TXN-00187,2024-08-20,2024-08-20 17:40:46,Cable HDMI,Cables,3,12.28,36.839999999999996,0,0.0,36.84,Centro,Laura Sánchez,Online,CLI-0125
+TXN-00188,2023-07-15,2023-07-15 14:26:09,Laptop HP,Computadoras,2,913.05,1826.1,0,0.0,1826.1,Oeste,Juan Pérez,Teléfono,CLI-0257
+TXN-00189,2023-03-05,2023-03-05 17:13:35,Micrófono USB,Audio,2,71.55,143.1,20,28.62,114.48,Este,Roberto Díaz,Teléfono,CLI-0161
+TXN-00190,2023-12-17,2023-12-17 19:49:55,Teclado Mecánico,Accesorios,1,89.26,89.26,25,22.32,66.94,Este,Roberto Díaz,Online,CLI-0127
+TXN-00191,2023-11-01,2023-11-01 20:13:44,Webcam HD,Periféricos,1,80.92,80.92,5,4.05,76.87,Oeste,Diego Torres,Teléfono,CLI-0179
+TXN-00192,2023-10-22,2023-10-22 19:34:24,Hub USB-C,Accesorios,4,54.33,217.32,10,21.73,195.59,Oeste,Diego Torres,Online,CLI-0149
+TXN-00193,2023-12-21,2023-12-21 20:16:47,Laptop HP,Computadoras,4,861.76,3447.04,0,0.0,3447.04,Oeste,Juan Pérez,Online,CLI-0276
+TXN-00194,2023-05-21,2023-05-21 20:37:15,Webcam HD,Periféricos,2,86.92,173.84,10,17.38,156.46,Sur,Ana García,Online,CLI-0120
+TXN-00195,2024-04-28,2024-04-28 21:08:00,Laptop HP,Computadoras,1,828.03,828.03,10,82.8,745.23,Centro,María López,Teléfono,CLI-0244
+TXN-00196,2023-11-25,2023-11-25 09:58:49,RAM 16GB,Componentes,1,82.4,82.4,10,8.24,74.16,Norte,Juan Pérez,Tienda,CLI-0090
+TXN-00197,2023-02-07,2023-02-07 12:50:31,SSD 1TB,Almacenamiento,3,129.16,387.48,0,0.0,387.48,Sur,Sofía Martínez,Tienda,CLI-0005
+TXN-00198,2023-12-10,2023-12-10 19:34:33,Webcam HD,Periféricos,4,81.08,324.32,0,0.0,324.32,Oeste,María López,Teléfono,CLI-0140
+TXN-00199,2023-06-16,2023-06-16 19:16:45,"Monitor Samsung 27""",Monitores,4,318.52,1274.08,10,127.41,1146.67,Sur,Ana García,App Móvil,CLI-0152
+TXN-00200,2023-06-29,2023-06-29 19:57:25,Cable HDMI,Cables,3,13.44,40.32,5,2.02,38.3,Oeste,Diego Torres,Tienda,CLI-0206
+TXN-00201,2024-05-03,2024-05-03 12:00:16,Adaptador WiFi,Componentes,2,22.97,45.94,0,0.0,45.94,Oeste,Juan Pérez,Teléfono,CLI-0137
+TXN-00202,2023-01-12,2023-01-12 14:44:15,Auriculares Bluetooth,Audio,1,57.61,57.61,30,17.28,40.33,Norte,Carlos Ruiz,Teléfono,CLI-0158
+TXN-00203,2024-12-21,2024-12-21 20:07:40,Teclado Mecánico,Accesorios,1,88.29,88.29,25,22.07,66.22,Este,Diego Torres,Online,CLI-0113
+TXN-00204,2024-09-12,2024-09-12 20:35:58,Teclado Mecánico,Accesorios,4,89.6,358.4,20,71.68,286.72,Oeste,Juan Pérez,Online,CLI-0042
+TXN-00205,2023-03-21,2023-03-21 03:03:53,Hub USB-C,Accesorios,2,49.46,98.92,10,9.89,89.03,Centro,Juan Pérez,Online,CLI-0085
+TXN-00206,2023-04-30,2023-04-30 20:37:31,Auriculares Bluetooth,Audio,1,64.24,64.24,20,12.85,51.39,Norte,Roberto Díaz,Tienda,CLI-0233
+TXN-00207,2024-07-31,2024-07-31 16:43:51,Teclado Mecánico,Accesorios,1,90.23,90.23,20,18.05,72.18,Este,Ana García,Teléfono,CLI-0131
+TXN-00208,2024-08-15,2024-08-15 15:22:44,Soporte Laptop,Accesorios,2,36.02,72.04,5,3.6,68.44,Norte,Ana García,Tienda,CLI-0242
+TXN-00209,2023-05-19,2023-05-19 20:41:26,Laptop HP,Computadoras,1,861.67,861.67,0,0.0,861.67,Este,Laura Sánchez,Teléfono,CLI-0194
+TXN-00210,2023-05-17,2023-05-17 14:07:11,SSD 1TB,Almacenamiento,1,109.92,109.92,25,27.48,82.44,Centro,Laura Sánchez,Online,CLI-0115
+TXN-00211,2023-11-02,2023-11-02 20:34:27,Soporte Laptop,Accesorios,2,36.02,72.04,0,0.0,72.04,Centro,Laura Sánchez,Online,CLI-0127
+TXN-00212,2023-07-13,2023-07-13 23:48:07,RAM 16GB,Componentes,2,77.53,155.06,10,15.51,139.55,Norte,Laura Sánchez,Tienda,CLI-0124
+TXN-00213,2023-02-04,2023-02-04 19:45:55,"Monitor Samsung 27""",Monitores,2,274.03,548.06,30,164.42,383.64,Norte,Juan Pérez,Tienda,CLI-0206
+TXN-00214,2023-02-27,2023-02-27 13:14:52,RAM 16GB,Componentes,1,75.74,75.74,5,3.79,71.95,Centro,Diego Torres,App Móvil,CLI-0122
+TXN-00215,2023-08-15,2023-08-15 13:03:35,Webcam HD,Periféricos,3,86.01,258.03000000000003,25,64.51,193.52,Centro,María López,Teléfono,CLI-0285
+TXN-00216,2024-10-20,2024-10-20 21:33:20,RAM 16GB,Componentes,1,72.74,72.74,10,7.27,65.47,Oeste,Laura Sánchez,Online,CLI-0154
+TXN-00217,2024-04-29,2024-04-29 12:19:54,SSD 1TB,Almacenamiento,1,112.4,112.4,25,28.1,84.3,Sur,Roberto Díaz,Tienda,CLI-0288
+TXN-00218,2024-06-26,2024-06-26 12:16:13,SSD 1TB,Almacenamiento,3,131.22,393.65999999999997,25,98.42,295.24,Este,Carlos Ruiz,Teléfono,CLI-0190
+TXN-00219,2023-02-22,2023-02-22 19:38:38,Mouse Logitech,Accesorios,2,30.2,60.4,5,3.02,57.38,Norte,Carlos Ruiz,Online,CLI-0287
+TXN-00220,2023-11-07,2023-11-07 00:13:59,"Monitor Samsung 27""",Monitores,3,298.75,896.25,10,89.62,806.63,Sur,Carlos Ruiz,Teléfono,CLI-0125
+TXN-00221,2024-02-11,2024-02-11 17:20:49,Disco Externo 2TB,Almacenamiento,2,91.87,183.74,5,9.19,174.55,Este,Laura Sánchez,Teléfono,CLI-0274
+TXN-00222,2024-01-04,2024-01-04 16:29:06,Adaptador WiFi,Componentes,2,24.29,48.58,10,4.86,43.72,Oeste,Diego Torres,Online,CLI-0190
+TXN-00223,2023-08-15,2023-08-15 09:16:35,Auriculares Bluetooth,Audio,1,58.96,58.96,30,17.69,41.27,Centro,Laura Sánchez,App Móvil,CLI-0079
+TXN-00224,2024-08-06,2024-08-06 15:35:41,"Monitor Samsung 27""",Monitores,1,289.78,289.78,15,43.47,246.31,Este,Sofía Martínez,Teléfono,CLI-0252
+TXN-00225,2023-06-23,2023-06-23 17:31:11,RAM 16GB,Componentes,1,74.68,74.68,10,7.47,67.21,Centro,Ana García,Tienda,CLI-0039
+TXN-00226,2024-02-27,2024-02-27 19:14:04,Soporte Laptop,Accesorios,1,41.34,41.34,0,0.0,41.34,Sur,Ana García,Online,CLI-0259
+TXN-00227,2024-10-15,2024-10-15 18:58:30,RAM 16GB,Componentes,6,77.96,467.76,30,140.33,327.43,Oeste,Ana García,Tienda,CLI-0273
+TXN-00228,2024-06-26,2024-06-26 17:18:01,Hub USB-C,Accesorios,1,49.1,49.1,0,0.0,49.1,Centro,Laura Sánchez,Online,CLI-0055
+TXN-00229,2023-09-04,2023-09-04 17:16:52,Mousepad Gaming,Accesorios,4,18.38,73.52,0,0.0,73.52,Este,Sofía Martínez,Teléfono,CLI-0041
+TXN-00230,2024-08-01,2024-08-01 20:14:19,Auriculares Bluetooth,Audio,2,65.5,131.0,20,26.2,104.8,Norte,Ana García,Tienda,CLI-0208
+TXN-00231,2023-02-27,2023-02-27 20:10:05,SSD 1TB,Almacenamiento,3,117.04,351.12,20,70.22,280.9,Oeste,Laura Sánchez,App Móvil,CLI-0290
+TXN-00232,2023-02-13,2023-02-13 20:56:36,Soporte Laptop,Accesorios,2,43.78,87.56,25,21.89,65.67,Oeste,Sofía Martínez,Tienda,CLI-0039
+TXN-00233,2024-07-31,2024-07-31 11:59:54,Adaptador WiFi,Componentes,2,27.12,54.24,25,13.56,40.68,Este,Ana García,Online,CLI-0074
+TXN-00234,2023-03-20,2023-03-20 18:15:36,Micrófono USB,Audio,2,74.48,148.96,15,22.34,126.62,Oeste,Diego Torres,Teléfono,CLI-0072
+TXN-00235,2024-05-27,2024-05-27 14:03:06,Micrófono USB,Audio,1,76.83,76.83,0,0.0,76.83,Oeste,Juan Pérez,Tienda,CLI-0175
+TXN-00236,2024-02-11,2024-02-11 10:01:40,Cable HDMI,Cables,3,13.69,41.07,30,12.32,28.75,Este,Roberto Díaz,Teléfono,CLI-0117
+TXN-00237,2024-03-18,2024-03-18 18:42:24,Auriculares Bluetooth,Audio,1,60.63,60.63,15,9.09,51.54,Norte,Sofía Martínez,Online,CLI-0038
+TXN-00238,2024-12-29,2024-12-29 11:47:24,Mouse Logitech,Accesorios,1,28.6,28.6,15,4.29,24.31,Este,Diego Torres,Tienda,CLI-0047
+TXN-00239,2024-01-04,2024-01-04 10:08:05,Laptop HP,Computadoras,2,979.72,1959.44,20,391.89,1567.55,Sur,Laura Sánchez,Teléfono,CLI-0286
+TXN-00240,2023-01-27,2023-01-27 17:05:38,Hub USB-C,Accesorios,1,50.11,50.11,0,0.0,50.11,Centro,Diego Torres,Teléfono,CLI-0007
+TXN-00241,2024-07-26,2024-07-26 07:36:33,Webcam HD,Periféricos,5,78.61,393.05,0,0.0,393.05,Sur,Laura Sánchez,Online,CLI-0072
+TXN-00242,2023-05-30,2023-05-30 15:17:26,Webcam HD,Periféricos,5,76.81,384.05,20,76.81,307.24,Este,Roberto Díaz,Tienda,CLI-0185
+TXN-00243,2024-08-31,2024-08-31 16:06:08,Webcam HD,Periféricos,4,87.1,348.4,20,69.68,278.72,Este,Ana García,Teléfono,CLI-0171
+TXN-00244,2024-03-26,2024-03-26 19:38:08,Soporte Laptop,Accesorios,1,40.95,40.95,10,4.1,36.85,Este,Diego Torres,Online,CLI-0246
+TXN-00245,2023-11-23,2023-11-23 20:40:31,Auriculares Bluetooth,Audio,1,56.12,56.12,15,8.42,47.7,Centro,Juan Pérez,App Móvil,CLI-0193
+TXN-00246,2024-01-09,2024-01-09 18:12:37,Webcam HD,Periféricos,4,85.05,340.2,15,51.03,289.17,Centro,María López,Tienda,CLI-0237
+TXN-00247,2024-12-10,2024-12-10 21:50:26,Disco Externo 2TB,Almacenamiento,2,84.76,169.52,10,16.95,152.57,Oeste,María López,App Móvil,CLI-0124
+TXN-00248,2024-01-22,2024-01-22 18:30:37,Webcam HD,Periféricos,5,82.53,412.65,15,61.9,350.75,Oeste,Laura Sánchez,Tienda,CLI-0185
+TXN-00249,2024-08-31,2024-08-31 10:06:49,Disco Externo 2TB,Almacenamiento,5,97.11,485.55,25,121.39,364.16,Sur,Diego Torres,Online,CLI-0023
+TXN-00250,2023-12-06,2023-12-06 13:06:00,Cable HDMI,Cables,4,14.25,57.0,15,8.55,48.45,Norte,Sofía Martínez,Online,CLI-0262
+TXN-00251,2024-12-05,2024-12-05 16:23:25,Disco Externo 2TB,Almacenamiento,1,90.33,90.33,30,27.1,63.23,Oeste,María López,App Móvil,CLI-0013
+TXN-00252,2023-03-29,2023-03-29 20:09:22,RAM 16GB,Componentes,1,73.66,73.66,15,11.05,62.61,Este,Diego Torres,Teléfono,CLI-0106
+TXN-00253,2023-04-10,2023-04-10 20:28:20,Hub USB-C,Accesorios,4,49.82,199.28,20,39.86,159.42,Norte,Sofía Martínez,Tienda,CLI-0059
+TXN-00254,2024-11-24,2024-11-24 23:15:33,Laptop HP,Computadoras,1,962.84,962.84,0,0.0,962.84,Sur,María López,App Móvil,CLI-0287
+TXN-00255,2024-02-19,2024-02-19 11:40:42,SSD 1TB,Almacenamiento,1,130.99,130.99,5,6.55,124.44,Oeste,Laura Sánchez,Tienda,CLI-0102
+TXN-00256,2023-01-05,2023-01-05 12:17:48,RAM 16GB,Componentes,2,81.47,162.94,15,24.44,138.5,Norte,Carlos Ruiz,Online,CLI-0188
+TXN-00257,2023-09-26,2023-09-26 16:33:40,Auriculares Bluetooth,Audio,5,56.36,281.8,0,0.0,281.8,Este,Laura Sánchez,Teléfono,CLI-0059
+TXN-00258,2024-09-24,2024-09-24 19:45:51,Auriculares Bluetooth,Audio,2,58.21,116.42,20,23.28,93.14,Este,Carlos Ruiz,Online,CLI-0161
+TXN-00259,2023-07-07,2023-07-07 11:32:24,Mouse Logitech,Accesorios,2,28.42,56.84,0,0.0,56.84,Oeste,María López,Teléfono,CLI-0217
+TXN-00260,2024-12-11,2024-12-11 05:35:10,Teclado Mecánico,Accesorios,1,89.75,89.75,25,22.44,67.31,Oeste,Sofía Martínez,Online,CLI-0096
+TXN-00261,2023-02-24,2023-02-24 00:31:08,Auriculares Bluetooth,Audio,2,64.09,128.18,30,38.45,89.73,Sur,Laura Sánchez,Teléfono,CLI-0210
+TXN-00262,2024-05-15,2024-05-15 18:01:50,Adaptador WiFi,Componentes,7,24.95,174.65,20,34.93,139.72,Sur,Sofía Martínez,Tienda,CLI-0141
+TXN-00263,2024-04-13,2024-04-13 21:49:31,"Monitor Samsung 27""",Monitores,1,302.25,302.25,0,0.0,302.25,Centro,Carlos Ruiz,Tienda,CLI-0138
+TXN-00264,2024-07-09,2024-07-09 01:48:46,Micrófono USB,Audio,2,70.59,141.18,10,14.12,127.06,Oeste,Juan Pérez,Teléfono,CLI-0053
+TXN-00265,2023-11-01,2023-11-01 01:28:16,Disco Externo 2TB,Almacenamiento,4,95.93,383.72,5,19.19,364.53,Este,Carlos Ruiz,Teléfono,CLI-0061
+TXN-00266,2024-08-25,2024-08-25 20:39:40,Micrófono USB,Audio,3,74.36,223.07999999999998,5,11.15,211.93,Oeste,María López,Online,CLI-0106
+TXN-00267,2024-08-06,2024-08-06 13:38:34,Soporte Laptop,Accesorios,2,37.65,75.3,0,0.0,75.3,Sur,Diego Torres,App Móvil,CLI-0149
+TXN-00268,2024-11-26,2024-11-26 04:48:50,Cable HDMI,Cables,3,12.39,37.17,25,9.29,27.88,Oeste,Ana García,App Móvil,CLI-0065
+TXN-00269,2023-05-30,2023-05-30 12:48:53,Disco Externo 2TB,Almacenamiento,1,96.58,96.58,5,4.83,91.75,Oeste,Roberto Díaz,Online,CLI-0296
+TXN-00270,2024-01-20,2024-01-20 19:50:56,Adaptador WiFi,Componentes,1,23.83,23.83,15,3.57,20.26,Norte,Laura Sánchez,App Móvil,CLI-0189
+TXN-00271,2024-08-18,2024-08-18 21:54:46,RAM 16GB,Componentes,3,87.19,261.57,10,26.16,235.41,Norte,Roberto Díaz,App Móvil,CLI-0033
+TXN-00272,2024-03-15,2024-03-15 15:17:20,Micrófono USB,Audio,3,70.47,211.41,5,10.57,200.84,Este,Diego Torres,Online,CLI-0290
+TXN-00273,2024-11-29,2024-11-29 09:06:40,Soporte Laptop,Accesorios,4,39.87,159.48,10,15.95,143.53,Oeste,Ana García,Tienda,CLI-0081
+TXN-00274,2023-07-27,2023-07-27 04:56:41,RAM 16GB,Componentes,4,79.29,317.16,15,47.57,269.59,Este,María López,App Móvil,CLI-0048
+TXN-00275,2024-01-16,2024-01-16 19:10:03,Adaptador WiFi,Componentes,2,24.29,48.58,0,0.0,48.58,Oeste,Sofía Martínez,Online,CLI-0220
+TXN-00276,2023-01-02,2023-01-02 10:08:37,Adaptador WiFi,Componentes,2,22.95,45.9,0,0.0,45.9,Sur,Roberto Díaz,Tienda,CLI-0005
+TXN-00277,2024-03-08,2024-03-08 16:04:14,Disco Externo 2TB,Almacenamiento,3,87.17,261.51,0,0.0,261.51,Oeste,Carlos Ruiz,Tienda,CLI-0053
+TXN-00278,2023-05-21,2023-05-21 21:55:08,Auriculares Bluetooth,Audio,2,58.4,116.8,10,11.68,105.12,Sur,Carlos Ruiz,Tienda,CLI-0085
+TXN-00279,2024-10-05,2024-10-05 15:39:43,RAM 16GB,Componentes,3,77.61,232.82999999999998,5,11.64,221.19,Oeste,Juan Pérez,Tienda,CLI-0052
+TXN-00280,2024-01-29,2024-01-29 15:20:50,Teclado Mecánico,Accesorios,3,94.53,283.59000000000003,30,85.08,198.51,Sur,Juan Pérez,App Móvil,CLI-0044
+TXN-00281,2024-09-14,2024-09-14 20:01:54,"Monitor Samsung 27""",Monitores,4,303.19,1212.76,30,363.83,848.93,Este,Juan Pérez,Online,CLI-0201
+TXN-00282,2024-05-21,2024-05-21 12:31:40,Webcam HD,Periféricos,1,82.33,82.33,5,4.12,78.21,Centro,Carlos Ruiz,Tienda,CLI-0185
+TXN-00283,2024-08-05,2024-08-05 17:43:11,Mousepad Gaming,Accesorios,1,19.26,19.26,15,2.89,16.37,Oeste,Carlos Ruiz,Tienda,CLI-0035
+TXN-00284,2023-03-03,2023-03-03 12:32:18,Laptop HP,Computadoras,1,857.18,857.18,0,0.0,857.18,Centro,Laura Sánchez,Teléfono,CLI-0206
+TXN-00285,2024-09-22,2024-09-22 10:19:05,Mouse Logitech,Accesorios,2,30.83,61.66,25,15.42,46.24,Centro,Juan Pérez,Online,CLI-0275
+TXN-00286,2023-11-14,2023-11-14 20:54:15,Auriculares Bluetooth,Audio,1,58.68,58.68,0,0.0,58.68,Norte,Juan Pérez,Tienda,CLI-0223
+TXN-00287,2023-02-26,2023-02-26 20:42:47,Mouse Logitech,Accesorios,2,29.71,59.42,30,17.83,41.59,Sur,Carlos Ruiz,Tienda,CLI-0071
+TXN-00288,2023-12-22,2023-12-22 21:52:46,Disco Externo 2TB,Almacenamiento,2,81.2,162.4,20,32.48,129.92,Este,María López,App Móvil,CLI-0065
+TXN-00289,2023-05-01,2023-05-01 09:21:51,Disco Externo 2TB,Almacenamiento,1,95.05,95.05,10,9.51,85.54,Oeste,Sofía Martínez,Tienda,CLI-0135
+TXN-00290,2024-05-23,2024-05-23 14:03:31,Disco Externo 2TB,Almacenamiento,2,98.54,197.08,0,0.0,197.08,Centro,María López,App Móvil,CLI-0081
+TXN-00291,2024-11-21,2024-11-21 12:47:32,Webcam HD,Periféricos,1,84.36,84.36,30,25.31,59.05,Norte,Ana García,Tienda,CLI-0126
+TXN-00292,2023-06-03,2023-06-03 09:35:51,Laptop HP,Computadoras,1,894.91,894.91,15,134.24,760.67,Oeste,Juan Pérez,App Móvil,CLI-0128
+TXN-00293,2023-10-05,2023-10-05 18:23:07,SSD 1TB,Almacenamiento,3,129.97,389.90999999999997,10,38.99,350.92,Centro,Ana García,Online,CLI-0115
+TXN-00294,2024-02-15,2024-02-15 16:55:18,Micrófono USB,Audio,1,70.21,70.21,0,0.0,70.21,Este,Diego Torres,Tienda,CLI-0284
+TXN-00295,2023-10-26,2023-10-26 13:47:39,RAM 16GB,Componentes,1,72.12,72.12,5,3.61,68.51,Sur,Roberto Díaz,App Móvil,CLI-0253
+TXN-00296,2023-09-09,2023-09-09 15:01:14,Micrófono USB,Audio,2,73.85,147.7,25,36.92,110.78,Centro,Diego Torres,Tienda,CLI-0172
+TXN-00297,2023-11-11,2023-11-11 17:15:26,Laptop HP,Computadoras,3,946.6,2839.8,15,425.97,2413.83,Oeste,Ana García,Online,CLI-0144
+TXN-00298,2024-06-16,2024-06-16 14:29:47,Mouse Logitech,Accesorios,1,27.25,27.25,5,1.36,25.89,Norte,Carlos Ruiz,Online,CLI-0202
+TXN-00299,2024-03-21,2024-03-21 11:15:18,Mouse Logitech,Accesorios,2,30.54,61.08,0,0.0,61.08,Este,Diego Torres,Teléfono,CLI-0168
+TXN-00300,2023-03-18,2023-03-18 04:49:49,Auriculares Bluetooth,Audio,1,59.42,59.42,5,2.97,56.45,Centro,Carlos Ruiz,Online,CLI-0055
+TXN-00301,2024-02-21,2024-02-21 14:49:13,Teclado Mecánico,Accesorios,1,89.08,89.08,10,8.91,80.17,Oeste,Sofía Martínez,Teléfono,CLI-0136
+TXN-00302,2024-12-03,2024-12-03 20:44:38,Soporte Laptop,Accesorios,2,36.95,73.9,0,0.0,73.9,Norte,Juan Pérez,App Móvil,CLI-0076
+TXN-00303,2024-02-10,2024-02-10 19:19:16,Mouse Logitech,Accesorios,2,31.26,62.52,10,6.25,56.27,Sur,Ana García,Teléfono,CLI-0232
+TXN-00304,2023-04-07,2023-04-07 21:50:08,Hub USB-C,Accesorios,2,52.47,104.94,5,5.25,99.69,Norte,Ana García,Tienda,CLI-0114
+TXN-00305,2024-01-17,2024-01-17 19:05:37,Teclado Mecánico,Accesorios,3,84.56,253.68,15,38.05,215.63,Centro,Sofía Martínez,Tienda,CLI-0012
+TXN-00306,2023-05-12,2023-05-12 21:21:07,Mouse Logitech,Accesorios,6,28.18,169.07999999999998,20,33.82,135.26,Norte,Roberto Díaz,Tienda,CLI-0087
+TXN-00307,2024-05-23,2024-05-23 19:27:11,Mousepad Gaming,Accesorios,2,20.29,40.58,15,6.09,34.49,Este,Juan Pérez,Online,CLI-0141
+TXN-00308,2023-02-05,2023-02-05 18:15:41,Webcam HD,Periféricos,1,79.13,79.13,0,0.0,79.13,Este,Roberto Díaz,Teléfono,CLI-0282
+TXN-00309,2024-01-28,2024-01-28 12:41:56,RAM 16GB,Componentes,3,72.97,218.91,10,21.89,197.02,Centro,Juan Pérez,Tienda,CLI-0196
+TXN-00310,2024-07-11,2024-07-11 14:58:36,Micrófono USB,Audio,1,72.98,72.98,20,14.6,58.38,Centro,Diego Torres,Teléfono,CLI-0139
+TXN-00311,2023-08-13,2023-08-13 21:49:17,Teclado Mecánico,Accesorios,2,81.46,162.92,30,48.88,114.04,Norte,Roberto Díaz,App Móvil,CLI-0300
+TXN-00312,2023-09-11,2023-09-11 13:34:52,"Monitor Samsung 27""",Monitores,1,328.43,328.43,0,0.0,328.43,Norte,Juan Pérez,Teléfono,CLI-0182
+TXN-00313,2023-06-30,2023-06-30 14:51:47,Mousepad Gaming,Accesorios,1,21.35,21.35,0,0.0,21.35,Este,Ana García,App Móvil,CLI-0291
+TXN-00314,2024-05-19,2024-05-19 11:31:02,Cable HDMI,Cables,5,12.06,60.300000000000004,5,3.02,57.28,Norte,Ana García,Online,CLI-0113
+TXN-00315,2023-12-06,2023-12-06 06:51:08,Laptop HP,Computadoras,3,904.75,2714.25,0,0.0,2714.25,Este,María López,App Móvil,CLI-0031
+TXN-00316,2023-04-24,2023-04-24 11:04:23,Laptop HP,Computadoras,2,836.58,1673.16,0,0.0,1673.16,Oeste,Carlos Ruiz,App Móvil,CLI-0155
+TXN-00317,2024-03-23,2024-03-23 16:41:20,Auriculares Bluetooth,Audio,2,55.63,111.26,0,0.0,111.26,Sur,Diego Torres,Online,CLI-0090
+TXN-00318,2023-05-11,2023-05-11 09:44:36,SSD 1TB,Almacenamiento,1,115.35,115.35,10,11.54,103.81,Oeste,Ana García,Online,CLI-0163
+TXN-00319,2023-08-15,2023-08-15 10:59:31,Mousepad Gaming,Accesorios,1,21.22,21.22,30,6.37,14.85,Sur,Diego Torres,Tienda,CLI-0122
+TXN-00320,2024-10-13,2024-10-13 02:52:45,Auriculares Bluetooth,Audio,1,65.78,65.78,0,0.0,65.78,Este,Roberto Díaz,Tienda,CLI-0136
+TXN-00321,2023-12-25,2023-12-25 10:46:00,"Monitor Samsung 27""",Monitores,2,284.96,569.92,0,0.0,569.92,Norte,Laura Sánchez,Teléfono,CLI-0215
+TXN-00322,2024-01-23,2024-01-23 15:06:53,Teclado Mecánico,Accesorios,3,96.91,290.73,20,58.15,232.58,Oeste,Juan Pérez,Online,CLI-0232
+TXN-00323,2023-10-29,2023-10-29 13:06:04,Mouse Logitech,Accesorios,2,31.78,63.56,0,0.0,63.56,Este,María López,Teléfono,CLI-0083
+TXN-00324,2023-12-13,2023-12-13 18:57:30,Disco Externo 2TB,Almacenamiento,1,82.34,82.34,0,0.0,82.34,Norte,Laura Sánchez,Online,CLI-0223
+TXN-00325,2023-07-30,2023-07-30 13:44:35,Teclado Mecánico,Accesorios,5,81.95,409.75,10,40.98,368.77,Centro,Sofía Martínez,App Móvil,CLI-0153
+TXN-00326,2024-08-08,2024-08-08 16:09:03,"Monitor Samsung 27""",Monitores,3,275.75,827.25,15,124.09,703.16,Este,Ana García,Teléfono,CLI-0045
+TXN-00327,2024-05-06,2024-05-06 09:13:10,Webcam HD,Periféricos,2,85.17,170.34,30,51.1,119.24,Este,Carlos Ruiz,Teléfono,CLI-0060
+TXN-00328,2024-05-15,2024-05-15 08:05:41,Webcam HD,Periféricos,2,84.55,169.1,20,33.82,135.28,Centro,Laura Sánchez,Online,CLI-0190
+TXN-00329,2024-04-01,2024-04-01 16:29:16,Mousepad Gaming,Accesorios,2,19.52,39.04,0,0.0,39.04,Sur,Sofía Martínez,Tienda,CLI-0078
+TXN-00330,2023-03-29,2023-03-29 21:34:26,Micrófono USB,Audio,1,72.74,72.74,0,0.0,72.74,Centro,Juan Pérez,Tienda,CLI-0199
+TXN-00331,2024-12-04,2024-12-04 15:36:56,Soporte Laptop,Accesorios,1,40.17,40.17,25,10.04,30.13,Sur,Roberto Díaz,App Móvil,CLI-0041
+TXN-00332,2024-05-29,2024-05-29 17:51:36,SSD 1TB,Almacenamiento,3,129.66,388.98,0,0.0,388.98,Centro,María López,Tienda,CLI-0230
+TXN-00333,2023-08-05,2023-08-05 04:02:27,Teclado Mecánico,Accesorios,1,98.07,98.07,0,0.0,98.07,Norte,Laura Sánchez,Online,CLI-0076
+TXN-00334,2023-03-10,2023-03-10 17:25:35,Soporte Laptop,Accesorios,1,40.75,40.75,10,4.08,36.67,Este,Sofía Martínez,Teléfono,CLI-0007
+TXN-00335,2024-06-19,2024-06-19 10:26:09,Micrófono USB,Audio,1,72.8,72.8,30,21.84,50.96,Sur,Carlos Ruiz,Tienda,CLI-0289
+TXN-00336,2024-07-02,2024-07-02 13:16:24,Micrófono USB,Audio,1,64.4,64.4,10,6.44,57.96,Oeste,Roberto Díaz,Tienda,CLI-0089
+TXN-00337,2024-09-15,2024-09-15 15:02:25,Webcam HD,Periféricos,4,78.44,313.76,30,94.13,219.63,Este,Juan Pérez,Tienda,CLI-0244
+TXN-00338,2023-01-21,2023-01-21 21:19:19,Mousepad Gaming,Accesorios,3,19.06,57.17999999999999,10,5.72,51.46,Este,Roberto Díaz,Tienda,CLI-0117
+TXN-00339,2023-11-25,2023-11-25 15:38:41,Teclado Mecánico,Accesorios,2,86.4,172.8,20,34.56,138.24,Norte,Juan Pérez,Teléfono,CLI-0109
+TXN-00340,2024-06-12,2024-06-12 01:32:50,Mousepad Gaming,Accesorios,1,21.29,21.29,20,4.26,17.03,Sur,Carlos Ruiz,App Móvil,CLI-0260
+TXN-00341,2024-08-05,2024-08-05 12:56:53,SSD 1TB,Almacenamiento,2,111.25,222.5,25,55.62,166.88,Sur,Ana García,Online,CLI-0017
+TXN-00342,2024-12-22,2024-12-22 14:52:29,RAM 16GB,Componentes,2,72.8,145.6,10,14.56,131.04,Centro,Laura Sánchez,Tienda,CLI-0016
+TXN-00343,2024-04-01,2024-04-01 16:37:35,"Monitor Samsung 27""",Monitores,1,292.34,292.34,30,87.7,204.64,Este,Diego Torres,Online,CLI-0133
+TXN-00344,2023-10-19,2023-10-19 09:10:54,Disco Externo 2TB,Almacenamiento,2,95.95,191.9,0,0.0,191.9,Centro,Juan Pérez,Online,CLI-0116
+TXN-00345,2024-06-09,2024-06-09 21:49:43,Adaptador WiFi,Componentes,1,23.52,23.52,15,3.53,19.99,Norte,Roberto Díaz,Online,CLI-0089
+TXN-00346,2023-09-16,2023-09-16 13:45:45,Cable HDMI,Cables,2,13.77,27.54,5,1.38,26.16,Este,Laura Sánchez,Teléfono,CLI-0179
+TXN-00347,2023-11-06,2023-11-06 18:25:37,RAM 16GB,Componentes,2,76.02,152.04,20,30.41,121.63,Norte,Ana García,App Móvil,CLI-0288
+TXN-00348,2023-11-02,2023-11-02 16:04:21,Adaptador WiFi,Componentes,1,25.46,25.46,10,2.55,22.91,Este,Diego Torres,App Móvil,CLI-0134
+TXN-00349,2023-07-12,2023-07-12 21:15:57,Adaptador WiFi,Componentes,1,26.05,26.05,10,2.61,23.44,Norte,Laura Sánchez,App Móvil,CLI-0072
+TXN-00350,2023-10-30,2023-10-30 15:25:24,Disco Externo 2TB,Almacenamiento,2,81.45,162.9,20,32.58,130.32,Norte,Juan Pérez,App Móvil,CLI-0114
+TXN-00351,2024-11-18,2024-11-18 13:54:10,Adaptador WiFi,Componentes,2,25.16,50.32,20,10.06,40.26,Centro,María López,App Móvil,CLI-0050
+TXN-00352,2024-07-26,2024-07-26 11:43:57,RAM 16GB,Componentes,4,74.04,296.16,10,29.62,266.54,Este,Carlos Ruiz,Online,CLI-0182
+TXN-00353,2024-03-06,2024-03-06 14:23:16,"Monitor Samsung 27""",Monitores,2,314.64,629.28,10,62.93,566.35,Centro,Sofía Martínez,Teléfono,CLI-0061
+TXN-00354,2024-08-17,2024-08-17 02:30:56,RAM 16GB,Componentes,1,72.85,72.85,30,21.85,51.0,Sur,Carlos Ruiz,Teléfono,CLI-0272
+TXN-00355,2023-05-21,2023-05-21 10:26:36,Webcam HD,Periféricos,1,78.6,78.6,0,0.0,78.6,Oeste,María López,App Móvil,CLI-0093
+TXN-00356,2024-10-08,2024-10-08 10:40:03,Micrófono USB,Audio,2,64.12,128.24,10,12.82,115.42,Norte,Roberto Díaz,App Móvil,CLI-0108
+TXN-00357,2023-06-12,2023-06-12 21:49:05,Micrófono USB,Audio,1,73.82,73.82,30,22.15,51.67,Sur,Laura Sánchez,Teléfono,CLI-0207
+TXN-00358,2023-01-05,2023-01-05 12:46:23,SSD 1TB,Almacenamiento,2,131.16,262.32,15,39.35,222.97,Norte,Diego Torres,Online,CLI-0010
+TXN-00359,2023-08-20,2023-08-20 14:19:08,Adaptador WiFi,Componentes,5,22.51,112.55000000000001,5,5.63,106.92,Norte,Laura Sánchez,App Móvil,CLI-0086
+TXN-00360,2023-10-25,2023-10-25 17:38:33,Mouse Logitech,Accesorios,2,31.93,63.86,10,6.39,57.47,Este,Laura Sánchez,Online,CLI-0176
+TXN-00361,2023-06-18,2023-06-18 12:01:14,Mousepad Gaming,Accesorios,1,19.95,19.95,5,1.0,18.95,Sur,María López,Online,CLI-0012
+TXN-00362,2024-01-11,2024-01-11 21:02:24,Cable HDMI,Cables,2,13.0,26.0,0,0.0,26.0,Este,Ana García,Tienda,CLI-0056
+TXN-00363,2024-12-07,2024-12-07 16:24:07,Adaptador WiFi,Componentes,2,26.67,53.34,0,0.0,53.34,Centro,Sofía Martínez,Teléfono,CLI-0079
+TXN-00364,2023-11-05,2023-11-05 10:42:33,"Monitor Samsung 27""",Monitores,2,311.7,623.4,0,0.0,623.4,Este,María López,Teléfono,CLI-0054
+TXN-00365,2023-10-17,2023-10-17 10:31:12,Hub USB-C,Accesorios,5,52.18,260.9,0,0.0,260.9,Centro,Juan Pérez,App Móvil,CLI-0268
+TXN-00366,2023-10-30,2023-10-30 17:31:58,"Monitor Samsung 27""",Monitores,1,291.47,291.47,15,43.72,247.75,Sur,Roberto Díaz,App Móvil,CLI-0121
+TXN-00367,2023-04-24,2023-04-24 21:31:09,Laptop HP,Computadoras,5,812.29,4061.45,0,0.0,4061.45,Norte,Carlos Ruiz,Tienda,CLI-0132
+TXN-00368,2023-09-28,2023-09-28 10:52:11,Adaptador WiFi,Componentes,4,23.65,94.6,10,9.46,85.14,Norte,Sofía Martínez,App Móvil,CLI-0161
+TXN-00369,2023-02-16,2023-02-16 11:42:41,SSD 1TB,Almacenamiento,1,125.71,125.71,0,0.0,125.71,Sur,Diego Torres,App Móvil,CLI-0225
+TXN-00370,2024-01-17,2024-01-17 05:07:25,Cable HDMI,Cables,1,12.39,12.39,0,0.0,12.39,Oeste,Roberto Díaz,App Móvil,CLI-0198
+TXN-00371,2024-10-26,2024-10-26 05:07:08,Disco Externo 2TB,Almacenamiento,1,96.3,96.3,15,14.44,81.86,Norte,María López,Tienda,CLI-0214
+TXN-00372,2024-11-25,2024-11-25 18:24:49,Mousepad Gaming,Accesorios,1,20.35,20.35,30,6.1,14.25,Este,Ana García,Online,CLI-0248
+TXN-00373,2024-03-27,2024-03-27 13:41:20,Mousepad Gaming,Accesorios,1,19.94,19.94,15,2.99,16.95,Norte,Juan Pérez,App Móvil,CLI-0266
+TXN-00374,2023-04-08,2023-04-08 20:15:30,Hub USB-C,Accesorios,2,51.87,103.74,30,31.12,72.62,Este,Laura Sánchez,Online,CLI-0286
+TXN-00375,2023-01-12,2023-01-12 11:32:54,Mousepad Gaming,Accesorios,1,21.94,21.94,0,0.0,21.94,Oeste,Roberto Díaz,Online,CLI-0039
+TXN-00376,2023-12-05,2023-12-05 01:32:14,Micrófono USB,Audio,1,69.87,69.87,5,3.49,66.38,Centro,Laura Sánchez,Teléfono,CLI-0121
+TXN-00377,2024-04-03,2024-04-03 16:28:20,Mouse Logitech,Accesorios,3,29.74,89.22,30,26.77,62.45,Norte,Roberto Díaz,Tienda,CLI-0053
+TXN-00378,2024-07-16,2024-07-16 10:50:38,SSD 1TB,Almacenamiento,1,117.89,117.89,25,29.47,88.42,Centro,Sofía Martínez,Online,CLI-0234
+TXN-00379,2023-08-17,2023-08-17 10:35:49,Auriculares Bluetooth,Audio,3,58.35,175.05,0,0.0,175.05,Centro,Roberto Díaz,App Móvil,CLI-0232
+TXN-00380,2023-01-03,2023-01-03 19:51:18,Mouse Logitech,Accesorios,1,27.58,27.58,5,1.38,26.2,Centro,Diego Torres,Tienda,CLI-0024
+TXN-00381,2024-02-24,2024-02-24 18:12:12,Mousepad Gaming,Accesorios,1,18.65,18.65,0,0.0,18.65,Norte,Laura Sánchez,Online,CLI-0235
+TXN-00382,2023-04-21,2023-04-21 09:59:40,Soporte Laptop,Accesorios,2,42.24,84.48,10,8.45,76.03,Centro,Carlos Ruiz,Teléfono,CLI-0235
+TXN-00383,2023-05-18,2023-05-18 00:33:47,Adaptador WiFi,Componentes,2,25.44,50.88,25,12.72,38.16,Norte,Laura Sánchez,Teléfono,CLI-0261
+TXN-00384,2024-12-09,2024-12-09 20:52:08,Micrófono USB,Audio,4,75.89,303.56,0,0.0,303.56,Norte,Laura Sánchez,App Móvil,CLI-0259
+TXN-00385,2024-12-10,2024-12-10 13:25:21,Mousepad Gaming,Accesorios,3,19.53,58.59,30,17.58,41.01,Este,Roberto Díaz,Online,CLI-0071
+TXN-00386,2023-11-03,2023-11-03 17:55:20,SSD 1TB,Almacenamiento,3,122.45,367.35,25,91.84,275.51,Centro,Juan Pérez,Online,CLI-0108
+TXN-00387,2024-11-19,2024-11-19 20:41:11,Cable HDMI,Cables,1,13.55,13.55,10,1.36,12.19,Centro,Diego Torres,Tienda,CLI-0181
+TXN-00388,2024-11-14,2024-11-14 19:47:57,Hub USB-C,Accesorios,1,49.79,49.79,30,14.94,34.85,Centro,Sofía Martínez,Teléfono,CLI-0007
+TXN-00389,2023-05-29,2023-05-29 09:12:17,Hub USB-C,Accesorios,3,46.06,138.18,15,20.73,117.45,Sur,Sofía Martínez,App Móvil,CLI-0075
+TXN-00390,2023-07-28,2023-07-28 09:22:52,Soporte Laptop,Accesorios,3,36.49,109.47,10,10.95,98.52,Oeste,Carlos Ruiz,Online,CLI-0288
+TXN-00391,2024-12-10,2024-12-10 15:24:26,SSD 1TB,Almacenamiento,7,113.69,795.8299999999999,10,79.58,716.25,Este,Ana García,Tienda,CLI-0129
+TXN-00392,2023-08-19,2023-08-19 22:45:41,"Monitor Samsung 27""",Monitores,2,307.22,614.44,20,122.89,491.55,Este,Juan Pérez,Online,CLI-0151
+TXN-00393,2023-07-11,2023-07-11 23:32:07,RAM 16GB,Componentes,1,74.83,74.83,0,0.0,74.83,Oeste,Ana García,Teléfono,CLI-0143
+TXN-00394,2024-08-21,2024-08-21 00:21:29,Hub USB-C,Accesorios,3,47.63,142.89000000000001,0,0.0,142.89,Sur,Ana García,Online,CLI-0166
+TXN-00395,2024-11-08,2024-11-08 21:36:35,Cable HDMI,Cables,1,11.82,11.82,30,3.55,8.27,Este,Carlos Ruiz,App Móvil,CLI-0270
+TXN-00396,2023-03-11,2023-03-11 11:26:34,"Monitor Samsung 27""",Monitores,5,327.41,1637.0500000000002,25,409.26,1227.79,Centro,Laura Sánchez,Tienda,CLI-0179
+TXN-00397,2023-12-06,2023-12-06 12:48:39,"Monitor Samsung 27""",Monitores,4,322.99,1291.96,10,129.2,1162.76,Centro,Roberto Díaz,Tienda,CLI-0059
+TXN-00398,2024-10-19,2024-10-19 18:15:02,Adaptador WiFi,Componentes,2,24.22,48.44,5,2.42,46.02,Este,Laura Sánchez,Tienda,CLI-0198
+TXN-00399,2023-01-26,2023-01-26 11:32:51,Webcam HD,Periféricos,3,80.63,241.89,10,24.19,217.7,Centro,Roberto Díaz,Teléfono,CLI-0023
+TXN-00400,2023-11-25,2023-11-25 10:10:49,Webcam HD,Periféricos,3,86.36,259.08,5,12.95,246.13,Centro,Ana García,Tienda,CLI-0108
+TXN-00401,2024-12-02,2024-12-02 10:13:34,Adaptador WiFi,Componentes,1,25.64,25.64,5,1.28,24.36,Oeste,Carlos Ruiz,Online,CLI-0013
+TXN-00402,2023-03-31,2023-03-31 11:50:16,RAM 16GB,Componentes,4,83.46,333.84,0,0.0,333.84,Centro,Carlos Ruiz,Online,CLI-0133
+TXN-00403,2024-03-19,2024-03-19 15:43:07,SSD 1TB,Almacenamiento,2,117.3,234.6,15,35.19,199.41,Centro,Ana García,Tienda,CLI-0300
+TXN-00404,2024-01-02,2024-01-02 03:18:50,Laptop HP,Computadoras,3,936.15,2808.45,0,0.0,2808.45,Este,Carlos Ruiz,App Móvil,CLI-0225
+TXN-00405,2024-04-30,2024-04-30 12:08:47,SSD 1TB,Almacenamiento,1,117.47,117.47,0,0.0,117.47,Oeste,Sofía Martínez,Online,CLI-0153
+TXN-00406,2023-01-12,2023-01-12 17:09:07,Adaptador WiFi,Componentes,4,26.92,107.68,10,10.77,96.91,Norte,Ana García,Teléfono,CLI-0276
+TXN-00407,2023-08-04,2023-08-04 20:22:13,Hub USB-C,Accesorios,1,54.46,54.46,10,5.45,49.01,Oeste,María López,Online,CLI-0095
+TXN-00408,2023-07-18,2023-07-18 19:51:36,"Monitor Samsung 27""",Monitores,1,307.0,307.0,10,30.7,276.3,Norte,Roberto Díaz,Tienda,CLI-0149
+TXN-00409,2023-07-22,2023-07-22 16:21:22,Adaptador WiFi,Componentes,4,22.83,91.32,0,0.0,91.32,Sur,Juan Pérez,Tienda,CLI-0146
+TXN-00410,2023-11-22,2023-11-22 14:39:42,Cable HDMI,Cables,1,11.87,11.87,5,0.59,11.28,Este,María López,App Móvil,CLI-0162
+TXN-00411,2023-09-10,2023-09-10 20:47:41,SSD 1TB,Almacenamiento,1,112.04,112.04,10,11.2,100.84,Oeste,Sofía Martínez,App Móvil,CLI-0069
+TXN-00412,2024-04-18,2024-04-18 21:19:31,Adaptador WiFi,Componentes,5,26.15,130.75,20,26.15,104.6,Centro,Carlos Ruiz,Online,CLI-0042
+TXN-00413,2024-07-05,2024-07-05 20:56:40,Soporte Laptop,Accesorios,5,38.24,191.20000000000002,0,0.0,191.2,Norte,Carlos Ruiz,Tienda,CLI-0260
+TXN-00414,2024-08-15,2024-08-15 18:13:58,Adaptador WiFi,Componentes,2,22.65,45.3,30,13.59,31.71,Norte,Sofía Martínez,Teléfono,CLI-0077
+TXN-00415,2023-10-25,2023-10-25 17:32:05,Auriculares Bluetooth,Audio,2,58.7,117.4,30,35.22,82.18,Oeste,Diego Torres,Tienda,CLI-0123
+TXN-00416,2024-12-01,2024-12-01 17:08:28,Soporte Laptop,Accesorios,2,43.7,87.4,30,26.22,61.18,Sur,María López,Online,CLI-0248
+TXN-00417,2023-08-26,2023-08-26 14:14:02,Auriculares Bluetooth,Audio,1,54.48,54.48,20,10.9,43.58,Sur,Diego Torres,Teléfono,CLI-0241
+TXN-00418,2023-02-10,2023-02-10 10:06:45,Mousepad Gaming,Accesorios,1,19.81,19.81,0,0.0,19.81,Centro,Sofía Martínez,App Móvil,CLI-0297
+TXN-00419,2024-10-31,2024-10-31 18:41:57,Hub USB-C,Accesorios,2,50.69,101.38,15,15.21,86.17,Norte,Sofía Martínez,Teléfono,CLI-0115
+TXN-00420,2024-05-13,2024-05-13 18:00:32,Hub USB-C,Accesorios,3,49.05,147.14999999999998,10,14.71,132.44,Sur,Roberto Díaz,Online,CLI-0118
+TXN-00421,2023-08-05,2023-08-05 11:23:38,Mouse Logitech,Accesorios,3,30.08,90.24,10,9.02,81.22,Norte,Juan Pérez,Teléfono,CLI-0170
+TXN-00422,2024-05-05,2024-05-05 11:41:53,Disco Externo 2TB,Almacenamiento,3,83.03,249.09,20,49.82,199.27,Oeste,Ana García,Online,CLI-0023
+TXN-00423,2023-05-18,2023-05-18 09:57:36,Teclado Mecánico,Accesorios,1,91.31,91.31,0,0.0,91.31,Sur,Ana García,Online,CLI-0133
+TXN-00424,2024-09-05,2024-09-05 20:01:56,Mousepad Gaming,Accesorios,2,18.71,37.42,15,5.61,31.81,Este,Carlos Ruiz,Online,CLI-0230
+TXN-00425,2023-06-24,2023-06-24 15:38:09,Cable HDMI,Cables,1,14.27,14.27,20,2.85,11.42,Centro,María López,App Móvil,CLI-0086
+TXN-00426,2024-09-02,2024-09-02 12:24:24,Disco Externo 2TB,Almacenamiento,2,93.33,186.66,20,37.33,149.33,Sur,Carlos Ruiz,Tienda,CLI-0104
+TXN-00427,2024-12-01,2024-12-01 11:38:06,Hub USB-C,Accesorios,2,53.59,107.18,25,26.8,80.38,Sur,Roberto Díaz,Tienda,CLI-0273
+TXN-00428,2024-05-08,2024-05-08 18:34:52,Hub USB-C,Accesorios,4,52.51,210.04,0,0.0,210.04,Norte,Laura Sánchez,Teléfono,CLI-0190
+TXN-00429,2024-03-15,2024-03-15 21:30:50,Soporte Laptop,Accesorios,1,36.34,36.34,25,9.09,27.25,Oeste,Diego Torres,Tienda,CLI-0218
+TXN-00430,2023-03-27,2023-03-27 17:26:16,Teclado Mecánico,Accesorios,1,85.57,85.57,5,4.28,81.29,Sur,Ana García,Tienda,CLI-0296
+TXN-00431,2024-01-20,2024-01-20 20:51:20,Hub USB-C,Accesorios,1,46.17,46.17,0,0.0,46.17,Oeste,Diego Torres,Tienda,CLI-0080
+TXN-00432,2023-09-25,2023-09-25 13:36:23,SSD 1TB,Almacenamiento,3,123.63,370.89,10,37.09,333.8,Centro,Sofía Martínez,Teléfono,CLI-0105
+TXN-00433,2024-05-09,2024-05-09 17:35:30,SSD 1TB,Almacenamiento,2,121.24,242.48,25,60.62,181.86,Este,Sofía Martínez,App Móvil,CLI-0204
+TXN-00434,2023-08-24,2023-08-24 20:10:06,Disco Externo 2TB,Almacenamiento,1,83.48,83.48,0,0.0,83.48,Sur,Laura Sánchez,App Móvil,CLI-0282
+TXN-00435,2023-06-14,2023-06-14 19:00:51,Cable HDMI,Cables,1,13.5,13.5,0,0.0,13.5,Norte,María López,Teléfono,CLI-0223
+TXN-00436,2024-01-15,2024-01-15 09:46:24,Mouse Logitech,Accesorios,3,27.38,82.14,5,4.11,78.03,Oeste,Sofía Martínez,Tienda,CLI-0090
+TXN-00437,2023-07-26,2023-07-26 16:18:12,Adaptador WiFi,Componentes,1,24.96,24.96,0,0.0,24.96,Norte,Juan Pérez,Online,CLI-0019
+TXN-00438,2023-06-11,2023-06-11 13:49:25,Auriculares Bluetooth,Audio,3,56.86,170.57999999999998,0,0.0,170.58,Este,Laura Sánchez,Teléfono,CLI-0103
+TXN-00439,2023-04-03,2023-04-03 20:53:35,Hub USB-C,Accesorios,3,45.14,135.42000000000002,0,0.0,135.42,Centro,Diego Torres,App Móvil,CLI-0142
+TXN-00440,2024-04-10,2024-04-10 18:00:16,"Monitor Samsung 27""",Monitores,1,306.37,306.37,5,15.32,291.05,Sur,Laura Sánchez,Tienda,CLI-0287
+TXN-00441,2023-04-30,2023-04-30 08:56:34,Mouse Logitech,Accesorios,1,30.01,30.01,10,3.0,27.01,Centro,Sofía Martínez,Teléfono,CLI-0194
+TXN-00442,2023-12-14,2023-12-14 14:43:29,Cable HDMI,Cables,6,12.95,77.69999999999999,5,3.88,73.82,Centro,Ana García,Teléfono,CLI-0060
+TXN-00443,2024-11-24,2024-11-24 21:20:26,Webcam HD,Periféricos,1,73.07,73.07,5,3.65,69.42,Este,Ana García,App Móvil,CLI-0128
+TXN-00444,2023-03-19,2023-03-19 11:30:20,Webcam HD,Periféricos,1,73.48,73.48,10,7.35,66.13,Este,Juan Pérez,App Móvil,CLI-0094
+TXN-00445,2024-05-25,2024-05-25 12:47:15,Disco Externo 2TB,Almacenamiento,3,93.29,279.87,5,13.99,265.88,Este,Juan Pérez,Online,CLI-0104
+TXN-00446,2023-12-31,2023-12-31 10:07:58,Soporte Laptop,Accesorios,5,37.99,189.95000000000002,30,56.99,132.96,Norte,Roberto Díaz,Tienda,CLI-0278
+TXN-00447,2024-09-27,2024-09-27 18:55:17,Laptop HP,Computadoras,6,962.63,5775.78,10,577.58,5198.2,Oeste,María López,App Móvil,CLI-0204
+TXN-00448,2023-02-25,2023-02-25 15:30:34,"Monitor Samsung 27""",Monitores,3,315.0,945.0,0,0.0,945.0,Norte,Diego Torres,Teléfono,CLI-0090
+TXN-00449,2024-04-16,2024-04-16 09:00:43,RAM 16GB,Componentes,1,87.61,87.61,25,21.9,65.71,Sur,Laura Sánchez,Tienda,CLI-0167
+TXN-00450,2023-07-11,2023-07-11 12:17:30,Auriculares Bluetooth,Audio,1,61.34,61.34,10,6.13,55.21,Centro,Diego Torres,App Móvil,CLI-0095
+TXN-00451,2024-12-18,2024-12-18 14:54:25,RAM 16GB,Componentes,3,78.77,236.31,15,35.45,200.86,Este,Roberto Díaz,Online,CLI-0293
+TXN-00452,2023-04-13,2023-04-13 21:15:35,Teclado Mecánico,Accesorios,2,98.62,197.24,5,9.86,187.38,Oeste,Laura Sánchez,Online,CLI-0075
+TXN-00453,2024-04-29,2024-04-29 05:26:31,Micrófono USB,Audio,2,76.42,152.84,0,0.0,152.84,Sur,Diego Torres,Teléfono,CLI-0154
+TXN-00454,2023-02-18,2023-02-18 20:10:03,Webcam HD,Periféricos,4,80.98,323.92,30,97.18,226.74,Sur,Sofía Martínez,Teléfono,CLI-0050
+TXN-00455,2024-01-05,2024-01-05 17:59:51,RAM 16GB,Componentes,1,83.9,83.9,10,8.39,75.51,Este,Diego Torres,Tienda,CLI-0211
+TXN-00456,2023-07-23,2023-07-23 19:41:34,Mouse Logitech,Accesorios,2,29.1,58.2,30,17.46,40.74,Sur,Sofía Martínez,App Móvil,CLI-0167
+TXN-00457,2023-03-22,2023-03-22 13:29:40,Adaptador WiFi,Componentes,1,25.04,25.04,20,5.01,20.03,Sur,María López,App Móvil,CLI-0216
+TXN-00458,2023-03-15,2023-03-15 14:14:20,Adaptador WiFi,Componentes,2,25.55,51.1,15,7.66,43.44,Este,Sofía Martínez,App Móvil,CLI-0203
+TXN-00459,2024-08-24,2024-08-24 16:26:10,Webcam HD,Periféricos,1,86.19,86.19,10,8.62,77.57,Sur,Ana García,Online,CLI-0121
+TXN-00460,2023-08-04,2023-08-04 10:06:04,Adaptador WiFi,Componentes,1,23.75,23.75,0,0.0,23.75,Oeste,Ana García,Tienda,CLI-0204
+TXN-00461,2023-04-17,2023-04-17 11:05:41,Hub USB-C,Accesorios,1,52.64,52.64,0,0.0,52.64,Oeste,Sofía Martínez,Online,CLI-0127
+TXN-00462,2023-05-15,2023-05-15 11:01:02,Disco Externo 2TB,Almacenamiento,2,86.11,172.22,0,0.0,172.22,Este,Diego Torres,Teléfono,CLI-0240
+TXN-00463,2024-07-15,2024-07-15 20:34:11,Soporte Laptop,Accesorios,3,40.31,120.93,10,12.09,108.84,Centro,Roberto Díaz,Teléfono,CLI-0269
+TXN-00464,2023-12-22,2023-12-22 12:51:05,Adaptador WiFi,Componentes,2,25.69,51.38,10,5.14,46.24,Oeste,Sofía Martínez,App Móvil,CLI-0212
+TXN-00465,2023-01-01,2023-01-01 21:54:08,Webcam HD,Periféricos,5,74.48,372.40000000000003,0,0.0,372.4,Este,Sofía Martínez,Teléfono,CLI-0274
+TXN-00466,2024-05-03,2024-05-03 21:27:51,Laptop HP,Computadoras,1,933.79,933.79,20,186.76,747.03,Este,Juan Pérez,Tienda,CLI-0281
+TXN-00467,2024-03-23,2024-03-23 11:45:47,Auriculares Bluetooth,Audio,1,56.25,56.25,25,14.06,42.19,Oeste,Laura Sánchez,Online,CLI-0135
+TXN-00468,2024-06-13,2024-06-13 18:51:44,Mouse Logitech,Accesorios,4,29.52,118.08,5,5.9,112.18,Este,Sofía Martínez,App Móvil,CLI-0212
+TXN-00469,2023-05-20,2023-05-20 19:29:39,"Monitor Samsung 27""",Monitores,1,321.2,321.2,0,0.0,321.2,Oeste,Sofía Martínez,Teléfono,CLI-0097
+TXN-00470,2024-07-01,2024-07-01 10:18:17,Auriculares Bluetooth,Audio,5,54.22,271.1,0,0.0,271.1,Sur,Roberto Díaz,Tienda,CLI-0120
+TXN-00471,2023-08-11,2023-08-11 13:50:51,Mouse Logitech,Accesorios,1,27.89,27.89,20,5.58,22.31,Oeste,Diego Torres,Teléfono,CLI-0017
+TXN-00472,2023-02-27,2023-02-27 15:04:34,Auriculares Bluetooth,Audio,5,54.95,274.75,0,0.0,274.75,Oeste,María López,Online,CLI-0129
+TXN-00473,2023-05-05,2023-05-05 22:15:24,Soporte Laptop,Accesorios,1,39.04,39.04,0,0.0,39.04,Oeste,Juan Pérez,Tienda,CLI-0102
+TXN-00474,2024-06-17,2024-06-17 12:30:24,RAM 16GB,Componentes,4,83.75,335.0,0,0.0,335.0,Este,Diego Torres,Online,CLI-0022
+TXN-00475,2023-05-06,2023-05-06 19:19:12,Disco Externo 2TB,Almacenamiento,2,97.86,195.72,25,48.93,146.79,Este,Ana García,Online,CLI-0058
+TXN-00476,2023-01-16,2023-01-16 13:37:07,"Monitor Samsung 27""",Monitores,7,307.96,2155.72,10,215.57,1940.15,Oeste,Juan Pérez,Tienda,CLI-0022
+TXN-00477,2024-12-05,2024-12-05 14:49:05,Cable HDMI,Cables,1,13.73,13.73,20,2.75,10.98,Sur,María López,Teléfono,CLI-0047
+TXN-00478,2023-03-03,2023-03-03 11:44:34,Adaptador WiFi,Componentes,2,25.58,51.16,0,0.0,51.16,Norte,María López,Teléfono,CLI-0120
+TXN-00479,2024-03-25,2024-03-25 09:44:24,Auriculares Bluetooth,Audio,5,65.77,328.84999999999997,10,32.88,295.97,Este,María López,App Móvil,CLI-0021
+TXN-00480,2023-10-29,2023-10-29 16:12:36,RAM 16GB,Componentes,2,83.3,166.6,25,41.65,124.95,Sur,Diego Torres,App Móvil,CLI-0240
+TXN-00481,2024-07-21,2024-07-21 17:09:28,Webcam HD,Periféricos,2,85.87,171.74,30,51.52,120.22,Este,Sofía Martínez,App Móvil,CLI-0233
+TXN-00482,2024-01-24,2024-01-24 09:39:54,Laptop HP,Computadoras,2,949.65,1899.3,25,474.82,1424.48,Este,Juan Pérez,App Móvil,CLI-0033
+TXN-00483,2023-07-14,2023-07-14 16:49:35,Adaptador WiFi,Componentes,2,27.32,54.64,15,8.2,46.44,Sur,Sofía Martínez,App Móvil,CLI-0210
+TXN-00484,2024-06-19,2024-06-19 09:53:08,Adaptador WiFi,Componentes,2,24.1,48.2,0,0.0,48.2,Sur,Ana García,Online,CLI-0055
+TXN-00485,2024-08-07,2024-08-07 15:42:31,RAM 16GB,Componentes,2,75.06,150.12,0,0.0,150.12,Centro,Sofía Martínez,Tienda,CLI-0188
+TXN-00486,2023-01-14,2023-01-14 06:41:31,"Monitor Samsung 27""",Monitores,4,306.35,1225.4,0,0.0,1225.4,Norte,Roberto Díaz,Tienda,CLI-0185
+TXN-00487,2024-01-13,2024-01-13 09:52:39,Hub USB-C,Accesorios,1,52.42,52.42,15,7.86,44.56,Este,Ana García,Tienda,CLI-0156
+TXN-00488,2023-04-10,2023-04-10 12:34:24,Mouse Logitech,Accesorios,1,32.66,32.66,25,8.16,24.5,Sur,Juan Pérez,Online,CLI-0292
+TXN-00489,2024-07-25,2024-07-25 10:49:40,Adaptador WiFi,Componentes,5,27.23,136.15,25,34.04,102.11,Centro,Diego Torres,Teléfono,CLI-0219
+TXN-00490,2024-07-17,2024-07-17 14:42:10,Mousepad Gaming,Accesorios,4,18.41,73.64,0,0.0,73.64,Centro,Roberto Díaz,App Móvil,CLI-0162
+TXN-00491,2024-01-16,2024-01-16 19:27:52,Hub USB-C,Accesorios,2,54.9,109.8,10,10.98,98.82,Este,Juan Pérez,Online,CLI-0193
+TXN-00492,2024-01-04,2024-01-04 14:25:00,Micrófono USB,Audio,2,70.69,141.38,10,14.14,127.24,Norte,Sofía Martínez,Tienda,CLI-0266
+TXN-00493,2023-01-07,2023-01-07 12:13:54,Teclado Mecánico,Accesorios,1,98.87,98.87,10,9.89,88.98,Este,Ana García,App Móvil,CLI-0284
+TXN-00494,2023-06-08,2023-06-08 16:22:09,Hub USB-C,Accesorios,1,50.55,50.55,30,15.16,35.39,Sur,Sofía Martínez,App Móvil,CLI-0299
+TXN-00495,2023-04-05,2023-04-05 18:58:13,"Monitor Samsung 27""",Monitores,2,283.97,567.94,10,56.79,511.15,Norte,Diego Torres,Teléfono,CLI-0089
+TXN-00496,2023-04-08,2023-04-08 13:02:46,RAM 16GB,Componentes,1,85.2,85.2,30,25.56,59.64,Centro,Laura Sánchez,Tienda,CLI-0029
+TXN-00497,2024-03-20,2024-03-20 10:55:49,Mousepad Gaming,Accesorios,2,21.07,42.14,10,4.21,37.93,Sur,Ana García,Teléfono,CLI-0028
+TXN-00498,2024-07-06,2024-07-06 14:32:44,Webcam HD,Periféricos,1,80.38,80.38,10,8.04,72.34,Sur,María López,Tienda,CLI-0202
+TXN-00499,2024-05-31,2024-05-31 15:18:50,RAM 16GB,Componentes,6,84.03,504.18,30,151.25,352.93,Oeste,María López,Online,CLI-0173
+TXN-00500,2024-07-15,2024-07-15 10:25:32,Mouse Logitech,Accesorios,6,29.85,179.10000000000002,0,0.0,179.1,Oeste,María López,Online,CLI-0247
+TXN-00501,2024-10-29,2024-10-29 17:39:47,Hub USB-C,Accesorios,2,46.97,93.94,15,14.09,79.85,Centro,Juan Pérez,Online,CLI-0037
+TXN-00502,2024-12-02,2024-12-02 02:07:42,Webcam HD,Periféricos,2,84.42,168.84,10,16.88,151.96,Oeste,Laura Sánchez,App Móvil,CLI-0179
+TXN-00503,2024-11-02,2024-11-02 13:10:22,"Monitor Samsung 27""",Monitores,1,289.23,289.23,30,86.77,202.46,Centro,Roberto Díaz,Online,CLI-0226
+TXN-00504,2023-07-24,2023-07-24 11:48:46,Laptop HP,Computadoras,3,976.35,2929.05,5,146.45,2782.6,Norte,Carlos Ruiz,Tienda,CLI-0125
+TXN-00505,2023-01-15,2023-01-15 21:07:19,Cable HDMI,Cables,2,14.1,28.2,10,2.82,25.38,Oeste,Roberto Díaz,Tienda,CLI-0170
+TXN-00506,2023-07-28,2023-07-28 21:16:35,"Monitor Samsung 27""",Monitores,1,314.39,314.39,5,15.72,298.67,Oeste,María López,Tienda,CLI-0193
+TXN-00507,2023-02-14,2023-02-14 09:18:12,Cable HDMI,Cables,4,14.04,56.16,25,14.04,42.12,Centro,Sofía Martínez,Tienda,CLI-0239
+TXN-00508,2024-02-02,2024-02-02 19:54:58,Adaptador WiFi,Componentes,3,27.21,81.63,0,0.0,81.63,Este,Carlos Ruiz,Tienda,CLI-0150
+TXN-00509,2023-08-25,2023-08-25 16:45:06,Soporte Laptop,Accesorios,5,43.06,215.3,15,32.3,183.0,Este,Roberto Díaz,Tienda,CLI-0096
+TXN-00510,2024-07-28,2024-07-28 00:02:15,"Monitor Samsung 27""",Monitores,3,300.03,900.0899999999999,20,180.02,720.07,Centro,Sofía Martínez,App Móvil,CLI-0251
+TXN-00511,2023-12-22,2023-12-22 14:40:19,SSD 1TB,Almacenamiento,2,125.85,251.7,0,0.0,251.7,Sur,Sofía Martínez,Tienda,CLI-0132
+TXN-00512,2024-07-22,2024-07-22 07:09:21,Mousepad Gaming,Accesorios,2,19.54,39.08,0,0.0,39.08,Oeste,María López,Tienda,CLI-0196
+TXN-00513,2024-10-02,2024-10-02 15:15:36,Hub USB-C,Accesorios,5,54.6,273.0,30,81.9,191.1,Sur,Laura Sánchez,App Móvil,CLI-0169
+TXN-00514,2024-10-30,2024-10-30 17:43:51,RAM 16GB,Componentes,4,80.67,322.68,5,16.13,306.55,Sur,María López,App Móvil,CLI-0269
+TXN-00515,2024-11-02,2024-11-02 05:20:04,Mousepad Gaming,Accesorios,1,18.53,18.53,0,0.0,18.53,Centro,Carlos Ruiz,Online,CLI-0163
+TXN-00516,2023-11-23,2023-11-23 13:26:19,Soporte Laptop,Accesorios,1,43.03,43.03,0,0.0,43.03,Oeste,Sofía Martínez,Online,CLI-0097
+TXN-00517,2024-09-18,2024-09-18 18:36:39,Mouse Logitech,Accesorios,1,27.78,27.78,0,0.0,27.78,Sur,Juan Pérez,Online,CLI-0014
+TXN-00518,2023-05-18,2023-05-18 18:30:45,Auriculares Bluetooth,Audio,3,54.94,164.82,20,32.96,131.86,Este,María López,Teléfono,CLI-0252
+TXN-00519,2023-08-20,2023-08-20 21:00:59,RAM 16GB,Componentes,6,74.19,445.14,5,22.26,422.88,Este,Laura Sánchez,Online,CLI-0104
+TXN-00520,2024-03-25,2024-03-25 15:44:20,Micrófono USB,Audio,1,65.85,65.85,0,0.0,65.85,Oeste,Juan Pérez,Teléfono,CLI-0208
+TXN-00521,2023-11-17,2023-11-17 20:36:38,Micrófono USB,Audio,2,63.58,127.16,15,19.07,108.09,Centro,Ana García,Tienda,CLI-0232
+TXN-00522,2023-09-09,2023-09-09 15:47:02,RAM 16GB,Componentes,1,85.22,85.22,0,0.0,85.22,Centro,Laura Sánchez,Tienda,CLI-0098
+TXN-00523,2023-10-20,2023-10-20 15:18:39,Webcam HD,Periféricos,5,79.02,395.09999999999997,10,39.51,355.59,Norte,María López,Teléfono,CLI-0232
+TXN-00524,2023-07-04,2023-07-04 20:34:08,Mouse Logitech,Accesorios,3,31.33,93.99,0,0.0,93.99,Oeste,Laura Sánchez,App Móvil,CLI-0231
+TXN-00525,2024-12-30,2024-12-30 14:05:16,Laptop HP,Computadoras,3,842.19,2526.57,30,757.97,1768.6,Este,María López,Tienda,CLI-0047
+TXN-00526,2023-03-29,2023-03-29 15:46:50,Mouse Logitech,Accesorios,2,31.23,62.46,10,6.25,56.21,Centro,María López,Teléfono,CLI-0282
+TXN-00527,2023-12-10,2023-12-10 19:55:09,SSD 1TB,Almacenamiento,2,109.04,218.08,0,0.0,218.08,Sur,María López,Online,CLI-0027
+TXN-00528,2023-10-23,2023-10-23 10:57:08,SSD 1TB,Almacenamiento,1,115.38,115.38,20,23.08,92.3,Sur,Ana García,App Móvil,CLI-0007
+TXN-00529,2024-07-10,2024-07-10 19:56:31,RAM 16GB,Componentes,1,79.95,79.95,20,15.99,63.96,Sur,Juan Pérez,Teléfono,CLI-0233
+TXN-00530,2024-09-06,2024-09-06 17:17:39,SSD 1TB,Almacenamiento,4,118.6,474.4,30,142.32,332.08,Centro,Juan Pérez,Tienda,CLI-0095
+TXN-00531,2023-02-07,2023-02-07 09:42:36,Teclado Mecánico,Accesorios,3,81.98,245.94,10,24.59,221.35,Centro,Sofía Martínez,App Móvil,CLI-0045
+TXN-00532,2023-06-15,2023-06-15 18:42:44,Laptop HP,Computadoras,8,829.59,6636.72,0,0.0,6636.72,Centro,María López,Teléfono,CLI-0297
+TXN-00533,2023-11-03,2023-11-03 15:52:04,Auriculares Bluetooth,Audio,8,65.17,521.36,0,0.0,521.36,Oeste,Carlos Ruiz,App Móvil,CLI-0242
+TXN-00534,2023-12-04,2023-12-04 17:13:44,Teclado Mecánico,Accesorios,2,83.19,166.38,10,16.64,149.74,Sur,Ana García,Tienda,CLI-0293
+TXN-00535,2023-03-31,2023-03-31 20:38:59,Disco Externo 2TB,Almacenamiento,3,98.62,295.86,25,73.96,221.9,Este,Laura Sánchez,App Móvil,CLI-0133
+TXN-00536,2023-12-29,2023-12-29 19:36:31,Hub USB-C,Accesorios,5,50.74,253.70000000000002,30,76.11,177.59,Centro,Roberto Díaz,Teléfono,CLI-0093
+TXN-00537,2023-07-18,2023-07-18 09:29:40,Mousepad Gaming,Accesorios,3,20.43,61.29,10,6.13,55.16,Norte,Juan Pérez,Teléfono,CLI-0212
+TXN-00538,2024-10-14,2024-10-14 19:12:44,Laptop HP,Computadoras,1,870.07,870.07,25,217.52,652.55,Este,Sofía Martínez,Tienda,CLI-0158
+TXN-00539,2023-01-07,2023-01-07 14:21:25,Webcam HD,Periféricos,2,80.1,160.2,10,16.02,144.18,Centro,Ana García,Online,CLI-0100
+TXN-00540,2024-04-30,2024-04-30 19:08:30,Auriculares Bluetooth,Audio,1,64.0,64.0,20,12.8,51.2,Sur,Roberto Díaz,App Móvil,CLI-0237
+TXN-00541,2024-06-17,2024-06-17 20:43:20,Micrófono USB,Audio,5,74.39,371.95,0,0.0,371.95,Centro,Ana García,Online,CLI-0296
+TXN-00542,2023-03-09,2023-03-09 08:53:01,Adaptador WiFi,Componentes,2,24.15,48.3,10,4.83,43.47,Este,Laura Sánchez,Online,CLI-0293
+TXN-00543,2023-04-30,2023-04-30 09:45:54,Cable HDMI,Cables,1,12.7,12.7,30,3.81,8.89,Este,Ana García,App Móvil,CLI-0212
+TXN-00544,2024-01-16,2024-01-16 13:13:33,Mouse Logitech,Accesorios,2,29.97,59.94,5,3.0,56.94,Este,María López,Tienda,CLI-0192
+TXN-00545,2023-04-05,2023-04-05 09:51:30,Micrófono USB,Audio,2,63.51,127.02,5,6.35,120.67,Centro,María López,Online,CLI-0175
+TXN-00546,2023-11-14,2023-11-14 11:49:55,Mousepad Gaming,Accesorios,1,19.92,19.92,25,4.98,14.94,Norte,María López,Online,CLI-0019
+TXN-00547,2023-04-29,2023-04-29 09:43:54,RAM 16GB,Componentes,1,78.19,78.19,25,19.55,58.64,Centro,Carlos Ruiz,App Móvil,CLI-0240
+TXN-00548,2024-11-05,2024-11-05 09:36:48,Mousepad Gaming,Accesorios,2,18.18,36.36,25,9.09,27.27,Este,Juan Pérez,App Móvil,CLI-0103
+TXN-00549,2023-11-23,2023-11-23 19:07:17,"Monitor Samsung 27""",Monitores,2,287.18,574.36,25,143.59,430.77,Sur,María López,App Móvil,CLI-0059
+TXN-00550,2024-06-10,2024-06-10 17:22:35,Laptop HP,Computadoras,3,982.48,2947.44,25,736.86,2210.58,Este,Sofía Martínez,Online,CLI-0146
+TXN-00551,2023-11-15,2023-11-15 14:34:28,Cable HDMI,Cables,2,12.33,24.66,0,0.0,24.66,Norte,María López,Tienda,CLI-0242
+TXN-00552,2024-01-28,2024-01-28 15:25:11,Mousepad Gaming,Accesorios,4,20.69,82.76,0,0.0,82.76,Centro,Roberto Díaz,App Móvil,CLI-0160
+TXN-00553,2023-03-22,2023-03-22 14:36:08,Auriculares Bluetooth,Audio,2,63.8,127.6,25,31.9,95.7,Norte,Roberto Díaz,Tienda,CLI-0234
+TXN-00554,2024-04-26,2024-04-26 12:09:55,Webcam HD,Periféricos,2,82.94,165.88,20,33.18,132.7,Centro,Sofía Martínez,App Móvil,CLI-0201
+TXN-00555,2023-11-29,2023-11-29 09:04:30,Teclado Mecánico,Accesorios,4,93.58,374.32,10,37.43,336.89,Norte,Diego Torres,Teléfono,CLI-0237
+TXN-00556,2024-09-10,2024-09-10 17:06:25,Soporte Laptop,Accesorios,2,37.36,74.72,10,7.47,67.25,Norte,Diego Torres,Tienda,CLI-0155
+TXN-00557,2024-02-28,2024-02-28 12:35:10,Hub USB-C,Accesorios,1,49.6,49.6,30,14.88,34.72,Oeste,Laura Sánchez,Tienda,CLI-0175
+TXN-00558,2024-03-17,2024-03-17 15:36:50,"Monitor Samsung 27""",Monitores,1,318.82,318.82,30,95.65,223.17,Este,Juan Pérez,Online,CLI-0040
+TXN-00559,2024-05-13,2024-05-13 18:29:20,Disco Externo 2TB,Almacenamiento,3,97.74,293.21999999999997,30,87.97,205.25,Centro,Carlos Ruiz,Teléfono,CLI-0091
+TXN-00560,2024-09-04,2024-09-04 18:49:52,Webcam HD,Periféricos,2,87.28,174.56,0,0.0,174.56,Oeste,Diego Torres,Teléfono,CLI-0032
+TXN-00561,2024-08-17,2024-08-17 20:51:00,Mouse Logitech,Accesorios,3,28.3,84.9,0,0.0,84.9,Sur,María López,Teléfono,CLI-0273
+TXN-00562,2024-04-02,2024-04-02 19:56:20,Webcam HD,Periféricos,1,78.23,78.23,30,23.47,54.76,Este,Sofía Martínez,Teléfono,CLI-0177
+TXN-00563,2024-06-06,2024-06-06 11:54:18,Mouse Logitech,Accesorios,1,30.49,30.49,30,9.15,21.34,Norte,Diego Torres,Tienda,CLI-0001
+TXN-00564,2023-04-23,2023-04-23 00:15:27,Disco Externo 2TB,Almacenamiento,1,91.07,91.07,10,9.11,81.96,Centro,Laura Sánchez,App Móvil,CLI-0196
+TXN-00565,2023-08-05,2023-08-05 16:08:12,SSD 1TB,Almacenamiento,1,117.15,117.15,25,29.29,87.86,Centro,Laura Sánchez,App Móvil,CLI-0214
+TXN-00566,2023-05-18,2023-05-18 19:01:09,Teclado Mecánico,Accesorios,2,86.18,172.36,0,0.0,172.36,Oeste,Laura Sánchez,Online,CLI-0044
+TXN-00567,2024-04-11,2024-04-11 22:38:59,Teclado Mecánico,Accesorios,1,92.55,92.55,15,13.88,78.67,Oeste,María López,Teléfono,CLI-0261
+TXN-00568,2024-01-29,2024-01-29 11:27:38,SSD 1TB,Almacenamiento,2,121.24,242.48,20,48.5,193.98,Norte,Roberto Díaz,Online,CLI-0257
+TXN-00569,2024-08-13,2024-08-13 09:36:30,Webcam HD,Periféricos,4,78.56,314.24,25,78.56,235.68,Este,Carlos Ruiz,Teléfono,CLI-0041
+TXN-00570,2023-10-14,2023-10-14 10:33:56,Teclado Mecánico,Accesorios,1,94.13,94.13,25,23.53,70.6,Centro,Carlos Ruiz,Online,CLI-0242
+TXN-00571,2024-12-01,2024-12-01 21:37:19,Adaptador WiFi,Componentes,2,26.2,52.4,0,0.0,52.4,Centro,Ana García,App Móvil,CLI-0274
+TXN-00572,2024-06-08,2024-06-08 18:46:21,Micrófono USB,Audio,3,63.14,189.42000000000002,20,37.88,151.54,Oeste,Diego Torres,App Móvil,CLI-0149
+TXN-00573,2023-11-08,2023-11-08 18:16:03,Teclado Mecánico,Accesorios,1,81.63,81.63,30,24.49,57.14,Oeste,María López,Tienda,CLI-0150
+TXN-00574,2023-10-21,2023-10-21 11:32:04,Micrófono USB,Audio,2,73.31,146.62,0,0.0,146.62,Este,Sofía Martínez,Online,CLI-0144
+TXN-00575,2023-04-25,2023-04-25 18:47:09,Webcam HD,Periféricos,4,85.72,342.88,0,0.0,342.88,Oeste,Diego Torres,Online,CLI-0134
+TXN-00576,2023-07-05,2023-07-05 09:21:05,Micrófono USB,Audio,5,72.8,364.0,20,72.8,291.2,Sur,María López,Teléfono,CLI-0212
+TXN-00577,2024-10-14,2024-10-14 18:46:53,Micrófono USB,Audio,1,68.35,68.35,20,13.67,54.68,Este,Ana García,App Móvil,CLI-0060
+TXN-00578,2024-05-02,2024-05-02 20:48:59,Laptop HP,Computadoras,4,840.16,3360.64,15,504.1,2856.54,Centro,Juan Pérez,Teléfono,CLI-0200
+TXN-00579,2024-03-21,2024-03-21 21:28:24,RAM 16GB,Componentes,2,76.19,152.38,25,38.1,114.28,Este,Ana García,Tienda,CLI-0273
+TXN-00580,2024-09-17,2024-09-17 08:21:17,Adaptador WiFi,Componentes,1,24.26,24.26,15,3.64,20.62,Este,Carlos Ruiz,App Móvil,CLI-0300
+TXN-00581,2024-11-19,2024-11-19 12:33:21,SSD 1TB,Almacenamiento,2,119.06,238.12,5,11.91,226.21,Sur,Diego Torres,Tienda,CLI-0005
+TXN-00582,2023-04-11,2023-04-11 19:28:22,Soporte Laptop,Accesorios,6,36.53,219.18,15,32.88,186.3,Sur,Sofía Martínez,App Móvil,CLI-0099
+TXN-00583,2023-02-28,2023-02-28 21:57:53,Laptop HP,Computadoras,2,814.26,1628.52,0,0.0,1628.52,Sur,Carlos Ruiz,Tienda,CLI-0045
+TXN-00584,2024-11-03,2024-11-03 19:36:51,Soporte Laptop,Accesorios,1,40.83,40.83,15,6.12,34.71,Sur,Carlos Ruiz,Online,CLI-0130
+TXN-00585,2024-10-16,2024-10-16 13:49:27,Webcam HD,Periféricos,2,79.46,158.92,0,0.0,158.92,Este,Sofía Martínez,Online,CLI-0038
+TXN-00586,2024-02-02,2024-02-02 09:16:52,Webcam HD,Periféricos,1,84.42,84.42,15,12.66,71.76,Este,María López,Teléfono,CLI-0036
+TXN-00587,2024-09-16,2024-09-16 19:31:06,RAM 16GB,Componentes,1,87.66,87.66,5,4.38,83.28,Sur,Laura Sánchez,Online,CLI-0055
+TXN-00588,2023-04-16,2023-04-16 10:36:46,Mousepad Gaming,Accesorios,1,19.76,19.76,10,1.98,17.78,Este,Roberto Díaz,Tienda,CLI-0255
+TXN-00589,2023-02-08,2023-02-08 13:09:44,Teclado Mecánico,Accesorios,1,92.74,92.74,0,0.0,92.74,Este,Laura Sánchez,Tienda,CLI-0264
+TXN-00590,2024-05-04,2024-05-04 20:49:51,Disco Externo 2TB,Almacenamiento,1,97.91,97.91,20,19.58,78.33,Norte,Juan Pérez,Tienda,CLI-0197
+TXN-00591,2023-05-05,2023-05-05 14:21:43,Disco Externo 2TB,Almacenamiento,1,95.71,95.71,20,19.14,76.57,Este,Laura Sánchez,Tienda,CLI-0047
+TXN-00592,2023-03-24,2023-03-24 09:41:12,Auriculares Bluetooth,Audio,2,60.41,120.82,10,12.08,108.74,Sur,Ana García,Teléfono,CLI-0098
+TXN-00593,2024-10-07,2024-10-07 16:05:56,Webcam HD,Periféricos,1,83.12,83.12,0,0.0,83.12,Oeste,Juan Pérez,Online,CLI-0019
+TXN-00594,2023-09-02,2023-09-02 10:50:34,"Monitor Samsung 27""",Monitores,1,271.51,271.51,30,81.45,190.06,Este,Roberto Díaz,Teléfono,CLI-0009
+TXN-00595,2023-02-13,2023-02-13 12:51:41,Laptop HP,Computadoras,4,871.06,3484.24,10,348.42,3135.82,Centro,Roberto Díaz,Online,CLI-0297
+TXN-00596,2023-05-25,2023-05-25 09:30:58,"Monitor Samsung 27""",Monitores,2,325.48,650.96,0,0.0,650.96,Centro,Ana García,Online,CLI-0067
+TXN-00597,2023-11-11,2023-11-11 03:29:39,Laptop HP,Computadoras,2,841.0,1682.0,0,0.0,1682.0,Sur,Carlos Ruiz,Tienda,CLI-0059
+TXN-00598,2023-08-14,2023-08-14 12:27:21,RAM 16GB,Componentes,1,81.51,81.51,30,24.45,57.06,Oeste,Diego Torres,Tienda,CLI-0295
+TXN-00599,2023-02-16,2023-02-16 14:04:07,Hub USB-C,Accesorios,1,46.36,46.36,5,2.32,44.04,Este,María López,Teléfono,CLI-0087
+TXN-00600,2024-03-25,2024-03-25 18:02:08,Disco Externo 2TB,Almacenamiento,1,87.65,87.65,0,0.0,87.65,Norte,Laura Sánchez,Online,CLI-0009
+TXN-00601,2023-01-08,2023-01-08 10:45:41,Mousepad Gaming,Accesorios,1,19.94,19.94,0,0.0,19.94,Centro,Sofía Martínez,Teléfono,CLI-0244
+TXN-00602,2024-10-17,2024-10-17 16:26:15,Disco Externo 2TB,Almacenamiento,1,83.27,83.27,0,0.0,83.27,Sur,Ana García,Online,CLI-0256
+TXN-00603,2023-12-23,2023-12-23 17:15:12,Cable HDMI,Cables,1,14.16,14.16,10,1.42,12.74,Norte,Carlos Ruiz,App Móvil,CLI-0277
+TXN-00604,2023-10-11,2023-10-11 10:50:09,Hub USB-C,Accesorios,1,47.18,47.18,5,2.36,44.82,Oeste,Roberto Díaz,Online,CLI-0082
+TXN-00605,2024-10-22,2024-10-22 12:27:16,Adaptador WiFi,Componentes,1,27.1,27.1,0,0.0,27.1,Este,Roberto Díaz,Tienda,CLI-0054
+TXN-00606,2023-06-30,2023-06-30 09:31:32,Disco Externo 2TB,Almacenamiento,2,81.94,163.88,25,40.97,122.91,Norte,Carlos Ruiz,Online,CLI-0228
+TXN-00607,2023-07-23,2023-07-23 14:14:49,Cable HDMI,Cables,1,13.2,13.2,15,1.98,11.22,Norte,Diego Torres,Online,CLI-0051
+TXN-00608,2024-01-20,2024-01-20 02:30:37,"Monitor Samsung 27""",Monitores,1,314.25,314.25,5,15.71,298.54,Oeste,Ana García,Teléfono,CLI-0075
+TXN-00609,2023-07-02,2023-07-02 11:29:46,"Monitor Samsung 27""",Monitores,2,325.66,651.32,20,130.26,521.06,Sur,Diego Torres,App Móvil,CLI-0104
+TXN-00610,2023-03-03,2023-03-03 10:54:29,Auriculares Bluetooth,Audio,2,55.52,111.04,30,33.31,77.73,Oeste,Laura Sánchez,Online,CLI-0176
+TXN-00611,2023-06-10,2023-06-10 19:39:57,"Monitor Samsung 27""",Monitores,1,323.17,323.17,30,96.95,226.22,Sur,Juan Pérez,Tienda,CLI-0211
+TXN-00612,2024-08-28,2024-08-28 16:17:00,Soporte Laptop,Accesorios,3,40.16,120.47999999999999,5,6.02,114.46,Oeste,Juan Pérez,Online,CLI-0168
+TXN-00613,2023-06-02,2023-06-02 00:26:02,SSD 1TB,Almacenamiento,2,121.9,243.8,30,73.14,170.66,Norte,Roberto Díaz,Tienda,CLI-0218
+TXN-00614,2024-04-08,2024-04-08 10:35:48,Hub USB-C,Accesorios,1,48.93,48.93,0,0.0,48.93,Norte,Laura Sánchez,Online,CLI-0068
+TXN-00615,2023-01-17,2023-01-17 13:10:45,Auriculares Bluetooth,Audio,4,57.54,230.16,0,0.0,230.16,Oeste,Ana García,Teléfono,CLI-0238
+TXN-00616,2023-07-09,2023-07-09 14:40:29,Micrófono USB,Audio,4,64.93,259.72,15,38.96,220.76,Norte,Carlos Ruiz,Teléfono,CLI-0171
+TXN-00617,2023-10-04,2023-10-04 18:34:36,Hub USB-C,Accesorios,1,45.32,45.32,15,6.8,38.52,Sur,Carlos Ruiz,App Móvil,CLI-0029
+TXN-00618,2023-02-22,2023-02-22 14:29:39,Hub USB-C,Accesorios,1,54.44,54.44,10,5.44,49.0,Norte,Diego Torres,App Móvil,CLI-0090
+TXN-00619,2024-07-28,2024-07-28 12:08:21,Adaptador WiFi,Componentes,3,25.28,75.84,0,0.0,75.84,Sur,Carlos Ruiz,Teléfono,CLI-0298
+TXN-00620,2023-08-19,2023-08-19 13:32:43,Soporte Laptop,Accesorios,3,43.66,130.98,5,6.55,124.43,Oeste,Sofía Martínez,Tienda,CLI-0033
+TXN-00621,2024-05-28,2024-05-28 10:30:45,Auriculares Bluetooth,Audio,1,58.13,58.13,20,11.63,46.5,Centro,Sofía Martínez,Teléfono,CLI-0189
+TXN-00622,2023-07-12,2023-07-12 14:05:05,Micrófono USB,Audio,1,72.42,72.42,0,0.0,72.42,Oeste,María López,App Móvil,CLI-0040
+TXN-00623,2024-12-14,2024-12-14 11:55:13,Mouse Logitech,Accesorios,1,27.98,27.98,0,0.0,27.98,Centro,Ana García,App Móvil,CLI-0214
+TXN-00624,2024-04-30,2024-04-30 16:47:41,Adaptador WiFi,Componentes,2,25.2,50.4,0,0.0,50.4,Norte,Sofía Martínez,Online,CLI-0033
+TXN-00625,2024-06-16,2024-06-16 15:37:21,Laptop HP,Computadoras,2,966.91,1933.82,5,96.69,1837.13,Este,Roberto Díaz,Teléfono,CLI-0235
+TXN-00626,2023-06-25,2023-06-25 12:30:23,Webcam HD,Periféricos,1,81.07,81.07,10,8.11,72.96,Este,Ana García,Online,CLI-0181
+TXN-00627,2024-09-25,2024-09-25 22:34:18,Webcam HD,Periféricos,2,79.28,158.56,0,0.0,158.56,Sur,María López,Online,CLI-0083
+TXN-00628,2024-08-11,2024-08-11 13:23:11,"Monitor Samsung 27""",Monitores,3,277.01,831.03,10,83.1,747.93,Sur,Ana García,App Móvil,CLI-0177
+TXN-00629,2023-06-16,2023-06-16 10:58:01,Teclado Mecánico,Accesorios,1,87.7,87.7,25,21.92,65.78,Oeste,Roberto Díaz,Online,CLI-0235
+TXN-00630,2024-07-13,2024-07-13 10:41:45,Mousepad Gaming,Accesorios,1,19.27,19.27,0,0.0,19.27,Este,Roberto Díaz,App Móvil,CLI-0294
+TXN-00631,2024-03-28,2024-03-28 10:46:30,Adaptador WiFi,Componentes,3,23.23,69.69,30,20.91,48.78,Norte,María López,Tienda,CLI-0158
+TXN-00632,2024-04-01,2024-04-01 14:03:38,Laptop HP,Computadoras,4,882.28,3529.12,5,176.46,3352.66,Sur,Juan Pérez,App Móvil,CLI-0101
+TXN-00633,2024-11-24,2024-11-24 10:32:25,Laptop HP,Computadoras,2,825.04,1650.08,20,330.02,1320.06,Sur,Roberto Díaz,App Móvil,CLI-0262
+TXN-00634,2024-02-12,2024-02-12 15:23:24,Laptop HP,Computadoras,2,973.51,1947.02,10,194.7,1752.32,Este,Ana García,App Móvil,CLI-0177
+TXN-00635,2024-07-28,2024-07-28 20:56:28,Auriculares Bluetooth,Audio,1,57.69,57.69,20,11.54,46.15,Oeste,Roberto Díaz,App Móvil,CLI-0084
+TXN-00636,2024-02-29,2024-02-29 18:38:05,Micrófono USB,Audio,2,73.18,146.36,15,21.95,124.41,Sur,Juan Pérez,App Móvil,CLI-0244
+TXN-00637,2023-03-09,2023-03-09 18:48:24,Soporte Laptop,Accesorios,2,40.19,80.38,10,8.04,72.34,Norte,Ana García,Teléfono,CLI-0140
+TXN-00638,2024-12-28,2024-12-28 11:12:11,SSD 1TB,Almacenamiento,1,112.19,112.19,20,22.44,89.75,Oeste,Sofía Martínez,Teléfono,CLI-0022
+TXN-00639,2023-11-08,2023-11-08 20:29:14,Soporte Laptop,Accesorios,1,42.6,42.6,30,12.78,29.82,Norte,Ana García,Online,CLI-0135
+TXN-00640,2023-05-08,2023-05-08 13:26:11,Webcam HD,Periféricos,1,87.29,87.29,20,17.46,69.83,Oeste,Juan Pérez,Tienda,CLI-0062
+TXN-00641,2024-09-05,2024-09-05 18:30:36,Micrófono USB,Audio,1,66.87,66.87,0,0.0,66.87,Oeste,Sofía Martínez,Teléfono,CLI-0062
+TXN-00642,2023-01-18,2023-01-18 05:37:03,Auriculares Bluetooth,Audio,1,60.14,60.14,30,18.04,42.1,Sur,Diego Torres,Teléfono,CLI-0070
+TXN-00643,2024-01-05,2024-01-05 14:03:18,Auriculares Bluetooth,Audio,1,55.95,55.95,10,5.6,50.35,Este,Carlos Ruiz,Online,CLI-0094
+TXN-00644,2024-07-10,2024-07-10 14:52:54,Micrófono USB,Audio,1,64.31,64.31,0,0.0,64.31,Este,Sofía Martínez,App Móvil,CLI-0050
+TXN-00645,2023-01-14,2023-01-14 13:23:49,Hub USB-C,Accesorios,1,50.79,50.79,0,0.0,50.79,Oeste,Laura Sánchez,App Móvil,CLI-0084
+TXN-00646,2023-08-15,2023-08-15 17:39:44,Mouse Logitech,Accesorios,4,28.3,113.2,25,28.3,84.9,Centro,Carlos Ruiz,Teléfono,CLI-0236
+TXN-00647,2023-01-18,2023-01-18 13:44:23,Mousepad Gaming,Accesorios,2,18.3,36.6,0,0.0,36.6,Sur,Roberto Díaz,App Móvil,CLI-0089
+TXN-00648,2023-08-16,2023-08-16 20:09:44,Disco Externo 2TB,Almacenamiento,2,86.47,172.94,0,0.0,172.94,Sur,Sofía Martínez,Online,CLI-0108
+TXN-00649,2024-12-08,2024-12-08 10:04:01,Teclado Mecánico,Accesorios,3,98.65,295.95000000000005,15,44.39,251.56,Oeste,Laura Sánchez,Tienda,CLI-0101
+TXN-00650,2024-08-30,2024-08-30 10:58:16,Mouse Logitech,Accesorios,2,27.19,54.38,25,13.6,40.78,Norte,Carlos Ruiz,App Móvil,CLI-0006
+TXN-00651,2024-09-08,2024-09-08 12:11:42,Micrófono USB,Audio,1,64.34,64.34,0,0.0,64.34,Este,Ana García,Tienda,CLI-0075
+TXN-00652,2024-08-16,2024-08-16 11:54:32,Soporte Laptop,Accesorios,2,41.96,83.92,10,8.39,75.53,Centro,Juan Pérez,Tienda,CLI-0051
+TXN-00653,2024-06-25,2024-06-25 12:18:10,Soporte Laptop,Accesorios,2,40.61,81.22,0,0.0,81.22,Centro,Ana García,Tienda,CLI-0110
+TXN-00654,2024-01-11,2024-01-11 11:28:43,Mousepad Gaming,Accesorios,3,20.01,60.03,20,12.01,48.02,Norte,María López,App Móvil,CLI-0195
+TXN-00655,2024-02-22,2024-02-22 14:07:29,SSD 1TB,Almacenamiento,2,113.13,226.26,5,11.31,214.95,Norte,María López,Teléfono,CLI-0185
+TXN-00656,2023-03-26,2023-03-26 10:24:18,Disco Externo 2TB,Almacenamiento,1,86.18,86.18,0,0.0,86.18,Oeste,Sofía Martínez,Teléfono,CLI-0116
+TXN-00657,2023-07-13,2023-07-13 15:43:23,Hub USB-C,Accesorios,1,49.06,49.06,15,7.36,41.7,Sur,Ana García,Teléfono,CLI-0054
+TXN-00658,2023-05-03,2023-05-03 15:44:37,SSD 1TB,Almacenamiento,1,118.5,118.5,0,0.0,118.5,Norte,María López,Tienda,CLI-0187
+TXN-00659,2024-02-18,2024-02-18 15:46:31,"Monitor Samsung 27""",Monitores,2,290.31,580.62,30,174.19,406.43,Este,Sofía Martínez,Teléfono,CLI-0183
+TXN-00660,2024-05-11,2024-05-11 11:49:29,RAM 16GB,Componentes,2,82.66,165.32,15,24.8,140.52,Norte,Carlos Ruiz,App Móvil,CLI-0251
+TXN-00661,2023-01-31,2023-01-31 09:53:04,RAM 16GB,Componentes,1,75.68,75.68,0,0.0,75.68,Oeste,Ana García,Online,CLI-0196
+TXN-00662,2023-11-07,2023-11-07 10:48:04,Cable HDMI,Cables,6,13.46,80.76,0,0.0,80.76,Centro,Roberto Díaz,Teléfono,CLI-0104
+TXN-00663,2024-05-31,2024-05-31 14:51:55,Webcam HD,Periféricos,2,82.58,165.16,20,33.03,132.13,Centro,Ana García,Tienda,CLI-0221
+TXN-00664,2024-04-05,2024-04-05 15:28:29,Mousepad Gaming,Accesorios,1,21.65,21.65,15,3.25,18.4,Norte,Ana García,Online,CLI-0286
+TXN-00665,2024-12-24,2024-12-24 15:08:19,Adaptador WiFi,Componentes,1,26.79,26.79,10,2.68,24.11,Oeste,Roberto Díaz,Tienda,CLI-0292
+TXN-00666,2024-12-02,2024-12-02 16:30:35,Adaptador WiFi,Componentes,1,24.94,24.94,25,6.24,18.7,Sur,Ana García,Teléfono,CLI-0135
+TXN-00667,2024-09-23,2024-09-23 21:18:20,RAM 16GB,Componentes,1,81.45,81.45,15,12.22,69.23,Norte,Ana García,Tienda,CLI-0066
+TXN-00668,2023-01-28,2023-01-28 19:21:24,Soporte Laptop,Accesorios,1,38.92,38.92,30,11.68,27.24,Norte,Laura Sánchez,App Móvil,CLI-0183
+TXN-00669,2023-09-11,2023-09-11 13:37:05,SSD 1TB,Almacenamiento,1,116.42,116.42,5,5.82,110.6,Norte,Sofía Martínez,Tienda,CLI-0173
+TXN-00670,2023-02-08,2023-02-08 15:36:32,Teclado Mecánico,Accesorios,1,81.35,81.35,10,8.14,73.21,Oeste,Sofía Martínez,Tienda,CLI-0241
+TXN-00671,2024-01-22,2024-01-22 14:36:06,Cable HDMI,Cables,1,11.75,11.75,10,1.18,10.57,Oeste,Carlos Ruiz,Online,CLI-0173
+TXN-00672,2023-06-20,2023-06-20 14:27:12,RAM 16GB,Componentes,4,80.03,320.12,10,32.01,288.11,Oeste,Carlos Ruiz,Online,CLI-0148
+TXN-00673,2024-02-16,2024-02-16 19:47:05,Webcam HD,Periféricos,1,72.75,72.75,30,21.82,50.93,Centro,Carlos Ruiz,App Móvil,CLI-0140
+TXN-00674,2024-05-01,2024-05-01 14:50:04,Mouse Logitech,Accesorios,2,30.39,60.78,25,15.2,45.58,Este,Sofía Martínez,Teléfono,CLI-0277
+TXN-00675,2023-09-15,2023-09-15 16:42:48,Auriculares Bluetooth,Audio,2,56.39,112.78,15,16.92,95.86,Centro,María López,Tienda,CLI-0265
+TXN-00676,2023-08-07,2023-08-07 20:29:17,Soporte Laptop,Accesorios,6,37.48,224.88,20,44.98,179.9,Centro,Laura Sánchez,Tienda,CLI-0268
+TXN-00677,2023-09-04,2023-09-04 19:48:19,"Monitor Samsung 27""",Monitores,1,291.85,291.85,0,0.0,291.85,Oeste,Laura Sánchez,App Móvil,CLI-0033
+TXN-00678,2023-10-01,2023-10-01 20:10:16,Adaptador WiFi,Componentes,1,23.51,23.51,15,3.53,19.98,Centro,Juan Pérez,Teléfono,CLI-0123
+TXN-00679,2023-09-09,2023-09-09 13:29:31,Mouse Logitech,Accesorios,5,27.89,139.45,0,0.0,139.45,Centro,Laura Sánchez,Teléfono,CLI-0019
+TXN-00680,2023-01-30,2023-01-30 21:17:42,"Monitor Samsung 27""",Monitores,4,279.55,1118.2,0,0.0,1118.2,Centro,María López,Tienda,CLI-0249
+TXN-00681,2023-11-18,2023-11-18 10:57:26,Micrófono USB,Audio,3,63.27,189.81,0,0.0,189.81,Este,Carlos Ruiz,Teléfono,CLI-0072
+TXN-00682,2023-05-04,2023-05-04 18:49:59,"Monitor Samsung 27""",Monitores,1,276.71,276.71,25,69.18,207.53,Centro,Sofía Martínez,Teléfono,CLI-0047
+TXN-00683,2023-12-04,2023-12-04 23:24:51,"Monitor Samsung 27""",Monitores,1,305.98,305.98,10,30.6,275.38,Sur,Laura Sánchez,Online,CLI-0074
+TXN-00684,2024-03-26,2024-03-26 18:03:31,Mouse Logitech,Accesorios,2,28.04,56.08,10,5.61,50.47,Centro,Diego Torres,Tienda,CLI-0163
+TXN-00685,2023-10-12,2023-10-12 04:23:30,Hub USB-C,Accesorios,4,49.23,196.92,5,9.85,187.07,Este,Sofía Martínez,Tienda,CLI-0018
+TXN-00686,2024-12-08,2024-12-08 21:15:16,Soporte Laptop,Accesorios,2,41.91,83.82,0,0.0,83.82,Centro,Laura Sánchez,App Móvil,CLI-0186
+TXN-00687,2024-07-01,2024-07-01 14:24:00,Mousepad Gaming,Accesorios,2,21.24,42.48,0,0.0,42.48,Oeste,Sofía Martínez,App Móvil,CLI-0047
+TXN-00688,2023-11-01,2023-11-01 11:58:28,Mousepad Gaming,Accesorios,1,21.28,21.28,5,1.06,20.22,Este,Laura Sánchez,Tienda,CLI-0141
+TXN-00689,2024-04-27,2024-04-27 14:45:27,Soporte Laptop,Accesorios,3,36.63,109.89000000000001,20,21.98,87.91,Norte,María López,App Móvil,CLI-0260
+TXN-00690,2024-07-14,2024-07-14 16:44:01,Mouse Logitech,Accesorios,1,29.1,29.1,30,8.73,20.37,Norte,María López,Teléfono,CLI-0070
+TXN-00691,2023-11-18,2023-11-18 10:10:15,Laptop HP,Computadoras,1,882.11,882.11,10,88.21,793.9,Centro,María López,Teléfono,CLI-0164
+TXN-00692,2023-09-24,2023-09-24 18:52:20,RAM 16GB,Componentes,2,79.64,159.28,0,0.0,159.28,Este,Juan Pérez,Tienda,CLI-0213
+TXN-00693,2024-08-07,2024-08-07 09:59:35,Auriculares Bluetooth,Audio,2,56.17,112.34,15,16.85,95.49,Centro,Juan Pérez,Tienda,CLI-0237
+TXN-00694,2023-02-20,2023-02-20 15:38:16,"Monitor Samsung 27""",Monitores,1,285.7,285.7,0,0.0,285.7,Sur,Carlos Ruiz,App Móvil,CLI-0088
+TXN-00695,2024-03-21,2024-03-21 16:52:43,Cable HDMI,Cables,1,12.0,12.0,25,3.0,9.0,Oeste,Carlos Ruiz,Online,CLI-0105
+TXN-00696,2023-10-22,2023-10-22 15:08:27,"Monitor Samsung 27""",Monitores,2,326.75,653.5,10,65.35,588.15,Sur,Juan Pérez,App Móvil,CLI-0097
+TXN-00697,2023-01-30,2023-01-30 13:15:39,SSD 1TB,Almacenamiento,1,112.32,112.32,0,0.0,112.32,Oeste,Juan Pérez,App Móvil,CLI-0299
+TXN-00698,2023-01-11,2023-01-11 14:44:25,Adaptador WiFi,Componentes,2,25.73,51.46,0,0.0,51.46,Sur,Laura Sánchez,Teléfono,CLI-0132
+TXN-00699,2023-02-23,2023-02-23 12:30:58,Mouse Logitech,Accesorios,1,27.56,27.56,0,0.0,27.56,Este,Ana García,Tienda,CLI-0130
+TXN-00700,2024-02-09,2024-02-09 11:57:35,Hub USB-C,Accesorios,2,51.19,102.38,10,10.24,92.14,Norte,María López,App Móvil,CLI-0087
+TXN-00701,2024-04-24,2024-04-24 14:45:33,Hub USB-C,Accesorios,2,49.92,99.84,10,9.98,89.86,Oeste,María López,App Móvil,CLI-0060
+TXN-00702,2024-05-26,2024-05-26 08:47:23,Auriculares Bluetooth,Audio,1,54.52,54.52,0,0.0,54.52,Oeste,Sofía Martínez,App Móvil,CLI-0136
+TXN-00703,2023-11-20,2023-11-20 16:48:09,Hub USB-C,Accesorios,1,48.12,48.12,0,0.0,48.12,Centro,Roberto Díaz,Tienda,CLI-0097
+TXN-00704,2023-02-06,2023-02-06 11:45:29,Teclado Mecánico,Accesorios,1,81.97,81.97,0,0.0,81.97,Oeste,Carlos Ruiz,Teléfono,CLI-0021
+TXN-00705,2024-05-11,2024-05-11 10:54:46,RAM 16GB,Componentes,1,77.69,77.69,25,19.42,58.27,Sur,Carlos Ruiz,App Móvil,CLI-0048
+TXN-00706,2023-06-22,2023-06-22 13:36:57,"Monitor Samsung 27""",Monitores,6,322.08,1932.48,0,0.0,1932.48,Centro,Juan Pérez,Tienda,CLI-0270
+TXN-00707,2023-03-20,2023-03-20 16:43:06,Micrófono USB,Audio,1,70.98,70.98,15,10.65,60.33,Este,Ana García,App Móvil,CLI-0063
+TXN-00708,2023-11-28,2023-11-28 10:29:53,SSD 1TB,Almacenamiento,3,116.96,350.88,0,0.0,350.88,Oeste,Roberto Díaz,App Móvil,CLI-0003
+TXN-00709,2024-04-08,2024-04-08 20:46:58,Auriculares Bluetooth,Audio,1,65.63,65.63,30,19.69,45.94,Centro,María López,Online,CLI-0025
+TXN-00710,2023-02-26,2023-02-26 17:38:24,Micrófono USB,Audio,2,72.0,144.0,10,14.4,129.6,Norte,Laura Sánchez,App Móvil,CLI-0092
+TXN-00711,2023-04-02,2023-04-02 12:10:24,"Monitor Samsung 27""",Monitores,3,327.89,983.67,15,147.55,836.12,Oeste,Sofía Martínez,Online,CLI-0062
+TXN-00712,2023-11-14,2023-11-14 19:08:22,Webcam HD,Periféricos,2,79.84,159.68,15,23.95,135.73,Norte,Diego Torres,Online,CLI-0251
+TXN-00713,2023-10-02,2023-10-02 15:05:48,RAM 16GB,Componentes,2,86.16,172.32,20,34.46,137.86,Oeste,Diego Torres,Online,CLI-0223
+TXN-00714,2024-06-09,2024-06-09 16:43:14,Adaptador WiFi,Componentes,2,24.62,49.24,0,0.0,49.24,Sur,Roberto Díaz,Tienda,CLI-0149
+TXN-00715,2023-11-04,2023-11-04 11:43:57,RAM 16GB,Componentes,1,78.99,78.99,20,15.8,63.19,Este,Juan Pérez,Teléfono,CLI-0152
+TXN-00716,2023-02-16,2023-02-16 17:27:26,Cable HDMI,Cables,4,11.81,47.24,0,0.0,47.24,Norte,Roberto Díaz,App Móvil,CLI-0182
+TXN-00717,2023-01-17,2023-01-17 19:29:11,Webcam HD,Periféricos,3,81.36,244.07999999999998,25,61.02,183.06,Sur,Laura Sánchez,Tienda,CLI-0043
+TXN-00718,2023-11-18,2023-11-18 16:48:42,SSD 1TB,Almacenamiento,5,129.03,645.15,10,64.52,580.63,Oeste,Sofía Martínez,App Móvil,CLI-0096
+TXN-00719,2023-09-23,2023-09-23 03:27:34,"Monitor Samsung 27""",Monitores,1,281.1,281.1,30,84.33,196.77,Norte,Ana García,Teléfono,CLI-0060
+TXN-00720,2024-04-16,2024-04-16 19:47:38,Laptop HP,Computadoras,3,840.9,2522.7,20,504.54,2018.16,Oeste,Sofía Martínez,App Móvil,CLI-0203
+TXN-00721,2023-05-19,2023-05-19 10:52:01,Micrófono USB,Audio,5,67.23,336.15000000000003,0,0.0,336.15,Sur,Ana García,Online,CLI-0247
+TXN-00722,2024-03-22,2024-03-22 17:12:05,Adaptador WiFi,Componentes,1,23.22,23.22,5,1.16,22.06,Este,Roberto Díaz,Online,CLI-0243
+TXN-00723,2023-06-06,2023-06-06 16:31:30,SSD 1TB,Almacenamiento,1,108.51,108.51,0,0.0,108.51,Norte,Roberto Díaz,Online,CLI-0104
+TXN-00724,2023-02-22,2023-02-22 10:40:54,Webcam HD,Periféricos,3,81.1,243.29999999999998,15,36.49,206.81,Oeste,Laura Sánchez,Teléfono,CLI-0297
+TXN-00725,2023-02-07,2023-02-07 16:32:37,Cable HDMI,Cables,2,13.59,27.18,10,2.72,24.46,Centro,Roberto Díaz,Online,CLI-0032
+TXN-00726,2023-11-20,2023-11-20 13:57:41,Hub USB-C,Accesorios,3,45.18,135.54,30,40.66,94.88,Oeste,Roberto Díaz,Tienda,CLI-0254
+TXN-00727,2024-04-04,2024-04-04 09:10:18,Cable HDMI,Cables,1,14.13,14.13,10,1.41,12.72,Sur,Roberto Díaz,App Móvil,CLI-0225
+TXN-00728,2024-12-02,2024-12-02 18:54:53,"Monitor Samsung 27""",Monitores,3,300.45,901.3499999999999,30,270.4,630.95,Oeste,María López,App Móvil,CLI-0200
+TXN-00729,2024-04-28,2024-04-28 11:39:13,SSD 1TB,Almacenamiento,1,127.98,127.98,10,12.8,115.18,Este,Carlos Ruiz,Teléfono,CLI-0067
+TXN-00730,2024-05-18,2024-05-18 15:31:19,Teclado Mecánico,Accesorios,1,84.58,84.58,30,25.37,59.21,Sur,Juan Pérez,Tienda,CLI-0010
+TXN-00731,2024-11-24,2024-11-24 17:02:51,Auriculares Bluetooth,Audio,1,64.56,64.56,10,6.46,58.1,Norte,Diego Torres,Teléfono,CLI-0059
+TXN-00732,2023-08-18,2023-08-18 14:50:22,Cable HDMI,Cables,3,12.28,36.839999999999996,25,9.21,27.63,Norte,Sofía Martínez,Online,CLI-0264
+TXN-00733,2024-03-24,2024-03-24 21:07:06,Cable HDMI,Cables,2,13.43,26.86,0,0.0,26.86,Centro,Carlos Ruiz,Tienda,CLI-0260
+TXN-00734,2023-07-30,2023-07-30 05:46:18,Mouse Logitech,Accesorios,2,27.99,55.98,0,0.0,55.98,Oeste,Roberto Díaz,Tienda,CLI-0079
+TXN-00735,2023-05-06,2023-05-06 14:26:49,Adaptador WiFi,Componentes,1,24.31,24.31,0,0.0,24.31,Norte,Juan Pérez,Teléfono,CLI-0175
+TXN-00736,2023-09-30,2023-09-30 21:26:23,Webcam HD,Periféricos,4,80.07,320.28,0,0.0,320.28,Sur,María López,Teléfono,CLI-0117
+TXN-00737,2024-02-24,2024-02-24 16:50:43,Teclado Mecánico,Accesorios,1,95.42,95.42,15,14.31,81.11,Este,Ana García,Teléfono,CLI-0075
+TXN-00738,2023-03-13,2023-03-13 14:25:49,Micrófono USB,Audio,3,63.13,189.39000000000001,25,47.35,142.04,Sur,Laura Sánchez,Tienda,CLI-0202
+TXN-00739,2024-08-11,2024-08-11 19:45:51,Micrófono USB,Audio,2,63.51,127.02,0,0.0,127.02,Centro,Sofía Martínez,Teléfono,CLI-0206
+TXN-00740,2023-11-08,2023-11-08 14:58:22,Mousepad Gaming,Accesorios,1,20.71,20.71,25,5.18,15.53,Norte,Sofía Martínez,Online,CLI-0207
+TXN-00741,2024-10-01,2024-10-01 19:28:44,RAM 16GB,Componentes,2,82.29,164.58,25,41.14,123.44,Este,Laura Sánchez,Online,CLI-0155
+TXN-00742,2024-02-04,2024-02-04 20:56:08,Mouse Logitech,Accesorios,1,27.21,27.21,10,2.72,24.49,Centro,Sofía Martínez,Online,CLI-0048
+TXN-00743,2023-12-15,2023-12-15 11:01:01,Hub USB-C,Accesorios,3,50.51,151.53,25,37.88,113.65,Centro,Sofía Martínez,Online,CLI-0156
+TXN-00744,2023-04-24,2023-04-24 14:16:40,Disco Externo 2TB,Almacenamiento,2,88.6,177.2,25,44.3,132.9,Centro,Diego Torres,Tienda,CLI-0025
+TXN-00745,2024-04-04,2024-04-04 20:00:29,Micrófono USB,Audio,1,72.1,72.1,0,0.0,72.1,Este,Juan Pérez,Online,CLI-0180
+TXN-00746,2024-11-19,2024-11-19 15:33:47,Webcam HD,Periféricos,4,76.54,306.16,30,91.85,214.31,Sur,Carlos Ruiz,App Móvil,CLI-0265
+TXN-00747,2024-04-10,2024-04-10 20:27:53,Cable HDMI,Cables,1,12.19,12.19,10,1.22,10.97,Oeste,Carlos Ruiz,Tienda,CLI-0032
+TXN-00748,2023-08-08,2023-08-08 14:43:33,SSD 1TB,Almacenamiento,2,129.31,258.62,20,51.72,206.9,Oeste,Laura Sánchez,App Móvil,CLI-0300
+TXN-00749,2024-12-06,2024-12-06 15:46:26,RAM 16GB,Componentes,4,82.17,328.68,20,65.74,262.94,Sur,María López,Online,CLI-0249
+TXN-00750,2024-06-25,2024-06-25 12:29:30,Disco Externo 2TB,Almacenamiento,2,89.23,178.46,25,44.62,133.84,Norte,María López,App Móvil,CLI-0061
+TXN-00751,2023-05-04,2023-05-04 13:02:33,Cable HDMI,Cables,1,13.91,13.91,0,0.0,13.91,Sur,Carlos Ruiz,App Móvil,CLI-0157
+TXN-00752,2023-01-29,2023-01-29 11:50:37,Auriculares Bluetooth,Audio,5,57.63,288.15000000000003,20,57.63,230.52,Oeste,Ana García,App Móvil,CLI-0146
+TXN-00753,2023-01-03,2023-01-03 14:04:55,"Monitor Samsung 27""",Monitores,2,280.98,561.96,20,112.39,449.57,Norte,Laura Sánchez,Teléfono,CLI-0294
+TXN-00754,2024-01-22,2024-01-22 20:53:38,Webcam HD,Periféricos,1,81.04,81.04,10,8.1,72.94,Sur,María López,Teléfono,CLI-0231
+TXN-00755,2023-04-02,2023-04-02 19:39:26,Adaptador WiFi,Componentes,1,24.74,24.74,10,2.47,22.27,Oeste,Juan Pérez,Teléfono,CLI-0174
+TXN-00756,2023-10-12,2023-10-12 11:45:01,Hub USB-C,Accesorios,3,45.45,136.35000000000002,20,27.27,109.08,Centro,Sofía Martínez,Tienda,CLI-0287
+TXN-00757,2024-07-08,2024-07-08 09:36:33,Mouse Logitech,Accesorios,2,28.15,56.3,30,16.89,39.41,Sur,Roberto Díaz,Tienda,CLI-0062
+TXN-00758,2023-01-20,2023-01-20 12:15:53,Adaptador WiFi,Componentes,2,27.17,54.34,0,0.0,54.34,Centro,Roberto Díaz,Tienda,CLI-0274
+TXN-00759,2023-02-16,2023-02-16 09:21:27,Cable HDMI,Cables,4,12.52,50.08,30,15.02,35.06,Sur,Laura Sánchez,Tienda,CLI-0271
+TXN-00760,2023-04-28,2023-04-28 17:10:18,Auriculares Bluetooth,Audio,3,58.57,175.71,0,0.0,175.71,Sur,María López,App Móvil,CLI-0046
+TXN-00761,2024-11-25,2024-11-25 18:20:11,Teclado Mecánico,Accesorios,1,86.51,86.51,15,12.98,73.53,Norte,Ana García,App Móvil,CLI-0200
+TXN-00762,2023-11-28,2023-11-28 10:03:12,Mouse Logitech,Accesorios,1,28.91,28.91,15,4.34,24.57,Sur,Juan Pérez,Teléfono,CLI-0261
+TXN-00763,2023-10-03,2023-10-03 16:35:26,Micrófono USB,Audio,1,70.05,70.05,0,0.0,70.05,Norte,Roberto Díaz,Tienda,CLI-0209
+TXN-00764,2023-10-03,2023-10-03 18:43:06,Adaptador WiFi,Componentes,3,23.66,70.98,0,0.0,70.98,Sur,María López,App Móvil,CLI-0291
+TXN-00765,2023-07-28,2023-07-28 11:23:34,SSD 1TB,Almacenamiento,1,118.69,118.69,25,29.67,89.02,Sur,Juan Pérez,Teléfono,CLI-0285
+TXN-00766,2024-09-27,2024-09-27 11:00:03,RAM 16GB,Componentes,2,72.66,145.32,20,29.06,116.26,Oeste,Sofía Martínez,App Móvil,CLI-0195
+TXN-00767,2024-08-22,2024-08-22 09:02:10,Auriculares Bluetooth,Audio,3,64.1,192.29999999999998,5,9.62,182.68,Centro,Carlos Ruiz,App Móvil,CLI-0046
+TXN-00768,2024-07-23,2024-07-23 13:13:39,SSD 1TB,Almacenamiento,4,124.75,499.0,0,0.0,499.0,Centro,Diego Torres,App Móvil,CLI-0134
+TXN-00769,2023-09-09,2023-09-09 14:21:13,Micrófono USB,Audio,1,72.9,72.9,10,7.29,65.61,Oeste,Diego Torres,Tienda,CLI-0069
+TXN-00770,2024-05-02,2024-05-02 09:43:11,Adaptador WiFi,Componentes,3,27.1,81.30000000000001,30,24.39,56.91,Oeste,Roberto Díaz,Teléfono,CLI-0276
+TXN-00771,2024-07-05,2024-07-05 19:28:43,Mouse Logitech,Accesorios,1,31.71,31.71,0,0.0,31.71,Norte,Diego Torres,Teléfono,CLI-0184
+TXN-00772,2023-05-08,2023-05-08 12:28:00,SSD 1TB,Almacenamiento,3,112.24,336.71999999999997,0,0.0,336.72,Sur,Ana García,App Móvil,CLI-0184
+TXN-00773,2024-10-02,2024-10-02 20:14:14,"Monitor Samsung 27""",Monitores,1,275.39,275.39,30,82.62,192.77,Oeste,Diego Torres,Tienda,CLI-0144
+TXN-00774,2023-08-03,2023-08-03 19:25:07,RAM 16GB,Componentes,1,86.46,86.46,30,25.94,60.52,Este,Roberto Díaz,Online,CLI-0283
+TXN-00775,2024-11-19,2024-11-19 18:11:04,"Monitor Samsung 27""",Monitores,3,309.58,928.74,30,278.62,650.12,Centro,María López,Tienda,CLI-0066
+TXN-00776,2024-06-19,2024-06-19 13:12:54,Webcam HD,Periféricos,1,86.93,86.93,5,4.35,82.58,Norte,Sofía Martínez,Teléfono,CLI-0002
+TXN-00777,2023-11-27,2023-11-27 15:17:07,SSD 1TB,Almacenamiento,1,123.37,123.37,0,0.0,123.37,Centro,Roberto Díaz,Teléfono,CLI-0186
+TXN-00778,2023-02-18,2023-02-18 15:34:28,Hub USB-C,Accesorios,3,52.58,157.74,5,7.89,149.85,Este,Ana García,Teléfono,CLI-0100
+TXN-00779,2023-01-26,2023-01-26 07:44:27,Auriculares Bluetooth,Audio,3,54.97,164.91,30,49.47,115.44,Norte,Juan Pérez,Online,CLI-0085
+TXN-00780,2023-01-29,2023-01-29 21:01:37,Auriculares Bluetooth,Audio,2,57.72,115.44,0,0.0,115.44,Este,Sofía Martínez,Online,CLI-0056
+TXN-00781,2023-02-25,2023-02-25 16:50:15,RAM 16GB,Componentes,2,75.8,151.6,10,15.16,136.44,Norte,Roberto Díaz,Tienda,CLI-0229
+TXN-00782,2023-02-04,2023-02-04 20:04:50,Cable HDMI,Cables,2,12.02,24.04,0,0.0,24.04,Sur,Ana García,Teléfono,CLI-0029
+TXN-00783,2023-03-09,2023-03-09 09:35:03,Webcam HD,Periféricos,1,81.76,81.76,15,12.26,69.5,Este,Laura Sánchez,Teléfono,CLI-0050
+TXN-00784,2024-09-05,2024-09-05 18:00:29,Cable HDMI,Cables,1,13.64,13.64,5,0.68,12.96,Oeste,Roberto Díaz,Teléfono,CLI-0052
+TXN-00785,2024-04-09,2024-04-09 18:12:06,Auriculares Bluetooth,Audio,1,61.8,61.8,0,0.0,61.8,Norte,Ana García,Tienda,CLI-0100
+TXN-00786,2023-09-20,2023-09-20 16:46:39,Mousepad Gaming,Accesorios,4,20.28,81.12,25,20.28,60.84,Oeste,María López,Online,CLI-0071
+TXN-00787,2023-11-16,2023-11-16 17:41:48,Micrófono USB,Audio,2,63.61,127.22,0,0.0,127.22,Este,Sofía Martínez,Online,CLI-0076
+TXN-00788,2023-10-26,2023-10-26 09:33:37,RAM 16GB,Componentes,2,76.93,153.86,10,15.39,138.47,Sur,Ana García,Online,CLI-0260
+TXN-00789,2024-03-08,2024-03-08 12:40:58,Soporte Laptop,Accesorios,2,42.67,85.34,0,0.0,85.34,Sur,Carlos Ruiz,App Móvil,CLI-0097
+TXN-00790,2024-09-06,2024-09-06 18:36:21,Adaptador WiFi,Componentes,5,24.87,124.35000000000001,20,24.87,99.48,Centro,Sofía Martínez,Teléfono,CLI-0169
+TXN-00791,2024-05-22,2024-05-22 09:40:14,Teclado Mecánico,Accesorios,1,82.88,82.88,0,0.0,82.88,Sur,Roberto Díaz,Online,CLI-0123
+TXN-00792,2024-01-20,2024-01-20 11:52:00,RAM 16GB,Componentes,2,83.74,167.48,10,16.75,150.73,Este,Ana García,Tienda,CLI-0184
+TXN-00793,2023-10-25,2023-10-25 19:37:58,Laptop HP,Computadoras,2,909.83,1819.66,0,0.0,1819.66,Este,Ana García,Tienda,CLI-0102
+TXN-00794,2023-09-26,2023-09-26 14:54:35,"Monitor Samsung 27""",Monitores,2,287.04,574.08,5,28.7,545.38,Sur,María López,Online,CLI-0012
+TXN-00795,2023-01-22,2023-01-22 04:24:41,Teclado Mecánico,Accesorios,1,96.16,96.16,0,0.0,96.16,Norte,Diego Torres,Online,CLI-0157
+TXN-00796,2024-11-07,2024-11-07 17:51:39,RAM 16GB,Componentes,4,75.83,303.32,10,30.33,272.99,Oeste,Carlos Ruiz,Tienda,CLI-0074
+TXN-00797,2023-07-16,2023-07-16 20:23:20,Mousepad Gaming,Accesorios,5,21.69,108.45,5,5.42,103.03,Centro,Laura Sánchez,Online,CLI-0024
+TXN-00798,2024-07-02,2024-07-02 11:20:15,Micrófono USB,Audio,2,71.61,143.22,5,7.16,136.06,Norte,Sofía Martínez,Online,CLI-0261
+TXN-00799,2023-03-25,2023-03-25 21:42:39,Cable HDMI,Cables,2,13.99,27.98,5,1.4,26.58,Norte,María López,Teléfono,CLI-0261
+TXN-00800,2023-07-03,2023-07-03 14:33:44,Auriculares Bluetooth,Audio,4,59.97,239.88,20,47.98,191.9,Oeste,Roberto Díaz,Teléfono,CLI-0138
+TXN-00801,2024-10-27,2024-10-27 12:57:12,Cable HDMI,Cables,3,12.73,38.19,30,11.46,26.73,Oeste,Juan Pérez,Teléfono,CLI-0112
+TXN-00802,2024-08-08,2024-08-08 14:16:35,Webcam HD,Periféricos,1,78.79,78.79,15,11.82,66.97,Norte,María López,Tienda,CLI-0152
+TXN-00803,2024-08-20,2024-08-20 17:39:21,RAM 16GB,Componentes,2,80.29,160.58,5,8.03,152.55,Oeste,Roberto Díaz,Teléfono,CLI-0222
+TXN-00804,2023-11-21,2023-11-21 09:11:28,SSD 1TB,Almacenamiento,2,116.81,233.62,20,46.72,186.9,Sur,Sofía Martínez,Tienda,CLI-0184
+TXN-00805,2024-06-09,2024-06-09 10:50:17,Mousepad Gaming,Accesorios,2,18.32,36.64,25,9.16,27.48,Sur,Carlos Ruiz,Tienda,CLI-0037
+TXN-00806,2023-12-08,2023-12-08 14:16:19,Auriculares Bluetooth,Audio,3,54.45,163.35000000000002,5,8.17,155.18,Este,Juan Pérez,Online,CLI-0279
+TXN-00807,2023-10-16,2023-10-16 12:25:52,Mousepad Gaming,Accesorios,5,19.04,95.19999999999999,10,9.52,85.68,Centro,Ana García,Teléfono,CLI-0263
+TXN-00808,2023-08-22,2023-08-22 20:13:30,Micrófono USB,Audio,4,76.31,305.24,15,45.79,259.45,Sur,Roberto Díaz,Teléfono,CLI-0175
+TXN-00809,2024-03-15,2024-03-15 20:26:13,Micrófono USB,Audio,2,64.19,128.38,5,6.42,121.96,Oeste,Roberto Díaz,Tienda,CLI-0192
+TXN-00810,2023-11-09,2023-11-09 00:31:51,Teclado Mecánico,Accesorios,1,91.38,91.38,0,0.0,91.38,Este,Diego Torres,Online,CLI-0215
+TXN-00811,2024-12-08,2024-12-08 14:37:01,SSD 1TB,Almacenamiento,6,124.45,746.7,15,112.01,634.69,Centro,Ana García,Online,CLI-0079
+TXN-00812,2024-09-14,2024-09-14 15:24:13,Auriculares Bluetooth,Audio,3,60.81,182.43,30,54.73,127.7,Oeste,Carlos Ruiz,Teléfono,CLI-0097
+TXN-00813,2024-04-07,2024-04-07 13:05:10,RAM 16GB,Componentes,1,73.73,73.73,30,22.12,51.61,Norte,María López,Tienda,CLI-0251
+TXN-00814,2024-01-31,2024-01-31 12:18:42,Laptop HP,Computadoras,4,843.6,3374.4,0,0.0,3374.4,Centro,Carlos Ruiz,Teléfono,CLI-0030
+TXN-00815,2023-12-01,2023-12-01 13:25:10,Auriculares Bluetooth,Audio,4,60.21,240.84,0,0.0,240.84,Norte,María López,Teléfono,CLI-0245
+TXN-00816,2023-05-14,2023-05-14 09:27:52,Disco Externo 2TB,Almacenamiento,2,82.23,164.46,5,8.22,156.24,Oeste,María López,App Móvil,CLI-0104
+TXN-00817,2023-10-10,2023-10-10 11:28:04,Hub USB-C,Accesorios,2,52.16,104.32,20,20.86,83.46,Oeste,Juan Pérez,App Móvil,CLI-0292
+TXN-00818,2024-08-12,2024-08-12 10:18:41,Mousepad Gaming,Accesorios,1,19.95,19.95,20,3.99,15.96,Oeste,Diego Torres,App Móvil,CLI-0201
+TXN-00819,2024-03-01,2024-03-01 18:46:27,Cable HDMI,Cables,1,13.83,13.83,0,0.0,13.83,Oeste,Laura Sánchez,Online,CLI-0292
+TXN-00820,2023-09-03,2023-09-03 05:17:56,Mouse Logitech,Accesorios,1,29.35,29.35,0,0.0,29.35,Centro,Sofía Martínez,Tienda,CLI-0112
+TXN-00821,2023-05-05,2023-05-05 02:48:06,Mousepad Gaming,Accesorios,3,19.96,59.88,25,14.97,44.91,Centro,Diego Torres,Teléfono,CLI-0231
+TXN-00822,2023-02-15,2023-02-15 10:40:44,Teclado Mecánico,Accesorios,1,85.54,85.54,25,21.38,64.16,Oeste,Laura Sánchez,App Móvil,CLI-0205
+TXN-00823,2023-01-11,2023-01-11 20:58:08,Soporte Laptop,Accesorios,1,37.55,37.55,0,0.0,37.55,Este,Roberto Díaz,Teléfono,CLI-0237
+TXN-00824,2024-12-31,2024-12-31 04:30:52,Mouse Logitech,Accesorios,1,27.49,27.49,5,1.37,26.12,Este,María López,Online,CLI-0010
+TXN-00825,2023-05-08,2023-05-08 15:10:04,Cable HDMI,Cables,2,11.95,23.9,10,2.39,21.51,Norte,Sofía Martínez,Online,CLI-0226
+TXN-00826,2024-11-22,2024-11-22 16:44:03,Auriculares Bluetooth,Audio,4,56.13,224.52,0,0.0,224.52,Centro,Carlos Ruiz,Teléfono,CLI-0158
+TXN-00827,2023-02-19,2023-02-19 21:12:59,RAM 16GB,Componentes,1,72.83,72.83,0,0.0,72.83,Sur,Diego Torres,Online,CLI-0103
+TXN-00828,2023-01-15,2023-01-15 12:43:42,Mouse Logitech,Accesorios,1,27.09,27.09,0,0.0,27.09,Norte,Juan Pérez,Tienda,CLI-0086
+TXN-00829,2024-06-08,2024-06-08 14:20:35,Disco Externo 2TB,Almacenamiento,3,84.0,252.0,15,37.8,214.2,Sur,Juan Pérez,Teléfono,CLI-0220
+TXN-00830,2024-01-01,2024-01-01 09:25:41,Mouse Logitech,Accesorios,2,28.38,56.76,0,0.0,56.76,Este,Ana García,Teléfono,CLI-0109
+TXN-00831,2024-10-27,2024-10-27 09:04:56,RAM 16GB,Componentes,1,75.51,75.51,10,7.55,67.96,Sur,Laura Sánchez,App Móvil,CLI-0256
+TXN-00832,2023-06-25,2023-06-25 10:38:20,Mouse Logitech,Accesorios,2,31.26,62.52,30,18.76,43.76,Oeste,María López,App Móvil,CLI-0090
+TXN-00833,2024-11-13,2024-11-13 14:01:38,Adaptador WiFi,Componentes,1,26.3,26.3,10,2.63,23.67,Centro,Roberto Díaz,Teléfono,CLI-0262
+TXN-00834,2024-08-24,2024-08-24 09:14:01,Adaptador WiFi,Componentes,1,26.2,26.2,25,6.55,19.65,Centro,Carlos Ruiz,App Móvil,CLI-0122
+TXN-00835,2024-09-26,2024-09-26 11:23:31,Disco Externo 2TB,Almacenamiento,2,88.7,177.4,5,8.87,168.53,Este,Juan Pérez,Online,CLI-0193
+TXN-00836,2024-09-04,2024-09-04 14:47:56,"Monitor Samsung 27""",Monitores,2,308.51,617.02,5,30.85,586.17,Este,María López,App Móvil,CLI-0163
+TXN-00837,2024-06-17,2024-06-17 15:41:52,Adaptador WiFi,Componentes,4,26.42,105.68,0,0.0,105.68,Este,Ana García,Online,CLI-0170
+TXN-00838,2023-02-25,2023-02-25 21:15:51,Auriculares Bluetooth,Audio,1,56.9,56.9,25,14.22,42.68,Sur,Laura Sánchez,App Móvil,CLI-0094
+TXN-00839,2024-05-18,2024-05-18 12:03:40,RAM 16GB,Componentes,2,82.07,164.14,0,0.0,164.14,Sur,Juan Pérez,Online,CLI-0047
+TXN-00840,2023-08-30,2023-08-30 15:46:29,Teclado Mecánico,Accesorios,2,91.66,183.32,5,9.17,174.15,Este,María López,Online,CLI-0126
+TXN-00841,2023-11-07,2023-11-07 16:40:12,SSD 1TB,Almacenamiento,1,112.23,112.23,5,5.61,106.62,Este,Roberto Díaz,Tienda,CLI-0185
+TXN-00842,2024-03-27,2024-03-27 18:47:27,SSD 1TB,Almacenamiento,2,117.06,234.12,20,46.82,187.3,Sur,Roberto Díaz,Tienda,CLI-0196
+TXN-00843,2024-09-01,2024-09-01 17:46:11,SSD 1TB,Almacenamiento,1,128.49,128.49,10,12.85,115.64,Este,Laura Sánchez,Teléfono,CLI-0157
+TXN-00844,2024-09-12,2024-09-12 14:08:45,RAM 16GB,Componentes,5,76.52,382.59999999999997,25,95.65,286.95,Oeste,Juan Pérez,Online,CLI-0098
+TXN-00845,2024-01-19,2024-01-19 15:25:47,Laptop HP,Computadoras,1,812.3,812.3,25,203.08,609.22,Este,Laura Sánchez,Teléfono,CLI-0158
+TXN-00846,2024-02-23,2024-02-23 03:24:59,Adaptador WiFi,Componentes,2,27.43,54.86,0,0.0,54.86,Centro,María López,Online,CLI-0224
+TXN-00847,2024-06-05,2024-06-05 19:44:23,Webcam HD,Periféricos,1,84.33,84.33,10,8.43,75.9,Norte,Laura Sánchez,Teléfono,CLI-0127
+TXN-00848,2024-10-08,2024-10-08 09:44:42,"Monitor Samsung 27""",Monitores,8,298.65,2389.2,10,238.92,2150.28,Sur,Sofía Martínez,Teléfono,CLI-0076
+TXN-00849,2024-11-09,2024-11-09 00:07:49,Webcam HD,Periféricos,2,75.95,151.9,30,45.57,106.33,Norte,Laura Sánchez,Teléfono,CLI-0042
+TXN-00850,2023-06-19,2023-06-19 08:44:19,Hub USB-C,Accesorios,2,54.09,108.18,15,16.23,91.95,Centro,Laura Sánchez,App Móvil,CLI-0211
+TXN-00851,2023-04-22,2023-04-22 21:51:22,Micrófono USB,Audio,1,75.26,75.26,0,0.0,75.26,Sur,Sofía Martínez,Online,CLI-0204
+TXN-00852,2024-05-18,2024-05-18 10:49:44,Disco Externo 2TB,Almacenamiento,3,86.54,259.62,0,0.0,259.62,Oeste,Laura Sánchez,App Móvil,CLI-0221
+TXN-00853,2024-12-21,2024-12-21 16:11:32,Teclado Mecánico,Accesorios,1,84.17,84.17,0,0.0,84.17,Norte,Roberto Díaz,Online,CLI-0096
+TXN-00854,2023-07-16,2023-07-16 15:28:40,"Monitor Samsung 27""",Monitores,4,273.53,1094.12,0,0.0,1094.12,Centro,Carlos Ruiz,Online,CLI-0041
+TXN-00855,2023-10-11,2023-10-11 09:37:15,Webcam HD,Periféricos,1,73.36,73.36,0,0.0,73.36,Oeste,Roberto Díaz,Tienda,CLI-0005
+TXN-00856,2024-11-12,2024-11-12 09:06:13,Laptop HP,Computadoras,1,857.89,857.89,0,0.0,857.89,Centro,Ana García,Teléfono,CLI-0267
+TXN-00857,2024-04-29,2024-04-29 18:27:21,Micrófono USB,Audio,1,66.71,66.71,20,13.34,53.37,Este,Diego Torres,App Móvil,CLI-0123
+TXN-00858,2024-09-17,2024-09-17 14:55:21,Auriculares Bluetooth,Audio,2,61.97,123.94,15,18.59,105.35,Norte,Ana García,Teléfono,CLI-0206
+TXN-00859,2023-01-27,2023-01-27 17:17:44,Disco Externo 2TB,Almacenamiento,2,96.03,192.06,0,0.0,192.06,Sur,Diego Torres,Teléfono,CLI-0244
+TXN-00860,2023-01-04,2023-01-04 10:01:40,Hub USB-C,Accesorios,1,49.12,49.12,5,2.46,46.66,Este,Ana García,App Móvil,CLI-0228
+TXN-00861,2024-09-19,2024-09-19 14:27:59,"Monitor Samsung 27""",Monitores,3,306.4,919.1999999999999,15,137.88,781.32,Oeste,Carlos Ruiz,Teléfono,CLI-0151
+TXN-00862,2024-06-16,2024-06-16 22:32:02,Cable HDMI,Cables,2,12.2,24.4,0,0.0,24.4,Sur,Roberto Díaz,Tienda,CLI-0155
+TXN-00863,2024-04-23,2024-04-23 16:07:30,Soporte Laptop,Accesorios,2,41.37,82.74,25,20.68,62.06,Centro,Juan Pérez,Online,CLI-0109
+TXN-00864,2023-04-19,2023-04-19 20:01:10,Teclado Mecánico,Accesorios,2,94.55,189.1,0,0.0,189.1,Este,Laura Sánchez,App Móvil,CLI-0113
+TXN-00865,2024-11-17,2024-11-17 11:59:34,Disco Externo 2TB,Almacenamiento,2,85.63,171.26,20,34.25,137.01,Oeste,Carlos Ruiz,App Móvil,CLI-0115
+TXN-00866,2023-03-08,2023-03-08 15:58:45,Mousepad Gaming,Accesorios,2,20.29,40.58,30,12.17,28.41,Oeste,Laura Sánchez,Online,CLI-0115
+TXN-00867,2023-04-25,2023-04-25 20:37:59,Webcam HD,Periféricos,1,73.84,73.84,0,0.0,73.84,Sur,Carlos Ruiz,App Móvil,CLI-0066
+TXN-00868,2024-08-13,2024-08-13 13:03:37,Soporte Laptop,Accesorios,1,38.5,38.5,15,5.78,32.72,Centro,Juan Pérez,Teléfono,CLI-0217
+TXN-00869,2024-06-16,2024-06-16 18:14:06,Auriculares Bluetooth,Audio,4,63.24,252.96,0,0.0,252.96,Oeste,Ana García,Teléfono,CLI-0162
+TXN-00870,2023-08-13,2023-08-13 16:09:38,Teclado Mecánico,Accesorios,5,95.68,478.40000000000003,10,47.84,430.56,Este,María López,Tienda,CLI-0164
+TXN-00871,2023-10-08,2023-10-08 22:36:30,Webcam HD,Periféricos,1,80.03,80.03,0,0.0,80.03,Sur,Roberto Díaz,App Móvil,CLI-0193
+TXN-00872,2023-06-06,2023-06-06 06:54:46,Laptop HP,Computadoras,1,986.59,986.59,10,98.66,887.93,Sur,Ana García,Online,CLI-0250
+TXN-00873,2023-01-23,2023-01-23 14:27:43,Disco Externo 2TB,Almacenamiento,2,88.04,176.08,0,0.0,176.08,Oeste,Diego Torres,Teléfono,CLI-0201
+TXN-00874,2023-10-17,2023-10-17 12:44:54,Mouse Logitech,Accesorios,2,30.16,60.32,10,6.03,54.29,Centro,Laura Sánchez,Tienda,CLI-0068
+TXN-00875,2023-02-25,2023-02-25 22:19:29,Auriculares Bluetooth,Audio,1,63.02,63.02,30,18.91,44.11,Sur,María López,Teléfono,CLI-0248
+TXN-00876,2023-08-12,2023-08-12 06:47:41,Webcam HD,Periféricos,1,86.34,86.34,5,4.32,82.02,Norte,Diego Torres,Tienda,CLI-0076
+TXN-00877,2024-11-26,2024-11-26 01:06:22,SSD 1TB,Almacenamiento,3,130.8,392.40000000000003,15,58.86,333.54,Oeste,María López,Tienda,CLI-0061
+TXN-00878,2024-03-20,2024-03-20 20:46:25,Hub USB-C,Accesorios,2,51.49,102.98,30,30.89,72.09,Sur,Ana García,Tienda,CLI-0124
+TXN-00879,2023-06-26,2023-06-26 15:49:44,SSD 1TB,Almacenamiento,1,119.72,119.72,30,35.92,83.8,Norte,Roberto Díaz,Teléfono,CLI-0141
+TXN-00880,2023-01-12,2023-01-12 10:07:31,Adaptador WiFi,Componentes,1,25.76,25.76,10,2.58,23.18,Centro,Juan Pérez,Tienda,CLI-0294
+TXN-00881,2024-08-30,2024-08-30 16:41:44,Cable HDMI,Cables,1,12.94,12.94,0,0.0,12.94,Oeste,Sofía Martínez,Online,CLI-0051
+TXN-00882,2023-07-09,2023-07-09 20:01:25,Auriculares Bluetooth,Audio,2,54.75,109.5,25,27.38,82.12,Centro,Roberto Díaz,Tienda,CLI-0266
+TXN-00883,2023-08-01,2023-08-01 03:11:55,Soporte Laptop,Accesorios,1,40.67,40.67,0,0.0,40.67,Centro,María López,Tienda,CLI-0285
+TXN-00884,2023-02-10,2023-02-10 12:41:10,RAM 16GB,Componentes,1,84.8,84.8,0,0.0,84.8,Norte,Sofía Martínez,Tienda,CLI-0044
+TXN-00885,2024-07-11,2024-07-11 19:00:15,Mouse Logitech,Accesorios,3,30.03,90.09,10,9.01,81.08,Este,Ana García,App Móvil,CLI-0274
+TXN-00886,2024-12-12,2024-12-12 14:38:34,RAM 16GB,Componentes,1,74.23,74.23,20,14.85,59.38,Centro,Juan Pérez,Tienda,CLI-0023
+TXN-00887,2023-11-03,2023-11-03 06:08:38,"Monitor Samsung 27""",Monitores,2,272.19,544.38,0,0.0,544.38,Centro,Juan Pérez,App Móvil,CLI-0143
+TXN-00888,2023-03-18,2023-03-18 13:24:41,Teclado Mecánico,Accesorios,1,94.11,94.11,15,14.12,79.99,Sur,Laura Sánchez,Teléfono,CLI-0043
+TXN-00889,2024-07-02,2024-07-02 19:46:17,Webcam HD,Periféricos,1,82.81,82.81,0,0.0,82.81,Sur,Diego Torres,Online,CLI-0215
+TXN-00890,2024-01-24,2024-01-24 18:15:04,Soporte Laptop,Accesorios,1,37.22,37.22,15,5.58,31.64,Este,Carlos Ruiz,Tienda,CLI-0281
+TXN-00891,2024-01-07,2024-01-07 08:09:55,SSD 1TB,Almacenamiento,3,109.57,328.71,0,0.0,328.71,Sur,Sofía Martínez,Tienda,CLI-0051
+TXN-00892,2024-01-23,2024-01-23 03:11:33,SSD 1TB,Almacenamiento,4,131.5,526.0,5,26.3,499.7,Este,Roberto Díaz,Tienda,CLI-0271
+TXN-00893,2024-07-18,2024-07-18 10:57:03,Auriculares Bluetooth,Audio,3,62.4,187.2,10,18.72,168.48,Sur,Diego Torres,Teléfono,CLI-0093
+TXN-00894,2024-07-18,2024-07-18 15:30:37,Auriculares Bluetooth,Audio,1,63.66,63.66,25,15.92,47.74,Sur,Sofía Martínez,Tienda,CLI-0263
+TXN-00895,2023-05-27,2023-05-27 20:17:03,Disco Externo 2TB,Almacenamiento,2,83.79,167.58,0,0.0,167.58,Este,Juan Pérez,Teléfono,CLI-0235
+TXN-00896,2024-04-24,2024-04-24 13:27:33,Teclado Mecánico,Accesorios,1,88.89,88.89,10,8.89,80.0,Sur,Sofía Martínez,Tienda,CLI-0157
+TXN-00897,2024-10-11,2024-10-11 20:15:05,SSD 1TB,Almacenamiento,1,126.48,126.48,0,0.0,126.48,Sur,Ana García,Tienda,CLI-0147
+TXN-00898,2024-03-10,2024-03-10 20:08:30,Hub USB-C,Accesorios,4,54.29,217.16,0,0.0,217.16,Oeste,Carlos Ruiz,Teléfono,CLI-0008
+TXN-00899,2024-03-11,2024-03-11 20:22:15,Cable HDMI,Cables,1,12.19,12.19,0,0.0,12.19,Centro,Ana García,Teléfono,CLI-0087
+TXN-00900,2023-08-19,2023-08-19 14:53:08,Adaptador WiFi,Componentes,1,27.14,27.14,25,6.78,20.36,Centro,Diego Torres,Tienda,CLI-0217
+TXN-00901,2023-04-26,2023-04-26 19:15:53,RAM 16GB,Componentes,1,78.06,78.06,10,7.81,70.25,Centro,Carlos Ruiz,App Móvil,CLI-0154
+TXN-00902,2023-01-03,2023-01-03 18:25:13,RAM 16GB,Componentes,1,76.69,76.69,5,3.83,72.86,Este,Ana García,Teléfono,CLI-0250
+TXN-00903,2024-04-16,2024-04-16 14:06:00,Laptop HP,Computadoras,1,874.02,874.02,30,262.21,611.81,Este,María López,Teléfono,CLI-0182
+TXN-00904,2023-07-22,2023-07-22 17:57:09,Laptop HP,Computadoras,2,828.23,1656.46,20,331.29,1325.17,Oeste,Carlos Ruiz,Teléfono,CLI-0004
+TXN-00905,2023-08-20,2023-08-20 14:19:23,Teclado Mecánico,Accesorios,2,94.84,189.68,10,18.97,170.71,Oeste,María López,App Móvil,CLI-0056
+TXN-00906,2023-06-15,2023-06-15 20:27:00,RAM 16GB,Componentes,4,82.49,329.96,20,65.99,263.97,Este,Juan Pérez,Tienda,CLI-0098
+TXN-00907,2024-03-07,2024-03-07 09:10:42,Webcam HD,Periféricos,3,72.64,217.92000000000002,15,32.69,185.23,Sur,Roberto Díaz,App Móvil,CLI-0061
+TXN-00908,2024-11-29,2024-11-29 14:48:48,SSD 1TB,Almacenamiento,1,119.73,119.73,20,23.95,95.78,Oeste,Laura Sánchez,Online,CLI-0057
+TXN-00909,2023-06-09,2023-06-09 09:49:43,Mouse Logitech,Accesorios,1,31.75,31.75,0,0.0,31.75,Sur,Ana García,App Móvil,CLI-0220
+TXN-00910,2024-05-06,2024-05-06 16:05:48,Cable HDMI,Cables,1,13.61,13.61,15,2.04,11.57,Oeste,Juan Pérez,Online,CLI-0262
+TXN-00911,2023-09-27,2023-09-27 07:42:52,Teclado Mecánico,Accesorios,2,85.48,170.96,0,0.0,170.96,Oeste,Juan Pérez,Teléfono,CLI-0053
+TXN-00912,2023-07-05,2023-07-05 18:40:40,Disco Externo 2TB,Almacenamiento,1,94.14,94.14,30,28.24,65.9,Sur,Juan Pérez,Tienda,CLI-0068
+TXN-00913,2023-05-30,2023-05-30 18:12:05,SSD 1TB,Almacenamiento,2,108.91,217.82,5,10.89,206.93,Norte,Laura Sánchez,Teléfono,CLI-0269
+TXN-00914,2023-08-16,2023-08-16 16:03:32,Webcam HD,Periféricos,2,83.19,166.38,5,8.32,158.06,Oeste,Ana García,App Móvil,CLI-0057
+TXN-00915,2024-12-29,2024-12-29 14:57:03,Webcam HD,Periféricos,2,77.81,155.62,10,15.56,140.06,Sur,Ana García,Tienda,CLI-0027
+TXN-00916,2023-10-20,2023-10-20 18:06:27,Adaptador WiFi,Componentes,2,26.21,52.42,5,2.62,49.8,Sur,Sofía Martínez,Teléfono,CLI-0187
+TXN-00917,2024-11-16,2024-11-16 17:49:55,Auriculares Bluetooth,Audio,1,57.64,57.64,0,0.0,57.64,Sur,Diego Torres,App Móvil,CLI-0186
+TXN-00918,2024-09-11,2024-09-11 19:17:13,Disco Externo 2TB,Almacenamiento,5,95.01,475.05,25,118.76,356.29,Centro,Laura Sánchez,Tienda,CLI-0055
+TXN-00919,2023-05-04,2023-05-04 19:52:12,Teclado Mecánico,Accesorios,3,92.32,276.96,30,83.09,193.87,Sur,Roberto Díaz,Tienda,CLI-0039
+TXN-00920,2024-04-30,2024-04-30 06:34:46,Hub USB-C,Accesorios,1,51.18,51.18,10,5.12,46.06,Sur,Ana García,Online,CLI-0099
+TXN-00921,2024-07-27,2024-07-27 11:28:40,SSD 1TB,Almacenamiento,4,121.2,484.8,10,48.48,436.32,Norte,Laura Sánchez,Tienda,CLI-0248
+TXN-00922,2023-01-23,2023-01-23 13:44:08,SSD 1TB,Almacenamiento,2,120.56,241.12,25,60.28,180.84,Este,Ana García,Tienda,CLI-0098
+TXN-00923,2024-12-02,2024-12-02 17:04:10,Disco Externo 2TB,Almacenamiento,4,95.65,382.6,20,76.52,306.08,Oeste,Laura Sánchez,Teléfono,CLI-0206
+TXN-00924,2023-01-04,2023-01-04 12:37:44,Cable HDMI,Cables,3,12.4,37.2,0,0.0,37.2,Norte,Roberto Díaz,App Móvil,CLI-0156
+TXN-00925,2024-07-19,2024-07-19 12:02:34,Soporte Laptop,Accesorios,2,37.75,75.5,10,7.55,67.95,Sur,Sofía Martínez,Tienda,CLI-0076
+TXN-00926,2023-10-04,2023-10-04 01:41:15,Mousepad Gaming,Accesorios,1,19.1,19.1,0,0.0,19.1,Sur,Carlos Ruiz,Tienda,CLI-0178
+TXN-00927,2023-11-29,2023-11-29 20:56:35,Adaptador WiFi,Componentes,1,25.52,25.52,10,2.55,22.97,Este,María López,Teléfono,CLI-0151
+TXN-00928,2023-12-31,2023-12-31 13:11:16,Auriculares Bluetooth,Audio,2,65.81,131.62,0,0.0,131.62,Norte,Carlos Ruiz,Teléfono,CLI-0132
+TXN-00929,2024-07-18,2024-07-18 16:14:20,Soporte Laptop,Accesorios,2,41.0,82.0,30,24.6,57.4,Este,Juan Pérez,Teléfono,CLI-0080
+TXN-00930,2024-01-13,2024-01-13 16:05:31,RAM 16GB,Componentes,1,75.7,75.7,15,11.36,64.34,Sur,Roberto Díaz,Online,CLI-0091
+TXN-00931,2024-10-25,2024-10-25 13:10:56,"Monitor Samsung 27""",Monitores,1,304.17,304.17,0,0.0,304.17,Sur,Laura Sánchez,Online,CLI-0036
+TXN-00932,2024-04-10,2024-04-10 12:06:46,Teclado Mecánico,Accesorios,3,82.29,246.87,5,12.34,234.53,Centro,María López,Tienda,CLI-0052
+TXN-00933,2023-01-14,2023-01-14 19:59:02,SSD 1TB,Almacenamiento,6,117.21,703.26,0,0.0,703.26,Sur,Juan Pérez,Tienda,CLI-0138
+TXN-00934,2023-01-14,2023-01-14 09:50:06,Teclado Mecánico,Accesorios,2,97.88,195.76,30,58.73,137.03,Centro,Diego Torres,Tienda,CLI-0104
+TXN-00935,2024-03-30,2024-03-30 09:21:30,Teclado Mecánico,Accesorios,1,89.64,89.64,30,26.89,62.75,Sur,Juan Pérez,Tienda,CLI-0279
+TXN-00936,2023-05-07,2023-05-07 09:06:34,Disco Externo 2TB,Almacenamiento,1,85.8,85.8,25,21.45,64.35,Este,Carlos Ruiz,Teléfono,CLI-0073
+TXN-00937,2023-08-21,2023-08-21 11:22:41,Laptop HP,Computadoras,1,974.18,974.18,0,0.0,974.18,Este,Juan Pérez,Teléfono,CLI-0058
+TXN-00938,2023-08-18,2023-08-18 13:22:04,RAM 16GB,Componentes,4,74.7,298.8,0,0.0,298.8,Centro,Diego Torres,Tienda,CLI-0185
+TXN-00939,2023-02-14,2023-02-14 11:27:33,Mousepad Gaming,Accesorios,1,21.69,21.69,0,0.0,21.69,Este,María López,Teléfono,CLI-0077
+TXN-00940,2024-10-01,2024-10-01 11:56:06,Mousepad Gaming,Accesorios,2,20.66,41.32,10,4.13,37.19,Este,Roberto Díaz,App Móvil,CLI-0136
+TXN-00941,2023-01-03,2023-01-03 04:49:41,Micrófono USB,Audio,1,75.69,75.69,0,0.0,75.69,Sur,Diego Torres,Online,CLI-0200
+TXN-00942,2023-03-10,2023-03-10 15:46:17,RAM 16GB,Componentes,2,83.53,167.06,20,33.41,133.65,Sur,Carlos Ruiz,App Móvil,CLI-0066
+TXN-00943,2023-11-23,2023-11-23 16:44:26,Teclado Mecánico,Accesorios,2,94.81,189.62,10,18.96,170.66,Centro,Diego Torres,Online,CLI-0126
+TXN-00944,2024-07-05,2024-07-05 17:34:52,SSD 1TB,Almacenamiento,3,118.04,354.12,20,70.82,283.3,Sur,Laura Sánchez,Tienda,CLI-0298
+TXN-00945,2024-12-11,2024-12-11 07:44:05,Disco Externo 2TB,Almacenamiento,1,88.58,88.58,30,26.57,62.01,Sur,Diego Torres,Tienda,CLI-0105
+TXN-00946,2024-04-30,2024-04-30 03:03:58,Soporte Laptop,Accesorios,1,36.13,36.13,25,9.03,27.1,Este,Diego Torres,Online,CLI-0151
+TXN-00947,2024-03-07,2024-03-07 12:03:47,RAM 16GB,Componentes,1,74.3,74.3,25,18.58,55.72,Sur,Carlos Ruiz,Online,CLI-0194
+TXN-00948,2024-01-16,2024-01-16 10:42:37,Disco Externo 2TB,Almacenamiento,4,81.47,325.88,15,48.88,277.0,Norte,Roberto Díaz,Online,CLI-0016
+TXN-00949,2023-09-08,2023-09-08 18:53:52,Teclado Mecánico,Accesorios,4,87.56,350.24,0,0.0,350.24,Oeste,María López,Online,CLI-0241
+TXN-00950,2024-12-16,2024-12-16 15:26:46,Disco Externo 2TB,Almacenamiento,2,83.51,167.02,25,41.76,125.26,Este,Roberto Díaz,Tienda,CLI-0147
+TXN-00951,2024-09-10,2024-09-10 17:10:00,Mouse Logitech,Accesorios,2,27.93,55.86,0,0.0,55.86,Oeste,Laura Sánchez,Teléfono,CLI-0284
+TXN-00952,2024-05-28,2024-05-28 12:27:59,Disco Externo 2TB,Almacenamiento,2,95.92,191.84,30,57.55,134.29,Sur,Sofía Martínez,Tienda,CLI-0268
+TXN-00953,2023-08-05,2023-08-05 09:14:25,SSD 1TB,Almacenamiento,1,131.46,131.46,0,0.0,131.46,Sur,Carlos Ruiz,Teléfono,CLI-0245
+TXN-00954,2024-01-25,2024-01-25 21:23:41,Auriculares Bluetooth,Audio,4,61.82,247.28,15,37.09,210.19,Oeste,Juan Pérez,App Móvil,CLI-0056
+TXN-00955,2023-12-10,2023-12-10 13:10:34,Mouse Logitech,Accesorios,2,27.46,54.92,30,16.48,38.44,Norte,Carlos Ruiz,Online,CLI-0006
+TXN-00956,2024-07-18,2024-07-18 09:15:17,Micrófono USB,Audio,1,75.72,75.72,5,3.79,71.93,Norte,Ana García,Teléfono,CLI-0024
+TXN-00957,2023-01-09,2023-01-09 09:25:32,Laptop HP,Computadoras,2,866.61,1733.22,10,173.32,1559.9,Sur,Diego Torres,Teléfono,CLI-0183
+TXN-00958,2023-12-06,2023-12-06 20:32:06,Teclado Mecánico,Accesorios,1,93.64,93.64,0,0.0,93.64,Centro,María López,Tienda,CLI-0196
+TXN-00959,2023-10-25,2023-10-25 19:29:05,RAM 16GB,Componentes,1,81.37,81.37,0,0.0,81.37,Norte,Juan Pérez,Online,CLI-0073
+TXN-00960,2024-06-12,2024-06-12 19:41:33,Micrófono USB,Audio,3,73.05,219.14999999999998,25,54.79,164.36,Este,Roberto Díaz,Online,CLI-0174
+TXN-00961,2023-02-10,2023-02-10 21:24:15,Webcam HD,Periféricos,1,77.76,77.76,15,11.66,66.1,Sur,Carlos Ruiz,Online,CLI-0291
+TXN-00962,2023-01-16,2023-01-16 13:35:55,Adaptador WiFi,Componentes,2,27.46,54.92,0,0.0,54.92,Norte,Roberto Díaz,Tienda,CLI-0233
+TXN-00963,2023-06-15,2023-06-15 18:23:22,Auriculares Bluetooth,Audio,1,56.03,56.03,10,5.6,50.43,Norte,Carlos Ruiz,Online,CLI-0236
+TXN-00964,2024-03-28,2024-03-28 11:07:36,Webcam HD,Periféricos,1,87.77,87.77,10,8.78,78.99,Oeste,Ana García,App Móvil,CLI-0147
+TXN-00965,2024-11-27,2024-11-27 14:32:54,SSD 1TB,Almacenamiento,1,117.81,117.81,30,35.34,82.47,Centro,Diego Torres,App Móvil,CLI-0043
+TXN-00966,2023-09-27,2023-09-27 21:02:39,Adaptador WiFi,Componentes,1,24.56,24.56,20,4.91,19.65,Norte,Juan Pérez,Tienda,CLI-0080
+TXN-00967,2023-06-12,2023-06-12 10:14:24,Soporte Laptop,Accesorios,3,36.83,110.49,15,16.57,93.92,Oeste,Carlos Ruiz,App Móvil,CLI-0239
+TXN-00968,2023-04-22,2023-04-22 20:06:58,RAM 16GB,Componentes,1,82.27,82.27,20,16.45,65.82,Oeste,Laura Sánchez,Online,CLI-0206
+TXN-00969,2024-09-10,2024-09-10 20:47:30,Auriculares Bluetooth,Audio,2,54.76,109.52,10,10.95,98.57,Norte,Sofía Martínez,Teléfono,CLI-0020
+TXN-00970,2023-05-30,2023-05-30 14:36:02,Hub USB-C,Accesorios,2,46.55,93.1,20,18.62,74.48,Centro,Laura Sánchez,Tienda,CLI-0186
+TXN-00971,2023-08-07,2023-08-07 09:48:43,Micrófono USB,Audio,2,69.01,138.02,20,27.6,110.42,Oeste,Sofía Martínez,App Móvil,CLI-0091
+TXN-00972,2024-02-19,2024-02-19 20:28:55,Mouse Logitech,Accesorios,5,27.84,139.2,10,13.92,125.28,Oeste,Juan Pérez,App Móvil,CLI-0095
+TXN-00973,2023-12-17,2023-12-17 09:10:12,Soporte Laptop,Accesorios,3,36.42,109.26,15,16.39,92.87,Este,Laura Sánchez,Teléfono,CLI-0244
+TXN-00974,2024-12-14,2024-12-14 20:36:24,Hub USB-C,Accesorios,1,51.88,51.88,0,0.0,51.88,Norte,Juan Pérez,Tienda,CLI-0297
+TXN-00975,2023-01-15,2023-01-15 16:59:09,Cable HDMI,Cables,1,12.07,12.07,10,1.21,10.86,Oeste,Diego Torres,Tienda,CLI-0209
+TXN-00976,2024-04-06,2024-04-06 04:40:28,Webcam HD,Periféricos,1,80.32,80.32,0,0.0,80.32,Centro,Carlos Ruiz,Tienda,CLI-0112
+TXN-00977,2024-12-14,2024-12-14 11:38:24,Disco Externo 2TB,Almacenamiento,2,98.61,197.22,15,29.58,167.64,Sur,Diego Torres,Online,CLI-0098
+TXN-00978,2024-01-15,2024-01-15 00:19:57,Adaptador WiFi,Componentes,1,25.37,25.37,0,0.0,25.37,Este,Carlos Ruiz,Teléfono,CLI-0234
+TXN-00979,2024-07-09,2024-07-09 21:21:07,SSD 1TB,Almacenamiento,2,117.84,235.68,10,23.57,212.11,Sur,Roberto Díaz,Teléfono,CLI-0192
+TXN-00980,2024-07-09,2024-07-09 13:54:42,Teclado Mecánico,Accesorios,2,90.94,181.88,0,0.0,181.88,Oeste,Sofía Martínez,Tienda,CLI-0045
+TXN-00981,2024-10-27,2024-10-27 15:06:31,Micrófono USB,Audio,1,74.71,74.71,0,0.0,74.71,Centro,Carlos Ruiz,Teléfono,CLI-0258
+TXN-00982,2024-03-06,2024-03-06 21:29:35,Cable HDMI,Cables,3,13.78,41.339999999999996,10,4.13,37.21,Oeste,Carlos Ruiz,Online,CLI-0241
+TXN-00983,2024-02-27,2024-02-27 20:45:50,Mouse Logitech,Accesorios,1,29.09,29.09,20,5.82,23.27,Oeste,Ana García,App Móvil,CLI-0115
+TXN-00984,2023-11-11,2023-11-11 13:43:15,Hub USB-C,Accesorios,1,47.83,47.83,10,4.78,43.05,Norte,Laura Sánchez,Tienda,CLI-0008
+TXN-00985,2024-06-15,2024-06-15 19:20:21,Laptop HP,Computadoras,3,837.6,2512.8,10,251.28,2261.52,Sur,Laura Sánchez,Online,CLI-0285
+TXN-00986,2023-02-22,2023-02-22 18:27:08,SSD 1TB,Almacenamiento,2,112.61,225.22,15,33.78,191.44,Oeste,María López,Teléfono,CLI-0163
+TXN-00987,2023-04-12,2023-04-12 11:32:07,Hub USB-C,Accesorios,2,46.58,93.16,5,4.66,88.5,Centro,Laura Sánchez,App Móvil,CLI-0284
+TXN-00988,2023-04-06,2023-04-06 15:00:40,Teclado Mecánico,Accesorios,2,98.07,196.14,5,9.81,186.33,Centro,María López,Tienda,CLI-0279
+TXN-00989,2024-01-27,2024-01-27 20:08:29,Mousepad Gaming,Accesorios,1,21.88,21.88,30,6.56,15.32,Este,María López,Online,CLI-0114
+TXN-00990,2024-01-23,2024-01-23 19:03:17,Webcam HD,Periféricos,3,75.09,225.27,5,11.26,214.01,Norte,María López,Tienda,CLI-0297
+TXN-00991,2024-09-02,2024-09-02 11:18:16,Soporte Laptop,Accesorios,3,36.82,110.46000000000001,20,22.09,88.37,Sur,Carlos Ruiz,Tienda,CLI-0254
+TXN-00992,2024-02-05,2024-02-05 21:01:26,Soporte Laptop,Accesorios,2,38.88,77.76,5,3.89,73.87,Norte,Roberto Díaz,Tienda,CLI-0108
+TXN-00993,2024-10-10,2024-10-10 05:11:19,Adaptador WiFi,Componentes,1,24.59,24.59,10,2.46,22.13,Norte,María López,Tienda,CLI-0061
+TXN-00994,2024-09-20,2024-09-20 09:10:33,Auriculares Bluetooth,Audio,2,65.91,131.82,20,26.36,105.46,Este,Carlos Ruiz,Online,CLI-0016
+TXN-00995,2023-06-06,2023-06-06 14:07:57,Hub USB-C,Accesorios,1,45.22,45.22,25,11.3,33.92,Sur,Ana García,App Móvil,CLI-0071
+TXN-00996,2023-10-02,2023-10-02 12:05:22,"Monitor Samsung 27""",Monitores,1,275.0,275.0,0,0.0,275.0,Centro,Sofía Martínez,Teléfono,CLI-0254
+TXN-00997,2023-07-17,2023-07-17 12:43:54,SSD 1TB,Almacenamiento,4,120.29,481.16,15,72.17,408.99,Este,Laura Sánchez,Tienda,CLI-0299
+TXN-00998,2023-06-19,2023-06-19 20:31:27,Micrófono USB,Audio,1,73.72,73.72,10,7.37,66.35,Oeste,Laura Sánchez,App Móvil,CLI-0164
+TXN-00999,2024-03-15,2024-03-15 14:23:57,Cable HDMI,Cables,5,11.97,59.85,15,8.98,50.87,Norte,Roberto Díaz,Online,CLI-0018
+TXN-01000,2023-10-28,2023-10-28 19:33:22,Hub USB-C,Accesorios,2,47.52,95.04,15,14.26,80.78,Oeste,Ana García,Tienda,CLI-0093
