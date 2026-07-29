@@ -1,5 +1,7 @@
 # ⚡ Módulo 02: NumPy y Vectorización Financiera
 
+> ⚠️ **Estado Actual:** Los notebooks de este módulo tienen encabezados y celdas de conclusiones completas, pero el contenido educativo completo aún está en proceso de expansión. Los temas listados abajo representan el plan de contenido que se desarrollará en cada notebook.
+
 ## 🎯 Objetivo del Módulo
 
 NumPy es la **base computacional** de todo el ecosistema de análisis de datos en Python. Este módulo te enseña a procesar grandes volúmenes de datos numéricos **hasta 100x más rápido** que con Python nativo, aplicado a casos reales de finanzas corporativas.
