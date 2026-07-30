@@ -2,14 +2,17 @@
 
 ## 🎯 Objetivo del Módulo
 
-**Pandas es la herramienta #1 para análisis de datos en Python.** Este módulo te enseña los fundamentos de las dos estructuras clave: **Series** (columnas) y **DataFrames** (tablas completas), aplicándolas a datos empresariales reales.
+**Pandas es la herramienta #1 para análisis de datos en Python.** Este módulo completo y expandido te enseña los fundamentos de las dos estructuras clave: **Series** (columnas) y **DataFrames** (tablas completas), con **más de 65 celdas educativas ejecutables** aplicadas a casos contables y empresariales reales.
 
-**Al finalizar este módulo podrás:**
-* ✅ Crear Series y DataFrames desde múltiples fuentes (CSV, Excel, diccionarios)
-* ✅ Dominar indexación con `.loc[]` e `.iloc[]`
-* ✅ Filtrar datos con lógica booleana compleja
-* ✅ Aplicar operaciones básicas (ordenar, renombrar, agregar columnas)
-* ✅ Leer y escribir archivos en múltiples formatos
+**Al finalizar este módulo dominarás:**
+* ✅ Crear y manipular Series y DataFrames desde múltiples fuentes
+* ✅ Cargar datos desde CSV, Excel, Parquet con optimizaciones
+* ✅ Indexación avanzada con `.loc[]` e `.iloc[]`
+* ✅ Filtrado booleano complejo con múltiples condiciones
+* ✅ GroupBy, agregaciones, ordenamiento y pivot tables
+* ✅ Manejo profesional de valores nulos
+* ✅ Aplicación de funciones personalizadas
+* ✅ Casos contables integradores (cuentas por cobrar, anomalías, auditoría)
 
 ---
 
@@ -179,14 +182,21 @@ df.loc[df['precio'] > 50, 'descuento'] = 0.10
 ## 🏁 Pre-requisitos
 
 **Conocimientos:**
-* Módulo 01: Python básico
-* Módulo 02: NumPy (recomendado pero no obligatorio)
-* Conceptos de bases de datos relacionales (útil pero no requerido)
+* Módulo 01: Python básico (variables, listas, diccionarios, funciones)
+* Módulo 02: NumPy (recomendado - arrays y operaciones vectorizadas)
+* Conceptos de Excel/hojas de cálculo (útil pero no requerido)
 
 **Datasets:**
-* `ventas_retail.csv` (del repositorio `/datasets`)
+* Los notebooks generan datos sintéticos en vivo (no requieren archivos externos)
+* Casos contables y empresariales realistas
+* Práctica con CSV, Excel y Parquet
 
-**Tiempo estimado total:** 4 horas
+**Tiempo estimado total:** 6-7 horas
+* 03_01: 60 min
+* 03_02: 70 min
+* 03_03: 65 min
+* 03_04: 75 min
+* 03_05: 80 min
 
 ---
 
@@ -327,22 +337,35 @@ Muestra el resultado ordenado por total descendente.
 
 ## ✅ Checklist de Completitud
 
-**Conceptos:**
+**Conceptos fundamentales:**
 - [ ] Entiendo la diferencia entre Series y DataFrame
-- [ ] Conozco cuándo usar `.loc[]` vs `.iloc[]`
+- [ ] Conozco cuándo usar `.loc[]` vs `.iloc[]` (inclusivo/exclusivo)
 - [ ] Puedo explicar qué es una máscara booleana
+- [ ] Domino GroupBy (Split-Apply-Combine)
+- [ ] Entiendo pivot tables y cuándo usarlas
 
-**Habilidades:**
-- [ ] Leo archivos CSV/Excel sin problemas de encoding
-- [ ] Filtro datos con múltiples condiciones lógicas
-- [ ] Creo columnas calculadas correctamente
+**Habilidades técnicas:**
+- [ ] Leo archivos CSV/Excel/Parquet sin problemas
+- [ ] Manejo encodings problemáticos (utf-8, latin-1, cp1252)
+- [ ] Filtro datos con múltiples condiciones lógicas (& | ~)
+- [ ] Uso `.isin()`, `.between()`, `.query()` efectivamente
+- [ ] Creo columnas calculadas con operaciones vectorizadas
 - [ ] Ordeno DataFrames por múltiples columnas
-- [ ] Uso `.value_counts()` y `.unique()` efectivamente
+- [ ] Manejo valores nulos profesionalmente (detectar, eliminar, rellenar)
+- [ ] Aplico funciones personalizadas con `.apply()`
+- [ ] Genero tablas pivot multi-dimensionales
 
-**Ejercicios:**
-- [ ] Completé Ejercicio 1 (Análisis de Ventas)
-- [ ] Completé Ejercicio 2 (Limpieza de Datos)
-- [ ] Completé Ejercicio 3 (Dashboard Simple)
+**Casos prácticos:**
+- [ ] Ejecuté los 5 notebooks completos (65 celdas)
+- [ ] Resolví caso de cuentas por cobrar vencidas
+- [ ] Detecté anomalías en transacciones
+- [ ] Generé reporte ejecutivo con GroupBy y pivot
+- [ ] Optimicé lectura de archivos grandes
+
+**Métricas de dominio:**
+- [ ] Puedo cargar y limpiar un dataset nuevo en <5 minutos
+- [ ] Genero reportes ejecutivos sin consultar documentación
+- [ ] Detecto y corrijo errores comunes (SettingWithCopyWarning, etc.)
 
 ---
 
