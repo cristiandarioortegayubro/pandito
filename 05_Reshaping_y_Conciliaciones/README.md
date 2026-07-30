@@ -27,77 +27,89 @@ En el mundo real, los datos rara vez vienen en el formato que necesitas. Este m�
 * `transacciones_financieras.parquet` (del repositorio)
 * Datasets de conciliación bancaria (provistos en notebooks)
 
-**Tiempo estimado total:** 3.5 horas
+**Tiempo estimado total:** 4 horas 10 minutos (250 minutos)
+
+**Total de celdas educativas:** 16 (portadas + teoría + práctica + casos integradores + conclusiones)
 
 ---
 
 ## 📚 Contenido del Módulo
 
-### [05_01_Merge_Join_Conciliacion_Bancaria](./05_01_Merge_Join_Conciliacion_Bancaria)
-**Duración:** 60 minutos | **Dificultad:** Intermedio
+### 05_01_Merge_Join_Conciliacion_Bancaria
+**Duración:** 75 minutos | **Dificultad:** 🟠 Intermedio-Avanzado | **Celdas:** 9
 
 **Temas cubiertos:**
-* Tipos de joins: `inner`, `left`, `right`, `outer`
-* Sintaxis: `pd.merge(df1, df2, on='key', how='left')`
-* Conciliación bancaria: libro contable vs extracto bancario
-* Identificación de partidas no conciliadas
-* Análisis de diferencias (faltantes en cada fuente)
+* 📚 **Teoría de Merge y Join:** Diferencias entre merge, concat y join; SQL análogos
+* 🔗 **Los 4 Tipos de Join:**
+  - `inner`: Solo coincidencias en AMBOS DataFrames
+  - `left`: TODAS las filas de df1 + coincidencias de df2
+  - `right`: TODAS las filas de df2 + coincidencias de df1
+  - `outer`: TODAS las filas de AMBOS (para conciliación)
+* 🔑 **Merge con Múltiples Claves:** `pd.merge(df1, df2, on=['Sucursal', 'Producto'])`
+* ✅ **Validación de Merges:**
+  - `indicator=True` para detectar origen de filas (_merge)
+  - `validate='one_to_many'` para verificar cardinalidad
+* 🏦 **Introducción a Conciliación Bancaria:** Algoritmo completo
+* 💼 **Caso Integrador:** Conciliación automática libro vs extracto (15 movimientos)
+  - Outer merge por comprobante
+  - Cálculo de diferencias
+  - Clasificación automática de estados
+  - Reporte ejecutivo
 
-**Casos de uso empresariales:**
-* Conciliar registros contables con extractos bancarios
-* Identificar pagos registrados pero no cobrados
-* Detectar cargos bancarios no contabilizados
-
-**Resultado esperado:** Capacidad de conciliar 2 fuentes de datos financieros
+**Resultado esperado:** Dominio completo de los 4 joins y capacidad de conciliar fuentes de datos financieros
 
 ---
 
-### [05_02_Conciliacion_Automatica_Libro_Extracto](./05_02_Conciliacion_Automatica_Libro_Extracto)
-**Duración:** 55 minutos | **Dificultad:** Intermedio
+### 05_02_Conciliacion_Automatica_Libro_Extracto
+**Duración:** 65 minutos | **Dificultad:** 🟠 Intermedio-Avanzado | **Celdas:** 4
 
 **Temas cubiertos:**
-* Matching automático por múltiples criterios (fecha + monto)
-* Tolerancias numéricas para redondeo (±$0.05)
-* Fuzzy matching para descripciones similares
-* Generación de reportes de discrepancias
-* Workflow de aprobación de conciliación
+* 📊 **Conciliación con Tolerancia:** Permitir diferencias por redondeo (±$1.00)
+  - Comparación estricta vs tolerante
+  - Aumento de tasa de conciliación
+* 🔍 **Matching por Múltiples Criterios:** Fecha + Monto + Referencia
+* 💼 **Caso Integrador Completo:**
+  - Libro: 15 movimientos
+  - Banco: 13 movimientos (2 faltan, 1 con error)
+  - Algoritmo de clasificación: Conciliado, Diferencia, Pendiente Banco, Pendiente Libro
+  - Reporte ejecutivo con totales y análisis
 
 **Técnicas avanzadas:**
-* `pd.merge_asof()` para matching temporal aproximado
-* Uso de `suffixes` para diferenciar columnas
-* Flags de estado: 'conciliado', 'pendiente', 'discrepancia'
+* Manejo de tolerancia configurable
+* Clasificación automática con lógica de negocio
+* Reporte de partidas pendientes con montos
 
-**Resultado esperado:** Pipeline automatizado de conciliación mensual
-
----
-
-### [05_03_Pivot_Tables_y_Melt](./05_03_Pivot_Tables_y_Melt)
-**Duración:** 50 minutos | **Dificultad:** Intermedio
-
-**Temas cubiertos:**
-* `.pivot_table()`: agregaciones multidimensionales (suma, promedio, conteo)
-* `.melt()`: transformar wide → long format
-* `.pivot()` vs `.pivot_table()` (diferencias clave)
-* `.stack()` y `.unstack()` para reshaping avanzado
-
-**Casos de uso:**
-* Convertir ventas mensuales wide (columnas = meses) a formato long
-* Crear tablas dinámicas de revenue por región × producto
-* Preparar datos para visualización en Plotly/Tableau
-
-**Resultado esperado:** Dominio de transformaciones estructurales
+**Resultado esperado:** Pipeline automatizado de conciliación mensual con tolerancia
 
 ---
 
-### [05_04_Estructuras_Multinivel_P&L](./05_04_Estructuras_Multinivel_P&L)
-**Duración:** 60 minutos | **Dificultad:** Avanzado
+### 05_03_Pivot_Tables_y_Melt
+**Duración:** 60 minutos | **Dificultad:** 🟡 Intermedio | **Celdas:** 2 (base, expandida con contenido teórico)
 
 **Temas cubiertos:**
-* MultiIndex (índices jerárquicos) con `.set_index()`
-* Navegación por niveles: `.loc[(nivel1, nivel2), :]`
-* Estado de Resultados (P&L) jerárquico
-* Subtotales y totales con `.groupby(level=...)`
-* Presentación profesional de estados financieros
+* 🔄 **Transformación de Estructuras:** Concepto de ancho ↔ largo
+* 📊 **Pivot Tables:** `.pivot_table()` con agregaciones (sum, mean, count)
+* 📉 **Melt:** Transformar formato ancho → largo
+* 💼 **Casos empresariales:**
+  - Reportes de ventas por región × mes
+  - Tablas dinámicas de revenue por producto
+  - Preparación para visualización
+
+**Resultado esperado:** Dominio de transformaciones estructurales para reportes ejecutivos
+
+---
+
+### 05_04_Estructuras_Multinivel_P&L
+**Duración:** 50 minutos | **Dificultad:** 🔴 Avanzado | **Celdas:** 1 (base)
+
+**Temas cubiertos:**
+* 🎯 **MultiIndex:** Índices jerárquicos con `.set_index()`
+* 🏢 **Estado de Resultados (P&L) Jerárquico:**
+  - Estructura: Ingresos → Ventas → Producto A/B
+  - Subtotales por categoría
+  - Cálculo de EBITDA
+* 📊 **Navegación por Niveles:** `.loc[(nivel1, nivel2), :]`
+* 💡 **Subtotales con `.groupby(level=...)`**
 
 **Estructura ejemplo:**
 ```
@@ -109,9 +121,12 @@ Ingresos
 Costos
   └─ COGS
   └─ Operativos
+Gastos
+  └─ Marketing
+  └─ Administrativos
 ```
 
-**Resultado esperado:** Generar P&L jerárquico con drill-down
+**Resultado esperado:** Generar P&L jerárquico profesional con drill-down
 
 ---
 
@@ -494,38 +509,40 @@ pl_flat = pl_multi.reset_index()
 
 ## ✅ Checklist de Completitud
 
-**Técnicas de Merge:**
-- [ ] Inner join (solo registros coincidentes)
-- [ ] Left join (todos de izquierda + coincidencias de derecha)
-- [ ] Right join (todos de derecha + coincidencias de izquierda)
-- [ ] Outer join (todos de ambas fuentes)
-- [ ] Merge con sufijos personalizados
-- [ ] Uso del parámetro `indicator=True`
+**Notebook 05_01 - Merge y Join:**
+- [ ] Los 4 tipos de join (inner, left, right, outer)
+- [ ] Merge con múltiples claves: `on=['col1', 'col2']`
+- [ ] Uso de `indicator=True` para ver origen (_merge)
+- [ ] Validación con `validate='one_to_many'`
+- [ ] Algoritmo de conciliación bancaria
+- [ ] Caso integrador: 15 movimientos conciliados
 
-**Conciliación:**
-- [ ] Match exacto por clave única
-- [ ] Match con tolerancia numérica
-- [ ] Match aproximado por fecha
-- [ ] Clasificación de partidas
-- [ ] Generación de reportes de discrepancias
+**Notebook 05_02 - Conciliación Avanzada:**
+- [ ] Conciliación con tolerancia de diferencias
+- [ ] Clasificación automática de estados
+- [ ] Match por referencia + fecha + monto
+- [ ] Reporte ejecutivo de discrepancias
+- [ ] Pipeline automatizado completo
 
-**Reshaping:**
-- [ ] Pivot table con múltiples agregaciones
-- [ ] Melt (wide → long)
-- [ ] Pivot (long → wide)
-- [ ] Stack y unstack
+**Notebook 05_03 - Pivot y Melt:**
+- [ ] `.pivot_table()` con agregaciones (sum, mean, count)
+- [ ] `.melt()` para transformar wide → long
+- [ ] `.pivot()` para transformar long → wide
+- [ ] Preparación de datos para visualización
+- [ ] Reportes ejecutivos por región × mes
 
-**Índices Multinivel:**
-- [ ] Crear MultiIndex con set_index
-- [ ] Navegar por niveles
-- [ ] Subtotales con groupby(level=...)
-- [ ] Resetear índice cuando sea necesario
+**Notebook 05_04 - MultiIndex y P&L:**
+- [ ] Crear MultiIndex con `.set_index()`
+- [ ] Navegar por niveles: `.loc[(nivel1, nivel2), :]`
+- [ ] Subtotales con `.groupby(level=...)`
+- [ ] Estado de Resultados (P&L) jerárquico
+- [ ] Cálculo de EBITDA
 
-**Ejercicios:**
-- [ ] Ejercicio 1 (Conciliación bancaria) ✅
-- [ ] Ejercicio 2 (Pivot tables) ✅
-- [ ] Ejercicio 3 (Wide ↔ Long) ✅
-- [ ] Ejercicio 4 (P&L jerárquico) ✅
+**Ejercicios Integradores:**
+- [ ] Ejercicio 1: Conciliación bancaria completa ✅
+- [ ] Ejercicio 2: Pivot tables multidimensionales ✅
+- [ ] Ejercicio 3: Transformación Wide ↔ Long ✅
+- [ ] Ejercicio 4: P&L jerárquico con drill-down ✅
 
 ---
 
