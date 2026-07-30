@@ -27,77 +27,104 @@ Este módulo te enseña a responder las preguntas que realmente importan a direc
 * `ventas_retail.csv`
 * `transacciones_financieras.parquet`
 
-**Tiempo estimado:** 3.5 horas
+**Tiempo estimado total:** 4 horas 10 minutos (250 minutos)
+
+**Total de celdas educativas:** 30 (portadas + teoría + práctica + casos integradores + conclusiones)
 
 ---
 
 ## 📚 Contenido del Módulo
 
-### 06_01_GroupBy_Agregaciones_Multiples
-**Duración:** 50 min | **Dificultad:** Intermedio
+### 06_01_GroupBy_y_Operaciones_Grupales
+**Duración:** 70 minutos | **Dificultad:** 🟡 Intermedio | **Celdas:** 10
 
-**Temas:**
-* `.groupby()` con una o múltiples columnas
-* Agregaciones: sum, mean, count, std, min, max
-* `.agg()` con diccionarios de funciones
-* Named aggregations con `pd.NamedAgg`
-* Transformaciones con `.transform()`
+**Temas cubiertos:**
+* 🔢 **El Patrón Split-Apply-Combine:** División conceptual de agregaciones
+* 📊 **GroupBy Básico:** `.groupby('col')['valor'].sum()`
+* 📈 **Agregaciones Múltiples:** `.agg()` con diccionarios, funciones múltiples
+* 🔢 **Múltiples Columnas:** `.groupby(['col1', 'col2']).agg(...)`
+* 🔍 **Filtrado Post-Agregación:** Top N, filtrado por umbral
+* 🔄 **Transformaciones por Grupo:** `.transform()`, ranking, % participación
+* 💼 **Caso Integrador:** Análisis completo de ventas (5 preguntas de negocio)
 
-**Casos de uso:**
-* Revenue total por región y mes
-* Ticket promedio por tipo de cliente
-* Cantidad de transacciones por vendedor
+**Resultado esperado:** Dominio completo de GroupBy y agregaciones en contextos empresariales
 
 ---
 
-### 06_02_Metricas_Empresariales_ARPU_Churn
-**Duración:** 60 min | **Dificultad:** Intermedio
+### 06_02_Calculo_Margen_Bruto_y_EBITDA
+**Duración:** 65 minutos | **Dificultad:** 🟡 Intermedio | **Celdas:** 8
 
-**Temas:**
-* **ARPU** (Average Revenue Per User)
-* **Churn Rate** mensual y anual
-* **CAC** (Customer Acquisition Cost)
-* **LTV** (Lifetime Value)
-* **Retention Rate** por cohorte
+**Temas cubiertos:**
+* 📚 **Teoría de Margen Bruto:** Definición, componentes, benchmarks por industria
+* 💰 **Cálculo de Margen Bruto:** Fórmulas, margen %, análisis de rentabilidad
+* 📈 **Teoría de EBITDA:** Definición, por qué importa, cálculo top-down y bottom-up
+* 📈 **Cálculo de EBITDA:** Estado de resultados completo, EBIT, utilidad neta
+* 💼 **Caso Integrador:** Análisis por línea de producto, ranking, análisis crítico
 
-**Fórmulas cubiertas:**
+**Fórmulas clave:**
+```python
+Margen_Bruto = Ventas_Netas - Costo_Ventas
+Margen_Bruto_% = (Margen_Bruto / Ventas_Netas) * 100
+
+EBITDA = Margen_Bruto - Gastos_Operativos
+EBIT = EBITDA - Depreciación - Amortización
+Utilidad_Neta = EBIT - Intereses - Impuestos
 ```
-ARPU = Revenue Total / # Usuarios Activos
-Churn Rate = Usuarios Cancelados / Usuarios Inicio Periodo
-CAC = Gasto en Marketing / Nuevos Clientes
-LTV = ARPU × (1 / Churn Rate)
+
+**Resultado esperado:** Capacidad de construir estados financieros y analizar rentabilidad
+
+---
+
+### 06_03_Metricas_ARPU_y_Churn_Rate
+**Duración:** 60 minutos | **Dificultad:** 🟠 Intermedio-Avanzado | **Celdas:** 6
+
+**Temas cubiertos:**
+* 📚 **Teoría de ARPU y Churn:** Definiciones, fórmulas, benchmarks por industria
+* 💰 **Cálculo de ARPU y Churn:** Métricas mensuales, crecimiento neto, tasa de crecimiento
+* 🔄 **LTV (Lifetime Value):** Fórmula simplificada, interpretación empresarial
+* 💼 **Caso Integrador:** Análisis de cohortes, ARPU por cohorte y plan, Churn por segmento
+
+**Fórmulas clave:**
+```python
+ARPU = Total_Revenue / Total_Active_Users
+Churn_Rate_% = (Cancelaciones / Usuarios_Inicio) * 100
+LTV = ARPU / (Churn_Rate / 100)
 ```
 
----
+**Benchmarks:**
+* B2C SaaS: ARPU $10-30, Churn 5-7%
+* B2B SaaS: ARPU $50-500, Churn 2-3%
+* Streaming: ARPU $10-20, Churn 3-5%
 
-### 06_03_EBITDA_y_Margenes_Contribucion
-**Duración:** 55 min | **Dificultad:** Intermedio-Avanzado
-
-**Temas:**
-* Estado de Resultados (P&L) agregado
-* **EBITDA** = Ingresos - COGS - Gastos Operativos
-* **Margen Bruto** = (Revenue - COGS) / Revenue
-* **Margen Neto** = Utilidad Neta / Revenue
-* **Margen de Contribución** por producto/región
-
-**Aplicaciones:**
-* Identificar productos más rentables
-* Benchmarking de márgenes vs industria
-* Decisiones de discontinuación de líneas
+**Resultado esperado:** Dominio de métricas SaaS y capacidad de analizar cohortes
 
 ---
 
-### 06_04_Frecuencias_y_Distribuciones
-**Duración:** 45 min | **Dificultad:** Principiante
+### 06_04_Agregaciones_Compuestas_agg
+**Duración:** 55 minutos | **Dificultad:** 🟠 Intermedio-Avanzado | **Celdas:** 6
 
-**Temas:**
-* `.value_counts()` para conteo de frecuencias
-* `.crosstab()` para tablas de contingencia
-* Percentiles y deciles con `.quantile()`
-* Binning con `pd.cut()` y `pd.qcut()`
-* Distribuciones acumuladas
+**Temas cubiertos:**
+* 📦 **.agg() con Múltiples Funciones:** Una función, múltiples funciones, Named Aggregations
+* 🔧 **Funciones Personalizadas:** Funciones custom, lambdas, métricas avanzadas (rango, coef. variación)
+* 📊 **Dashboard de KPIs Integrador:** KPIs por región, producto, vendedor, métricas generales
 
-**Resultado:** Análisis de distribución de variables clave (ingresos, edades, compras)
+**Métodos avanzados:**
+```python
+# Named Aggregations (RECOMENDADO)
+df.groupby('col').agg(
+    Total_Ventas=('ventas', 'sum'),
+    Promedio=('ventas', 'mean'),
+    Maximo=('ventas', 'max')
+)
+
+# Funciones personalizadas
+def rango(x):
+    return x.max() - x.min()
+
+df.groupby('col').agg(Rango=('val', rango))
+```
+
+**Resultado esperado:** Dominio de .agg() avanzado y capacidad de construir dashboards de KPIs
 
 ---
 
@@ -220,26 +247,40 @@ churn = usuarios_cancelados / usuarios_inicio_periodo
 
 ## ✅ Checklist de Completitud
 
-**GroupBy:**
-- [ ] Agregación simple (.sum(), .mean())
-- [ ] Agregación múltiple con .agg()
-- [ ] Named aggregations
-- [ ] Transformaciones con .transform()
+**06_01 - GroupBy y Operaciones Grupales:**
+- [ ] Comprender el patrón Split-Apply-Combine
+- [ ] Realizar GroupBy básico con una columna
+- [ ] Aplicar agregaciones múltiples con .agg()
+- [ ] Agrupar por múltiples columnas
+- [ ] Filtrar resultados post-agregación
+- [ ] Usar .transform() para agregar valores a filas
+- [ ] Calcular ranking dentro de grupos
+- [ ] Resolver 5 preguntas de negocio con GroupBy
 
-**Métricas SaaS:**
-- [ ] ARPU calculado correctamente
-- [ ] Churn Rate mensual y anual
-- [ ] CAC, LTV y ratio LTV/CAC
+**06_02 - Margen Bruto y EBITDA:**
+- [ ] Calcular Margen Bruto y Margen Bruto %
+- [ ] Entender componentes del EBITDA
+- [ ] Construir estado de resultados completo
+- [ ] Calcular EBIT y Utilidad Neta
+- [ ] Analizar rentabilidad por línea de producto
+- [ ] Comparar márgenes con benchmarks de industria
+- [ ] Identificar líneas rentables y no rentables
 
-**Métricas Financieras:**
-- [ ] P&L agregado
-- [ ] EBITDA por segmento
-- [ ] Márgenes bruto, operativo y neto
+**06_03 - ARPU y Churn Rate:**
+- [ ] Calcular ARPU mensual correctamente
+- [ ] Medir Churn Rate por período
+- [ ] Calcular LTV (Lifetime Value)
+- [ ] Analizar métricas por cohorte
+- [ ] Comparar ARPU y Churn por plan/segmento
+- [ ] Interpretar benchmarks de industria
 
-**Distribuciones:**
-- [ ] Frecuencias con value_counts()
-- [ ] Binning con pd.cut()
-- [ ] Crosstab para contingencia
+**06_04 - Agregaciones Compuestas:**
+- [ ] Usar .agg() con múltiples funciones
+- [ ] Crear funciones personalizadas de agregación
+- [ ] Aplicar Named Aggregations
+- [ ] Combinar múltiples niveles de agregación
+- [ ] Construir dashboard completo de KPIs
+- [ ] Generar KPIs por región, producto y vendedor
 
 ---
 
