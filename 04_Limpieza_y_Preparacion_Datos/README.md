@@ -27,23 +27,28 @@ En el mundo real, **el 80% del tiempo de un analista se gasta en limpieza de dat
 * `ventas_retail.csv` (del repositorio datasets/raw)
 * Datasets con datos sucios (provistos en notebooks)
 
-**Tiempo estimado total:** 4 horas
+**Tiempo estimado total:** 5 horas 10 minutos (310 minutos)
+
+**Total de celdas educativas:** 43 (portadas + teoría + práctica + casos integradores + conclusiones)
 
 ---
 
 ## 📚 Contenido del Módulo
 
 ### 04_01_Valores_Faltantes_y_Duplicados
-**Duración:** 45 minutos | **Dificultad:** Principiante
+**Duración:** 70 minutos | **Dificultad:** 🟡 Intermedio | **Celdas:** 11
 
 **Temas cubiertos:**
-* Detección de valores faltantes con `.isna()`, `.isnull()`, `.info()`
-* Visualización de patrones de NaN con heatmaps
-* Estrategias de eliminación con `.dropna()`
-* Estrategias de imputación básica con `.fillna()`
-* Detección y eliminación de duplicados
+* 🔍 **Teoría de valores nulos:** MCAR, MAR, MNAR, causas empresariales
+* 📊 **Detección exhaustiva:** `.isnull()`, `.notnull()`, análisis por columna y fila
+* ⚙️ **Estrategias de manejo:** Eliminar vs Rellenar, reglas de oro (% de nulos)
+* 🛠️ **Eliminación selectiva:** `.dropna()` con parámetros (how, subset, thresh, axis)
+* 📊 **7 métodos de imputación:** constante, promedio, mediana, moda, ffill, bfill, interpolación lineal
+* 🔄 **Teoría de duplicados:** tipos (exactos, parciales, fuzzy), causas, impacto
+* 🔄 **Detección y eliminación:** `.duplicated()`, `.drop_duplicates()` con keep (first, last, False)
+* 💼 **Caso integrador:** Pipeline completo de limpieza de cuentas por cobrar
 
-**Resultado esperado:** Dominio de detección y tratamiento básico de calidad de datos
+**Resultado esperado:** Dominio completo de detección, estrategias y métodos de tratamiento de nulos y duplicados
 
 ---
 
