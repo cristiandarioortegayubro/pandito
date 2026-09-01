@@ -262,3 +262,89 @@ print("✅ Serverless Compute compatible")
 Para información detallada sobre compatibilidad, consulta: [SERVERLESS_COMPATIBILITY.md](./SERVERLESS_COMPATIBILITY.md)
 
 ---
+
+## 🗂️ Unity Catalog: Datos Centralizados del Proyecto
+
+### 🎯 Notebook Maestro
+
+**📍 Ubicación:** `00_Guia_Rapida_Genie_Code/00_05_Preparacion_Datos_Empresariales.ipynb`
+
+**🚨 EJECUTAR PRIMERO** - Este notebook genera todas las tablas base del proyecto.
+
+### 📊 Estructura de Unity Catalog
+
+```
+pandito_ds/                                    # Catálogo del proyecto
+└── default/                                   # Schema por defecto
+    ├── ventas_mensuales_mendoza_h3            # 🏪 Tabla base (300 registros)
+    ├── dl_sequences_lstm                      # 🧠 Secuencias LSTM (204 secuencias)
+    └── dl_metadata_lstm                       # ⚙️ Metadatos + scaler
+```
+
+### 🏪 Tabla 1: `ventas_mensuales_mendoza_h3`
+
+**Descripción:** Dataset georeferenciado de "Los Andes Market" (5 sucursales en Mendoza, Argentina)
+
+**Período:** 2019-2024 (60 meses)
+
+**Columnas clave:**
+* `fecha`, `sucursal_id`, `ventas`, `lat`, `lon`
+* `h3_index`, `h3_res8`, `h3_res7` (indexación hexagonal)
+* `zona` (tipo de zona comercial)
+
+**Uso en módulos:** 06 (Agregaciones), 07 (Series Tiempo), 09 (Geoespacial), 10 (H3)
+
+### 🧠 Tabla 2: `dl_sequences_lstm`
+
+**Descripción:** Secuencias temporales preparadas para LSTM/RNN
+
+**Splits:** Train (70%), Validation (15%), Test (15%)
+
+**Formato:** Secuencias de 12 meses serializadas en base64
+
+**Uso en módulos:** Deep Learning, forecasting, series temporales avanzadas
+
+### ⚙️ Tabla 3: `dl_metadata_lstm`
+
+**Descripción:** Metadatos del modelo y scaler serializado
+
+**Uso:** Reconstruir pipeline, desnormalizar predicciones
+
+---
+
+### 💻 Patrón de Uso en Notebooks
+
+**Al inicio de cada notebook:**
+
+```python
+# 1. Definir referencias (copiar estas líneas)
+CATALOG = "pandito_ds"
+SCHEMA = "default"
+
+# 2. Usar el catálogo
+spark.sql(f"USE CATALOG {CATALOG}")
+spark.sql(f"USE SCHEMA {SCHEMA}")
+
+# 3. Cargar datos
+df = spark.table(f"{CATALOG}.{SCHEMA}.ventas_mensuales_mendoza_h3").toPandas()
+
+print(f"✅ Datos cargados: {len(df):,} registros")
+```
+
+**Beneficios:**
+* ✅ **Portable:** Cambia el catálogo en una variable
+* ✅ **Colaborativo:** Todo el equipo usa las mismas referencias
+* ✅ **Consistente:** Métricas comparables entre notebooks
+* ✅ **Reproducible:** Ejecuta notebook maestro una vez, usa everywhere
+
+---
+
+### 🔄 Flujo de Trabajo Recomendado
+
+1. **Clonar el repositorio** en Databricks vía Git
+2. **Ejecutar `00_05_Preparacion_Datos_Empresariales.ipynb`** (genera todas las tablas)
+3. **Navegar a cualquier módulo** (01-16) y ejecutar notebooks
+4. **Los datos están disponibles** desde Unity Catalog automáticamente
+
+---
+

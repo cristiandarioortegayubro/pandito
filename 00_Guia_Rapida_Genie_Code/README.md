@@ -198,6 +198,97 @@ Completaste este módulo si puedes:
 
 Ahora que dominas tu copiloto de IA, es momento de aprender los fundamentos:
 
+---
+
+## 📂 Notebook 05: Setup Maestro de Datos del Proyecto
+
+### 🎯 Notebook Especial - Ejecutar PRIMERO
+
+**📁 Ubicación:** `00_05_Preparacion_Datos_Empresariales.ipynb`
+
+**🚨 IMPORTANTE:** Este notebook es diferente a los demás. En lugar de ser un tutorial educativo, es un **notebook de infraestructura** que genera los datos base de todo el proyecto.
+
+### 🏭 Qué Hace Este Notebook
+
+**1. Genera Datos Sintéticos Realistas:**
+* 5 sucursales de "Los Andes Market" en Mendoza, Argentina
+* 60 meses de datos de ventas (2019-2024)
+* Georeferenciación con coordenadas GPS + índices H3
+* Total: 300 registros
+
+**2. Aplica Feature Engineering:**
+* Features temporales: lags, rolling statistics, cíclicos
+* Features geoespaciales: distancia al centro, densidad H3
+* Normalización con MinMaxScaler
+
+**3. Crea Secuencias para Deep Learning:**
+* Secuencias de 12 meses para LSTM/RNN
+* Splits: Train (70%), Validation (15%), Test (15%)
+* Total: 204 secuencias listas para usar
+
+**4. Guarda en Unity Catalog:**
+* `pandito_ds.default.ventas_mensuales_mendoza_h3`
+* `pandito_ds.default.dl_sequences_lstm`
+* `pandito_ds.default.dl_metadata_lstm`
+
+### 🔄 Flujo de Trabajo Recomendado
+
+```
+1. EJECUTAR 🎯 00_05_Preparacion_Datos_Empresariales.ipynb
+   ↓
+   Genera 3 tablas en Unity Catalog
+   ↓
+2. Navegar a cualquier módulo (01-16)
+   ↓
+3. Los notebooks pueden opcionalmente cargar datos reales:
+   df = spark.table('pandito_ds.default.ventas_mensuales_mendoza_h3').toPandas()
+```
+
+### 📄 Tablas Disponibles
+
+**Tabla 1: `ventas_mensuales_mendoza_h3`**
+* 🏪 Datos base georeferenciados
+* 📅 300 registros (60 meses × 5 sucursales)
+* 📊 Columnas: fecha, sucursal, ventas, lat, lon, zona, h3_index
+* **Usar en:** Módulos 06 (Agregaciones), 07 (Series), 09 (Geo), 10 (H3)
+
+**Tabla 2: `dl_sequences_lstm`**
+* 🧠 Secuencias temporales para LSTM
+* 🔢 204 secuencias (train/val/test)
+* 📊 Formato: 12 meses × N features
+* **Usar en:** Módulos de Deep Learning, forecasting avanzado
+
+**Tabla 3: `dl_metadata_lstm`**
+* ⚙️ Metadatos + scaler serializado
+* 📊 Parámetros del modelo
+* **Usar en:** Reconstruir pipeline, desnormalizar predicciones
+
+### 💻 Patrón de Uso en Otros Notebooks
+
+Al inicio de cualquier notebook:
+
+```python
+# Definir referencias
+CATALOG = "pandito_ds"
+SCHEMA = "default"
+
+# Cargar datos
+df = spark.table(f"{CATALOG}.{SCHEMA}.ventas_mensuales_mendoza_h3").toPandas()
+
+print(f"✅ Datos cargados: {len(df):,} registros")
+```
+
+### ✨ Beneficios de Este Approach
+
+✅ **Consistencia:** Todos usan los mismos datos  
+✅ **Reproducibilidad:** Ejecuta una vez, usa everywhere  
+✅ **Colaboración:** Equipo comparte datasets  
+✅ **Realismo:** Datos más complejos que ejemplos simples  
+✅ **Persistencia:** Unity Catalog guarda permanentemente
+
+---
+
+
 **➡️ [Módulo 01: Entorno Databricks Free Edition & GitHub](../01_Entorno_Databricks_Free_Edition_GitHub/)**
 
 Aprende a configurar tu workspace, conectar GitHub y dominar el entorno de desarrollo.
