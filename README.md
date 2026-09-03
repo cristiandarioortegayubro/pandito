@@ -40,7 +40,7 @@ El título hace referencia a **Pandas**, la biblioteca más popular de Python pa
 | Capa | Tecnologías |
 |------|-------------|
 | **Lenguaje Base** | Python 3.10+ |
-| **Análisis Tabulado** | Pandas, NumPy |
+| **Análisis Tabulado** | Pandas |
 | **Big Data** | PySpark, Delta Lake |
 | **Visualización** | Plotly, Databricks Dashboards |
 | **Geoespacial** | GeoPandas, Uber H3 |
@@ -51,33 +51,32 @@ El título hace referencia a **Pandas**, la biblioteca más popular de Python pa
 
 ## 📚 Estructura del Repositorio
 
-El repositorio contiene **16 módulos progresivos** con más de **60 notebooks prácticos**:
+El repositorio contiene **15 módulos progresivos** con más de **42 notebooks prácticos**:
 
-### 🔰 Fundamentos (Módulos 1-3)
+### 🔰 Fundamentos (Módulos 1-2)
 - **01** - Entorno Databricks Free Edition & GitHub
-- **02** - NumPy y Vectorización Financiera
-- **03** - Pandas: Series y DataFrames
+- **02** - Pandas: Series y DataFrames
 
-### 📊 Manipulación de Datos (Módulos 4-6)
-- **04** - Limpieza y Preparación de Datos
-- **05** - Reshaping y Conciliaciones
-- **06** - Agregaciones y Métricas KPI
+### 📊 Manipulación de Datos (Módulos 3-5)
+- **03** - Limpieza y Preparación de Datos
+- **04** - Reshaping y Conciliaciones
+- **05** - Agregaciones y Métricas KPI
 
-### 📈 Análisis Especializado (Módulos 7-10)
-- **07** - Series de Tiempo Financieras
-- **08** - Visualización con Plotly & Dashboards
-- **09** - Analítica Geoespacial con GeoPandas
-- **10** - Indexación Hexagonal (Uber H3)
+### 📈 Análisis Especializado (Módulos 6-9)
+- **06** - Series de Tiempo Financieras
+- **07** - Visualización con Plotly & Dashboards
+- **08** - Analítica Geoespacial con GeoPandas
+- **09** - Indexación Hexagonal (Uber H3)
 
-### ⚡ Big Data & PySpark (Módulos 11-14)
-- **11** - PySpark Core y SparkSession
-- **12** - Transformación Avanzada en PySpark
-- **13** - PySpark SQL, Window Functions & Delta Lake
-- **14** - Optimización de ETL Pipelines
+### ⚡ Big Data & PySpark (Módulos 10-13)
+- **10** - PySpark Core y SparkSession
+- **11** - Transformación Avanzada en PySpark
+- **12** - PySpark SQL, Window Functions & Delta Lake
+- **13** - Optimización de ETL Pipelines
 
-### 🤖 IA & Proyectos (Módulos 15-16)
-- **15** - Analítica Agéntica con Genie Code
-- **16** - Proyectos Integradores & GitHub Portfolio
+### 🤖 IA & Proyectos (Módulos 14-15)
+- **14** - Analítica Agéntica con Genie Code
+- **15** - Proyectos Integradores & GitHub Portfolio
 
 ---
 
@@ -152,22 +151,22 @@ pandito/
 
 ## 📖 Orden de Estudio Recomendado
 
-### 🔹 Track Básico (8-10 semanas)
+### 🔹 Track Básico (6-8 semanas)
 Ideal para principiantes absolutos:
 ```
-Módulos: 01 → 03 → 04 → 06 → 08 → 15
+Módulos: 01 → 02 → 03 → 05 → 07 → 14
 ```
 
-### 🔸 Track Intermedio (12-14 semanas)
+### 🔸 Track Intermedio (10-12 semanas)
 Para quienes conocen Python básico:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 11 → 12 → 15 → 16
+Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 10 → 11 → 14 → 15
 ```
 
-### 🔺 Track Avanzado (16-20 semanas)
+### 🔺 Track Avanzado (14-18 semanas)
 Ruta completa para dominio total:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → 16
+Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15
 ```
 
 ---
@@ -230,7 +229,7 @@ Este libro está **100% verificado** para funcionar con **Databricks Serverless 
 
 ### Estado de Verificación
 
-- **Notebooks analizados:** 60
+- **Notebooks analizados:** 42
 - **Compatibilidad:** ✅ 100%
 - **Lenguajes usados:** Python, SQL, sh (todos compatibles)
 - **Sin código Scala/R:** ✅ Confirmado
@@ -292,7 +291,7 @@ pandito_ds/                                    # Catálogo del proyecto
 * `h3_index`, `h3_res8`, `h3_res7` (indexación hexagonal)
 * `zona` (tipo de zona comercial)
 
-**Uso en módulos:** 06 (Agregaciones), 07 (Series Tiempo), 09 (Geoespacial), 10 (H3)
+**Uso en módulos:** 05 (Agregaciones), 06 (Series Tiempo), 08 (Geoespacial), 09 (H3)
 
 ### 🧠 Tabla 2: `dl_sequences_lstm`
 
@@ -343,7 +342,7 @@ print(f"✅ Datos cargados: {len(df):,} registros")
 
 1. **Clonar el repositorio** en Databricks vía Git
 2. **Ejecutar `00_05_Preparacion_Datos_Empresariales.ipynb`** (genera todas las tablas)
-3. **Navegar a cualquier módulo** (01-16) y ejecutar notebooks
+3. **Navegar a cualquier módulo** (01-15) y ejecutar notebooks
 4. **Los datos están disponibles** desde Unity Catalog automáticamente
 
 ---
