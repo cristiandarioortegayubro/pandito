@@ -1,4 +1,4 @@
-# 📊 Saliendo de lo Pandito v4
+# 📊 Saliendo de lo Pandito - 1º Ed.
 ### Analítica de Datos para Negocios con Databricks Free Edition & Genie Code
 
 [![Databricks](https://img.shields.io/badge/Databricks-Free_Edition-FF3621?style=flat&logo=databricks)](https://community.cloud.databricks.com/)
