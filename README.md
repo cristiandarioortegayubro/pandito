@@ -10,33 +10,33 @@
 
 ## 🎯 Sobre el Libro
 
-**"Saliendo de lo Pandito"** es un libro práctico diseñado para profesionales de negocios, analistas y emprendedores que desean dominar el análisis de datos moderno sin necesidad de un background técnico profundo.
+**"Saliendo de lo Pandito"** es un libro práctico diseñado para profesionales de negocios, analistas y emprendedores que desean dominar el análisis de datos moderno.
 
 ### ¿Por qué "Saliendo de lo Pandito"?
-El título hace referencia a **Pandas**, la biblioteca más popular de Python para análisis de datos. El libro comienza con Pandas y te lleva paso a paso hacia herramientas empresariales de Big Data como **PySpark**, analítica geoespacial, visualización interactiva y **analítica agéntica con IA**.
+El título hace referencia a **Pandas**, la biblioteca más popular de Python para análisis de datos. El libro comienza con Pandas y te lleva paso a paso hacia herramientas empresariales más profundas como **PySpark**, analítica geoespacial, visualización interactiva y **analítica agéntica con IA**.
 
 ---
 
-## 👥 ¿Para Quién es Este Libro?
+## 👥 ¿Para quién es este Libro?
 
 ✅ **Analistas de Negocios** que trabajan con Excel y quieren escalar a Big Data  
-✅ **Profesionales de Finanzas/Contabilidad** que necesitan automatizar KPIs y reportes  
+✅ **Profesionales de Ciencias Económicas** que necesitan automatizar KPIs y reportes  
 ✅ **Emprendedores y Product Managers** que quieren tomar decisiones basadas en datos  
 ✅ **Estudiantes y Autodidactas** sin experiencia previa en programación  
-✅ **Equipos de Data** que buscan democratizar analítica con herramientas de IA
+✅ **Equipos de Data Analitycs** que buscan democratizar analítica con herramientas de IA
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
+## 🛠️ Tecnologías y herramientas
 
-### Plataforma Principal: **Databricks Free Edition (Community Cloud)**
+### Plataforma principal: **Databricks Free Edition**
 - ✨ **100% Gratuita** - Sin tarjeta de crédito requerida
 - ☁️ **Compute Serverless** - Sin configuración de infraestructura
 - 🔄 **Integración Git** - Sincronización directa con GitHub
 - 📊 **Notebooks Interactivos** - Jupyter-style en la nube
 - 🧠 **Genie Code & Assistant** - Analítica asistida por IA
 
-### Stack Tecnológico Completo:
+### Stack tecnológico completo:
 | Capa | Tecnologías |
 |------|-------------|
 | **Lenguaje Base** | Python 3.10+ |
@@ -49,47 +49,48 @@ El título hace referencia a **Pandas**, la biblioteca más popular de Python pa
 
 ---
 
-## 📚 Estructura del Repositorio
+## 📚 Estructura del repositorio
 
-El repositorio contiene **15 módulos progresivos** con más de **42 notebooks prácticos**:
+El repositorio contiene **16 módulos progresivos** con más de **42 notebooks prácticos**:
 
-### 🔰 Fundamentos (Módulos 1-2)
+### 🔰 Fundamentos (Módulos 1-3)
 - **01** - Entorno Databricks Free Edition & GitHub
-- **02** - Pandas: Series y DataFrames
+- **02** - Guía Rápida Genie Code
+- **03** - Pandas: Series y DataFrames
 
-### 📊 Manipulación de Datos (Módulos 3-5)
-- **03** - Limpieza y Preparación de Datos
-- **04** - Reshaping y Conciliaciones
-- **05** - Agregaciones y Métricas KPI
+### 📊 Manipulación de Datos (Módulos 4-6)
+- **04** - Limpieza y Preparación de Datos
+- **05** - Reshaping y Conciliaciones
+- **06** - Agregaciones y Métricas KPI
 
-### 📈 Análisis Especializado (Módulos 6-9)
-- **06** - Series de Tiempo Financieras
-- **07** - Visualización con Plotly & Dashboards
-- **08** - Analítica Geoespacial con GeoPandas
-- **09** - Indexación Hexagonal (Uber H3)
+### 📈 Análisis Especializado (Módulos 7-10)
+- **07** - Series de Tiempo Financieras
+- **08** - Visualización con Plotly & Dashboards
+- **09** - Analítica Geoespacial con GeoPandas
+- **10** - Indexación Hexagonal (Uber H3)
 
-### ⚡ Big Data & PySpark (Módulos 10-13)
-- **10** - PySpark Core y SparkSession
-- **11** - Transformación Avanzada en PySpark
-- **12** - PySpark SQL, Window Functions & Delta Lake
-- **13** - Optimización de ETL Pipelines
+### ⚡ Big Data & PySpark (Módulos 11-14)
+- **11** - PySpark Core y SparkSession
+- **12** - Transformación Avanzada en PySpark
+- **13** - PySpark SQL, Window Functions & Delta Lake
+- **14** - Optimización de ETL Pipelines
 
-### 🤖 IA & Proyectos (Módulos 14-15)
-- **14** - Analítica Agéntica con Genie Code
-- **15** - Proyectos Integradores & GitHub Portfolio
+### 🤖 IA & Proyectos (Módulos 15-16)
+- **15** - Analítica Agéntica con Genie Code
+- **16** - Proyectos Integradores & GitHub Portfolio
 
 ---
 
-## 🚀 Guía de Inicio Rápido
+## 🚀 Guía de inicio rápido
 
-### Paso 1: Crear Cuenta en Databricks Community
+### Paso 1: Crear cuenta en Databricks Free Edition
 ```bash
-1. Visita: https://community.cloud.databricks.com/
+1. Visita: https://databricks.com/
 2. Regístrate con tu email (sin tarjeta de crédito)
 3. Verifica tu cuenta por email
 ```
 
-### Paso 2: Clonar Este Repositorio
+### Paso 2: Clonar este repositorio
 ```bash
 # Opción A: Desde la interfaz de Databricks
 1. En Databricks, ve a "Repos" en el menú lateral
@@ -98,7 +99,7 @@ El repositorio contiene **15 módulos progresivos** con más de **42 notebooks p
 4. Click "Create Repo"
 
 # Opción B: Git Clone (si tienes configurado Git)
-git clone https://github.com/[tu-usuario]/pandito.git
+git clone https://github.com/cristiandarioortegayubro/pandito.git
 ```
 
 ### Paso 3: Configurar Compute
@@ -108,7 +109,7 @@ git clone https://github.com/[tu-usuario]/pandito.git
 # NO soportados en Free Edition: R, Scala
 ```
 
-### Paso 4: Abrir el Primer Notebook
+### Paso 4: Abrir el primer notebook
 ```
 pandito/
 └── 01_Entorno_Databricks_Free_Edition_GitHub/
@@ -117,29 +118,29 @@ pandito/
 
 ---
 
-## 🧠 Cómo Usar Genie Code Durante el Libro
+## 🧠 Cómo usar Genie Code durante el libro
 
 **Genie Code** es tu asistente de IA integrado en Databricks. Úsalo para:
 
-1. **Generar Código Automáticamente**
+1. **Generar código automáticamente**
    ```
    Prompt: "Crea un DataFrame de ventas y calcula el total por categoría"
    → Genie genera el código PySpark/Pandas completo
    ```
 
-2. **Depurar Errores**
+2. **Depurar errores**
    ```
    Prompt: "Este código da KeyError, ¿cómo lo arreglo?"
    → Genie analiza el error y sugiere soluciones
    ```
 
-3. **Optimizar Consultas**
+3. **Optimizar consultas**
    ```
    Prompt: "Optimiza esta consulta SQL para mejor performance"
    → Genie refactoriza con mejores prácticas
    ```
 
-4. **Explicar Conceptos**
+4. **Explicar conceptos**
    ```
    Prompt: "Explica qué es un window function con ejemplo"
    → Genie genera explicación + código ejecutable
@@ -149,29 +150,29 @@ pandito/
 
 ---
 
-## 📖 Orden de Estudio Recomendado
+## 📖 Orden de estudio recomendado
 
 ### 🔹 Track Básico (6-8 semanas)
 Ideal para principiantes absolutos:
 ```
-Módulos: 01 → 02 → 03 → 05 → 07 → 14
+Módulos: 01 → 02 → 03 → 06 → 08 → 15
 ```
 
 ### 🔸 Track Intermedio (10-12 semanas)
 Para quienes conocen Python básico:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 10 → 11 → 14 → 15
+Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 11 → 12 → 15 → 16
 ```
 
-### 🔺 Track Avanzado (14-18 semanas)
+### 🔺 Track Avanzado (16-20 semanas)
 Ruta completa para dominio total:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15
+Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → 16
 ```
 
 ---
 
-## 💼 Casos de Uso Empresariales Cubiertos
+## 💼 Casos de uso empresariales cubiertos
 
 ✔️ **Finanzas**: Cálculo de EBITDA, márgenes, análisis de P&L, ratios financieros  
 ✔️ **Marketing**: ARPU, CAC, LTV, Churn Rate, cohort analysis  
@@ -210,140 +211,3 @@ Este material educativo está disponible bajo licencia MIT. Puedes usar, modific
 Gracias a la comunidad de Databricks, los contribuidores de librerías open-source (Pandas, PySpark, Plotly, GeoPandas), y a todos los estudiantes y profesionales que han brindado feedback durante el desarrollo de este material.
 
 ---
-
-<div align="center">
-
-### 🎓 ¡Comienza Tu Viaje en Analítica de Datos Hoy!
-
-[📂 Ver Módulos](./01_Entorno_Databricks_Free_Edition_GitHub) | [🧠 Guía Genie Code](./00_Guia_Rapida_Genie_Code) | [📊 Datasets](./datasets)
-
-**"De Excel a PySpark, de analista a científico de datos"**
-
-</div>
-
----
-
-## ✅ Compatibilidad Serverless Compute
-
-Este libro está **100% verificado** para funcionar con **Databricks Serverless Compute** en Free Edition.
-
-### Estado de Verificación
-
-- **Notebooks analizados:** 42
-- **Compatibilidad:** ✅ 100%
-- **Lenguajes usados:** Python, SQL, sh (todos compatibles)
-- **Sin código Scala/R:** ✅ Confirmado
-- **Sin acceso DBFS directo:** ✅ Todas las rutas usan `/Workspace/`
-
-### Ventajas de Serverless para Este Libro
-
-1. ⚡ **Inicio instantáneo** - Sin tiempo de warmup de cluster
-2. 📈 **Escalado automático** - Se ajusta según tu carga de trabajo
-3. 💰 **Costo optimizado** - Solo pagas por lo que usas
-4. 🔧 **Sin configuración** - No administras clusters manualmente
-5. 🎓 **Ideal para aprender** - Perfecto para Databricks Free Edition
-
-### Verificación de Entorno
-
-Todos los notebooks principales incluyen una celda de verificación al inicio:
-
-```python
-# 🔍 Verificación rápida
-import sys
-print(f"✅ Python {sys.version.split()[0]}")
-try:
-    print(f"✅ Spark {spark.version}")
-except:
-    print("ℹ️  Spark no disponible")
-print("✅ Serverless Compute compatible")
-```
-
-Para información detallada sobre compatibilidad, consulta: [SERVERLESS_COMPATIBILITY.md](./SERVERLESS_COMPATIBILITY.md)
-
----
-
-## 🗂️ Unity Catalog: Datos Centralizados del Proyecto
-
-### 🎯 Notebook Maestro
-
-**📍 Ubicación:** `00_Guia_Rapida_Genie_Code/00_05_Preparacion_Datos_Empresariales.ipynb`
-
-**🚨 EJECUTAR PRIMERO** - Este notebook genera todas las tablas base del proyecto.
-
-### 📊 Estructura de Unity Catalog
-
-```
-pandito_ds/                                    # Catálogo del proyecto
-└── default/                                   # Schema por defecto
-    ├── ventas_mensuales_mendoza_h3            # 🏪 Tabla base (300 registros)
-    ├── dl_sequences_lstm                      # 🧠 Secuencias LSTM (204 secuencias)
-    └── dl_metadata_lstm                       # ⚙️ Metadatos + scaler
-```
-
-### 🏪 Tabla 1: `ventas_mensuales_mendoza_h3`
-
-**Descripción:** Dataset georeferenciado de "Los Andes Market" (5 sucursales en Mendoza, Argentina)
-
-**Período:** 2019-2024 (60 meses)
-
-**Columnas clave:**
-* `fecha`, `sucursal_id`, `ventas`, `lat`, `lon`
-* `h3_index`, `h3_res8`, `h3_res7` (indexación hexagonal)
-* `zona` (tipo de zona comercial)
-
-**Uso en módulos:** 05 (Agregaciones), 06 (Series Tiempo), 08 (Geoespacial), 09 (H3)
-
-### 🧠 Tabla 2: `dl_sequences_lstm`
-
-**Descripción:** Secuencias temporales preparadas para LSTM/RNN
-
-**Splits:** Train (70%), Validation (15%), Test (15%)
-
-**Formato:** Secuencias de 12 meses serializadas en base64
-
-**Uso en módulos:** Deep Learning, forecasting, series temporales avanzadas
-
-### ⚙️ Tabla 3: `dl_metadata_lstm`
-
-**Descripción:** Metadatos del modelo y scaler serializado
-
-**Uso:** Reconstruir pipeline, desnormalizar predicciones
-
----
-
-### 💻 Patrón de Uso en Notebooks
-
-**Al inicio de cada notebook:**
-
-```python
-# 1. Definir referencias (copiar estas líneas)
-CATALOG = "pandito_ds"
-SCHEMA = "default"
-
-# 2. Usar el catálogo
-spark.sql(f"USE CATALOG {CATALOG}")
-spark.sql(f"USE SCHEMA {SCHEMA}")
-
-# 3. Cargar datos
-df = spark.table(f"{CATALOG}.{SCHEMA}.ventas_mensuales_mendoza_h3").toPandas()
-
-print(f"✅ Datos cargados: {len(df):,} registros")
-```
-
-**Beneficios:**
-* ✅ **Portable:** Cambia el catálogo en una variable
-* ✅ **Colaborativo:** Todo el equipo usa las mismas referencias
-* ✅ **Consistente:** Métricas comparables entre notebooks
-* ✅ **Reproducible:** Ejecuta notebook maestro una vez, usa everywhere
-
----
-
-### 🔄 Flujo de Trabajo Recomendado
-
-1. **Clonar el repositorio** en Databricks vía Git
-2. **Ejecutar `00_05_Preparacion_Datos_Empresariales.ipynb`** (genera todas las tablas)
-3. **Navegar a cualquier módulo** (01-15) y ejecutar notebooks
-4. **Los datos están disponibles** desde Unity Catalog automáticamente
-
----
-
