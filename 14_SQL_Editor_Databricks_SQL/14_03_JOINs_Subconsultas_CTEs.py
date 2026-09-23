@@ -226,6 +226,139 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,🔗 Teoría: JOINs y CTEs con datos reales
+# MAGIC %md
+# MAGIC ## 🔗 JOINs y CTEs con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 🏪 Self-join y CTEs sobre una sola tabla
+# MAGIC
+# MAGIC En **Los Andes Market** tenemos una sola tabla (`ventas_mensuales_mendoza_h3`), pero podemos crear tablas derivadas con CTEs y hacer joins sobre ellas:
+# MAGIC
+# MAGIC ```sql
+# MAGIC -- CTE: promedios por sucursal
+# MAGIC WITH promedios AS (
+# MAGIC   SELECT sucursal_id, AVG(ventas) AS promedio
+# MAGIC   FROM ventas_mensuales_mendoza_h3
+# MAGIC   GROUP BY sucursal_id
+# MAGIC )
+# MAGIC -- Self-join: comparar cada mes contra el promedio
+# MAGIC SELECT v.*, p.promedio, v.ventas - p.promedio AS desviacion
+# MAGIC FROM ventas_mensuales_mendoza_h3 v
+# MAGIC JOIN promedios p ON v.sucursal_id = p.sucursal_id;
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué meses se desvían más del promedio de cada sucursal?
+# MAGIC * ¿Cuál es el crecimiento interanual por zona?
+# MAGIC * ¿Qué sucursales están por encima/debajo del promedio de su zona?
+# MAGIC * ¿Hay outliers (z-score > 2) en las ventas?
+
+# COMMAND ----------
+
+# DBTITLE 1,🔗 Práctica: JOINs y CTEs con datos reales
+# MAGIC %sql
+# MAGIC -- 🔗 PRÁCTICA: JOINS Y CTEs CON LOS ANDES MARKET
+# MAGIC
+# MAGIC -- 1️⃣  CTE: Desviación de cada mes contra el promedio de la sucursal
+# MAGIC WITH promedios_sucursal AS (
+# MAGIC   SELECT 
+# MAGIC     sucursal_id,
+# MAGIC     AVG(ventas) AS promedio,
+# MAGIC     STDDEV(ventas) AS desviacion_std
+# MAGIC   FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC   GROUP BY sucursal_id
+# MAGIC )
+# MAGIC SELECT 
+# MAGIC   v.sucursal_nombre,
+# MAGIC   v.zona,
+# MAGIC   v.fecha,
+# MAGIC   ROUND(v.ventas, 0) AS ventas,
+# MAGIC   ROUND(p.promedio, 0) AS promedio_sucursal,
+# MAGIC   ROUND(v.ventas - p.promedio, 0) AS desviacion,
+# MAGIC   CASE 
+# MAGIC     WHEN v.ventas > p.promedio + p.desviacion_std THEN 'Above Normal'
+# MAGIC     WHEN v.ventas < p.promedio - p.desviacion_std THEN 'Below Normal'
+# MAGIC     ELSE 'Normal'
+# MAGIC   END AS categoria
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3 v
+# MAGIC JOIN promedios_sucursal p ON v.sucursal_id = p.sucursal_id
+# MAGIC ORDER BY ABS(v.ventas - p.promedio) DESC
+# MAGIC LIMIT 20;
+# MAGIC
+# MAGIC -- 2️⃣  CTE MÚLTIPLE: Crecimiento interanual por zona
+# MAGIC WITH ventas_anuales AS (
+# MAGIC   SELECT zona, YEAR(fecha) AS anio, SUM(ventas) AS total
+# MAGIC   FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC   GROUP BY zona, YEAR(fecha)
+# MAGIC ),
+# MAGIC crecimiento AS (
+# MAGIC   SELECT 
+# MAGIC     zona, anio, total,
+# MAGIC     LAG(total) OVER (PARTITION BY zona ORDER BY anio) AS total_anterior
+# MAGIC   FROM ventas_anuales
+# MAGIC )
+# MAGIC SELECT 
+# MAGIC   zona,
+# MAGIC   anio,
+# MAGIC   ROUND(total, 0) AS ventas_anuales,
+# MAGIC   ROUND(total_anterior, 0) AS ventas_anio_anterior,
+# MAGIC   ROUND((total - total_anterior) / total_anterior * 100, 1) AS crecimiento_pct,
+# MAGIC   CASE 
+# MAGIC     WHEN total > total_anterior THEN '📈 Crecimiento'
+# MAGIC     WHEN total < total_anterior THEN '📉 Decrecimiento'
+# MAGIC     ELSE '➡️ Estable'
+# MAGIC   END AS tendencia
+# MAGIC FROM crecimiento
+# MAGIC WHERE total_anterior IS NOT NULL
+# MAGIC ORDER BY zona, anio;
+# MAGIC
+# MAGIC -- 3️⃣  SUBCONSULTA: Ventas por encima del promedio general
+# MAGIC SELECT 
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   fecha,
+# MAGIC   ROUND(ventas, 0) AS ventas,
+# MAGIC   ROUND((SELECT AVG(ventas) FROM pandito_ds.default.ventas_mensuales_mendoza_h3), 0) AS promedio_global,
+# MAGIC   ROUND(ventas - (SELECT AVG(ventas) FROM pandito_ds.default.ventas_mensuales_mendoza_h3), 0) AS diferencia
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC WHERE ventas > (SELECT AVG(ventas) FROM pandito_ds.default.ventas_mensuales_mendoza_h3)
+# MAGIC ORDER BY ventas DESC
+# MAGIC LIMIT 15;
+# MAGIC
+# MAGIC -- 4️⃣  EXISTS: Sucursales que tuvieron al menos un mes sobre $150k
+# MAGIC SELECT DISTINCT sucursal_nombre, zona
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3 v1
+# MAGIC WHERE EXISTS (
+# MAGIC   SELECT 1 FROM pandito_ds.default.ventas_mensuales_mendoza_h3 v2
+# MAGIC   WHERE v2.sucursal_id = v1.sucursal_id
+# MAGIC   AND v2.ventas > 150000
+# MAGIC )
+# MAGIC ORDER BY sucursal_nombre;
+# MAGIC
+# MAGIC -- 5️⃣  CTE + WINDOW: Ranking mensual por zona
+# MAGIC WITH ranking_mensual AS (
+# MAGIC   SELECT 
+# MAGIC     zona,
+# MAGIC     sucursal_nombre,
+# MAGIC     fecha,
+# MAGIC     ventas,
+# MAGIC     RANK() OVER (PARTITION BY zona, MONTH(fecha) ORDER BY ventas DESC) AS rank_zona_mes
+# MAGIC   FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC )
+# MAGIC SELECT 
+# MAGIC   zona,
+# MAGIC   sucursal_nombre,
+# MAGIC   fecha,
+# MAGIC   ROUND(ventas, 0) AS ventas,
+# MAGIC   rank_zona_mes
+# MAGIC FROM ranking_mensual
+# MAGIC WHERE rank_zona_mes <= 2
+# MAGIC ORDER BY zona, fecha, rank_zona_mes;
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 14_03

@@ -201,6 +201,123 @@ print("✅ Datos preparados para AI/BI Dashboard")
 
 # COMMAND ----------
 
+# DBTITLE 1,📊 Teoría: Dashboards con datos reales
+# MAGIC %md
+# MAGIC ## 📊 Dashboards AI/BI para Los Andes Market
+# MAGIC
+# MAGIC ### 📋 Queries SQL para cada widget del dashboard
+# MAGIC
+# MAGIC Un dashboard ejecutivo de **Los Andes Market** necesita varios datasets SQL:
+# MAGIC
+# MAGIC ```sql
+# MAGIC -- Dataset 1: KPIs principales
+# MAGIC SELECT SUM(ventas) AS total, AVG(ventas) AS promedio, COUNT(*) AS registros
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3;
+# MAGIC
+# MAGIC -- Dataset 2: Bar chart - Ventas por zona
+# MAGIC SELECT zona, SUM(ventas) AS total FROM ... GROUP BY zona ORDER BY total DESC;
+# MAGIC
+# MAGIC -- Dataset 3: Line chart - Evolución mensual
+# MAGIC SELECT fecha, SUM(ventas) AS total FROM ... GROUP BY fecha ORDER BY fecha;
+# MAGIC
+# MAGIC -- Dataset 4: Table - Top sucursales
+# MAGIC SELECT sucursal_nombre, zona, SUM(ventas) AS total FROM ... GROUP BY ... ORDER BY total DESC;
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Diseño del dashboard
+# MAGIC * **KPI card:** Ventas totales + promedio mensual
+# MAGIC * **Bar chart:** Ventas por zona (comparación)
+# MAGIC * **Line chart:** Evolución temporal
+# MAGIC * **Table:** Ranking de sucursales
+# MAGIC * **Filtros:** Año, zona, sucursal (interactivos)
+
+# COMMAND ----------
+
+# DBTITLE 1,📊 Práctica: Dashboards con datos reales
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+print("📊 DATOS Y QUERIES PARA DASHBOARD DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    df['anio'] = df['fecha'].dt.year
+    df['mes'] = df['fecha'].dt.month
+
+    print("\n1️⃣  KPI CARDS: Métricas principales")
+    print("-"*70)
+    print(f"   💰 Ventas totales: ${df['ventas'].sum():,.0f}")
+    print(f"   📊 Promedio mensual: ${df['ventas'].mean():,.0f}")
+    print(f"   📦 Registros: {len(df):,}")
+    print(f"   🏪 Sucursales: {df['sucursal_id'].nunique()}")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  BAR CHART: Ventas por zona")
+    print("-"*70)
+    zona_data = df.groupby('zona')['ventas'].sum().reset_index().sort_values('ventas', ascending=False)
+    fig_bar = px.bar(zona_data, x='zona', y='ventas',
+                     title='Ventas Totales por Zona', template='plotly_white',
+                     labels={'ventas': 'Ventas ($)', 'zona': 'Zona'})
+    fig_bar.show()
+
+    print("\n" + "="*70)
+    print("\n3️⃣  LINE CHART: Evolución mensual de ventas")
+    print("-"*70)
+    monthly = df.groupby('fecha')['ventas'].sum().reset_index()
+    fig_line = px.line(monthly, x='fecha', y='ventas',
+                       title='Evolución de Ventas Totales', template='plotly_white',
+                       labels={'ventas': 'Ventas ($)', 'fecha': 'Fecha'})
+    fig_line.show()
+
+    print("\n" + "="*70)
+    print("\n4️⃣  TABLE: Ranking de sucursales por ventas")
+    print("-"*70)
+    ranking = (df.groupby(['sucursal_nombre', 'zona'])['ventas']
+        .agg(['sum', 'mean', 'count'])
+        .round(0)
+        .sort_values('sum', ascending=False)
+        .head(10))
+    ranking.columns = ['Ventas Totales', 'Promedio Mensual', 'Meses']
+    print(ranking)
+
+    print("\n" + "="*70)
+    print("\n5️⃣  SQL QUERIES PARA CREAR EL DASHBOARD EN AI/BI")
+    print("-"*70)
+    print("""
+    -- Dataset 1: KPIs
+    SELECT SUM(ventas) AS total, AVG(ventas) AS promedio, COUNT(*) AS registros
+    FROM pandito_ds.default.ventas_mensuales_mendoza_h3;
+
+    -- Dataset 2: Bar chart por zona
+    SELECT zona, SUM(ventas) AS total
+    FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+    GROUP BY zona ORDER BY total DESC;
+
+    -- Dataset 3: Line chart mensual
+    SELECT fecha, SUM(ventas) AS total
+    FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+    GROUP BY fecha ORDER BY fecha;
+
+    -- Dataset 4: Table ranking
+    SELECT sucursal_nombre, zona,
+           SUM(ventas) AS ventas_totales,
+           ROUND(AVG(ventas), 0) AS promedio_mensual
+    FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+    GROUP BY sucursal_nombre, zona
+    ORDER BY ventas_totales DESC;
+    """)
+    print("   📌 Copia estas queries en SQL Editor > Create AI/BI Dashboard")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 16_02

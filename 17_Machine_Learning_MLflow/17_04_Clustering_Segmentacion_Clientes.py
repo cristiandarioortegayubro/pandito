@@ -255,6 +255,141 @@ print("✅ Segmentación completada con MLflow")
 
 # COMMAND ----------
 
+# DBTITLE 1,🎲 Teoría: Clustering con datos reales
+# MAGIC %md
+# MAGIC ## 🎲 Clustering aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 🏪 Segmentar sucursales por comportamiento de ventas
+# MAGIC
+# MAGIC Con KMeans podemos agrupar las sucursales de **Los Andes Market** según sus patrones de ventas:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Features por sucursal: promedio, volatilidad, tendencia
+# MAGIC features = df.groupby('sucursal_id').agg(
+# MAGIC     promedio=('ventas', 'mean'),
+# MAGIC     volatilidad=('ventas', 'std'),
+# MAGIC     maximo=('ventas', 'max')
+# MAGIC )
+# MAGIC KMeans(n_clusters=3).fit(features_scaled)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Existen grupos naturales de sucursales?
+# MAGIC * ¿Qué características definen cada segmento?
+# MAGIC * ¿Hay sucursales "estrella" vs "emergentes"?
+# MAGIC * ¿Cómo usar los segmentos para decisiones de expansión?
+
+# COMMAND ----------
+
+# DBTITLE 1,🎲 Práctica: Clustering con datos reales
+import mlflow
+import mlflow.sklearn
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score
+import warnings
+warnings.filterwarnings('ignore')
+
+print("🎲 CLUSTERING DE SUCURSALES CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    print("\n1️⃣  FEATURE ENGINEERING: Agregar ventas por sucursal")
+    print("-"*70)
+
+    df['mes'] = df['fecha'].dt.month
+    df['anio'] = df['fecha'].dt.year
+
+    # Features por sucursal
+    features = df.groupby(['sucursal_id', 'sucursal_nombre', 'zona']).agg(
+        promedio_ventas=('ventas', 'mean'),
+        std_ventas=('ventas', 'std'),
+        max_ventas=('ventas', 'max'),
+        min_ventas=('ventas', 'min'),
+        total_ventas=('ventas', 'sum'),
+        num_meses=('ventas', 'count'),
+        coef_variacion=('ventas', lambda x: x.std() / x.mean() * 100),
+    ).reset_index()
+
+    feature_cols = ['promedio_ventas', 'std_ventas', 'max_ventas', 'total_ventas', 'coef_variacion']
+    print(f"   Sucursales: {len(features)}")
+    print(f"   Features: {feature_cols}")
+    print(features[['sucursal_nombre', 'zona'] + feature_cols].round(0))
+
+    print("\n" + "="*70)
+    print("\n2️⃣  ESCALADO + MÉTODO DEL CODO")
+    print("-"*70)
+
+    X = features[feature_cols].values
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    mlflow.set_experiment("clustering_sucursales_los_andes")
+
+    for k in range(2, 6):
+        km = KMeans(n_clusters=k, random_state=42, n_init=10)
+        labels = km.fit_predict(X_scaled)
+        sil = silhouette_score(X_scaled, labels)
+        print(f"   K={k}: Inertia={km.inertia_:,.0f} | Silhouette={sil:.4f}")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  ENTRENAR KMEANS CON K ÓPTIMO")
+    print("-"*70)
+
+    k_opt = 3
+    with mlflow.start_run(run_name=f"kmeans_sucursales_k{k_opt}"):
+        mlflow.log_param("algorithm", "KMeans")
+        mlflow.log_param("k", k_opt)
+        mlflow.log_param("features", ", ".join(feature_cols))
+
+        kmeans = KMeans(n_clusters=k_opt, random_state=42, n_init=10)
+        features['segmento'] = kmeans.fit_predict(X_scaled)
+
+        sil = silhouette_score(X_scaled, features['segmento'])
+        mlflow.log_metric("silhouette", sil)
+        mlflow.log_metric("inertia", kmeans.inertia_)
+        mlflow.sklearn.log_model(kmeans, "model")
+
+        print(f"   Silhouette: {sil:.4f}")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  PERFIL DE SEGMENTOS")
+    print("-"*70)
+
+    perfil = features.groupby('segmento')[feature_cols].mean().round(0)
+    print("\n   Perfil promedio por segmento:")
+    print(perfil)
+
+    print("\n   Sucursales por segmento:")
+    for seg in range(k_opt):
+        sucursales_seg = features[features['segmento'] == seg]['sucursal_nombre'].tolist()
+        print(f"   Segmento {seg}: {sucursales_seg}")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  VISUALIZACIÓN: Scatter de segmentos")
+    print("-"*70)
+
+    fig = px.scatter(
+        features, x='promedio_ventas', y='coef_variacion',
+        color='segmento', text='sucursal_nombre',
+        title='Segmentos de Sucursales - Los Andes Market',
+        labels={'promedio_ventas': 'Promedio Ventas ($)', 'coef_variacion': 'Coef. Variación (%)'},
+        template='plotly_white', size='total_ventas'
+    )
+    fig.update_traces(textposition='top center')
+    fig.show()
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 17_04

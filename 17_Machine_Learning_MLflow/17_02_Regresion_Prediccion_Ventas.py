@@ -236,6 +236,139 @@ print("✅ Experimentos de regresión completados")
 
 # COMMAND ----------
 
+# DBTITLE 1,📈 Teoría: Regresión con datos reales
+# MAGIC %md
+# MAGIC ## 📈 Regresión aplicada a Los Andes Market
+# MAGIC
+# MAGIC ### 🎯 Predecir ventas mensuales
+# MAGIC
+# MAGIC Con los datos reales de **Los Andes Market** podemos entrenar modelos que predigan las ventas mensuales de cada sucursal:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Features: mes, anio, trimestre, zona (encoding)
+# MAGIC # Target: ventas
+# MAGIC model.fit(X_train, y_train)
+# MAGIC predicciones = model.predict(X_test)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué modelo predice mejor las ventas?
+# MAGIC * ¿Qué features son más importantes?
+# MAGIC * ¿Cómo visualizar predicciones vs reales?
+# MAGIC * ¿Qué sucursal es más fácil/difícil de predecir?
+
+# COMMAND ----------
+
+# DBTITLE 1,📈 Práctica: Regresión con datos reales
+import mlflow
+import mlflow.sklearn
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+print("📈 REGRESIÓN CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    print("\n1️⃣  FEATURE ENGINEERING AVANZADO")
+    print("-"*70)
+
+    # Features desde datos reales
+    df['mes'] = df['fecha'].dt.month
+    df['anio'] = df['fecha'].dt.year
+    df['trimestre'] = df['fecha'].dt.quarter
+
+    # Encoding de zona (one-hot)
+    df_encoded = pd.get_dummies(df, columns=['zona'], prefix='zona', drop_first=True)
+
+    feature_cols = ['mes', 'anio', 'trimestre'] + [c for c in df_encoded.columns if c.startswith('zona_')]
+    X = df_encoded[feature_cols].values
+    y = df_encoded['ventas'].values
+
+    print(f"   Features: {feature_cols}")
+    print(f"   Registros: {len(df_encoded):,}")
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    print("\n" + "="*70)
+    print("\n2️⃣  COMPARAR 3 MODELOS CON MLFLOW")
+    print("-"*70)
+
+    mlflow.set_experiment("regresion_ventas_los_andes_v2")
+
+    models = {
+        "LinearRegression": LinearRegression(),
+        "RandomForest_100": RandomForestRegressor(n_estimators=100, random_state=42),
+        "GradientBoosting_100": GradientBoostingRegressor(n_estimators=100, random_state=42),
+    }
+
+    results = []
+    for name, model in models.items():
+        with mlflow.start_run(run_name=name):
+            mlflow.log_param("model", name)
+            mlflow.log_param("features", len(feature_cols))
+            mlflow.log_param("n_train", len(X_train))
+
+            model.fit(X_train, y_train)
+            preds = model.predict(X_test)
+
+            rmse = np.sqrt(mean_squared_error(y_test, preds))
+            mae = mean_absolute_error(y_test, preds)
+            r2 = r2_score(y_test, preds)
+
+            mlflow.log_metric("rmse", rmse)
+            mlflow.log_metric("mae", mae)
+            mlflow.log_metric("r2", r2)
+            mlflow.sklearn.log_model(model, "model")
+
+            results.append({"model": name, "rmse": rmse, "mae": mae, "r2": r2})
+            print(f"\n   {name}: RMSE=${rmse:,.0f} | MAE=${mae:,.0f} | R²={r2:.4f}")
+
+    df_results = pd.DataFrame(results).sort_values("rmse")
+    print(f"\n   🏆 Mejor: {df_results.iloc[0]['model']}")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  FEATURE IMPORTANCE (RandomForest)")
+    print("-"*70)
+
+    rf = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf.fit(X_train, y_train)
+    importances = pd.DataFrame({"feature": feature_cols, "importance": rf.feature_importances_})
+    importances = importances.sort_values("importance", ascending=False)
+    print("\n   Importancia de features:")
+    print(importances.round(4).to_string(index=False))
+
+    print("\n" + "="*70)
+    print("\n4️⃣  VISUALIZACIÓN: Predicciones vs Reales")
+    print("-"*70)
+
+    best_model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    best_model.fit(X_train, y_train)
+    preds = best_model.predict(X_test)
+
+    df_compare = pd.DataFrame({"real": y_test, "predicho": preds})
+    fig = px.scatter(df_compare, x="real", y="predicho",
+                     title="Predicciones vs Ventas Reales - Los Andes Market",
+                     labels={"real": "Ventas Reales ($)", "predicho": "Ventas Predichas ($)"},
+                     template="plotly_white", opacity=0.6)
+    fig.add_shape(type="line", x0=df_compare["real"].min(), y0=df_compare["real"].min(),
+                  x1=df_compare["real"].max(), y1=df_compare["real"].max(),
+                  line=dict(color="red", dash="dash"))
+    fig.show()
+    print("   💡 La línea roja = predicción perfecta. Más cerca = mejor modelo")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 17_02

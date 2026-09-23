@@ -142,6 +142,161 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,🗺️ Teoría: Geoespacial ejecutivo
+# MAGIC %md
+# MAGIC ## 🗺️ Geoespacial ejecutivo de Los Andes Market
+# MAGIC
+# MAGIC ### 📍 H3 + PySpark para análisis territorial
+# MAGIC
+# MAGIC El dataset ya tiene `h3_index` y `lat/lon`. Podemos enriquecer el análisis con:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Agregar por hexágono H3
+# MAGIC df.groupby('h3_index')['ventas'].sum()
+# MAGIC
+# MAGIC # Hot-spots: hexágonos con ventas > percentil 90
+# MAGIC hot_spots = ventas_hex[ventas_hex > ventas_hex.quantile(0.9)]
+# MAGIC
+# MAGIC # Mapa interactivo con Plotly
+# MAGIC px.scatter_mapbox(df, lat='lat', lon='lon', size='ventas', color='zona')
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué hexágonos concentran más ventas?
+# MAGIC * ¿Hay hot-spots sin cobertura de sucursales?
+# MAGIC * ¿Qué zonas tienen mayor potencial de expansión?
+
+# COMMAND ----------
+
+# DBTITLE 1,🗺️ Práctica: Geoespacial ejecutivo
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import warnings
+warnings.filterwarnings('ignore')
+
+print("🗺️ ANÁLISIS GEOPSPACIAL EJECUTIVO DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES:
+    df['anio'] = df['fecha'].dt.year
+
+    print("\n1️⃣  AGREGACIÓN POR HEXÁGONO H3")
+    print("-"*70)
+
+    if 'h3_index' in df.columns:
+        hex_ventas = df.groupby('h3_index').agg(
+            ventas=('ventas', 'sum'),
+            promedio=('ventas', 'mean'),
+            sucursales=('sucursal_id', 'nunique'),
+            lat=('lat', 'mean'),
+            lon=('lon', 'mean'),
+            zona=('zona', 'first')
+        ).round(0).reset_index()
+
+        print(f"   Hexágonos únicos: {len(hex_ventas)}")
+        print(f"   Ventas por hexágono (top 10):")
+        print(hex_ventas.nlargest(10, 'ventas')[['h3_index', 'zona', 'ventas', 'sucursales']])
+
+        print("\n" + "="*70)
+        print("\n2️⃣  CLASIFICACIÓN DE HOT-SPOTS")
+        print("-"*70)
+
+        p75 = hex_ventas['ventas'].quantile(0.75)
+        p90 = hex_ventas['ventas'].quantile(0.90)
+
+        hex_ventas['categoria'] = 'Normal'
+        hex_ventas.loc[hex_ventas['ventas'] >= p75, 'categoria'] = 'Alto'
+        hex_ventas.loc[hex_ventas['ventas'] >= p90, 'categoria'] = 'Hot-Spot'
+
+        print(f"   Normal: {(hex_ventas['categoria']=='Normal').sum()} hexágonos")
+        print(f"   Alto: {(hex_ventas['categoria']=='Alto').sum()} hexágonos (>= P75)")
+        print(f"   Hot-Spot: {(hex_ventas['categoria']=='Hot-Spot').sum()} hexágonos (>= P90)")
+        print(f"   Umbral P75: ${p75:,.0f} | P90: ${p90:,.0f}")
+    else:
+        print("   ⚠️  No hay columna h3_index — usando lat/lon directo")
+        hex_ventas = df.groupby(['lat', 'lon']).agg(
+            ventas=('ventas', 'sum'),
+            zona=('zona', 'first')
+        ).reset_index()
+        hex_ventas['categoria'] = 'Normal'
+        p90 = hex_ventas['ventas'].quantile(0.90)
+        hex_ventas.loc[hex_ventas['ventas'] >= p90, 'categoria'] = 'Hot-Spot'
+
+    print("\n" + "="*70)
+    print("\n3️⃣  MAPA INTERACTIVO DE SUCURSALES")
+    print("-"*70)
+
+    sucursal_map = df.groupby(['sucursal_id', 'sucursal_nombre', 'zona']).agg(
+        lat=('lat', 'mean'),
+        lon=('lon', 'mean'),
+        ventas=('ventas', 'sum'),
+        promedio=('ventas', 'mean')
+    ).reset_index()
+
+    fig_map = px.scatter_mapbox(
+        sucursal_map, lat='lat', lon='lon',
+        size='ventas', color='zona',
+        hover_name='sucursal_nombre',
+        hover_data={'ventas': ':,.0f', 'promedio': ':,.0f'},
+        title='Sucursales Los Andes Market — Mendoza',
+        mapbox_style='carto-positron',
+        zoom=10, size_max=30
+    )
+    fig_map.show()
+
+    print("\n" + "="*70)
+    print("\n4️⃣  ANÁLISIS DE COBERTURA TERRITORIAL")
+    print("-"*70)
+
+    cobertura = df.groupby('zona').agg(
+        sucursales=('sucursal_id', 'nunique'),
+        ventas=('ventas', 'sum'),
+        promedio=('ventas', 'mean'),
+        superficie_hex=('h3_index', 'nunique') if 'h3_index' in df.columns else ('sucursal_id', 'count')
+    ).round(0)
+    cobertura['ventas_por_sucursal'] = (cobertura['ventas'] / cobertura['sucursales']).round(0)
+    print("\n   Cobertura territorial por zona:")
+    print(cobertura)
+
+    print("\n" + "="*70)
+    print("\n5️⃣  CRECIMIENTO GEOPSPACIAL INTERANUAL")
+    print("-"*70)
+
+    pivot_anual = df.pivot_table(values='ventas', index='sucursal_nombre', columns='anio', aggfunc='sum')
+    if len(pivot_anual.columns) >= 2:
+        first_yr = pivot_anual.columns[0]
+        last_yr = pivot_anual.columns[-1]
+        pivot_anual['crecimiento_pct'] = ((pivot_anual[last_yr] - pivot_anual[first_yr]) / pivot_anual[first_yr] * 100).round(1)
+        pivot_anual = pivot_anual.sort_values('crecimiento_pct', ascending=False)
+        print(f"\n   Crecimiento {first_yr} → {last_yr} por sucursal:")
+        print(pivot_anual[[first_yr, last_yr, 'crecimiento_pct']])
+
+    # Mapa de calor de crecimiento
+    suc_growth = df.groupby(['sucursal_nombre', 'lat', 'lon']).apply(
+        lambda x: ((x[x['fecha'].dt.year == x['fecha'].dt.year.max()]['ventas'].sum() -
+                   x[x['fecha'].dt.year == x['fecha'].dt.year.min()]['ventas'].sum()) /
+                  x[x['fecha'].dt.year == x['fecha'].dt.year.min()]['ventas'].sum() * 100) if len(x) > 0 else 0
+    ).round(1).reset_index(name='crecimiento_pct')
+
+    fig_growth = px.scatter_mapbox(
+        suc_growth, lat='lat', lon='lon',
+        color='crecimiento_pct', size='crecimiento',
+        hover_name='sucursal_nombre',
+        color_continuous_scale='RdYlGn',
+        title='Crecimiento Interanual por Sucursal (%)',
+        mapbox_style='carto-positron', zoom=10, size_max=25
+    )
+    fig_growth.show()
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 18_03

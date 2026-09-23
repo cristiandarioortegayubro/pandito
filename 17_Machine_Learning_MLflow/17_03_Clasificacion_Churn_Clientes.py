@@ -234,6 +234,145 @@ print("✅ Experimentos de clasificación completados")
 
 # COMMAND ----------
 
+# DBTITLE 1,🎯 Teoría: Churn con datos reales
+# MAGIC %md
+# MAGIC ## 🎯 Clasificación de churn aplicada a Los Andes Market
+# MAGIC
+# MAGIC ### 🤖 Simular churn desde datos de ventas reales
+# MAGIC
+# MAGIC El dataset `ventas_mensuales_mendoza_h3` no tiene un target de churn explícito, pero podemos **simularlo** desde los patrones de ventas reales:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Si las ventas de una sucursal bajaron > 30% vs el año anterior → churn_risk = 1
+# MAGIC df['ventas_anio_anterior'] = df.groupby('sucursal_id')['ventas'].shift(12)
+# MAGIC df['variacion_pct'] = (df['ventas'] - df['ventas_anio_anterior']) / df['ventas_anio_anterior']
+# MAGIC df['churn_risk'] = (df['variacion_pct'] < -0.30).astype(int)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué sucursales tienen mayor riesgo de churn?
+# MAGIC * ¿La caída de ventas es predecible?
+# MAGIC * ¿Qué features anticipan el decline de una sucursal?
+
+# COMMAND ----------
+
+# DBTITLE 1,🎯 Práctica: Churn con datos reales
+import mlflow
+import mlflow.sklearn
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+import warnings
+warnings.filterwarnings('ignore')
+
+print("🎯 CLASIFICACIÓN DE CHURN CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    print("\n1️⃣  SIMULAR TARGET DE CHURN DESDE VENTAS REALES")
+    print("-"*70)
+
+    df = df.sort_values(['sucursal_id', 'fecha'])
+    df['mes'] = df['fecha'].dt.month
+    df['anio'] = df['fecha'].dt.year
+    df['trimestre'] = df['fecha'].dt.quarter
+
+    # Ventas mes anterior y año anterior
+    df['ventas_mes_anterior'] = df.groupby('sucursal_id')['ventas'].shift(1)
+    df['ventas_anio_anterior'] = df.groupby('sucursal_id')['ventas'].shift(12)
+
+    # Variaciones
+    df['var_mensual_pct'] = (df['ventas'] - df['ventas_mes_anterior']) / df['ventas_mes_anterior']
+    df['var_anual_pct'] = (df['ventas'] - df['ventas_anio_anterior']) / df['ventas_anio_anterior']
+
+    # Target: churn_risk = 1 si caída > 30% vs año anterior
+    df['churn_risk'] = ((df['var_anual_pct'] < -0.30) & df['var_anual_pct'].notna()).astype(int)
+
+    # Features
+    df_ml = df.dropna(subset=['var_mensual_pct', 'var_anual_pct'])
+    feature_cols = ['mes', 'anio', 'trimestre', 'ventas', 'ventas_mes_anterior', 'var_mensual_pct', 'var_anual_pct']
+    X = df_ml[feature_cols].values
+    y = df_ml['churn_risk'].values
+
+    churn_rate = y.mean() * 100
+    print(f"   Registros con features completas: {len(df_ml):,}")
+    print(f"   Churn rate: {churn_rate:.1f}% ({y.sum()} casos de {len(y)})")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  ENTRENAR 2 MODELOS CON MLFLOW")
+    print("-"*70)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+    mlflow.set_experiment("churn_los_andes_ventas")
+
+    models = {
+        "LogisticRegression": LogisticRegression(random_state=42, max_iter=1000),
+        "RandomForest": RandomForestClassifier(n_estimators=100, random_state=42),
+    }
+
+    for name, model in models.items():
+        with mlflow.start_run(run_name=f"{name}_churn"):
+            mlflow.log_param("model", name)
+            mlflow.log_param("features", len(feature_cols))
+            mlflow.log_param("churn_rate", round(churn_rate, 1))
+
+            model.fit(X_train, y_train)
+            preds = model.predict(X_test)
+            proba = model.predict_proba(X_test)[:, 1]
+
+            p = precision_score(y_test, preds, zero_division=0)
+            r = recall_score(y_test, preds, zero_division=0)
+            f1 = f1_score(y_test, preds, zero_division=0)
+            try:
+                roc = roc_auc_score(y_test, proba)
+            except:
+                roc = 0.0
+
+            mlflow.log_metric("precision", p)
+            mlflow.log_metric("recall", r)
+            mlflow.log_metric("f1", f1)
+            mlflow.log_metric("roc_auc", roc)
+            mlflow.sklearn.log_model(model, "model")
+
+            print(f"\n   {name}:")
+            print(f"      Precision: {p:.3f} | Recall: {r:.3f} | F1: {f1:.3f} | ROC-AUC: {roc:.3f}")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  MATRIZ DE CONFUSIÓN (RandomForest)")
+    print("-"*70)
+
+    rf = RandomForestClassifier(n_estimators=100, random_state=42)
+    rf.fit(X_train, y_train)
+    preds_rf = rf.predict(X_test)
+    cm = confusion_matrix(y_test, preds_rf)
+
+    print(f"\n   Matriz de confusión:")
+    print(f"   TN={cm[0,0]}  FP={cm[0,1]}")
+    print(f"   FN={cm[1,0]}  TP={cm[1,1]}")
+    print(f"\n   💡 FN = sucursales en riesgo no detectadas (más costoso)")
+    print(f"   💡 FP = falsas alarmas (costo de retención innecesaria)")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  FEATURE IMPORTANCE")
+    print("-"*70)
+
+    importances = pd.DataFrame({"feature": feature_cols, "importance": rf.feature_importances_})
+    importances = importances.sort_values("importance", ascending=False)
+    print("\n   Importancia de features para predecir churn:")
+    print(importances.round(4).to_string(index=False))
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 17_03

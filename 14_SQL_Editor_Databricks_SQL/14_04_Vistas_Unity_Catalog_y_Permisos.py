@@ -221,6 +221,129 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,🏗️ Teoría: Vistas con datos reales
+# MAGIC %md
+# MAGIC ## 🏗️ Vistas y gobernanza con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 📦 Data layer empresarial
+# MAGIC
+# MAGIC Con SQL podemos crear **vistas reutilizables** sobre `ventas_mensuales_mendoza_h3` que sirvan como capa de abstracción para diferentes consumidores:
+# MAGIC
+# MAGIC ```sql
+# MAGIC -- Vista para el CFO: resumen anual
+# MAGIC CREATE OR REPLACE VIEW vw_ventas_anuales AS
+# MAGIC SELECT sucursal_id, YEAR(fecha) AS anio, SUM(ventas) AS total
+# MAGIC FROM ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY sucursal_id, YEAR(fecha);
+# MAGIC
+# MAGIC -- Vista para operaciones: KPIs mensuales
+# MAGIC CREATE OR REPLACE VIEW vw_kpis_mensuales AS
+# MAGIC SELECT sucursal_id, MONTH(fecha) AS mes, AVG(ventas) AS promedio
+# MAGIC FROM ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY sucursal_id, MONTH(fecha);
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué vistas necesitaría el CFO? ¿Y el equipo de operaciones?
+# MAGIC * ¿Cómo crear una tabla resumen física con CTAS?
+# MAGIC * ¿Qué permisos dar a un analista externo?
+
+# COMMAND ----------
+
+# DBTITLE 1,🏗️ Práctica: Vistas con datos reales
+# MAGIC %sql
+# MAGIC -- 🏗️ PRÁCTICA: VISTAS Y CTAS CON LOS ANDES MARKET
+# MAGIC
+# MAGIC -- 1️⃣  VISTA: Dashboard ejecutivo por sucursal
+# MAGIC CREATE OR REPLACE VIEW pandito_ds.default.vw_dashboard_sucursal AS
+# MAGIC SELECT 
+# MAGIC   sucursal_id,
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   COUNT(*) AS meses_activos,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_totales,
+# MAGIC   ROUND(AVG(ventas), 0) AS ventas_promedio,
+# MAGIC   ROUND(MAX(ventas), 0) AS mejor_mes,
+# MAGIC   ROUND(MIN(ventas), 0) AS peor_mes,
+# MAGIC   ROUND(STDDEV(ventas), 0) AS volatilidad,
+# MAGIC   CASE 
+# MAGIC     WHEN AVG(ventas) > 100000 THEN 'Alto'
+# MAGIC     WHEN AVG(ventas) > 50000 THEN 'Medio'
+# MAGIC     ELSE 'Bajo'
+# MAGIC   END AS rendimiento
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY sucursal_id, sucursal_nombre, zona;
+# MAGIC
+# MAGIC SELECT * FROM pandito_ds.default.vw_dashboard_sucursal
+# MAGIC ORDER BY ventas_promedio DESC;
+# MAGIC
+# MAGIC -- 2️⃣  VISTA: Evolución mensual con lag
+# MAGIC CREATE OR REPLACE VIEW pandito_ds.default.vw_evolucion_mensual AS
+# MAGIC SELECT 
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   fecha,
+# MAGIC   ROUND(ventas, 0) AS ventas,
+# MAGIC   ROUND(LAG(ventas) OVER (PARTITION BY sucursal_id ORDER BY fecha), 0) AS ventas_mes_anterior,
+# MAGIC   ROUND(
+# MAGIC     (ventas - LAG(ventas) OVER (PARTITION BY sucursal_id ORDER BY fecha)) 
+# MAGIC     / LAG(ventas) OVER (PARTITION BY sucursal_id ORDER BY fecha) * 100, 1
+# MAGIC   ) AS variacion_pct
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3;
+# MAGIC
+# MAGIC SELECT * FROM pandito_ds.default.vw_evolucion_mensual
+# MAGIC ORDER BY ABS(variacion_pct) DESC NULLS LAST
+# MAGIC LIMIT 15;
+# MAGIC
+# MAGIC -- 3️⃣  CTAS: Tabla física resumen anual por zona
+# MAGIC CREATE OR REPLACE TABLE pandito_ds.default.resumen_anual_zona AS
+# MAGIC SELECT 
+# MAGIC   YEAR(fecha) AS anio,
+# MAGIC   zona,
+# MAGIC   COUNT(DISTINCT sucursal_id) AS sucursales,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_anuales,
+# MAGIC   ROUND(AVG(ventas), 0) AS promedio_mensual,
+# MAGIC   ROUND(MAX(ventas), 0) AS mejor_mes,
+# MAGIC   ROUND(MIN(ventas), 0) AS peor_mes
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY YEAR(fecha), zona;
+# MAGIC
+# MAGIC SELECT * FROM pandito_ds.default.resumen_anual_zona
+# MAGIC ORDER BY anio DESC, ventas_anuales DESC;
+# MAGIC
+# MAGIC -- 4️⃣  CTAS: Tabla de outliers (z-score > 1.5)
+# MAGIC CREATE OR REPLACE TABLE pandito_ds.default.outliers_ventas AS
+# MAGIC SELECT 
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   fecha,
+# MAGIC   ROUND(ventas, 0) AS ventas,
+# MAGIC   ROUND(promedio, 0) AS promedio_sucursal,
+# MAGIC   ROUND(desviacion, 0) AS std_sucursal,
+# MAGIC   ROUND((ventas - promedio) / desviacion, 2) AS z_score,
+# MAGIC   CASE 
+# MAGIC     WHEN (ventas - promedio) / desviacion > 1.5 THEN 'Outlier Superior'
+# MAGIC     WHEN (ventas - promedio) / desviacion < -1.5 THEN 'Outlier Inferior'
+# MAGIC   END AS tipo_outlier
+# MAGIC FROM (
+# MAGIC   SELECT 
+# MAGIC     sucursal_nombre, zona, fecha, ventas,
+# MAGIC     AVG(ventas) OVER (PARTITION BY sucursal_id) AS promedio,
+# MAGIC     STDDEV(ventas) OVER (PARTITION BY sucursal_id) AS desviacion
+# MAGIC   FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC ) sub
+# MAGIC WHERE ABS((ventas - promedio) / desviacion) > 1.5;
+# MAGIC
+# MAGIC SELECT * FROM pandito_ds.default.outliers_ventas
+# MAGIC ORDER BY ABS(z_score) DESC;
+# MAGIC
+# MAGIC -- 5️⃣  VERIFICAR OBJETOS CREADOS
+# MAGIC SHOW TABLES IN pandito_ds.default;
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 14_04

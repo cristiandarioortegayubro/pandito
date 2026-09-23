@@ -177,6 +177,112 @@ print("✅ Genie Spaces revisado - Crear el space desde la interfaz de Databrick
 
 # COMMAND ----------
 
+# DBTITLE 1,🤖 Teoría: Genie Spaces con datos reales
+# MAGIC %md
+# MAGIC ## 🤖 Genie Spaces aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 💬 Preguntas de negocio en lenguaje natural
+# MAGIC
+# MAGIC Un Genie Space sobre `ventas_mensuales_mendoza_h3` permitiría a ejecutivos de **Los Andes Market** hacer preguntas como:
+# MAGIC
+# MAGIC | Pregunta natural | SQL que Genie generaría |
+# MAGIC |------------------|----------------------|
+# MAGIC | "¿Qué zona vende más?" | `SELECT zona, SUM(ventas) ... GROUP BY zona` |
+# MAGIC | "Top 3 sucursales de 2023" | `SELECT sucursal_nombre, SUM(ventas) ... WHERE YEAR(fecha)=2023 ORDER BY ... LIMIT 3` |
+# MAGIC | "Ventas por trimestre" | `SELECT QUARTER(fecha), SUM(ventas) ... GROUP BY QUARTER(fecha)` |
+# MAGIC | "¿Hay estacionalidad?" | `SELECT MONTH(fecha), AVG(ventas) ... GROUP BY MONTH(fecha)` |
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 🏗️ Configuración recomendada para Los Andes Market
+# MAGIC
+# MAGIC ```sql
+# MAGIC -- Descripciones de columnas para Genie:
+# MAGIC -- ventas: Monto total de ventas mensuales en ARS
+# MAGIC -- sucursal_id: Código único de cada sucursal (SUC001-SUC005)
+# MAGIC -- sucursal_nombre: Nombre legible de la sucursal
+# MAGIC -- zona: Tipo de zona comercial (Centro Comercial, Zona Residencial, Corredor Comercial)
+# MAGIC -- lat/lon: Coordenadas GPS de la sucursal en Mendoza
+# MAGIC -- h3_index: Índice hexagonal H3 resolución 9 (~174m)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Para crear el Genie Space real
+# MAGIC 1. Databricks > Genie > Create Space
+# MAGIC 2. Seleccionar `pandito_ds.default.ventas_mensuales_mendoza_h3`
+# MAGIC 3. Agregar las descripciones de columnas arriba
+# MAGIC 4. Agregar 5-10 preguntas de ejemplo con sus respuestas SQL
+
+# COMMAND ----------
+
+# DBTITLE 1,🤖 Práctica: Simulación de Genie Spaces
+import pandas as pd
+import plotly.express as px
+
+print("🤖 SIMULACIÓN DE CONSULTAS GENIE SPACES CON LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    df['anio'] = df['fecha'].dt.year
+    df['mes'] = df['fecha'].dt.month
+
+    print("\n💬 CONSULTA 1: '¿Qué zona vende más en total?'")
+    print("-"*70)
+    zona_ventas = df.groupby('zona')['ventas'].sum().sort_values(ascending=False)
+    print(f"\n   Respuesta:")
+    for zona, ventas in zona_ventas.items():
+        print(f"      {zona}: ${ventas:,.0f}")
+    print(f"\n   💡 Genie generaría: SELECT zona, SUM(ventas) FROM ... GROUP BY zona ORDER BY SUM(ventas) DESC")
+
+    print("\n" + "="*70)
+    print("\n💬 CONSULTA 2: 'Top 5 sucursales por ventas promedio'")
+    print("-"*70)
+    top5 = df.groupby('sucursal_nombre')['ventas'].mean().sort_values(ascending=False).head(5)
+    print(f"\n   Respuesta:")
+    for suc, prom in top5.items():
+        print(f"      {suc}: ${prom:,.0f}")
+
+    print("\n" + "="*70)
+    print("\n💬 CONSULTA 3: 'Compara ventas 2022 vs 2023 por zona'")
+    print("-"*70)
+    comp = df[df['anio'].isin([2022, 2023])].groupby(['zona', 'anio'])['ventas'].sum().unstack()
+    comp['variacion_pct'] = ((comp[2023] - comp[2022]) / comp[2022] * 100).round(1)
+    print(f"\n   Respuesta:")
+    print(comp.round(0))
+
+    print("\n" + "="*70)
+    print("\n💬 CONSULTA 4: '¿Cuál es el mes con más ventas históricamente?'")
+    print("-"*70)
+    mes_avg = df.groupby('mes')['ventas'].mean().sort_values(ascending=False)
+    print(f"\n   Mes con mayor promedio: Mes {mes_avg.index[0]} (${mes_avg.iloc[0]:,.0f})")
+    print(f"   Mes con menor promedio: Mes {mes_avg.index[-1]} (${mes_avg.iloc[-1]:,.0f})")
+    print("\n   Estacionalidad mensual:")
+    print(mes_avg.round(0))
+
+    print("\n" + "="*70)
+    print("\n💬 CONSULTA 5: 'Muestra la evolución de ventas en un gráfico'")
+    print("-"*70)
+    evolucion = df.groupby('fecha')['ventas'].sum().reset_index()
+    fig = px.line(evolucion, x='fecha', y='ventas',
+                  title='Evolución de Ventas Totales - Los Andes Market',
+                  template='plotly_white')
+    fig.show()
+    print("   💡 Genie generaría el SQL + el gráfico automáticamente")
+
+    print("\n" + "="*70)
+    print("\n📌 Para crear el Genie Space real:")
+    print("   1. Databricks > Genie > Create Space")
+    print("   2. Tabla: pandito_ds.default.ventas_mensuales_mendoza_h3")
+    print("   3. Describir columnas con contexto de negocio")
+    print("   4. Agregar estas 5 preguntas como ejemplos")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 16_01

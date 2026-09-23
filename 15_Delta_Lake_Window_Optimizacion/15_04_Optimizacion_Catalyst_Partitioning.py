@@ -224,6 +224,124 @@ print("✅ Optimización completada")
 
 # COMMAND ----------
 
+# DBTITLE 1,⚡ Teoría: Optimización con datos reales
+# MAGIC %md
+# MAGIC ## ⚡ Optimización aplicada a Los Andes Market
+# MAGIC
+# MAGIC ### 🚀 Pipeline de ventas: ¿Dónde optimizar?
+# MAGIC
+# MAGIC Un pipeline típico de **Los Andes Market** lee `ventas_mensuales_mendoza_h3`, filtra, agrega y joinea con sucursales. Las optimizaciones clave son:
+# MAGIC
+# MAGIC ```python
+# MAGIC # 1. Filter early: filtrar antes de join/agregación
+# MAGIC df_2023 = df.filter(year(col("fecha")) == 2023)
+# MAGIC
+# MAGIC # 2. Broadcast join: tabla pequeña de sucursales
+# MAGIC df_result = df_2023.join(broadcast(df_sucursales), "sucursal_id")
+# MAGIC
+# MAGIC # 3. Partition by: particionar por zona o año
+# MAGIC # CREATE TABLE ... PARTITIONED BY (anio)
+# MAGIC
+# MAGIC # 4. Cache: si se reutiliza el DataFrame
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de optimización
+# MAGIC * ¿El plan EXPLAIN muestra Exchange (shuffle)?
+# MAGIC * ¿Partition pruning reduce la lectura?
+# MAGIC * ¿El broadcast elimina el shuffle del join?
+# MAGIC * ¿Caching acelera consultas repetidas?
+
+# COMMAND ----------
+
+# DBTITLE 1,⚡ Práctica: Optimización con datos reales
+from pyspark.sql.functions import col, broadcast, year, desc
+import time
+
+print("⚡ OPTIMIZACIÓN APLICADA A LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and 'df' in dir():
+    print("\n1️⃣  EXPLAIN: Plan de una consulta compleja")
+    print("-"*70)
+    (df.filter(col("ventas") > 50000)
+        .filter(year(col("fecha")) == 2023)
+        .groupBy("zona")
+        .agg({"ventas": "sum"})
+        .orderBy(desc("sum(ventas)")))
+        .explain()
+    print("\n   💡 Buscar 'PushedFilters' (filter pushdown) y 'Exchange' (shuffle)")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  PARTITION PRUNING: Tabla particionada por año")
+    print("-"*70)
+
+    spark.sql("""
+        CREATE TABLE IF NOT EXISTS pandito_ds.default.ventas_part_anno
+        USING DELTA
+        PARTITIONED BY (anio)
+        AS SELECT *, YEAR(fecha) AS anio
+        FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+    """)
+    print("   Tabla particionada por año creada")
+    spark.sql("SHOW PARTITIONS pandito_ds.default.ventas_part_anno").show()
+
+    # Consulta con partition pruning
+    start = time.time()
+    spark.sql("SELECT COUNT(*) FROM pandito_ds.default.ventas_part_anno WHERE anio = 2023").collect()
+    t_pruned = time.time() - start
+
+    # Consulta sin pruning (tabla original)
+    start = time.time()
+    spark.sql("SELECT COUNT(*) FROM pandito_ds.default.ventas_mensuales_mendoza_h3 WHERE YEAR(fecha) = 2023").collect()
+    t_full = time.time() - start
+
+    print(f"\n   Tabla particionada (WHERE anio=2023): {t_pruned:.3f}s")
+    print(f"   Tabla original (WHERE YEAR(fecha)=2023): {t_full:.3f}s")
+    print("   💡 Partition pruning evita leer archivos de otros años")
+
+    spark.sql("DROP TABLE IF EXISTS pandito_ds.default.ventas_part_anno")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  BROADCAST JOIN: Ventas + sucursales")
+    print("-"*70)
+
+    df_suc = df.select("sucursal_id", "sucursal_nombre", "zona").dropDuplicates().cache()
+    df_suc.count()
+
+    # Broadcast join
+    start = time.time()
+    df_broadcast = df.join(broadcast(df_suc), "sucursal_id", "inner")
+    n_broadcast = df_broadcast.count()
+    t_broadcast = time.time() - start
+
+    # Sort-merge join (sin broadcast)
+    spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
+    start = time.time()
+    df_merge = df.join(df_suc, "sucursal_id", "inner")
+    n_merge = df_merge.count()
+    t_merge = time.time() - start
+    spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "10m")
+
+    print(f"\n   Broadcast join: {t_broadcast:.3f}s ({n_broadcast:,} registros)")
+    print(f"   Sort-merge join: {t_merge:.3f}s ({n_merge:,} registros)")
+    print(f"   💡 Broadcast evita shuffle de la tabla grande")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  EXPLAIN del broadcast join: sin Exchange")
+    print("-"*70)
+    df_broadcast.explain()
+    print("\n   💡 'BroadcastHashJoin' = broadcast funcionando (sin shuffle)")
+
+    df_suc.unpersist()
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 15_04

@@ -196,6 +196,147 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,🔍 Teoría: Descomposición avanzada con datos reales
+# MAGIC %md
+# MAGIC ## 🔍 Descomposición avanzada con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Profundizando el análisis estacional
+# MAGIC
+# MAGIC El Setup Inicial ya cubrió descomposición aditiva básica. Ahora profundizamos con:
+# MAGIC
+# MAGIC 1. **Modelo multiplicativo:** La estacionalidad crece con la tendencia
+# MAGIC ```python
+# MAGIC result = seasonal_decompose(monthly['ventas'], model='multiplicative', period=12)
+# MAGIC # Útil cuando los picos estacionales son mayores en años con más ventas
+# MAGIC ```
+# MAGIC
+# MAGIC 2. **Descomposición por sucursal:** Cada sucursal tiene su propio patrón
+# MAGIC ```python
+# MAGIC for sucursal in df['sucursal_nombre'].unique():
+# MAGIC     datos = df[df['sucursal_nombre'] == sucursal]
+# MAGIC     result = seasonal_decompose(datos['ventas'], period=12)
+# MAGIC ```
+# MAGIC
+# MAGIC 3. **Comparación aditivo vs multiplicativo:**
+# MAGIC * Aditivo: estacionalidad constante ($10K arriba/bajo del promedio)
+# MAGIC * Multiplicativo: estacionalidad proporcional (10% arriba/bajo del promedio)
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué meses son consistentemente altos/bajos en todas las sucursales?
+# MAGIC * ¿La estacionalidad es constante (aditivo) o proporcional (multiplicativo)?
+# MAGIC * ¿Qué sucursal tiene la mayor estacionalidad (más volátil)?
+# MAGIC * ¿Hay sucursales sin estacionalidad (ventas planas todo el año)?
+
+# COMMAND ----------
+
+# DBTITLE 1,🔍 Práctica: Descomposición avanzada con datos reales
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+print("🔍 DESCOMPOSICIÓN AVANZADA CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES:
+    # Serie agregada
+    monthly = df.groupby('fecha')['ventas'].sum().sort_index()
+    monthly = monthly.asfreq('MS').interpolate()
+
+    print("\n1️⃣  COMPARACIÓN: ADITIVO VS MULTIPLICATIVO")
+    print("-"*70)
+
+    # Aditivo
+    decomp_adit = seasonal_decompose(monthly, model='additive', period=12)
+    # Multiplicativo
+    decomp_mult = seasonal_decompose(monthly, model='multiplicative', period=12)
+
+    print("\n   Tendencia (aditivo):")
+    trend_adit = decomp_adit.trend.dropna()
+    print(f"      Inicio: ${trend_adit.iloc[0]:,.0f} → Fin: ${trend_adit.iloc[-1]:,.0f}")
+    print(f"      Crecimiento: {(trend_adit.iloc[-1]/trend_adit.iloc[0]-1)*100:.1f}%")
+
+    print("\n   Tendencia (multiplicativo):")
+    trend_mult = decomp_mult.trend.dropna()
+    print(f"      Inicio: ${trend_mult.iloc[0]:,.0f} → Fin: ${trend_mult.iloc[-1]:,.0f}")
+    print(f"      Crecimiento: {(trend_mult.iloc[-1]/trend_mult.iloc[0]-1)*100:.1f}%")
+
+    print("\n   Índices estacionales (comparación):")
+    nombres_mes = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+    seasonal_adit = decomp_adit.seasonal.groupby(decomp_adit.seasonal.index.month).mean()
+    seasonal_mult = decomp_mult.seasonal.groupby(decomp_mult.seasonal.index.month).mean()
+
+    for mes in range(1, 13):
+        print(f"      {nombres_mes[mes-1]}: aditivo {seasonal_adit[mes]:+,.0f} | multiplicativo {seasonal_mult[mes]:.3f}")
+
+    print("\n   💡 Aditivo: desviación en $ | Multiplicativo: factor (1.0 = promedio)")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  DESCOMPOSICIÓN POR SUCURSAL (top 5)")
+    print("-"*70)
+
+    sucursales = df['sucursal_nombre'].unique()[:5]
+    resultados_sucursal = []
+
+    for suc in sucursales:
+        datos = df[df['sucursal_nombre'] == suc].groupby('fecha')['ventas'].sum().sort_index()
+        datos = datos.asfreq('MS').interpolate()
+        if len(datos) >= 24:
+            result = seasonal_decompose(datos, model='additive', period=12)
+            seasonal_vals = result.seasonal.groupby(result.seasonal.index.month).mean()
+            amplitud = seasonal_vals.max() - seasonal_vals.min()
+            resultados_sucursal.append({
+                'sucursal': suc,
+                'amplitud_estacional': amplitud,
+                'mes_pico': nombres_mes[int(seasonal_vals.idxmax())-1],
+                'mes_valle': nombres_mes[int(seasonal_vals.idxmin())-1],
+                'tendencia': (result.trend.dropna().iloc[-1] / result.trend.dropna().iloc[0] - 1) * 100
+            })
+
+    if resultados_sucursal:
+        df_sucursal_decomp = pd.DataFrame(resultados_sucursal).sort_values('amplitud_estacional', ascending=False)
+        print("\n   Estacionalidad por sucursal:")
+        print(df_sucursal_decomp.round(2))
+        print("\n   💡 Amplitud alta = estacionalidad marcada (ventas varían mucho por mes)")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  AJUSTE ESTACIONAL: Ventas sin estacionalidad")
+    print("-"*70)
+
+    ventas_ajustadas = monthly - decomp_adit.seasonal
+    print("\n   Ventas originales vs ajustadas (últimos 12 meses):")
+    comparacion = pd.DataFrame({
+        'ventas_originales': monthly.tail(12).round(0),
+        'ventas_ajustadas': ventas_ajustadas.tail(12).round(0)
+    })
+    comparacion['diferencia'] = (comparacion['ventas_originales'] - comparacion['ventas_ajustadas']).round(0)
+    print(comparacion)
+    print("\n   💡 Ventas ajustadas eliminan el patrón estacional → tendencia limpia")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  DETECCIÓN DE ANOMALÍAS (residuos)")
+    print("-"*70)
+
+    resid = decomp_adit.resid.dropna()
+    umbral = 2 * resid.std()
+    anomalias = resid[np.abs(resid) > umbral]
+
+    print(f"\n   Residuo: media={resid.mean():,.0f}, std={resid.std():,.0f}")
+    print(f"   Umbral anomalía: ±${umbral:,.0f}")
+    print(f"   Anomalías detectadas: {len(anomalias)} de {len(resid)}")
+    if len(anomalias) > 0:
+        print("\n   Meses anómalos:")
+        for fecha, valor in anomalias.items():
+            print(f"      {fecha.strftime('%Y-%m')}: residuo {valor:+,.0f}")
+    print("\n   💡 Residuos > 2σ indican eventos inusuales (promociones, crisis, etc.)")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 07_04

@@ -260,6 +260,150 @@ print("✅ Pipeline ML completo: Entrenamiento → Registry → Inferencia")
 
 # COMMAND ----------
 
+# DBTITLE 1,📦 Teoría: Registry con datos reales
+# MAGIC %md
+# MAGIC ## 📦 Model Registry aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 🚀 Pipeline completo: entrenar → registrar → scoring
+# MAGIC
+# MAGIC Con MLflow Model Registry podemos llevar un modelo de predicción de ventas de **Los Andes Market** a producción:
+# MAGIC
+# MAGIC ```python
+# MAGIC # 1. Entrenar y registrar
+# MAGIC mlflow.sklearn.log_model(model, "model")
+# MAGIC mlflow.register_model(f"runs:/{run_id}/model", "pandito_ds.default.modelo_ventas")
+# MAGIC
+# MAGIC # 2. Cargar modelo de producción
+# MAGIC model = mlflow.pyfunc.load_model("models:/pandito_ds.default.modelo_ventas/Production")
+# MAGIC
+# MAGIC # 3. Batch scoring
+# MAGIC predicciones = model.predict(nuevos_datos)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Cómo versionar modelos de predicción de ventas?
+# MAGIC * ¿Cómo hacer batch scoring sobre datos nuevos?
+# MAGIC * ¿Cómo comparar versión Staging vs Production?
+
+# COMMAND ----------
+
+# DBTITLE 1,📦 Práctica: Registry con datos reales
+import mlflow
+import mlflow.sklearn
+import mlflow.pyfunc
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score
+import warnings
+warnings.filterwarnings('ignore')
+
+print("📦 MODEL REGISTRY APLICADO A LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    print("\n1️⃣  ENTRENAR Y REGISTRAR MODELO DE VENTAS")
+    print("-"*70)
+
+    df['mes'] = df['fecha'].dt.month
+    df['anio'] = df['fecha'].dt.year
+    df['trimestre'] = df['fecha'].dt.quarter
+
+    feature_cols = ['mes', 'anio', 'trimestre']
+    X = df[feature_cols].values
+    y = df['ventas'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    mlflow.set_experiment("registry_ventas_los_andes")
+
+    MODEL_NAME = "pandito_ds.default.modelo_ventas_rf"
+
+    with mlflow.start_run(run_name="rf_registry_v1") as run:
+        rf = RandomForestRegressor(n_estimators=100, random_state=42)
+        rf.fit(X_train, y_train)
+        preds = rf.predict(X_test)
+
+        rmse = np.sqrt(mean_squared_error(y_test, preds))
+        r2 = r2_score(y_test, preds)
+
+        mlflow.log_param("model", "RandomForest")
+        mlflow.log_param("features", ", ".join(feature_cols))
+        mlflow.log_metric("rmse", rmse)
+        mlflow.log_metric("r2", r2)
+        mlflow.sklearn.log_model(rf, "model")
+        run_id = run.info.run_id
+
+        print(f"   Modelo entrenado: RMSE=${rmse:,.0f}, R²={r2:.4f}")
+        print(f"   Run ID: {run_id}")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  REGISTRAR EN MODEL REGISTRY")
+    print("-"*70)
+
+    try:
+        result = mlflow.register_model(
+            model_uri=f"runs:/{run_id}/model",
+            name=MODEL_NAME
+        )
+        print(f"   ✅ Modelo registrado: {MODEL_NAME}")
+        print(f"   Versión: {result.version}")
+    except Exception as e:
+        print(f"   ⚠️  No se pudo registrar (permisos): {e}")
+        print(f"   El modelo está disponible en el run: {run_id}")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  CARGAR MODELO Y BATCH SCORING")
+    print("-"*70)
+
+    # Cargar modelo desde el run
+    loaded_model = mlflow.pyfunc.load_model(f"runs:/{run_id}/model")
+
+    # Simular datos nuevos (próximos 3 meses de 2025)
+    nuevos_datos = pd.DataFrame({
+        'mes': [1, 2, 3],
+        'anio': [2025, 2025, 2025],
+        'trimestre': [1, 1, 1],
+    })
+
+    predicciones = loaded_model.predict(nuevos_datos)
+    print(f"\n   Batch scoring — Predicción de ventas para Q1 2025:")
+    for i, row in nuevos_datos.iterrows():
+        print(f"      {row['anio']}-{row['mes']:02d}: ${predicciones[i]:,.0f}")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  SCORING POR SUCURSAL")
+    print("-"*70)
+
+    # Predecir para cada sucursal
+    sucursales = df[['sucursal_id', 'sucursal_nombre']].drop_duplicates().head(5)
+    for _, suc in sucursales.iterrows():
+        datos_suc = pd.DataFrame({
+            'mes': [1, 2, 3],
+            'anio': [2025, 2025, 2025],
+            'trimestre': [1, 1, 1],
+        })
+        preds_suc = loaded_model.predict(datos_suc)
+        print(f"   {suc['sucursal_nombre']}:")
+        print(f"      Ene: ${preds_suc[0]:,.0f} | Feb: ${preds_suc[1]:,.0f} | Mar: ${preds_suc[2]:,.0f}")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  PIPELINE COMPLETO: Entrenar → Registrar → Scoring")
+    print("-"*70)
+    print("\n   ✅ Pipeline ML completo:")
+    print(f"      1. Entrenar RandomForest → Run ID: {run_id}")
+    print(f"      2. Registrar en Model Registry: {MODEL_NAME}")
+    print(f"      3. Cargar modelo: mlflow.pyfunc.load_model()")
+    print(f"      4. Batch scoring: predicciones para Q1 2025")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 17_05

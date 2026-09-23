@@ -214,6 +214,131 @@ print("✅ Módulo 15 completo - Delta Lake, Window Functions y Optimización")
 
 # COMMAND ----------
 
+# DBTITLE 1,🏗️ Teoría: ETL con datos reales
+# MAGIC %md
+# MAGIC ## 🏗️ ETL Pipeline aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Pipeline real: de ventas crudas a KPIs de negocio
+# MAGIC
+# MAGIC Un pipeline ETL completo sobre `ventas_mensuales_mendoza_h3`:
+# MAGIC
+# MAGIC ```
+# MAGIC EXTRACT (Unity Catalog) → TRANSFORM (limpieza + enriquecimiento) → LOAD (Delta) → VALIDATE
+# MAGIC ```
+# MAGIC
+# MAGIC ```python
+# MAGIC # EXTRACT
+# MAGIC df_raw = spark.table("pandito_ds.default.ventas_mensuales_mendoza_h3")
+# MAGIC
+# MAGIC # TRANSFORM: agregar IVA, categorías, año/mes
+# MAGIC df_clean = (df_raw
+# MAGIC     .dropDuplicates()
+# MAGIC     .withColumn("ventas_iva", col("ventas") * 1.21)
+# MAGIC     .withColumn("categoria", when(col("ventas") > 80000, "Alto").otherwise("Bajo")))
+# MAGIC
+# MAGIC # LOAD: guardar como tabla Delta
+# MAGIC df_clean.write.format("delta").mode("overwrite").saveAsTable("...")
+# MAGIC
+# MAGIC # VALIDATE: verificar nulos, rangos, conteo
+# MAGIC assert df_result.count() > 0
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Control de calidad en el pipeline
+# MAGIC * **Conteo:** ¿el número de registros es razonable?
+# MAGIC * **Nulos:** ¿hay columnas críticas con nulos?
+# MAGIC * **Rangos:** ¿ventas son positivas?
+# MAGIC * **Duplicados:** ¿hay registros duplicados?
+
+# COMMAND ----------
+
+# DBTITLE 1,🏗️ Práctica: ETL con datos reales
+from pyspark.sql.functions import col, year, month, when, count, isnull, sum as spark_sum, round as spark_round
+
+print("🏗️ ETL PIPELINE APLICADO A LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and 'df_raw' in dir():
+    # === EXTRACT ===
+    print("\n1️⃣  EXTRACT: Leer desde Unity Catalog")
+    print("-"*70)
+    df_raw = spark.table("pandito_ds.default.ventas_mensuales_mendoza_h3")
+    n_raw = df_raw.count()
+    print(f"   Registros extraídos: {n_raw:,}")
+
+    # === TRANSFORM ===
+    print("\n2️⃣  TRANSFORM: Limpieza + enriquecimiento")
+    print("-"*70)
+    df_clean = (df_raw
+        .dropDuplicates()
+        .na.drop(subset=["ventas", "fecha"])
+        .filter(col("ventas") > 0)  # Solo ventas positivas
+        .withColumn("anio", year("fecha"))
+        .withColumn("mes", month("fecha"))
+        .withColumn("ventas_iva", spark_round(col("ventas") * 1.21, 2))
+        .withColumn("margen_estimado", spark_round(col("ventas") * 0.15, 2))
+        .withColumn("categoria_venta",
+            when(col("ventas") > 100000, "Alto")
+            .when(col("ventas") > 50000, "Medio")
+            .otherwise("Bajo")))
+    n_clean = df_clean.count()
+    print(f"   Registros después de limpieza: {n_clean:,}")
+    print(f"   Columnas agregadas: anio, mes, ventas_iva, margen_estimado, categoria_venta")
+
+    # === LOAD ===
+    print("\n3️⃣  LOAD: Guardar como tabla Delta")
+    print("-"*70)
+    df_clean.write.format("delta").mode("overwrite")\
+        .saveAsTable("pandito_ds.default.ventas_los_andes_etl")
+    print("   Tabla 'ventas_los_andes_etl' creada en formato Delta")
+
+    # === VALIDATE ===
+    print("\n4️⃣  VALIDATE: Control de calidad")
+    print("-"*70)
+    df_result = spark.table("pandito_ds.default.ventas_los_andes_etl")
+
+    # Conteo
+    total = df_result.count()
+    print(f"   Total registros: {total:,}")
+    assert total > 0, "❌ Sin datos después del ETL"
+    print("   ✅ Conteo válido")
+
+    # Nulos
+    nulls = df_result.select([count(when(isnull(c), c)).alias(c) for c in ["ventas", "fecha", "sucursal_id"]])
+    print("\n   Nulos en columnas críticas:")
+    nulls.show()
+
+    # Estadísticas
+    print("   Estadísticas de ventas:")
+    df_result.describe("ventas").show()
+
+    # Categorías
+    print("   Distribución por categoría:")
+    df_result.groupBy("categoria_venta").agg(
+        count("*").alias("registros"),
+        spark_round(spark_sum("ventas"), 0).alias("ventas_totales")
+    ).orderBy("categoria_venta").show()
+
+    # === RESUMEN ETL ===
+    print("\n" + "="*70)
+    print("\n5️⃣  RESUMEN DEL PIPELINE ETL")
+    print("-"*70)
+    print(f"   📥 Extract:  {n_raw:,} registros desde Unity Catalog")
+    print(f"   🔄 Transform: {n_clean:,} registros después de limpieza + enriquecimiento")
+    print(f"   📤 Load:     Tabla Delta 'ventas_los_andes_etl' creada")
+    print(f"   ✅ Validate: Conteo, nulos, estadísticas y categorías verificados")
+
+    # Limpieza
+    spark.sql("DROP TABLE IF EXISTS pandito_ds.default.ventas_los_andes_etl")
+    print("\n   Tabla temporal eliminada")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 15_05

@@ -302,6 +302,146 @@ print("   📌 Compare estos resultados con RandomForest del Notebook 17_02")
 
 # COMMAND ----------
 
+# DBTITLE 1,🧠 Teoría: Deep Learning con datos reales
+# MAGIC %md
+# MAGIC ## 🧠 Deep Learning aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📈 LSTM para forecasting de ventas
+# MAGIC
+# MAGIC Con una red LSTM podemos intentar predecir las ventas mensuales de **Los Andes Market** usando los últimos 12 meses como ventana:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Formato LSTM: (samples, timesteps=12, features=1)
+# MAGIC # Entrada: [ventas mes 1, mes 2, ..., mes 12]
+# MAGIC # Salida: predicción mes 13
+# MAGIC model = Sequential([LSTM(50, input_shape=(12, 1)), Dense(1)])
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Consideraciones
+# MAGIC * LSTM requiere normalización (`MinMaxScaler`)
+# MAGIC * Si TensorFlow no está disponible → `%pip install tensorflow`
+# MAGIC * En Free Edition puede ser lento (CPU sin GPU)
+# MAGIC * Comparar LSTM vs RandomForest para justificar complejidad
+
+# COMMAND ----------
+
+# DBTITLE 1,🧠 Práctica: Deep Learning con datos reales
+import mlflow
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error, r2_score
+import warnings
+warnings.filterwarnings('ignore')
+
+print("🧠 DEEP LEARNING CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    # Verificar TensorFlow
+    try:
+        import tensorflow as tf
+        from tensorflow.keras.models import Sequential
+        from tensorflow.keras.layers import LSTM, Dense, Dropout
+        TF_OK = True
+        print(f"✅ TensorFlow {tf.__version__} disponible")
+    except ImportError:
+        TF_OK = False
+        print("⚠️  TensorFlow no disponible. Instalar con: %pip install tensorflow")
+
+    print("\n1️⃣  PREPARAR SECUENCIAS DESDE VENTAS REALES")
+    print("-"*70)
+
+    # Agregar ventas totales mensuales
+    ventas_mensuales = df.groupby('fecha')['ventas'].sum().sort_index()
+    print(f"   Período: {ventas_mensuales.index[0].strftime('%Y-%m')} a {ventas_mensuales.index[-1].strftime('%Y-%m')}")
+    print(f"   Total de meses: {len(ventas_mensuales)}")
+
+    # Normalizar
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    ventas_scaled = scaler.fit_transform(ventas_mensuales.values.reshape(-1, 1))
+
+    # Crear secuencias (12 meses → predecir mes 13)
+    SEQ_LEN = 12
+    X, y = [], []
+    for i in range(len(ventas_scaled) - SEQ_LEN):
+        X.append(ventas_scaled[i:i+SEQ_LEN, 0])
+        y.append(ventas_scaled[i+SEQ_LEN, 0])
+    X = np.array(X)
+    y = np.array(y)
+    X = X.reshape((X.shape[0], X.shape[1], 1))
+
+    split = int(len(X) * 0.8)
+    X_train, X_test = X[:split], X[split:]
+    y_train, y_test = y[:split], y[split:]
+
+    print(f"   Secuencias: {len(X)} (train={len(X_train)}, test={len(X_test)})")
+    print(f"   Forma X: {X.shape} (samples, timesteps=12, features=1)")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  ENTRENAR LSTM CON MLFLOW TRACKING")
+    print("-"*70)
+
+    if TF_OK:
+        mlflow.set_experiment("lstm_ventas_los_andes")
+
+        with mlflow.start_run(run_name="lstm_v1"):
+            mlflow.log_param("model", "LSTM")
+            mlflow.log_param("seq_len", SEQ_LEN)
+            mlflow.log_param("layers", "LSTM(50)+Dense(25)+Dense(1)")
+            mlflow.log_param("epochs", 30)
+            mlflow.log_param("batch_size", 16)
+
+            model = Sequential([
+                LSTM(50, activation='relu', input_shape=(SEQ_LEN, 1)),
+                Dropout(0.2),
+                Dense(25, activation='relu'),
+                Dense(1)
+            ])
+            model.compile(optimizer='adam', loss='mse', metrics=['mae'])
+
+            history = model.fit(X_train, y_train, epochs=30, batch_size=16,
+                               validation_split=0.2, verbose=0)
+
+            preds_scaled = model.predict(X_test, verbose=0)
+            preds = scaler.inverse_transform(preds_scaled).flatten()
+            y_real = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
+
+            rmse = np.sqrt(mean_squared_error(y_real, preds))
+            r2 = r2_score(y_real, preds)
+
+            mlflow.log_metric("rmse", rmse)
+            mlflow.log_metric("r2", r2)
+
+            print(f"   ✅ LSTM entrenado (30 epochs)")
+            print(f"   RMSE: ${rmse:,.0f}")
+            print(f"   R²: {r2:.4f}")
+            print(f"\n   Predicciones vs Reales (últimos {len(y_real)} meses):")
+            for i in range(min(len(y_real), 6)):
+                print(f"      Real: ${y_real[i]:,.0f} | Predicho: ${preds[i]:,.0f}")
+    else:
+        print("   ⏭️  TensorFlow no disponible — saltando entrenamiento LSTM")
+        print("   💡 Instalar con: %pip install tensorflow")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  COMPARACIÓN: LSTM vs Modelos Tradicionales")
+    print("-"*70)
+    print("\n   | Modelo          | Ventajas                    | Complejidad |")
+    print("   |-----------------|----------------------------|-------------|")
+    print("   | LinearRegression| Simple, interpretable       | Baja        |")
+    print("   | RandomForest    | Robusto, no lineal          | Media       |")
+    print("   | LSTM            | Memoria temporal, secuencias| Alta        |")
+    print("\n   💡 Para datasets pequeños, RandomForest puede superar a LSTM")
+    print("   💡 LSTM brilla con grandes volúmenes de datos temporales")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 17_06

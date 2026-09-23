@@ -158,6 +158,151 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,🔍 Teoría: Auditoría avanzada
+# MAGIC %md
+# MAGIC ## 🔍 Auditoría avanzada de Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Ley de Benford sobre ventas reales
+# MAGIC
+# MAGIC La Ley de Benford predice la frecuencia del primer dígito en datos naturales:
+# MAGIC
+# MAGIC | Primer dígito | Frecuencia esperada |
+# MAGIC |---------------|-------------------|
+# MAGIC | 1 | 30.1% |
+# MAGIC | 2 | 17.6% |
+# MAGIC | 3 | 12.5% |
+# MAGIC | ... | ... |
+# MAGIC | 9 | 4.6% |
+# MAGIC
+# MAGIC Desviaciones significativas = posible manipulación.
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Conciliación simulada
+# MAGIC
+# MAGIC Podemos simular una conciliación entre dos fuentes:
+# MAGIC * Fuente A: `ventas_mensuales_mendoza_h3` (sistema de ventas)
+# MAGIC * Fuente B: copia con ruido (sistema contable)
+# MAGIC
+# MAGIC ```python
+# MAGIC pd.merge(df_A, df_B, how='outer', indicator=True)
+# MAGIC # _merge = 'both' (coinciden), 'left_only' (solo ventas), 'right_only' (solo contable)
+# MAGIC ```
+
+# COMMAND ----------
+
+# DBTITLE 1,🔍 Práctica: Auditoría avanzada
+import pandas as pd
+import numpy as np
+from scipy import stats
+import plotly.express as px
+import warnings
+warnings.filterwarnings('ignore')
+
+print("🔍 AUDITORÍA AVANZADA DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES:
+    print("\n1️⃣  LEY DE BENFORD SOBRE VENTAS REALES")
+    print("-"*70)
+
+    # Primer dígito de cada valor de ventas
+    ventas_positivas = df[df['ventas'] > 0]['ventas'].copy()
+    primeros_digitos = ventas_positivas.astype(int).astype(str).str[0].astype(int)
+
+    # Frecuencia observada
+    obs = primeros_digitos.value_counts(normalize=True).sort_index()
+
+    # Frecuencia esperada (Ley de Benford)
+    benford = pd.Series({d: np.log10(1 + 1/d) for d in range(1, 10)})
+
+    comparacion = pd.DataFrame({
+        'Observado_%': (obs * 100).round(2),
+        'Benford_%': (benford * 100).round(2),
+    })
+    comparacion['Desviacion'] = (comparacion['Observado_%'] - comparacion['Benford_%']).round(2)
+    print("\n   Comparación primer dígito vs Ley de Benford:")
+    print(comparacion)
+
+    # Chi-cuadrado
+    obs_counts = primeros_digitos.value_counts().sort_index()
+    expected_counts = benford * len(primeros_digitos)
+    chi2, p_value = stats.chisquare(obs_counts, expected_counts)
+    print(f"\n   Chi-cuadrado: {chi2:.2f} | p-value: {p_value:.4f}")
+    if p_value < 0.05:
+        print("   ⚠️  Desviación significativa — posible anomalía")
+    else:
+        print("   ✅ Datos consistentes con Ley de Benford")
+
+    fig = px.bar(comparacion.reset_index(), x='index', y=['Observado_%', 'Benford_%'],
+                 barmode='group', title='Ley de Benford vs Ventas Observadas',
+                 labels={'index': 'Primer Dígito', 'value': 'Frecuencia (%)'},
+                 template='plotly_white')
+    fig.show()
+
+    print("\n" + "="*70)
+    print("\n2️⃣  CONCILIACIÓN SIMULADA: Ventas vs Contable")
+    print("-"*70)
+
+    # Simular fuente contable con ruido
+    np.random.seed(42)
+    df_contable = df[['sucursal_id', 'fecha', 'ventas']].copy()
+    df_contable['ventas_contable'] = df_contable['ventas'] * (1 + np.random.normal(0, 0.02, len(df_contable)))
+    df_contable['ventas_contable'] = df_contable['ventas_contable'].round(2)
+
+    # Conciliar
+    df_merge = pd.merge(
+        df[['sucursal_id', 'fecha', 'ventas']],
+        df_contable[['sucursal_id', 'fecha', 'ventas_contable']],
+        on=['sucursal_id', 'fecha'],
+        how='outer',
+        indicator=True
+    )
+
+    df_merge['diferencia'] = (df_merge['ventas'] - df_merge['ventas_contable']).round(2)
+    df_merge['diff_pct'] = (abs(df_merge['diferencia']) / df_merge['ventas'] * 100).round(3)
+
+    print(f"\n   Total registros: {len(df_merge)}")
+    print(f"   Coincidentes (_merge='both'): {(df_merge['_merge']=='both').sum()}")
+    print(f"   Solo ventas: {(df_merge['_merge']=='left_only').sum()}")
+    print(f"   Solo contable: {(df_merge['_merge']=='right_only').sum()}")
+
+    no_conciliadas = df_merge[(df_merge['diff_pct'] > 0.5) & (df_merge['_merge']=='both')]
+    print(f"\n   Diferencias > 0.5%: {len(no_conciliadas)}")
+    if len(no_conciliadas) > 0:
+        print(no_conciliadas[['sucursal_id', 'fecha', 'ventas', 'ventas_contable', 'diferencia', 'diff_pct']].head(10))
+
+    print("\n" + "="*70)
+    print("\n3️⃣  REPORTE EJECUTIVO DE AUDITORÍA")
+    print("-"*70)
+
+    # Clasificar severidad
+    df_audit = df.copy()
+    z = np.abs(stats.zscore(df_audit['ventas']))
+    df_audit['severidad'] = 'Normal'
+    df_audit.loc[z > 2, 'severidad'] = 'Moderada'
+    df_audit.loc[z > 3, 'severidad'] = 'Crítica'
+
+    hallazgos = df_audit[df_audit['severidad'] != 'Normal']
+
+    print(f"\n   📊 REPORTE DE AUDITORÍA — LOS ANDES MARKET")
+    print(f"   {'='*50}")
+    print(f"   Registros auditados: {len(df_audit):,}")
+    print(f"   Registros normales: {(df_audit['severidad']=='Normal').sum()}")
+    print(f"   Hallazgos moderados: {(df_audit['severidad']=='Moderada').sum()}")
+    print(f"   Hallazgos críticos: {(df_audit['severidad']=='Crítica').sum()}")
+    print(f"   Tasa de anomalías: {(df_audit['severidad']!='Normal').sum()/len(df_audit)*100:.1f}%")
+    print(f"   Cobertura: 100% ({len(df_audit)} de {len(df_audit)} registros)")
+    if len(hallazgos) > 0:
+        print(f"\n   Top hallazgos por severidad:")
+        print(hallazgos[['sucursal_nombre', 'fecha', 'ventas', 'severidad']].sort_values('ventas', ascending=False).head(10))
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 18_01

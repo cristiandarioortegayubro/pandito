@@ -201,6 +201,136 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,🧠 Teoría: Caching aplicado a Los Andes Market
+# MAGIC %md
+# MAGIC ## 🧠 Caching aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 ¿Dónde cachear en un pipeline real de ventas?
+# MAGIC
+# MAGIC Un análisis típico de **Los Andes Market** involucra múltiples pasos sobre el mismo DataFrame filtrado:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Pipeline sin cache (recalcula 3 veces)
+# MAGIC df_filtrado = df.filter(col("ventas") > 100000)
+# MAGIC df_filtrado.count()                              # Cálculo 1
+# MAGIC df_filtrado.groupBy("zona").sum("ventas").show()  # Cálculo 2
+# MAGIC df_filtrado.groupBy("sucursal_id").avg("ventas").show() # Cálculo 3
+# MAGIC
+# MAGIC # Pipeline con cache (calcula 1 vez, reusa 2)
+# MAGIC df_cached = df.filter(col("ventas") > 100000).cache()
+# MAGIC df_cached.count()   # Cálculo + cachea
+# MAGIC df_cached.groupBy("zona").sum("ventas").show()     # Cache
+# MAGIC df_cached.groupBy("sucursal_id").avg("ventas").show() # Cache
+# MAGIC df_cached.unpersist()  # Liberar al terminar
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💼 Casos de negocio donde caching es clave
+# MAGIC
+# MAGIC 1. **Dashboard ejecutivo:** Múltiples KPIs sobre el mismo filtro → cachear el filtro
+# MAGIC 2. **Reporte mensual:** Ventas por zona, por sucursal, por año → cachear el DataFrame del mes
+# MAGIC 3. **Análisis comparativo:** Comparar ventas de N sucursales → cachear el agregado
+# MAGIC 4. **Iteración de modelo:** Feature engineering repetido → cachear features
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### ⚠️ En Los Andes Market: ¿Qué cachear?
+# MAGIC
+# MAGIC | DataFrame | ¿Cachear? | Por qué |
+# MAGIC |-----------|-----------|--------|
+# MAGIC | `df.filter(ventas > 100k)` usado 3+ veces | ✅ Sí | Recálculo costoso |
+# MAGIC | `df.groupBy('zona').sum('ventas')` usado 1 vez | ❌ No | Una sola acción |
+# MAGIC | `df_sucursales` (20 filas) en joins repetidos | ✅ Sí | Tabla pequeña, reusada |
+# MAGIC | `df` completo (miles de filas) | ⚠️ Tal vez | Solo si se usa múltiples veces |
+
+# COMMAND ----------
+
+# DBTITLE 1,🧠 Práctica: Caching aplicado a Los Andes Market
+from pyspark.sql.functions import col, sum as _sum, avg, count, year, month, desc
+import time
+
+print("🧠 CACHING APLICADO A LOS ANDES MARKET")
+print("="*70)
+
+if 'df' in dir() and df is not None:
+    print("\n1️⃣  PIPELINE SIN CACHE: Dashboard ejecutivo (3 KPIs)")
+    print("-"*70)
+
+    # Simular un dashboard con 3 KPIs sobre el mismo filtro
+    df_filtrado = df.filter(col("ventas") > 100000)
+
+    start = time.time()
+    kpi1 = df_filtrado.count()  # KPI 1: total registros
+    kpi2 = df_filtrado.groupBy("zona").agg(_sum("ventas").alias("total")).orderBy(desc("total")).collect()  # KPI 2
+    kpi3 = df_filtrado.groupBy("sucursal_id").agg(avg("ventas").alias("promedio")).orderBy(desc("promedio")).collect()  # KPI 3
+    t_sin = time.time() - start
+
+    print(f"\n   KPI 1 - Registros con ventas > 100k: {kpi1:,}")
+    print(f"   KPI 2 - Ventas por zona (top 3):")
+    for row in kpi2[:3]:
+        print(f"      {row['zona']}: ${row['total']:,.0f}")
+    print(f"   KPI 3 - Sucursal con mayor promedio: {kpi3[0]['sucursal_id']} (${kpi3[0]['promedio']:,.0f})")
+    print(f"   ⏱️  Tiempo sin cache (3 cálculos): {t_sin:.2f}s")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  PIPELINE CON CACHE: Mismos 3 KPIs")
+    print("-"*70)
+
+    df_cached = df.filter(col("ventas") > 100000).cache()
+
+    start = time.time()
+    kpi1c = df_cached.count()  # Cálculo + cachea
+    kpi2c = df_cached.groupBy("zona").agg(_sum("ventas").alias("total")).orderBy(desc("total")).collect()  # Cache
+    kpi3c = df_cached.groupBy("sucursal_id").agg(avg("ventas").alias("promedio")).orderBy(desc("promedio")).collect()  # Cache
+    t_con = time.time() - start
+
+    print(f"\n   KPI 1 - Registros con ventas > 100k: {kpi1c:,}")
+    print(f"   KPI 2 - Ventas por zona (top 3):")
+    for row in kpi2c[:3]:
+        print(f"      {row['zona']}: ${row['total']:,.0f}")
+    print(f"   KPI 3 - Sucursal con mayor promedio: {kpi3c[0]['sucursal_id']} (${kpi3c[0]['promedio']:,.0f})")
+    print(f"   ⏱️  Tiempo con cache (1 cálculo + 2 cache): {t_con:.2f}s")
+
+    speedup = t_sin / t_con if t_con > 0 else 0
+    print(f"\n   📊 Speedup: {speedup:.1f}x")
+    print(f"   💡 Mismos resultados, menos tiempo gracias al cache")
+
+    df_cached.unpersist()
+    print("   ✅ Cache liberado con unpersist()")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  CASO REAL: Cachear sucursales para joins repetidos")
+    print("-"*70)
+
+    # Tabla pequeña de sucursales (candidata a cache por uso repetido)
+    df_suc = df.select("sucursal_id", "sucursal_nombre", "zona", "lat", "lon").dropDuplicates().cache()
+    df_suc.count()  # Materializar cache
+
+    # 3 joins diferentes usando la misma tabla de sucursales
+    print("\n   3 joins reutilizando sucursales cacheadas:")
+
+    join1 = df.filter(col("ventas") > 150000).join(df_suc, "sucursal_id", "inner")
+    print(f"      Join 1 (ventas > 150k): {join1.count()} registros")
+
+    join2 = df.filter(year(col("fecha")) == 2023).join(df_suc, "sucursal_id", "inner")
+    print(f"      Join 2 (año 2023): {join2.count()} registros")
+
+    join3 = df.filter(col("zona") == "Corredor Comercial").join(df_suc, "sucursal_id", "inner")
+    print(f"      Join 3 (Corredor Comercial): {join3.count()} registros")
+
+    print("\n   💡 Sin cache, cada join releería la tabla de sucursales")
+    print("   💡 Con cache, la tabla está en memoria para los 3 joins")
+
+    df_suc.unpersist()
+    print("   ✅ Cache de sucursales liberado")
+else:
+    print("⚠️  No hay datos disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 13_01

@@ -216,6 +216,107 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,📈 Teoría: Agregaciones con datos reales
+# MAGIC %md
+# MAGIC ## 📈 Agregaciones y CASE WHEN con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 📊 KPIs de negocio con GROUP BY
+# MAGIC
+# MAGIC Con SQL podemos calcular métricas ejecutivas sobre las ventas reales de **Los Andes Market**:
+# MAGIC
+# MAGIC ```sql
+# MAGIC -- KPI: Ventas por zona con clasificación
+# MAGIC SELECT 
+# MAGIC   zona,
+# MAGIC   SUM(ventas) AS total,
+# MAGIC   CASE WHEN AVG(ventas) > 80000 THEN 'Alto' ELSE 'Bajo' END AS nivel
+# MAGIC FROM ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY zona;
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué zona genera más ventas? ¿Y por sucursal?
+# MAGIC * ¿Cómo clasificar sucursales en Alto/Medio/Bajo?
+# MAGIC * ¿Cuál es la variabilidad mensual de cada sucursal?
+# MAGIC * ¿Qué meses del año tienen mejores ventas?
+
+# COMMAND ----------
+
+# DBTITLE 1,📈 Práctica: Agregaciones con datos reales
+# MAGIC %sql
+# MAGIC -- 📈 PRÁCTICA: AGREGACIONES Y CASE WHEN CON LOS ANDES MARKET
+# MAGIC
+# MAGIC -- 1️⃣  DASHBOARD DE KPIs POR ZONA
+# MAGIC SELECT 
+# MAGIC   zona,
+# MAGIC   COUNT(*) AS meses_con_datos,
+# MAGIC   COUNT(DISTINCT sucursal_id) AS num_sucursales,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_totales,
+# MAGIC   ROUND(AVG(ventas), 0) AS ventas_promedio,
+# MAGIC   ROUND(MAX(ventas), 0) AS venta_max,
+# MAGIC   ROUND(MIN(ventas), 0) AS venta_min,
+# MAGIC   CASE 
+# MAGIC     WHEN AVG(ventas) > 100000 THEN 'Alto'
+# MAGIC     WHEN AVG(ventas) > 50000 THEN 'Medio'
+# MAGIC     ELSE 'Bajo'
+# MAGIC   END AS rendimiento
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY zona
+# MAGIC ORDER BY ventas_totales DESC;
+# MAGIC
+# MAGIC -- 2️⃣  RANKING DE SUCURSALES CON CASE WHEN
+# MAGIC SELECT 
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   COUNT(*) AS meses_activos,
+# MAGIC   ROUND(AVG(ventas), 0) AS ventas_promedio,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_totales,
+# MAGIC   CASE 
+# MAGIC     WHEN SUM(ventas) > 2000000 THEN 'Estrella'
+# MAGIC     WHEN SUM(ventas) > 1000000 THEN 'Sólida'
+# MAGIC     WHEN SUM(ventas) > 500000 THEN 'Estable'
+# MAGIC     ELSE 'Emergente'
+# MAGIC   END AS categoria_sucursal
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY sucursal_nombre, zona
+# MAGIC ORDER BY ventas_totales DESC;
+# MAGIC
+# MAGIC -- 3️⃣  VENTAS POR AÑO Y MES (estacionalidad)
+# MAGIC SELECT 
+# MAGIC   YEAR(fecha) AS anio,
+# MAGIC   MONTH(fecha) AS mes,
+# MAGIC   COUNT(*) AS registros,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_mes,
+# MAGIC   ROUND(AVG(ventas), 0) AS promedio_sucursal
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY YEAR(fecha), MONTH(fecha)
+# MAGIC ORDER BY anio, mes;
+# MAGIC
+# MAGIC -- 4️⃣  HAVING: Solo sucursales con ventas promedio altas
+# MAGIC SELECT 
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   ROUND(AVG(ventas), 0) AS ventas_promedio,
+# MAGIC   ROUND(STDDEV(ventas), 0) AS volatilidad
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY sucursal_nombre, zona
+# MAGIC HAVING AVG(ventas) > 80000
+# MAGIC ORDER BY ventas_promedio DESC;
+# MAGIC
+# MAGIC -- 5️⃣  VENTAS TRIMESTRALES CON DATE_TRUNC
+# MAGIC SELECT 
+# MAGIC   DATE_TRUNC('quarter', fecha) AS trimestre,
+# MAGIC   zona,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_trimestrales,
+# MAGIC   ROUND(AVG(ventas), 0) AS promedio_mensual
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY DATE_TRUNC('quarter', fecha), zona
+# MAGIC ORDER BY trimestre, zona;
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 14_02

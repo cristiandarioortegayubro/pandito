@@ -201,6 +201,121 @@ print("✅ Pipeline con Genie Code avanzado completado")
 
 # COMMAND ----------
 
+# DBTITLE 1,⚡ Teoría: Genie Code con datos reales
+# MAGIC %md
+# MAGIC ## ⚡ Genie Code aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 🤖 Pipeline ETL con asistencia de IA
+# MAGIC
+# MAGIC Genie Code puede generar un pipeline completo para **Los Andes Market** con un solo prompt estructurado:
+# MAGIC
+# MAGIC ```
+# MAGIC Crea un pipeline ETL que:
+# MAGIC 1. Lea de pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC 2. Filtre ventas > 0
+# MAGIC 3. Agregue columnas: anio, mes, ventas_iva (×1.21), categoria (Alto/Medio/Bajo)
+# MAGIC 4. Calcule ranking mensual por zona con ROW_NUMBER
+# MAGIC 5. Calcule crecimiento vs mes anterior con LAG
+# MAGIC 6. Guarde en tabla Delta pandito_ds.default.ventas_enriquecidas
+# MAGIC 7. Agregue control de calidad al final
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Migración Pandas → PySpark con Genie
+# MAGIC
+# MAGIC | Pandas | PySpark (Genie traduce) |
+# MAGIC |--------|------------------------|
+# MAGIC | `df.groupby('zona')['ventas'].sum()` | `df.groupBy('zona').agg(sum('ventas'))` |
+# MAGIC | `df.pivot_table(...)` | `df.groupBy(...).pivot(...).agg(...)` |
+# MAGIC | `df['ventas'].rolling(3).mean()` | `Window.partitionBy(...).rowsBetween(-2, 0)` |
+# MAGIC | `pd.merge(df1, df2, on='key')` | `df1.join(df2, on='key')` |
+
+# COMMAND ----------
+
+# DBTITLE 1,⚡ Práctica: Pipeline con Genie Code
+from pyspark.sql.functions import col, year, month, round as spark_round, when, sum as spark_sum, avg, count
+from pyspark.sql.window import Window
+from pyspark.sql.functions import row_number, lag
+
+print("⚡ PIPELINE ETL GENERADO CON GENIE CODE PARA LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and 'df' in dir():
+    print("\n1️⃣  EXTRACT: Leer desde Unity Catalog")
+    print("-"*70)
+    df_raw = spark.table("pandito_ds.default.ventas_mensuales_mendoza_h3")
+    n_raw = df_raw.count()
+    print(f"   Registros: {n_raw:,}")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  TRANSFORM: Limpieza + enriquecimiento")
+    print("-"*70)
+    df_t = (df_raw
+        .dropDuplicates()
+        .na.drop(subset=["ventas", "fecha"])
+        .filter(col("ventas") > 0)
+        .withColumn("anio", year("fecha"))
+        .withColumn("mes", month("fecha"))
+        .withColumn("ventas_iva", spark_round(col("ventas") * 1.21, 2))
+        .withColumn("categoria",
+            when(col("ventas") > 100000, "Alto")
+            .when(col("ventas") > 50000, "Medio")
+            .otherwise("Bajo")))
+    n_t = df_t.count()
+    print(f"   Registros después de limpieza: {n_t:,}")
+    print(f"   Columnas agregadas: anio, mes, ventas_iva, categoria")
+    df_t.select("sucursal_nombre", "zona", "fecha", "ventas", "ventas_iva", "categoria").show(5, truncate=30)
+
+    print("\n" + "="*70)
+    print("\n3️⃣  WINDOW FUNCTIONS: Ranking y crecimiento")
+    print("-"*70)
+    w_rank = Window.partitionBy("zona", "mes").orderBy(col("ventas").desc())
+    w_lag = Window.partitionBy("sucursal_id").orderBy("fecha")
+
+    df_w = (df_t
+        .withColumn("rank_zona_mes", row_number().over(w_rank))
+        .withColumn("venta_anterior", lag("ventas").over(w_lag))
+        .withColumn("crecimiento_pct", spark_round(
+            (col("ventas") - col("venta_anterior")) / col("venta_anterior") * 100, 2)))
+
+    print("   Top 3 por zona y mes:")
+    (df_w.filter(col("rank_zona_mes") <= 2)
+        .select("zona", "mes", "sucursal_nombre", spark_round("ventas", 0).alias("ventas"), "rank_zona_mes")
+        .orderBy("zona", "mes", "rank_zona_mes")
+        .show(15, truncate=25))
+
+    print("\n" + "="*70)
+    print("\n4️⃣  LOAD: Guardar como tabla Delta")
+    print("-"*70)
+    df_w.write.format("delta").mode("overwrite")\
+        .saveAsTable("pandito_ds.default.ventas_enriquecidas_genie")
+    print("   Tabla 'ventas_enriquecidas_genie' creada")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  VALIDATE: Control de calidad")
+    print("-"*70)
+    df_result = spark.table("pandito_ds.default.ventas_enriquecidas_genie")
+    print(f"   Total registros: {df_result.count():,}")
+    print("   Distribución por categoría:")
+    df_result.groupBy("categoria").agg(
+        count("*").alias("registros"),
+        spark_round(spark_sum("ventas"), 0).alias("ventas_total")
+    ).orderBy("categoria").show()
+
+    nulos = df_result.filter(col("ventas").isNull()).count()
+    print(f"   Nulos en ventas: {nulos}")
+    print("   ✅ Pipeline validado correctamente")
+
+    # Limpieza
+    spark.sql("DROP TABLE IF EXISTS pandito_ds.default.ventas_enriquecidas_genie")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 16_03

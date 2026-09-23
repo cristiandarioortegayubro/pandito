@@ -156,6 +156,169 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,💰 Teoría: Cash Flow ejecutivo
+# MAGIC %md
+# MAGIC ## 💰 Cash Flow ejecutivo de Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Visualización y forecasting
+# MAGIC
+# MAGIC El modelo financiero se puede enriquecer con:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Visualización: evolución del cash flow mensual
+# MAGIC px.line(df_monthly, x='fecha', y='cash_flow_neto')
+# MAGIC
+# MAGIC # Forecasting: 3 escenarios (pesimista, base, optimista)
+# MAGIC base = model.predict(X_future)
+# MAGIC optimista = base * 1.15
+# MAGIC pesimista = base * 0.85
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué sucursales generan más cash flow por peso de ventas?
+# MAGIC * ¿Cuál es el margen EBITDA por zona?
+# MAGIC * ¿Qué pasa si las ventas bajan 15% (escenario pesimista)?
+
+# COMMAND ----------
+
+# DBTITLE 1,💰 Práctica: Cash Flow ejecutivo
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+from sklearn.linear_model import LinearRegression
+import warnings
+warnings.filterwarnings('ignore')
+
+print("💰 CASH FLOW EJECUTIVO CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES:
+    df['anio'] = df['fecha'].dt.year
+    df['mes'] = df['fecha'].dt.month
+
+    # Estructura financiera
+    df['cogs'] = df['ventas'] * 0.60
+    df['gastos_op'] = df['ventas'] * 0.15
+    df['ebitda'] = df['ventas'] - df['cogs'] - df['gastos_op']
+    df['impuestos'] = df['ebitda'] * 0.21
+    df['cash_flow_neto'] = df['ebitda'] - df['impuestos']
+    df['margen_ebitda'] = (df['ebitda'] / df['ventas'] * 100).round(2)
+
+    print("\n1️⃣  VISUALIZACIÓN: Evolución del Cash Flow")
+    print("-"*70)
+
+    monthly_cf = df.groupby('fecha').agg(
+        ventas=('ventas', 'sum'),
+        ebitda=('ebitda', 'sum'),
+        cash_flow=('cash_flow_neto', 'sum')
+    ).reset_index()
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=monthly_cf['fecha'], y=monthly_cf['ventas'],
+                             name='Ventas', mode='lines'))
+    fig.add_trace(go.Scatter(x=monthly_cf['fecha'], y=monthly_cf['ebitda'],
+                             name='EBITDA', mode='lines'))
+    fig.add_trace(go.Scatter(x=monthly_cf['fecha'], y=monthly_cf['cash_flow'],
+                             name='Cash Flow Neto', mode='lines'))
+    fig.update_layout(title='Evolución Financiera — Los Andes Market',
+                      xaxis_title='Fecha', yaxis_title='Monto ($)',
+                      template='plotly_white')
+    fig.show()
+
+    print("\n" + "="*70)
+    print("\n2️⃣  EBITDA POR ZONA")
+    print("-"*70)
+
+    zona_fin = df.groupby('zona').agg(
+        ventas=('ventas', 'sum'),
+        ebitda=('ebitda', 'sum'),
+        cash_flow=('cash_flow_neto', 'sum')
+    ).round(0)
+    zona_fin['margen_pct'] = (zona_fin['ebitda'] / zona_fin['ventas'] * 100).round(2)
+    print(zona_fin.sort_values('ebitda', ascending=False))
+
+    fig_zona = px.bar(zona_fin.reset_index(), x='zona', y='ebitda',
+                     title='EBITDA por Zona — Los Andes Market',
+                     template='plotly_white', labels={'ebitda': 'EBITDA ($)', 'zona': 'Zona'})
+    fig_zona.show()
+
+    print("\n" + "="*70)
+    print("\n3️⃣  FORECASTING: 3 Escenarios para próximos 6 meses")
+    print("-"*70)
+
+    # Agregar ventas totales mensuales
+    ventas_mensuales = df.groupby('fecha')['ventas'].sum().reset_index()
+    ventas_mensuales['mes_num'] = range(len(ventas_mensuales))
+
+    X = ventas_mensuales[['mes_num']].values
+    y = ventas_mensuales['ventas'].values
+
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # Proyectar 6 meses
+    future_months = np.arange(len(ventas_mensuales), len(ventas_mensuales) + 6).reshape(-1, 1)
+    forecast_base = model.predict(future_months)
+    forecast_opt = forecast_base * 1.15
+    forecast_pes = forecast_base * 0.85
+
+    print(f"\n   Proyección de ventas para próximos 6 meses:")
+    print(f"   {'Mes':<12} {'Pesimista':>12} {'Base':>12} {'Optimista':>12}")
+    print(f"   {'-'*50}")
+    for i in range(6):
+        last_date = ventas_mensuales['fecha'].iloc[-1]
+        future_date = pd.Timestamp(last_date) + pd.DateOffset(months=i+1)
+        print(f"   {future_date.strftime('%Y-%m'):<12} ${forecast_pes[i]:>10,.0f} ${forecast_base[i]:>10,.0f} ${forecast_opt[i]:>10,.0f}")
+
+    # Calcular EBITDA proyectado
+    ebitda_base = forecast_base * 0.25  # 25% margen
+    ebitda_pes = forecast_pes * 0.25
+    ebitda_opt = forecast_opt * 0.25
+
+    print(f"\n   EBITDA proyectado (25% margen):")
+    print(f"   Pesimista: ${ebitda_pes.sum():>12,.0f}")
+    print(f"   Base:      ${ebitda_base.sum():>12,.0f}")
+    print(f"   Optimista: ${ebitda_opt.sum():>12,.0f}")
+
+    # Gráfico de escenarios
+    future_dates = [pd.Timestamp(ventas_mensuales['fecha'].iloc[-1]) + pd.DateOffset(months=i+1) for i in range(6)]
+    fig_esc = go.Figure()
+    fig_esc.add_trace(go.Scatter(x=ventas_mensuales['fecha'], y=ventas_mensuales['ventas'],
+                                name='Histórico', mode='lines'))
+    fig_esc.add_trace(go.Scatter(x=future_dates, y=forecast_opt, name='Optimista +15%',
+                                mode='lines+markers', line=dict(dash='dash')))
+    fig_esc.add_trace(go.Scatter(x=future_dates, y=forecast_base, name='Base',
+                                mode='lines+markers', line=dict(dash='dot')))
+    fig_esc.add_trace(go.Scatter(x=future_dates, y=forecast_pes, name='Pesimista -15%',
+                                mode='lines+markers', line=dict(dash='dash')))
+    fig_esc.update_layout(title='Forecasting de Ventas — 3 Escenarios',
+                          xaxis_title='Fecha', yaxis_title='Ventas ($)',
+                          template='plotly_white')
+    fig_esc.show()
+
+    print("\n" + "="*70)
+    print("\n4️⃣  RANKING DE SUCURSALES POR EFICIENCIA")
+    print("-"*70)
+
+    ranking = df.groupby(['sucursal_nombre', 'zona']).agg(
+        ventas=('ventas', 'sum'),
+        ebitda=('ebitda', 'sum'),
+        cash_flow=('cash_flow_neto', 'sum')
+    ).round(0)
+    ranking['margen_pct'] = (ranking['ebitda'] / ranking['ventas'] * 100).round(2)
+    ranking = ranking.sort_values('cash_flow', ascending=False)
+    print("\n   Ranking por cash flow neto:")
+    print(ranking)
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 18_02

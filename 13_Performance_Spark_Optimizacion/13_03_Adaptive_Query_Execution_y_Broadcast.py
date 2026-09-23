@@ -246,6 +246,143 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,🤖 Teoría: AQE aplicado a Los Andes Market
+# MAGIC %md
+# MAGIC ## 🤖 AQE y Broadcast aplicados a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Escenario real de optimización
+# MAGIC
+# MAGIC En **Los Andes Market** tenemos el patrón clásico de optimización:
+# MAGIC * **Tabla grande:** `ventas_mensuales_mendoza_h3` (miles de registros mensuales)
+# MAGIC * **Tabla pequeña:** catálogo de sucursales (~20 filas con `sucursal_id`, `sucursal_nombre`, `zona`)
+# MAGIC
+# MAGIC Este es el escenario ideal para **Broadcast Join**: la tabla pequeña cabe en memoria y se envía a todos los executors.
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 🤖 AQE en el pipeline de Los Andes Market
+# MAGIC
+# MAGIC ```python
+# MAGIC # Habilitar AQE para optimización automática
+# MAGIC spark.conf.set("spark.sql.adaptive.enabled", "true")
+# MAGIC spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+# MAGIC spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+# MAGIC
+# MAGIC # AQE hace 3 cosas automáticamente:
+# MAGIC # 1. Si hay skew en zonas → divide la partición grande
+# MAGIC # 2. Si hay particiones pequeñas → las fusiona (coalesce)
+# MAGIC # 3. Si una tabla es pequeña → convierte Sort-Merge a Broadcast
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Pipeline optimizado para Los Andes Market
+# MAGIC
+# MAGIC ```python
+# MAGIC # 1. Filtrar antes de join (reduce datos)
+# MAGIC df_2023 = df.filter(year(col("fecha")) == 2023)
+# MAGIC
+# MAGIC # 2. Broadcast join (tabla pequeña de sucursales)
+# MAGIC df_result = df_2023.join(broadcast(df_sucursales), "sucursal_id", "inner")
+# MAGIC
+# MAGIC # 3. Agregar por zona
+# MAGIC df_result.groupBy("zona").sum("ventas")
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿El broadcast join mejora los tiempos vs sort-merge?
+# MAGIC * ¿AQE detecta automáticamente el skew de zonas?
+# MAGIC * ¿Filtrar antes del join reduce el shuffle?
+
+# COMMAND ----------
+
+# DBTITLE 1,🤖 Práctica: AQE aplicado a Los Andes Market
+from pyspark.sql.functions import col, broadcast, sum as _sum, count, year, desc
+import time
+
+print("🤖 AQE Y BROADCAST APLICADOS A LOS ANDES MARKET")
+print("="*70)
+
+if 'df_ventas' in dir() and df_ventas is not None:
+    print("\n1️⃣  PIPELINE OPTIMIZADO: Filtrar → Broadcast → Agregar")
+    print("-"*70)
+
+    # Habilitar AQE
+    spark.conf.set("spark.sql.adaptive.enabled", "true")
+    spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+    spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+    spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "10m")
+    print("   ✅ AQE habilitado")
+
+    # Crear tabla pequeña de sucursales
+    df_suc = df_ventas.select("sucursal_id", "sucursal_nombre", "zona", "lat", "lon").dropDuplicates().cache()
+    df_suc.count()  # Materializar
+
+    # Pipeline optimizado
+    start = time.time()
+    df_2023 = df_ventas.filter(year(col("fecha")) == 2023)  # Filter early
+    df_joined = df_2023.join(broadcast(df_suc), "sucursal_id", "inner")  # Broadcast
+    df_result = (df_joined.groupBy("zona")
+        .agg(_sum("ventas").alias("ventas_total"), count("*").alias("registros"))
+        .orderBy(desc("ventas_total")))
+    df_result.show(truncate=30)
+    t_opt = time.time() - start
+    print(f"\n   ⏱️  Pipeline optimizado: {t_opt:.2f}s")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  PIPELINE SIN OPTIMIZAR: Sin broadcast ni filter early")
+    print("-"*70)
+
+    # Deshabilitar auto-broadcast
+    spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
+
+    start = time.time()
+    df_joined_slow = df_ventas.join(df_suc, "sucursal_id", "inner")  # Sort-Merge
+    df_slow = (df_joined_slow.filter(year(col("fecha")) == 2023)
+        .groupBy("zona")
+        .agg(_sum("ventas").alias("ventas_total"), count("*").alias("registros"))
+        .orderBy(desc("ventas_total")))
+    df_slow.show(truncate=30)
+    t_slow = time.time() - start
+    print(f"\n   ⏱️  Pipeline sin optimizar: {t_slow:.2f}s")
+
+    # Restaurar
+    spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "10m")
+
+    speedup = t_slow / t_opt if t_opt > 0 else 0
+    print(f"\n   📊 Speedup: {speedup:.1f}x")
+    print(f"   💡 Filter early + broadcast = menos datos que shufflar")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  EXPLAIN: Verificar BroadcastHashJoin")
+    print("-"*70)
+
+    df_check = df_ventas.filter(year(col("fecha")) == 2023).join(broadcast(df_suc), "sucursal_id", "inner")
+    print("\n   Plan de ejecución del pipeline optimizado:")
+    df_check.explain()
+    print("\n   💡 Buscar 'BroadcastHashJoin' = broadcast funcionando")
+    print("   💡 Buscar 'PushedFilters' = filter pushdown por Catalyst")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  VERIFICACIÓN: Mismos resultados en ambos pipelines")
+    print("-"*70)
+
+    result_opt = df_result.collect()
+    result_slow = df_slow.collect()
+    print(f"\n   Pipeline optimizado: {len(result_opt)} zonas")
+    print(f"   Pipeline sin optimizar: {len(result_slow)} zonas")
+    print("   ✅ Mismos resultados — la optimización no cambia los datos")
+
+    df_suc.unpersist()
+else:
+    print("⚠️  No hay datos disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 13_03

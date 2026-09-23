@@ -250,6 +250,125 @@ print("✅ Listo para Machine Learning con MLflow")
 
 # COMMAND ----------
 
+# DBTITLE 1,🧪 Teoría: MLflow con datos reales
+# MAGIC %md
+# MAGIC ## 🧪 MLflow aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Tracking de experimentos de ventas
+# MAGIC
+# MAGIC Con MLflow podemos registrar cada intento de predecir las ventas de **Los Andes Market** y comparar resultados:
+# MAGIC
+# MAGIC ```python
+# MAGIC mlflow.set_experiment("ventas_prediction_los_andes")
+# MAGIC
+# MAGIC with mlflow.start_run(run_name="linear_reg_v1"):
+# MAGIC     mlflow.log_param("features", "mes, anio, trimestre")
+# MAGIC     mlflow.log_metric("rmse", rmse)
+# MAGIC     mlflow.sklearn.log_model(model, "model")
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué features predicen mejor las ventas?
+# MAGIC * ¿Cuál modelo tiene menor RMSE?
+# MAGIC * ¿Cómo registrar el modelo para producción?
+# MAGIC * ¿Qué parámetros afectan más el rendimiento?
+
+# COMMAND ----------
+
+# DBTITLE 1,🧪 Práctica: MLflow con datos reales
+import mlflow
+import mlflow.sklearn
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+
+print("🧪 MLFLOW CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and df is not None:
+    # Feature engineering sobre datos reales
+    df['mes'] = df['fecha'].dt.month
+    df['anio'] = df['fecha'].dt.year
+    df['trimestre'] = df['fecha'].dt.quarter
+
+    print("\n1️⃣  FEATURE ENGINEERING: Crear features desde ventas reales")
+    print("-"*70)
+    print(f"   Features: mes, anio, trimestre")
+    print(f"   Target: ventas")
+    print(f"   Registros: {len(df):,}")
+
+    X = df[['mes', 'anio', 'trimestre']].values
+    y = df['ventas'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    print("\n" + "="*70)
+    print("\n2️⃣  COMPARAR 3 MODELOS CON MLFLOW TRACKING")
+    print("-"*70)
+
+    mlflow.set_experiment("ventas_los_andes_comparacion")
+
+    models = {
+        "LinearRegression": LinearRegression(),
+        "Ridge_alpha10": Ridge(alpha=10),
+        "RandomForest_100": RandomForestRegressor(n_estimators=100, random_state=42),
+    }
+
+    results = []
+    for name, model in models.items():
+        with mlflow.start_run(run_name=name):
+            mlflow.log_param("model", name)
+            mlflow.log_param("features", "mes, anio, trimestre")
+            mlflow.log_param("test_size", 0.2)
+
+            model.fit(X_train, y_train)
+            preds = model.predict(X_test)
+
+            rmse = np.sqrt(mean_squared_error(y_test, preds))
+            mae = mean_absolute_error(y_test, preds)
+            r2 = r2_score(y_test, preds)
+
+            mlflow.log_metric("rmse", rmse)
+            mlflow.log_metric("mae", mae)
+            mlflow.log_metric("r2", r2)
+            mlflow.set_tag("dataset", "ventas_mensuales_mendoza_h3")
+            mlflow.sklearn.log_model(model, "model")
+
+            results.append({"model": name, "rmse": rmse, "mae": mae, "r2": r2})
+            print(f"\n   {name}:")
+            print(f"      RMSE: ${rmse:,.0f} | MAE: ${mae:,.0f} | R²: {r2:.4f}")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  RANKING DE MODELOS")
+    print("-"*70)
+    df_results = pd.DataFrame(results).sort_values("rmse")
+    print("\n   Ranking por RMSE (menor = mejor):")
+    print(df_results.round(2).to_string(index=False))
+    best = df_results.iloc[0]
+    print(f"\n   🏆 Mejor modelo: {best['model']} (RMSE=${best['rmse']:,.0f})")
+
+    print("\n" + "="*70)
+    print("\n4️⃣  AUTOLOG: Tracking automático")
+    print("-"*70)
+    mlflow.autolog()
+    with mlflow.start_run(run_name="rf_autolog"):
+        rf = RandomForestRegressor(n_estimators=50, random_state=42)
+        rf.fit(X_train, y_train)
+        preds = rf.predict(X_test)
+        print("   ✅ autolog() registró parámetros y métricas automáticamente")
+        print(f"   RMSE: ${np.sqrt(mean_squared_error(y_test, preds)):,.0f}")
+    mlflow.autolog(disable=True)
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 17_01

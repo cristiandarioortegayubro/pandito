@@ -207,6 +207,134 @@ print("✅ PySpark SQL completado")
 
 # COMMAND ----------
 
+# DBTITLE 1,⚡ Teoría: Spark SQL con datos reales
+# MAGIC %md
+# MAGIC ## ⚡ Spark SQL aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 De DataFrame API a SQL distribuido
+# MAGIC
+# MAGIC Ya sabemos usar la DataFrame API de PySpark. Ahora podemos ejecutar las mismas consultas en SQL distribuido sobre `ventas_mensuales_mendoza_h3`:
+# MAGIC
+# MAGIC ```python
+# MAGIC df_spark.createOrReplaceTempView("ventas")
+# MAGIC resultado = spark.sql("""
+# MAGIC   SELECT zona, SUM(ventas) as total FROM ventas GROUP BY zona
+# MAGIC """)
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio con spark.sql()
+# MAGIC * ¿Qué zona genera más ventas?
+# MAGIC * ¿Qué sucursal tiene el mejor promedio mensual?
+# MAGIC * ¿Hay estacionalidad por mes del año?
+# MAGIC * ¿Cuáles son los meses outliers por sucursal?
+
+# COMMAND ----------
+
+# DBTITLE 1,⚡ Práctica: Spark SQL con datos reales
+from pyspark.sql.functions import col
+
+print("⚡ SPARK SQL APLICADO A LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and 'df_spark' in dir():
+    df_spark.createOrReplaceTempView("ventas")
+
+    print("\n1️⃣  KPIs POR ZONA (spark.sql)")
+    print("-"*70)
+    spark.sql("""
+        SELECT zona,
+               COUNT(*) AS registros,
+               COUNT(DISTINCT sucursal_id) AS sucursales,
+               ROUND(SUM(ventas), 0) AS ventas_totales,
+               ROUND(AVG(ventas), 0) AS ventas_promedio,
+               ROUND(MAX(ventas), 0) AS venta_max,
+               ROUND(MIN(ventas), 0) AS venta_min
+        FROM ventas
+        GROUP BY zona
+        ORDER BY ventas_totales DESC
+    """).show(truncate=30)
+
+    print("\n" + "="*70)
+    print("\n2️⃣  ESTACIONALIDAD: Ventas por mes del año")
+    print("-"*70)
+    spark.sql("""
+        SELECT MONTH(fecha) AS mes,
+               COUNT(*) AS registros,
+               ROUND(SUM(ventas), 0) AS ventas_mes,
+               ROUND(AVG(ventas), 0) AS promedio_sucursal
+        FROM ventas
+        GROUP BY MONTH(fecha)
+        ORDER BY mes
+    """).show()
+
+    print("\n" + "="*70)
+    print("\n3️⃣  CASE WHEN + CTE: Clasificación y outliers")
+    print("-"*70)
+    spark.sql("""
+        WITH stats_sucursal AS (
+            SELECT sucursal_nombre, zona,
+                   AVG(ventas) AS promedio,
+                   STDDEV(ventas) AS desviacion
+            FROM ventas
+            GROUP BY sucursal_nombre, zona
+        )
+        SELECT v.sucursal_nombre, v.zona, v.fecha,
+               ROUND(v.ventas, 0) AS ventas,
+               ROUND(s.promedio, 0) AS promedio,
+               ROUND((v.ventas - s.promedio) / s.desviacion, 2) AS z_score,
+               CASE 
+                   WHEN ABS((v.ventas - s.promedio) / s.desviacion) > 2 THEN 'Outlier'
+                   WHEN ABS((v.ventas - s.promedio) / s.desviacion) > 1 THEN 'Atípico'
+                   ELSE 'Normal'
+               END AS categoria
+        FROM ventas v
+        JOIN stats_sucursal s ON v.sucursal_nombre = s.sucursal_nombre
+        ORDER BY ABS((v.ventas - s.promedio) / s.desviacion) DESC
+        LIMIT 15
+    """).show(truncate=25)
+
+    print("\n" + "="*70)
+    print("\n4️⃣  SQL vs DATAFRAME API: Misma consulta, dos sintaxis")
+    print("-"*70)
+
+    import time
+    # SQL
+    start = time.time()
+    result_sql = spark.sql("""
+        SELECT sucursal_id, ROUND(AVG(ventas), 0) AS promedio
+        FROM ventas WHERE ventas > 50000
+        GROUP BY sucursal_id ORDER BY promedio DESC LIMIT 5
+    """)
+    result_sql.show()
+    t_sql = time.time() - start
+
+    # DataFrame API
+    start = time.time()
+    (df_spark.filter(col("ventas") > 50000)
+        .groupBy("sucursal_id")
+        .agg({"ventas": "avg"})
+        .orderBy(col("avg(ventas)").desc())
+        .limit(5)).show()
+    t_df = time.time() - start
+
+    print(f"\n   ⏱️  Spark SQL: {t_sql:.3f}s")
+    print(f"   ⏱️  DataFrame API: {t_df:.3f}s")
+    print("   💡 Catalyst optimiza ambos igual — elegir por legibilidad del equipo")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  EXPLAIN: Ver plan de ejecución SQL")
+    print("-"*70)
+    result_sql.explain()
+    print("\n   💡 Buscar 'PushedFilters' = filter pushdown por Catalyst")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 15_01

@@ -234,6 +234,148 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,⚖️ Teoría: Skew aplicado a Los Andes Market
+# MAGIC %md
+# MAGIC ## ⚖️ Data skew aplicado a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 ¿Hay skew en las sucursales de Mendoza?
+# MAGIC
+# MAGIC En **Los Andes Market**, las sucursales pueden tener volúmenes muy diferentes:
+# MAGIC * Una sucursal en **Centro Comercial** puede tener muchas más transacciones que una en **Zona Residencial**
+# MAGIC * Si una sucursal domina los registros, `groupBy("sucursal_id")` concentra el trabajo en un solo executor
+# MAGIC
+# MAGIC ```python
+# MAGIC # Detectar skew en los datos reales
+# MAGIC distribucion = df.groupBy("sucursal_id").count().orderBy("count", ascending=False)
+# MAGIC # Si la primera sucursal tiene >40% de los registros → skew
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 🧂 Salting aplicado a ventas
+# MAGIC
+# MAGIC Si una sucursal domina, el salting redistribuye su carga:
+# MAGIC
+# MAGIC ```python
+# MAGIC # Sin salting: SUC001 tiene 90% de los registros → 1 executor saturado
+# MAGIC df.groupBy("sucursal_id").sum("ventas")
+# MAGIC
+# MAGIC # Con salting: SUC001 se divide en 10 sub-claves → 10 executors en paralelo
+# MAGIC df_salted = df.withColumn("salt", floor(rand() * 10))
+# MAGIC df_salted = df_salted.withColumn("key", concat(col("sucursal_id"), lit("_"), col("salt")))
+# MAGIC df_salted.groupBy("key").sum("ventas")  # Distribuido
+# MAGIC # Luego re-agregar por sucursal_id original
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué sucursal tiene más registros? ¿Hay skew?
+# MAGIC * ¿El skew afecta los tiempos de groupBy?
+# MAGIC * ¿AQE puede mitigar el skew automáticamente?
+
+# COMMAND ----------
+
+# DBTITLE 1,⚖️ Práctica: Skew aplicado a Los Andes Market
+from pyspark.sql.functions import col, sum as _sum, count, lit, concat, rand, floor, spark_partition_id, year
+import time
+
+print("⚖️ DATA SKEW APLICADO A LOS ANDES MARKET")
+print("="*70)
+
+if 'df' in dir() and df is not None:
+    print("\n1️⃣  DETECCIÓN REAL: Distribución por sucursal")
+    print("-"*70)
+
+    distribucion = (df.groupBy("sucursal_id")
+        .agg(count("*").alias("registros"), _sum("ventas").alias("ventas_total"))
+        .orderBy("registros", ascending=False))
+    distribucion.show(truncate=30)
+
+    total = df.count()
+    max_reg = distribucion.first()["registros"]
+    skew_ratio = max_reg / total * 100
+    print(f"\n   Total registros: {total:,}")
+    print(f"   Sucursal dominante: {max_reg:,} ({skew_ratio:.1f}% del total)")
+
+    if skew_ratio > 40:
+        print(f"   ⚠️  SKEW DETECTADO: una sucursal concentra {skew_ratio:.1f}% de los datos")
+    elif skew_ratio > 20:
+        print(f"   🟡 Skew moderado ({skew_ratio:.1f}%) — AQE puede manejarlo")
+    else:
+        print(f"   ✅ Distribución equilibrada (max {skew_ratio:.1f}%)")
+
+    print("\n" + "="*70)
+    print("\n2️⃣  DISTRIBUCIÓN POR ZONA")
+    print("-"*70)
+
+    dist_zona = df.groupBy("zona").count().orderBy("count", ascending=False)
+    dist_zona.show(truncate=30)
+    max_zona = dist_zona.first()["count"]
+    skew_zona = max_zona / total * 100
+    print(f"\n   Zona dominante: {skew_zona:.1f}% de los registros")
+
+    print("\n" + "="*70)
+    print("\n3️⃣  SALTING: Redistribuir carga si hay skew")
+    print("-"*70)
+
+    N_SALTS = 10
+    df_salted = (df
+        .withColumn("salt", floor(rand() * N_SALTS))
+        .withColumn("sucursal_salted", concat(col("sucursal_id"), lit("_"), col("salt"))))
+
+    print(f"\n   Salting con N={N_SALTS}: cada sucursal se divide en {N_SALTS} sub-claves")
+    print(f"   Particiones originales: {df.rdd.getNumPartitions()}")
+
+    df_salted_rep = df_salted.repartition(N_SALTS * 5, "sucursal_salted")
+    print(f"   Particiones con salting: {df_salted_rep.rdd.getNumPartitions()}")
+
+    # Agregar por clave salted
+    agg_salted = df_salted_rep.groupBy("sucursal_salted").agg(_sum("ventas").alias("ventas_parcial"))
+
+    # Re-agregar por sucursal_id original (quitar el salt)
+    df_final = (agg_salted
+        .withColumn("sucursal_id", col("sucursal_salted").substr(1, 6))
+        .groupBy("sucursal_id")
+        .agg(_sum("ventas_parcial").alias("ventas_total"))
+        .orderBy("ventas_total", ascending=False))
+    print("\n   Resultado final (mismo que sin salting, pero distribuido):")
+    df_final.show(5, truncate=30)
+
+    print("\n" + "="*70)
+    print("\n4️⃣  COMPARACIÓN: groupBy con y sin salting")
+    print("-"*70)
+
+    start = time.time()
+    df.groupBy("sucursal_id").agg(_sum("ventas").alias("total")).orderBy("total", ascending=False).collect()
+    t_normal = time.time() - start
+
+    start = time.time()
+    df_final.collect()
+    t_salted = time.time() - start
+
+    print(f"\n   groupBy normal: {t_normal:.3f}s")
+    print(f"   groupBy + salting: {t_salted:.3f}s")
+    print(f"\n   💡 En datos pequeños la diferencia es mínima")
+    print(f"   💡 En GB/TB con skew extremo, salting puede ser 10x más rápido")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  AQE: Mitigación automática de skew")
+    print("-"*70)
+
+    # Habilitar AQE
+    spark.conf.set("spark.sql.adaptive.enabled", "true")
+    spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+    print("\n   AQE habilitado (skew join automático)")
+    print("   Spark dividirá automáticamente particiones grandes durante la ejecución")
+    print("   💡 AQE elimina la necesidad de salting manual en muchos casos")
+else:
+    print("⚠️  No hay datos disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 13_02

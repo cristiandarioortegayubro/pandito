@@ -187,6 +187,101 @@ print("✅ Window Functions completado")
 
 # COMMAND ----------
 
+# DBTITLE 1,🪟 Teoría: Window functions con datos reales
+# MAGIC %md
+# MAGIC ## 🪟 Window functions aplicadas a Los Andes Market
+# MAGIC
+# MAGIC ### 📊 Análisis temporal de sucursales
+# MAGIC
+# MAGIC Con window functions podemos responder preguntas de negocio avanzadas sobre **Los Andes Market**:
+# MAGIC
+# MAGIC * **Ranking:** ¿Cuál es la sucursal #1 de cada zona por mes?
+# MAGIC * **LAG:** ¿Cómo varían las ventas respecto al mes anterior?
+# MAGIC * **Running total:** ¿Cuánto vendió cada sucursal acumulado en el año?
+# MAGIC * **Promedio móvil:** ¿Cuál es la tendencia suavizada de 3 meses?
+# MAGIC
+# MAGIC ```python
+# MAGIC # Ranking por zona y mes
+# MAGIC w = Window.partitionBy("zona", month("fecha")).orderBy(col("ventas").desc())
+# MAGIC df.withColumn("rank_zona_mes", row_number().over(w))
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Diferencia clave: GROUP BY vs Window
+# MAGIC * `GROUP BY zona, sucursal_id`: colapsa a una fila por grupo
+# MAGIC * `SUM(ventas) OVER (PARTITION BY zona, sucursal_id)`: mantiene todas las filas + agrega columna
+
+# COMMAND ----------
+
+# DBTITLE 1,🪟 Práctica: Window functions con datos reales
+from pyspark.sql.window import Window
+from pyspark.sql.functions import col, row_number, rank, dense_rank, lag, lead, sum as spark_sum, avg, round as spark_round, year, month, desc
+
+print("🪟 WINDOW FUNCTIONS APLICADAS A LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES and 'df_spark' in dir():
+    print("\n1️⃣  RANKING: Top 2 sucursales por zona y mes")
+    print("-"*70)
+    w_rank = Window.partitionBy("zona", month("fecha")).orderBy(col("ventas").desc())
+    df_ranked = df_spark.withColumn("rank_zona_mes", row_number().over(w_rank))
+    (df_ranked.filter(col("rank_zona_mes") <= 2)
+        .select("zona", month("fecha").alias("mes"), "sucursal_nombre", spark_round("ventas", 0).alias("ventas"), "rank_zona_mes")
+        .orderBy("zona", "mes", "rank_zona_mes")
+        .show(20, truncate=30))
+
+    print("\n" + "="*70)
+    print("\n2️⃣  LAG/LEAD: Crecimiento mensual por sucursal")
+    print("-"*70)
+    w_time = Window.partitionBy("sucursal_id").orderBy("fecha")
+    df_growth = (df_spark
+        .withColumn("venta_anterior", lag("ventas", 1).over(w_time))
+        .withColumn("crecimiento_pct", spark_round(
+            (col("ventas") - col("venta_anterior")) / col("venta_anterior") * 100, 2))
+        .withColumn("venta_siguiente", lead("ventas", 1).over(w_time)))
+    (df_growth.select("sucursal_nombre", "fecha", spark_round("ventas", 0).alias("ventas"),
+                      spark_round("venta_anterior", 0).alias("anterior"),
+                      "crecimiento_pct")
+        .orderBy("sucursal_id", "fecha")
+        .show(10, truncate=30))
+
+    print("\n" + "="*70)
+    print("\n3️⃣  RUNNING TOTAL: Acumulado anual por sucursal")
+    print("-"*70)
+    w_running = Window.partitionBy("sucursal_id", year("fecha")).orderBy("fecha")\
+        .rowsBetween(Window.unboundedPreceding, Window.currentRow)
+    df_running = df_spark.withColumn("acumulado", spark_round(spark_sum("ventas").over(w_running), 0))
+    (df_running.select("sucursal_nombre", "fecha", spark_round("ventas", 0).alias("ventas"), "acumulado")
+        .orderBy("sucursal_id", "fecha")
+        .show(10, truncate=30))
+
+    print("\n" + "="*70)
+    print("\n4️⃣  PROMEDIO MÓVIL: Tendencia 3 meses")
+    print("-"*70)
+    w_rolling = Window.partitionBy("sucursal_id").orderBy("fecha").rowsBetween(-2, Window.currentRow)
+    df_rolling = df_spark.withColumn("ma_3m", spark_round(avg("ventas").over(w_rolling), 0))
+    (df_rolling.select("sucursal_nombre", "fecha", spark_round("ventas", 0).alias("ventas"), "ma_3m")
+        .orderBy("sucursal_id", "fecha")
+        .show(10, truncate=30))
+    print("   💡 MA 3m suaviza la estacionalidad para ver la tendencia")
+
+    print("\n" + "="*70)
+    print("\n5️⃣  PERCENTILE: Mediana de ventas por zona")
+    print("-"*70)
+    w_pct = Window.partitionBy("zona").orderBy("ventas")
+    df_pct = df_spark.withColumn("percentile", spark_round(
+        col("ventas") / spark_sum("ventas").over(w_pct) * 100, 2))
+    (df_pct.select("zona", "sucursal_nombre", spark_round("ventas", 0).alias("ventas"), "percentile")
+        .orderBy("zona", "ventas")
+        .show(15, truncate=30))
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 15_02

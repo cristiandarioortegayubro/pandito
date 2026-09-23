@@ -222,6 +222,153 @@ print("   📌 Schedule: diario a las 8 AM con cron '0 0 8 * * ?'")
 
 # COMMAND ----------
 
+# DBTITLE 1,🏗️ Teoría: ETL automatizado con datos reales
+# MAGIC %md
+# MAGIC ## 🏗️ ETL Automatizado para Los Andes Market
+# MAGIC
+# MAGIC ### 📦 Arquitectura Bronze/Silver/Gold
+# MAGIC
+# MAGIC Un pipeline productivo de **Los Andes Market** sigue la arquitectura medallion:
+# MAGIC
+# MAGIC ```
+# MAGIC BRONZE (raw)          SILVER (clean)         GOLD (BI)
+# MAGIC ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+# MAGIC │ ventas_raw   │ →    │ ventas_clean │ →    │ ventas_kpis  │
+# MAGIC │ Sin validar  │      │ Limpia+valid│      │ Agregados   │
+# MAGIC │ Delta Lake   │      │ Delta Lake   │      │ Delta Lake  │
+# MAGIC └──────────────┘      └──────────────┘      └──────────────┘
+# MAGIC ```
+# MAGIC
+# MAGIC ```python
+# MAGIC # Bronze: datos crudos de ventas
+# MAGIC df_raw.write.format("delta").saveAsTable("pandito_ds.staging.ventas_bronze")
+# MAGIC
+# MAGIC # Silver: limpios + enriquecidos
+# MAGIC (df_raw.dropDuplicates().na.drop(...)
+# MAGIC     .write.format("delta").saveAsTable("pandito_ds.staging.ventas_silver"))
+# MAGIC
+# MAGIC # Gold: agregados para dashboards
+# MAGIC (df_silver.groupBy("zona", "anio").agg(sum("ventas"))
+# MAGIC     .write.format("delta").saveAsTable("pandito_ds.default.ventas_gold"))
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Automatización con Databricks Jobs
+# MAGIC * **Trigger:** Cron diario a las 8 AM (`0 0 8 * * ?`)
+# MAGIC * **Notebook:** El notebook con el pipeline ETL
+# MAGIC * **Alertas:** Email si falla + retry 3 veces
+# MAGIC * **Monitoreo:** Spark UI + Job runs history
+
+# COMMAND ----------
+
+# DBTITLE 1,🏗️ Práctica: Pipeline Bronze/Silver/Gold
+from pyspark.sql.functions import col, year, month, sum as spark_sum, avg, count, round as spark_round, when, isnull
+
+print("🏗️ PIPELINE BRONZE/SILVER/GOLD PARA LOS ANDES MARKET")
+print("="*70)
+
+print("\n1️⃣  BRONZE: Datos crudos desde Unity Catalog")
+print("-"*70)
+df_bronze = spark.table("pandito_ds.default.ventas_mensuales_mendoza_h3")
+n_bronze = df_bronze.count()
+print(f"   Registros crudos: {n_bronze:,}")
+print(f"   Columnas: {len(df_bronze.columns)}")
+
+print("\n" + "="*70)
+print("\n2️⃣  SILVER: Limpieza + enriquecimiento")
+print("-"*70)
+df_silver = (df_bronze
+    .dropDuplicates()
+    .na.drop(subset=["ventas", "fecha", "sucursal_id"])
+    .filter(col("ventas") > 0)
+    .withColumn("anio", year("fecha"))
+    .withColumn("mes", month("fecha"))
+    .withColumn("trimestre", when(month("fecha") <= 3, "Q1")
+        .when(month("fecha") <= 6, "Q2")
+        .when(month("fecha") <= 9, "Q3")
+        .otherwise("Q4"))
+    .withColumn("categoria_venta",
+        when(col("ventas") > 100000, "Alto")
+        .when(col("ventas") > 50000, "Medio")
+        .otherwise("Bajo")))
+n_silver = df_silver.count()
+print(f"   Registros limpios: {n_silver:,}")
+print(f"   Columnas nuevas: anio, mes, trimestre, categoria_venta")
+
+# Guardar Silver
+spark.sql("CREATE SCHEMA IF NOT EXISTS pandito_ds.staging")
+df_silver.write.format("delta").mode("overwrite")\
+    .saveAsTable("pandito_ds.staging.ventas_silver_los_andes")
+print("   Tabla Delta: pandito_ds.staging.ventas_silver_los_andes")
+
+print("\n" + "="*70)
+print("\n3️⃣  GOLD: Agregados para dashboards BI")
+print("-"*70)
+
+# Gold 1: KPIs anuales por sucursal
+df_gold_sucursal = (df_silver.groupBy("sucursal_id", "sucursal_nombre", "zona", "anio")
+    .agg(
+        spark_sum("ventas").alias("ventas_anuales"),
+        spark_round(avg("ventas"), 0).alias("promedio_mensual"),
+        count("*").alias("meses_con_datos")))
+    .orderBy("sucursal_id", "anio"))
+
+df_gold_sucursal.write.format("delta").mode("overwrite")\
+    .saveAsTable("pandito_ds.default.ventas_gold_sucursal_anual")
+print("   Gold 1: ventas_gold_sucursal_anual")
+df_gold_sucursal.show(10, truncate=25)
+
+# Gold 2: KPIs por zona y trimestre
+df_gold_zona = (df_silver.groupBy("zona", "anio", "trimestre")
+    .agg(
+        spark_sum("ventas").alias("ventas_trimestrales"),
+        count("*").alias("registros"))
+    .orderBy("zona", "anio", "trimestre"))
+
+df_gold_zona.write.format("delta").mode("overwrite")\
+    .saveAsTable("pandito_ds.default.ventas_gold_zona_trimestral")
+print("\n   Gold 2: ventas_gold_zona_trimestral")
+df_gold_zona.show(10, truncate=25)
+
+print("\n" + "="*70)
+print("\n4️⃣  VERIFICACIÓN: Control de calidad")
+print("-"*70)
+
+df_check = spark.table("pandito_ds.staging.ventas_silver_los_andes")
+total = df_check.count()
+print(f"   Total registros Silver: {total:,}")
+
+nulos = df_check.filter(col("ventas").isNull() | col("fecha").isNull()).count()
+print(f"   Nulos en columnas críticas: {nulos}")
+
+negativos = df_check.filter(col("ventas") <= 0).count()
+print(f"   Ventas <= 0: {negativos}")
+
+print("\n   Distribución por categoría:")
+df_check.groupBy("categoria_venta").agg(
+    count("*").alias("registros"),
+    spark_round(spark_sum("ventas"), 0).alias("ventas_total")
+).orderBy("categoria_venta").show()
+
+print("\n   ✅ Pipeline Bronze/Silver/Gold completado")
+print("\n" + "="*70)
+print("\n📌 PARA AUTOMATIZAR CON DATABRICKS JOBS:")
+print("   1. Ve a Databricks > Jobs > Create Job")
+print("   2. Selecciona este notebook")
+print("   3. Schedule: Cron diario '0 0 8 * * ?' (8 AM)")
+print("   4. Alertas: Email si falla + 3 retries")
+print("   5. El pipeline correrá automáticamente cada día")
+
+# Limpieza
+spark.sql("DROP TABLE IF EXISTS pandito_ds.staging.ventas_silver_los_andes")
+spark.sql("DROP TABLE IF EXISTS pandito_ds.default.ventas_gold_sucursal_anual")
+spark.sql("DROP TABLE IF EXISTS pandito_ds.default.ventas_gold_zona_trimestral")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del Notebook 16_04

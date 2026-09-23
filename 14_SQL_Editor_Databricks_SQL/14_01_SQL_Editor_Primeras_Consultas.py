@@ -236,6 +236,105 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,📊 Teoría: SQL con datos reales
+# MAGIC %md
+# MAGIC ## 📊 Consultas SQL con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 🏪 Nuestra tabla en Unity Catalog
+# MAGIC
+# MAGIC `pandito_ds.default.ventas_mensuales_mendoza_h3` contiene las ventas mensuales de **Los Andes Market** en Mendoza:
+# MAGIC
+# MAGIC | Columna | Tipo | Descripción |
+# MAGIC |---------|------|-------------|
+# MAGIC | `fecha` | date | Mes de la venta |
+# MAGIC | `sucursal_id` | string | ID de sucursal |
+# MAGIC | `sucursal_nombre` | string | Nombre legible |
+# MAGIC | `zona` | string | Zona comercial |
+# MAGIC | `lat`, `lon` | double | Coordenadas GPS |
+# MAGIC | `ventas` | double | Monto vendido |
+# MAGIC | `h3_index`, `h3_res8`, `h3_res7` | string | Índices hexagonales |
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio con SQL
+# MAGIC * ¿Cuáles son las 10 ventas mensuales más altas?
+# MAGIC * ¿Qué sucursales venden más de $100k/mes?
+# MAGIC * ¿Cuántos registros hay por año?
+# MAGIC * ¿Cómo comparar SQL con lo que ya sabemos de Pandas/PySpark?
+
+# COMMAND ----------
+
+# DBTITLE 1,📊 Práctica: SQL con datos reales
+# MAGIC %sql
+# MAGIC -- 📊 PRÁCTICA SQL CON DATOS REALES DE LOS ANDES MARKET
+# MAGIC
+# MAGIC -- 1️⃣  TOP 10 VENTAS MENSUALES MÁS ALTAS
+# MAGIC SELECT 
+# MAGIC   fecha,
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   ROUND(ventas, 0) AS ventas
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC ORDER BY ventas DESC
+# MAGIC LIMIT 10;
+# MAGIC
+# MAGIC -- 2️⃣  VENTAS POR ZONA (agregación básica)
+# MAGIC SELECT 
+# MAGIC   zona,
+# MAGIC   COUNT(*) AS registros,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_totales,
+# MAGIC   ROUND(AVG(ventas), 0) AS ventas_promedio,
+# MAGIC   ROUND(MAX(ventas), 0) AS venta_max,
+# MAGIC   ROUND(MIN(ventas), 0) AS venta_min
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY zona
+# MAGIC ORDER BY ventas_totales DESC;
+# MAGIC
+# MAGIC -- 3️⃣  FILTROS: Ventas altas en Corredor Comercial
+# MAGIC SELECT 
+# MAGIC   fecha,
+# MAGIC   sucursal_nombre,
+# MAGIC   ROUND(ventas, 0) AS ventas
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC WHERE ventas > 100000 
+# MAGIC   AND zona = 'Corredor Comercial'
+# MAGIC ORDER BY ventas DESC
+# MAGIC LIMIT 15;
+# MAGIC
+# MAGIC -- 4️⃣  COLUMNAS CALCULADAS: IVA y margen estimado
+# MAGIC SELECT 
+# MAGIC   fecha,
+# MAGIC   sucursal_nombre,
+# MAGIC   ROUND(ventas, 0) AS ventas,
+# MAGIC   ROUND(ventas * 1.21, 0) AS ventas_con_iva,
+# MAGIC   ROUND(ventas * 0.15, 0) AS margen_estimado,
+# MAGIC   ROUND(ventas / 30, 0) AS ventas_diarias
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC ORDER BY ventas DESC
+# MAGIC LIMIT 10;
+# MAGIC
+# MAGIC -- 5️⃣  REGISTROS POR AÑO
+# MAGIC SELECT 
+# MAGIC   YEAR(fecha) AS anio,
+# MAGIC   COUNT(*) AS registros,
+# MAGIC   COUNT(DISTINCT sucursal_id) AS sucursales_activas,
+# MAGIC   ROUND(SUM(ventas), 0) AS ventas_anuales
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC GROUP BY YEAR(fecha)
+# MAGIC ORDER BY anio;
+# MAGIC
+# MAGIC -- 6️⃣  SUCURSALES ÚNICAS CON COORDENADAS
+# MAGIC SELECT DISTINCT 
+# MAGIC   sucursal_id,
+# MAGIC   sucursal_nombre,
+# MAGIC   zona,
+# MAGIC   lat,
+# MAGIC   lon
+# MAGIC FROM pandito_ds.default.ventas_mensuales_mendoza_h3
+# MAGIC ORDER BY sucursal_id;
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 14_01

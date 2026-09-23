@@ -185,6 +185,150 @@ print("\n" + "="*70)
 
 # COMMAND ----------
 
+# DBTITLE 1,📈 Teoría: Forecasting avanzado con datos reales
+# MAGIC %md
+# MAGIC ## 📈 Forecasting avanzado con datos reales de Los Andes Market
+# MAGIC
+# MAGIC ### 🎯 Métodos adicionales para el dataset real
+# MAGIC
+# MAGIC El Setup Inicial ya cubrió naive, promedio móvil y regresión lineal. Ahora profundizamos con:
+# MAGIC
+# MAGIC 1. **Naive Seasonal:** Predecir usando el mismo mes del año anterior
+# MAGIC ```python
+# MAGIC # Predicción para enero 2025 = ventas de enero 2024
+# MAGIC forecast = monthly['ventas'].shift(12)
+# MAGIC ```
+# MAGIC
+# MAGIC 2. **Forecast por sucursal:** Cada sucursal tiene su propio patrón
+# MAGIC ```python
+# MAGIC for sucursal in df['sucursal_nombre'].unique():
+# MAGIC     datos_sucursal = df[df['sucursal_nombre'] == sucursal]
+# MAGIC     # Entrenar modelo por sucursal
+# MAGIC ```
+# MAGIC
+# MAGIC 3. **Comparación de modelos:** Naive vs MA vs Regresión vs Seasonal
+# MAGIC ```python
+# MAGIC # Evaluar los 4 modelos con MAE y MAPE
+# MAGIC # Seleccionar el mejor según la métrica
+# MAGIC ```
+# MAGIC
+# MAGIC ---
+# MAGIC
+# MAGIC ### 💡 Preguntas de negocio
+# MAGIC * ¿Qué sucursales son más predecibles (bajo MAPE)?
+# MAGIC * ¿El naive seasonal supera a la regresión lineal?
+# MAGIC * ¿Qué modelo usar para el presupuesto del próximo año?
+
+# COMMAND ----------
+
+# DBTITLE 1,📈 Práctica: Forecasting avanzado con datos reales
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+
+print("📈 FORECASTING AVANZADO CON DATOS REALES DE LOS ANDES MARKET")
+print("="*70)
+
+if USAR_DATOS_REALES:
+    monthly = df.groupby('fecha')['ventas'].sum().reset_index().sort_values('fecha')
+    monthly['mes_num'] = range(len(monthly))
+    monthly['mes'] = monthly['fecha'].dt.month
+
+    # --- 1. NAIVE SEASONAL ---
+    print("\n1️⃣  NAIVE SEASONAL (mismo mes año anterior)")
+    print("-"*70)
+
+    monthly['naive_seasonal'] = monthly['ventas'].shift(12)
+    # Evaluar en los últimos 12 meses (donde hay naive seasonal)
+    eval_data = monthly.dropna(subset=['naive_seasonal']).tail(12)
+    mae_seasonal = mean_absolute_error(eval_data['ventas'], eval_data['naive_seasonal'])
+    mape_seasonal = np.mean(np.abs((eval_data['ventas'] - eval_data['naive_seasonal']) / eval_data['ventas']) * 100)
+    print(f"   MAE: ${mae_seasonal:,.0f}")
+    print(f"   MAPE: {mape_seasonal:.1f}%")
+
+    # --- 2. COMPARACIÓN DE MODELOS ---
+    print("\n" + "="*70)
+    print("\n2️⃣  COMPARACIÓN DE 4 MODELOS (últimos 12 meses)")
+    print("-"*70)
+
+    test = monthly.tail(12).copy()
+    train = monthly.iloc[:-12].copy()
+
+    # Modelo 1: Naive (último valor)
+    test['naive'] = train['ventas'].iloc[-1]
+
+    # Modelo 2: Promedio móvil (3 meses)
+    test['ma_3'] = train['ventas'].rolling(3).mean().iloc[-1]
+
+    # Modelo 3: Regresión lineal
+    model_lr = LinearRegression()
+    model_lr.fit(train[['mes_num']], train['ventas'])
+    test['lr'] = model_lr.predict(test[['mes_num']])
+
+    # Modelo 4: Naive seasonal
+    test['seasonal'] = monthly['naive_seasonal'].tail(12).values
+
+    # Evaluar
+    modelos = ['naive', 'ma_3', 'lr', 'seasonal']
+    resultados = []
+    for modelo in modelos:
+        mae = mean_absolute_error(test['ventas'], test[modelo])
+        mape = np.mean(np.abs((test['ventas'] - test[modelo]) / test['ventas']) * 100)
+        resultados.append({'modelo': modelo, 'mae': mae, 'mape': mape})
+
+    df_resultados = pd.DataFrame(resultados).sort_values('mape')
+    print("\n   Ranking de modelos (ordenado por MAPE):")
+    print(df_resultados.round(2))
+    mejor = df_resultados.iloc[0]
+    print(f"\n   🏆 Mejor modelo: {mejor['modelo']} (MAPE={mejor['mape']:.1f}%)")
+
+    # --- 3. FORECAST POR SUCURSAL ---
+    print("\n" + "="*70)
+    print("\n3️⃣  FORECAST POR SUCURSAL (regresión lineal)")
+    print("-"*70)
+
+    sucursales = df['sucursal_nombre'].unique()[:5]  # Top 5
+    forecast_sucursal = []
+    for suc in sucursales:
+        datos = df[df['sucursal_nombre'] == suc].groupby('fecha')['ventas'].sum().sort_index()
+        if len(datos) >= 18:
+            X = np.arange(len(datos)).reshape(-1, 1)
+            y = datos.values
+            model = LinearRegression().fit(X, y)
+            future_X = np.array([[len(datos) + 5]])  # 6 meses adelante
+            pred = model.predict(future_X)[0]
+            # Evaluar
+            test_size = min(12, len(datos) // 4)
+            mape = np.mean(np.abs((datos.values[-test_size:] - model.predict(np.arange(len(datos)-test_size, len(datos)).reshape(-1,1))) / datos.values[-test_size:]) * 100)
+            forecast_sucursal.append({'sucursal': suc, 'pred_6m': pred, 'mape': mape})
+
+    if forecast_sucursal:
+        df_forecast = pd.DataFrame(forecast_sucursal).sort_values('mape')
+        print("\n   Forecast a 6 meses y MAPE por sucursal:")
+        print(df_forecast.round(2))
+        print("\n   💡 Sucursales con MAPE bajo son más predecibles")
+
+    # --- 4. PREDICCIÓN FINAL 6 MESES ---
+    print("\n" + "="*70)
+    print("\n4️⃣  PREDICCIÓN FINAL: Próximos 6 meses")
+    print("-"*70)
+
+    last_date = monthly['fecha'].iloc[-1]
+    future_dates = pd.date_range(last_date + pd.DateOffset(months=1), periods=6, freq='MS')
+    future_X = np.arange(len(monthly), len(monthly) + 6).reshape(-1, 1)
+    predictions = model_lr.predict(future_X)
+
+    print("\n   Predicción de ventas totales (regresión lineal):")
+    for date, pred in zip(future_dates, predictions):
+        print(f"   {date.strftime('%Y-%m')}: ${pred:,.0f}")
+else:
+    print("⚠️  No hay datos reales disponibles")
+
+print("\n" + "="*70)
+
+# COMMAND ----------
+
 # DBTITLE 1,🎓 Conclusiones
 # MAGIC %md
 # MAGIC ## 🎓 Conclusiones del notebook 07_03
