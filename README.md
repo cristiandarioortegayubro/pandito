@@ -42,42 +42,46 @@ El título hace referencia a **Pandas**, la biblioteca más popular de Python pa
 | **Lenguaje Base** | Python 3.10+ |
 | **Análisis Tabulado** | Pandas |
 | **Big Data** | PySpark, Delta Lake |
-| **Visualización** | Plotly, Databricks Dashboards |
+| **SQL** | Databricks SQL Editor, Unity Catalog |
+| **Visualización** | Plotly, AI/BI Dashboards (Lakeview) |
 | **Geoespacial** | GeoPandas, Uber H3 |
-| **IA Generativa** | Genie Code, Databricks Assistant |
+| **Machine Learning** | MLflow, scikit-learn, TensorFlow/Keras |
+| **IA Generativa** | Genie Code, Genie Spaces, Databricks Assistant |
 | **Versionamiento** | Git, GitHub |
 
 ---
 
 ## 📚 Estructura del repositorio
 
-El repositorio contiene **16 módulos progresivos** con más de **42 notebooks prácticos**:
+El repositorio contiene **18 módulos progresivos** con más de **60 notebooks prácticos**:
 
-### 🔰 Fundamentos (Módulos 1-3)
+### 🔰 Fundamentos (Módulos 1-4)
 - **01** - Entorno Databricks Free Edition & GitHub
-- **02** - Guía Rápida Genie Code
+- **02** - Python: Fundamentos y Estructuras de Control
 - **03** - Pandas: Series y DataFrames
+- **04** - Genie Code: Tu Copiloto de IA
 
-### 📊 Manipulación de Datos (Módulos 4-6)
-- **04** - Limpieza y Preparación de Datos
-- **05** - Reshaping y Conciliaciones
-- **06** - Agregaciones y Métricas KPI
+### 📊 Manipulación de Datos (Módulos 5-7)
+- **05** - Limpieza y Preparación de Datos
+- **06** - Reshaping y Conciliaciones
+- **07** - Agregaciones y Métricas KPI
 
-### 📈 Análisis Especializado (Módulos 7-10)
-- **07** - Series de Tiempo Financieras
-- **08** - Visualización con Plotly & Dashboards
-- **09** - Analítica Geoespacial con GeoPandas
-- **10** - Indexación Hexagonal (Uber H3)
+### 📈 Análisis Especializado (Módulos 8-11)
+- **08** - Series de Tiempo Financieras
+- **09** - Visualización con Plotly
+- **10** - Analítica Geoespacial con GeoPandas
+- **11** - Indexación Hexagonal (Uber H3)
 
-### ⚡ Big Data & PySpark (Módulos 11-14)
-- **11** - PySpark Core y SparkSession
-- **12** - Transformación Avanzada en PySpark
-- **13** - PySpark SQL, Window Functions & Delta Lake
-- **14** - Optimización de ETL Pipelines
+### ⚡ Big Data & SQL (Módulos 12-15)
+- **12** - PySpark Core y SparkSession
+- **13** - PySpark Transformación Avanzada
+- **14** - SQL Editor y Databricks SQL
+- **15** - Delta Lake, Window Functions y Optimización
 
-### 🤖 IA & Proyectos (Módulos 15-16)
-- **15** - Analítica Agéntica con Genie Code
-- **16** - Proyectos Integradores & GitHub Portfolio
+### 🤖 IA, ML & Proyectos (Módulos 16-18)
+- **16** - Genie Spaces, Dashboards AI/BI y ETL
+- **17** - Machine Learning con MLflow
+- **18** - Proyectos Integradores & GitHub Portfolio
 
 ---
 
@@ -152,22 +156,22 @@ pandito/
 
 ## 📖 Orden de estudio recomendado
 
-### 🔹 Track Básico (6-8 semanas)
+### 🔹 Track Básico (8-10 semanas)
 Ideal para principiantes absolutos:
 ```
-Módulos: 01 → 02 → 03 → 06 → 08 → 15
+Módulos: 01 → 02 → 03 → 04 → 07 → 09 → 16 → 18
 ```
 
-### 🔸 Track Intermedio (10-12 semanas)
+### 🔸 Track Intermedio (12-14 semanas)
 Para quienes conocen Python básico:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 11 → 12 → 15 → 16
+Módulos: 01 → 02 → 03 → 04 → 05 → 07 → 09 → 12 → 14 → 16 → 17 → 18
 ```
 
-### 🔺 Track Avanzado (16-20 semanas)
+### 🔺 Track Avanzado (18-22 semanas)
 Ruta completa para dominio total:
 ```
-Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → 16
+Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17 → 18
 ```
 
 ---
@@ -179,6 +183,9 @@ Módulos: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 
 ✔️ **Operaciones**: Análisis de inventario, optimización de rutas (H3), forecasting  
 ✔️ **Ventas**: Dashboards ejecutivos, waterfalls de revenue, análisis territorial  
 ✔️ **Riesgo**: Heatmaps de correlación, análisis de volatilidad, stress testing  
+✔️ **Machine Learning**: Regresión, clasificación, clustering, experimentos con MLflow  
+✔️ **SQL Analytics**: Consultas SQL, vistas, Unity Catalog, Databricks SQL Editor  
+✔️ **IA Agéntica**: Genie Spaces, consultas conversacionales, generación de código  
 
 ---
 
@@ -208,6 +215,6 @@ Este material educativo está disponible bajo licencia MIT. Puedes usar, modific
 
 ## ⭐ Agradecimientos
 
-Gracias a la comunidad de Databricks, los contribuidores de librerías open-source (Pandas, PySpark, Plotly, GeoPandas), y a todos los estudiantes y profesionales que han brindado feedback durante el desarrollo de este material.
+Gracias a la comunidad de Databricks, los contribuidores de librerías open-source (Pandas, PySpark, Plotly, GeoPandas, MLflow, scikit-learn), y a todos los estudiantes y profesionales que han brindado feedback durante el desarrollo de este material.
 
 ---
