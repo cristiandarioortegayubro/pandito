@@ -94,15 +94,15 @@ print("\n" + "="*70)
 # MAGIC
 # MAGIC ```
 # MAGIC ┌─────────────────────────────────────────────────┐
-# MAGIC │                 CICLO DE VIDA ML                  │
-# MAGIC ├──────────┬──────────┬──────────┬───────────────┤
-# MAGIC │ Tracking │ Models   │ Registry │ Serving       │
-# MAGIC │          │          │          │               │
+# MAGIC │                 CICLO DE VIDA ML                │
+# MAGIC ├──────────┬───────────┬──────────┬───────────────┤
+# MAGIC │ Tracking │ Models    │ Registry │ Serving       │
+# MAGIC │          │           │          │               │
 # MAGIC │ Registrar│ Empaquetar│ Versionar│ Desplegar     │
-# MAGIC │ params,  │ modelos  │ modelos  │ en producción  │
-# MAGIC │ métricas │ reusable |          │               │
-# MAGIC │ artifacts│          │          │               │
-# MAGIC └──────────┴──────────┴──────────┴───────────────┘
+# MAGIC │ params,  │ modelos   │ modelos  │ en producción │
+# MAGIC │ métricas │ reusable  |          │               │
+# MAGIC │ artifacts│           │          │               │
+# MAGIC └──────────┴───────────┴──────────┴───────────────┘
 # MAGIC ```
 # MAGIC
 # MAGIC ---
@@ -120,7 +120,7 @@ print("\n" + "="*70)
 # MAGIC
 # MAGIC ---
 # MAGIC
-# MAGIC ### 🔄 Flujo de Trabajo MLflow
+# MAGIC ### 🔄 Flujo de trabajo MLflow
 # MAGIC
 # MAGIC ```python
 # MAGIC import mlflow
